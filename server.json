@@ -1,20 +1,33 @@
 {
-    "name": "Pool",
-    "docs": "https://github.com/brianmtreese/nodejs-pool-controller-polyglotv2",
+    "name": "NodejsPool",
+    "docs": "https://github.com/sjpbailey/udi-nodejs-pool-controller-V3/blob/main/README.md",
     "type": "python3",
-    "executable": "pool-poly.py",
+    "executable": "nodejs-pool.py",
     "install": "install.sh",
-    "description": "Integrate your ISY 994i and NodeJS Pool Controller application to communicate and control your Pentair compatible pool equipment.",
+    "description": "Integrate NodeJS Pool Controller application to communicate and control your Pentair compatible pool equipment.",
+    "notice": "",
     "shortPoll": "5",
-    "longPoll": "60",
+    "longPoll": "600",
+	"logLevel": "INFO",
+    "profile_version": "1.0.0",
+	"customParams": {
+		"multiplier": 1
+	},
     "credits": [
-        {
-            "title": "Nodejs-pool-controller-poly: a Polyglot NodeServer for Pentair Pool Control Integration",
-            "author": "Brian Treese",
-            "version": "1.0.0",
-            "date": "March 20, 2018",
-            "source": "https://github.com/brianmtreese/nodejs-pool-controller-polyglotv2",
-            "license": "https://github.com/brianmtreese/nodejs-pool-controller-polyglotv2/blob/master/LICENSE"
-        }
-    ]
+    	{
+    		"title": "Example Node Server for ISY/Polyglot",
+    		"author": "Bailey",
+    		"version": "1.0.0",
+    		"date": "February 14, 2024",
+    		"source": "https://github.com/sjpbailey/udi-nodejs-pool-controller-V3",
+			"license": "https://github.com/sjpbailey/udi-nodejs-pool-controller-V3/blob/main/LICENSE"
+		}
+	],
+	"store" : {
+		"developer": "sjpbailey1961@gmail.com",
+		"price": 0.00,
+		"recurring": 0,
+		"recurring_interval": "month",
+		"recurring_period": 0
+	}
 }
