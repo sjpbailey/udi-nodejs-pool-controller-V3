@@ -57,8 +57,6 @@ class PoolController(udi_interface.Node):
         self.poly.subscribe(self.poly.START, self.start, address)
         self.poly.subscribe(self.poly.LOGLEVEL, self.handleLevelChange)
         self.poly.subscribe(self.poly.CUSTOMPARAMS, self.parameterHandler)
-        self.poly.subscribe(self.poly.CUSTOMTYPEDPARAMS,
-                            self.typedParameterHandler)
         self.poly.subscribe(self.poly.CUSTOMTYPEDDATA, self.typedDataHandler)
         self.poly.subscribe(self.poly.POLL, self.poll)
 
@@ -70,54 +68,40 @@ class PoolController(udi_interface.Node):
         self.poly.addNode(self)
 
     def start(self):
-        """
-        The Polyglot v3 Interface will publish an event to let you know you
-        can start your integration. (see the START event subscribed to above)
-
-        This is where you do your initialization / device setup.
-        Polyglot v3 Interface startup done.
-
-        Here is where you start your integration. I.E. if you need to 
-        initiate communication with a device, do so here.
-        """
-
-        # Send the profile files to the ISY if neccessary. The profile version
-        # number will be checked and compared. If it has changed since the last
-        # start, the new files will be sent.
         self.poly.updateProfile()
+        LOGGER.info('Starting Pool Controller')
+        # Get nodejs pool controller api url and set up data
+        self.apiBaseUrl = self.api_url
+
+        # Get all data from nodejs pool controller api
+        allData = requests.get(url='{}/all'.format(self.apiBaseUrl))
+        self.allDataJson = allData.json()
+
+        if self.circuits:
+            # Get the list of circuits that are not in use
+            self.circuitsNotUsed = self.circuits
+
+            # Get circuits in use
+            allCircuits = self.allDataJson['circuit']
+            circuitsUsed = copy.deepcopy(allCircuits)
+            circuitsNotUsed = self.circuitsNotUsed
+            for key in allCircuits.keys():
+                for circuitNotUsed in circuitsNotUsed:
+                    if key == circuitNotUsed:
+                        del circuitsUsed[key]
+            self.circuits = circuitsUsed
+
+        else:
+            self.circuits = self.allDataJson['circuit']
+            # Get temperature data
+            temperatureData = requests.get(
+                url='{}/temperatures'.format(self.apiBaseUrl))
+            self.temperatureDataJson = temperatureData.json()
+        self.discover()
 
         # Send the default custom parameters documentation file to Polyglot
         # for display in the dashboard.
         self.poly.setCustomParamsDoc()
-
-        # Initializing a heartbeat is an example of something you'd want
-        # to do during start.  Note that it is not required to have a
-        # heartbeat in your node server
-        self.heartbeat(0)
-
-        # Device discovery. Here you may query for your device(s) and
-        # their capabilities.  Also where you can create nodes that
-        # represent the found device(s)
-        self.discover()
-
-        # Here you may want to send updated values to the ISY rather
-        # than wait for a poll interval.  The user will get more
-        # immediate feedback that the node server is running
-
-    """
-    Called via the CUSTOMPARAMS event. When the user enters or
-    updates Custom Parameters via the dashboard. The full list of
-    parameters will be sent to your node server via this event.
-
-    Here we're loading them into our local storage so that we may
-    use them as needed.
-
-    New or changed parameters are marked so that you may trigger
-    other actions when the user changes or adds a parameter.
-
-    NOTE: Be careful to not change parameters here. Changing
-    parameters will result in a new event, causing an infinite loop.
-    """
 
     def parameterHandler(self, params):
         self.Parameters.load(params)
@@ -125,38 +109,11 @@ class PoolController(udi_interface.Node):
         self.check_params()
 
     """
-    Called via the CUSTOMTYPEDPARAMS event. This event is sent When
-    the Custom Typed Parameters are created.  See the check_params()
-    below.  Generally, this event can be ignored.
-
-    Here we're re-load the parameters into our local storage.
-    The local storage should be considered read-only while processing
-    them here as changing them will cause the event to be sent again,
-    creating an infinite loop.
-    """
-
-    def typedDataHandler(self, params):
-        self.TypedData.load(params)
-        LOGGER.debug('Loading typed data now')
-        LOGGER.debug(params)
-
-    """
     Called via the LOGLEVEL event.
     """
 
     def handleLevelChange(self, level):
         LOGGER.info('New log level: {}'.format(level))
-
-    """
-    Called via the POLL event.  The POLL event is triggerd at
-    the intervals specified in the node server configuration. There
-    are two separate poll events, a long poll and a short poll. Which
-    one is indicated by the flag.  flag will hold the poll type either
-    'longPoll' or 'shortPoll'.
-
-    Use this if you want your node server to do something at fixed
-    intervals.
-    """
 
     def poll(self, flag):
         if 'longPoll' in flag:
@@ -166,16 +123,6 @@ class PoolController(udi_interface.Node):
             LOGGER.debug('shortPoll (controller)')
 
     def query(self, command=None):
-        """
-        Optional.
-
-        The query method will be called when the ISY attempts to query the
-        status of the node directly.  You can do one of two things here.
-        You can send the values currently held by Polyglot back to the
-        ISY by calling reportDriver() or you can actually query the 
-        device represented by the node and report back the current 
-        status.
-        """
         nodes = self.poly.getNodes()
         for node in nodes:
             nodes[node].reportDrivers()
@@ -191,74 +138,38 @@ class PoolController(udi_interface.Node):
                           'templateaddr', 'Template Node Name'))
 
     def delete(self):
-        """
-        Example
-        This is call3ed by Polyglot upon deletion of the NodeServer. If the
-        process is co-resident and controlled by Polyglot, it will be
-        terminiated within 5 seconds of receiving this message.
-        """
         LOGGER.info(
             'Oh God I\'m being deleted. Nooooooooooooooooooooooooooooooooooooooooo.')
 
     def stop(self):
-        """
-        This is called by Polyglot when the node server is stopped.  You have
-        the opportunity here to cleanly disconnect from your device or do
-        other shutdown type tasks.
-        """
         LOGGER.debug('NodeServer stopped.')
-
-    """
-    This is an example of implementing a heartbeat function.  It uses the
-    long poll intervale to alternately send a ON and OFF command back to
-    the ISY.  Programs on the ISY can then monitor this and take action
-    when the heartbeat fails to update.
-    """
-
-    def heartbeat(self, init=False):
-        LOGGER.debug('heartbeat: init={}'.format(init))
-        if init is not False:
-            self.hb = init
-        LOGGER.debug('heartbeat: hb={}'.format(self.hb))
-        if self.hb == 0:
-            self.reportCmd("DON", 2)
-            self.hb = 1
-        else:
-            self.reportCmd("DOF", 2)
-            self.hb = 0
 
     def set_module_logs(self, level):
         logging.getLogger('urllib3').setLevel(level)
 
     def check_params(self):
-        """
-        This is an example if using custom Params for user and password and an example with a Dictionary
-        """
         self.Notices.clear()
-        self.Notices['hello'] = 'Hey there, my IP is {}'.format(
-            self.poly.network_interface['addr'])
-        self.Notices['hello2'] = 'Hello Friends!'
-        default_user = "YourUserName"
-        default_password = "YourPassword"
+        default_api_url = "api_url"
+        default_circuits = "circuits"
 
-        self.user = self.Parameters.user
-        if self.user is None:
-            self.user = default_user
+        self.api_url = self.Parameters.api_url
+        if self.api_url is None:
+            self.api_url = default_api_url
             LOGGER.error(
-                'check_params: user not defined in customParams, please add it.  Using {}'.format(default_user))
-            self.user = default_user
+                'check_params: user not defined in customParams, please add it.  Using {}'.format(default_api_url))
+            self.api_url = default_api_url
 
-        self.password = self.Parameters.password
-        if self.password is None:
-            self.password = default_password
-            LOGGER.error('check_params: password not defined in customParams, please add it.  Using {}'.format(
-                default_password))
-            self.password = default_password
+        self.circuits = self.Parameters.circuits
+        if self.circuits is None:
+            self.circuits = default_circuits
+            LOGGER.error('check_params: circuits not defined in customParams, please add it.  Using {}'.format(
+                default_circuits))
+            self.circuits = default_circuits
 
-        # Add a notice if they need to change the user/password from the default.
-        if self.user == default_user or self.password == default_password:
-            self.Notices['auth'] = 'Please set proper user and password in configuration page'
-            self.Notices['test'] = 'This is only a test'
+        # Add a notice if they need to change the user/circuits from the default.
+        if self.api_url == default_api_url or self.circuits == default_circuits:
+            self.Notices['auth'] = 'Please set proper api_url and circuits in configuration page'
+            # self.Notices['test'] = 'This is only a test'
 
     def remove_notice_test(self, command):
         LOGGER.info('remove_notice_test: notices={}'.format(self.Notices))

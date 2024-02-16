@@ -134,6 +134,8 @@ class Controller(polyinterface.Controller):
             else:
                 self.setDriver('ST', 0, report)
 
+
+######### Body Node  ################
             # Get temperatures
             temperatureData = requests.get(
                 url='{}/temperatures'.format(self.apiBaseUrl))
@@ -186,6 +188,8 @@ class Controller(polyinterface.Controller):
         'QUERY': update
     }
 
+########## Node Circuits ##########
+
 
 class Circuit(polyinterface.Node):
 
@@ -235,6 +239,8 @@ class Circuit(polyinterface.Node):
         'DON': cmd_don,
         'DOF': cmd_dof
     }
+
+########## Node Temperature ##########
 
 
 class Temperature(polyinterface.Node):
