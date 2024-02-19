@@ -8,6 +8,8 @@ import copy
 
 # My Template Node
 from nodes import BodyNode
+from nodes import CircuitNode
+from nodes import TemperatureNode
 
 """
 Some shortcuts for udi interface components
@@ -128,14 +130,54 @@ class PoolController(udi_interface.Node):
             nodes[node].reportDrivers()
 
     def discover(self, *args, **kwargs):
-        """
-        Example
-        Do discovery here. Does not have to be called discovery. Called from
-        example controller start method and from DISCOVER command recieved
-        from ISY as an exmaple.
-        """
+
+        # Discover pool circuit nodes
+        LOGGER.info('Found {} Circuits'.format(len(self.circuits)))
         self.poly.addNode(BodyNode(self.poly, self.address,
-                          'templateaddr', 'Template Node Name'))
+                                   address, name, status, number, self.apiBaseUrl))
+        if self.circuits:
+
+            for circuit in sorted(self.circuits, key=int):
+                id = circuit
+                number = circuit
+                address = self.circuits[circuit].get('numberStr')
+                name = self.circuits[circuit].get('friendlyName').title()
+                status = self.circuits[circuit].get('status')
+
+                if address not in self.nodes:
+                    self.addNode(CircuitNode(self.poly, self.address,
+                                             address, name, status, number, self.apiBaseUrl))
+                else:
+                    LOGGER.info('Circuit {} already configured.'.format(name))
+
+            # Add pool and spa temperature nodes
+            temperatures = ['spa', 'pool']
+
+            for temperature in temperatures:
+                id = temperature
+                address = ('{}_heat'.format(temperature))
+                name = ('{} Heat'.format(temperature)).title()
+                type = temperature
+
+                if address not in self.nodes:
+                    self.addNode(TemperatureNode(self.poly, self.address, address,
+                                                 name, type, self.temperatureDataJson, self.apiBaseUrl))
+                else:
+                    LOGGER.info(
+                        'Temperature {} already configured.'.format(name))
+
+        # self.poly.addNode(BodyNode(self.poly, self.address,'templateaddr', 'Template Node Name'))
+
+    def update(self, report=True):
+
+        if self.apiBaseUrl:
+
+            # Get node js pool controller status
+            controllerData = requests.get(url='{}/all'.format(self.apiBaseUrl))
+            if controllerData.status_code == 200:
+                self.setDriver('ST', 1, report)
+            else:
+                self.setDriver('ST', 0, report)
 
     def delete(self):
         LOGGER.info(

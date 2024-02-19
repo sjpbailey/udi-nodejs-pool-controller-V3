@@ -126,7 +126,6 @@ class Controller(polyinterface.Controller):
     def update(self, report=True):
 
         if self.apiBaseUrl:
-
             # Get node js pool controller status
             controllerData = requests.get(url='{}/all'.format(self.apiBaseUrl))
             if controllerData.status_code == 200:
