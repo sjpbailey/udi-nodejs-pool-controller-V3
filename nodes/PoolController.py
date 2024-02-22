@@ -49,17 +49,10 @@ class PoolController(udi_interface.Node):
         self.Notices = Custom(polyglot, 'notices')
         self.TypedData = Custom(polyglot, 'customtypeddata')
 
-        # Subscribe to various events from the Interface class.  This is
-        # how you will get information from Polyglog.  See the API
-        # documentation for the full list of events you can subscribe to.
-        #
-        # The START event is unique in that you can subscribe to
-        # the start event for each node you define.
-
         self.poly.subscribe(self.poly.START, self.start, address)
         self.poly.subscribe(self.poly.LOGLEVEL, self.handleLevelChange)
         self.poly.subscribe(self.poly.CUSTOMPARAMS, self.parameterHandler)
-        self.poly.subscribe(self.poly.CUSTOMTYPEDDATA, self.typedDataHandler)
+
         self.poly.subscribe(self.poly.POLL, self.poll)
 
         # Tell the interface we have subscribed to all the events we need.
@@ -70,6 +63,7 @@ class PoolController(udi_interface.Node):
         self.poly.addNode(self)
 
     def start(self):
+        self.discover()
         self.poly.updateProfile()
         LOGGER.info('Starting Pool Controller')
         # Get nodejs pool controller api url and set up data
@@ -99,7 +93,6 @@ class PoolController(udi_interface.Node):
             temperatureData = requests.get(
                 url='{}/temperatures'.format(self.apiBaseUrl))
             self.temperatureDataJson = temperatureData.json()
-        self.discover()
 
         # Send the default custom parameters documentation file to Polyglot
         # for display in the dashboard.
@@ -109,10 +102,6 @@ class PoolController(udi_interface.Node):
         self.Parameters.load(params)
         LOGGER.debug('Loading parameters now')
         self.check_params()
-
-    """
-    Called via the LOGLEVEL event.
-    """
 
     def handleLevelChange(self, level):
         LOGGER.info('New log level: {}'.format(level))
