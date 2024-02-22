@@ -8,13 +8,6 @@ import urllib3
 
 LOGGER = udi_interface.LOGGER
 
-_ISY_BOOL_UOM = 2  # Used for reporting status values for Controller node
-# Index UOM for custom states (must match editor/NLS in profile):
-_ISY_INDEX_UOM = 25
-_ISY_TEMP_F_UOM = 17  # UOM for temperatures
-_ISY_THERMO_MODE_UOM = 67  # UOM for thermostat mode
-_ISY_THERMO_HCS_UOM = 66  # UOM for thermostat heat/cool state
-
 
 class CircuitNode(udi_interface.Node):
 
@@ -59,7 +52,7 @@ class CircuitNode(udi_interface.Node):
     def query(self, command=None):
         self.reportDrivers()
 
-    drivers = [{'driver': 'ST', 'value': 0, 'uom':  _ISY_INDEX_UOM}]
+    drivers = [{'driver': 'ST', 'value': 0, 'uom': 2, 'name': "Online"}]
 
     id = 'CIRCUIT'
 

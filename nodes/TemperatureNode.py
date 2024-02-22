@@ -43,8 +43,8 @@ class TemperatureNode(udi_interface.Node):
             setPoint = temperatureDataJson['poolSetPoint']
 
         self.setDriver('ST', status, report)
-        self.setDriver('CLISPH', setPoint, report)
-        self.setDriver('CLITEMP', temperature, report)
+        self.setDriver('GV0', setPoint, report)
+        self.setDriver('GV1', temperature, report)
 
     def poll(self, polltype):
         if 'longPoll' in polltype:
@@ -93,12 +93,10 @@ class TemperatureNode(udi_interface.Node):
         self.reportDrivers()
 
     drivers = [
-        {'driver': 'ST', 'value': 0, 'uom': _ISY_INDEX_UOM},
-        {'driver': 'CLISPH', 'value': 0, 'uom': _ISY_TEMP_F_UOM},
-        {'driver': 'CLITEMP', 'value': 0, 'uom': _ISY_TEMP_F_UOM},
-        {'driver': 'CLIMD', 'value': 0, 'uom': _ISY_THERMO_MODE_UOM},
-        {'driver': 'CLIHCS', 'value': 0, 'uom': _ISY_THERMO_HCS_UOM},
-        {'driver': 'CLISPC', 'value': 0, 'uom': _ISY_TEMP_F_UOM}
+        {'driver': 'ST', 'value': 0, 'uom': 2},
+        {'driver': 'GV0', 'value': 0, 'uom': 17, 'name': "Pool Setpoint"},
+        {'driver': 'GV1', 'value': 0, 'uom': 17, 'name': "Pool Temp"},
+
     ]
 
     id = 'TEMPERATURE'

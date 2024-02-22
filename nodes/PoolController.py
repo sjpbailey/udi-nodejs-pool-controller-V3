@@ -231,5 +231,5 @@ class PoolController(udi_interface.Node):
         'REMOVE_NOTICE_TEST': remove_notice_test,
     }
     drivers = [
-        {'driver': 'ST', 'value': 1, 'uom': 2},
+        {'driver': 'ST', 'value': 1, 'uom': 2, 'name': "Online"},
     ]

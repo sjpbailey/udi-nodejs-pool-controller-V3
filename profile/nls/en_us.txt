@@ -5,30 +5,30 @@ ST-ctl-ST-NAME = NodeJS Pool Controller Online
 
 ND-BODY-NAME = Pool Body
 ND-BODY-ICON = GenericCtl
-ST-BDY-GV1-NAME = Pool Status
+ST-BDY-ST-NAME = Pool Status
+ST-BDY-GV0-NAME = Heat Mode
+ST-BDY-GV1-NAME = Air Temperature
 ST-BDY-GV2-NAME = Pool Temperature
 ST-BDY-GV3-NAME = Pool Setpoint
 ST-BDY-GV4-NAME = Spa Status
 ST-BDY-GV5-NAME = Spa Temperature
 ST-BDY-GV6-NAME = Spa Setpoint
-IX_BDY_ST-0 = Off
-IX_BDY_ST-1 = On
-ST_BDY_ST-0 = Off
-ST_BDY_ST-1 = On
+
+MODE-0 = Off
+MODE-1 = On
 
 ND-CIRCUIT-NAME = Pool Circuit
 ND-CIRCUIT-ICON = Switch
 ST-CRT-ST-NAME = Current State
-IX_CRT_ST-0 = Off
-IX_CRT_ST-1 = On
 CMD-CRT-DON-NAME = On
 CMD-CRT-DOF-NAME = Off
+
 
 ND-TEMPERATURE-NAME = Heater Control
 ND-TEMPERATURE-ICON = TempSensor
 ST-TMP-ST-NAME = Current State
-ST-TMP-CLISPH-NAME = Setpoint
-ST-TMP-CLITEMP-NAME = Current Temperature
+ST-TMP-GV0-NAME = Setpoint
+ST-TMP-GV1-NAME = Current Temperature
 CMD-TMP-DON-NAME = On
 CMD-TMP-DOF-NAME = Off
 CMD-TMP-SET_TEMP-NAME = Setpoint

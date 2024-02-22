@@ -12,13 +12,14 @@
   </nodeDef>
   <nodeDef id="BODY" nls="BDY">
     <sts>
-      <st id="GV0" editor="bool" />
-      <st id="GV1" editor="TEMP" />
-      <st id="GV2" editor="TEMP" />
-      <st id="GV3" editor="TEMP" />
-      <st id="GV4" editor="bool" />
-      <st id="GV5" editor="TEMP" />
-      <st id="GV6" editor="TEMP" />
+      <st id="GV0" editor="CTL_ST" />
+      <st id="CLITEMP" editor="CTL_TEMP" />
+      <st id="GV1" editor="CTL_ST" />
+      <st id="GV2" editor="CTL_TEMP" />
+      <st id="GV3" editor="CTL_TEMP" />
+      <st id="GV4" editor="CTL_ST" />
+      <st id="GV5" editor="CTL_TEMP" />
+      <st id="GV6" editor="CTL_TEMP" />
     </sts>
     <cmds>
       <sends />
@@ -29,7 +30,7 @@
   </nodeDef>
   <nodeDef id="CIRCUIT" nls="CRT">
     <sts>
-      <st id="ST" editor="bool" />
+      <st id="ST" editor="CRT_ST" />
     </sts>
     <cmds>
       <sends />
@@ -41,9 +42,11 @@
   </nodeDef>
   <nodeDef id="TEMPERATURE" nls="TMP">
     <sts>
-      <st id="ST" editor="bool" />
-      <st id="GV0" editor="TEMP" />
-      <st id="GV1" editor="TEMP" />
+      <st id="ST" editor="CTL_ST" />
+      <st id="CLISPH" editor="CTL_TEMP" />
+      <st id="CLITEMP" editor="CTL_TEMP" />
+      <st id="CLISPH" editor="CTL_TEMP" hide="T" />
+      <st id="CLIMD" editor="CTL_TEMP" hide="T" />
     </sts>
     <cmds>
       <sends />
@@ -51,7 +54,7 @@
         <cmd id="DON" />
         <cmd id="DOF" />
         <cmd id="SET_TEMP">
-          <p id="" editor="TEMP" init="CLISPH" />
+          <p id="" editor="CTL_TEMP" init="CLISPH" />
         </cmd>
       </accepts>
     </cmds>
