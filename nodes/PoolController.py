@@ -134,10 +134,10 @@ class PoolController(udi_interface.Node):
             type = temperature
 
             # if address not in self.nodes:
-            self.poly.addNode(TemperatureNode(
-                self.poly, self.address, address, name, type, self.temperatureDataJson, self.apiBaseUrl))
+            # self.poly.addNode(TemperatureNode(
+            #    self.poly, self.address, address, name, type, self.temperatureDataJson, self.apiBaseUrl))
             # else:
-            LOGGER.info('Temperature {} already configured.'.format(name))
+            # LOGGER.info('Temperature {} already configured.'.format(name))
 
         # if self.circuits:
 
