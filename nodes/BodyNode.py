@@ -20,7 +20,9 @@ class BodyNode(udi_interface.Node):
         super(BodyNode, self).__init__(polyglot, primary, address, name)
         self.poly = polyglot
         self.lpfx = '%s:%s' % (address, name)
-
+        self.status = status
+        self.number = number
+        self.apiBaseUrl = apiBaseUrl
         self.poly.subscribe(self.poly.START, self.start, address)
         self.poly.subscribe(self.poly.POLL, self.poll)
 

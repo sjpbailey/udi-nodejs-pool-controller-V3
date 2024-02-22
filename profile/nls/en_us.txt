@@ -5,7 +5,6 @@ ST-ctl-ST-NAME = NodeJS Pool Controller Online
 
 ND-BODY-NAME = Pool Body
 ND-BODY-ICON = GenericCtl
-
 ST-BDY-GV1-NAME = Pool Status
 ST-BDY-GV2-NAME = Pool Temperature
 ST-BDY-GV3-NAME = Pool Setpoint
