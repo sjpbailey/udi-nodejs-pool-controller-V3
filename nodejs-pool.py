@@ -6,8 +6,6 @@ import sys
 
 LOGGER = udi_interface.LOGGER
 
-""" Grab My Controller Node (optional) """
-
 if __name__ == "__main__":
     try:
 
