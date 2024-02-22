@@ -191,8 +191,8 @@ class PoolController(udi_interface.Node):
 
     def check_params(self):
         self.Notices.clear()
-        default_api_url = "api_url"
-        default_circuits = "circuits"
+        default_api_url = "http://localhost:3000"
+        default_circuits = "'0','1''"
 
         self.api_url = self.Parameters.api_url
         if self.api_url is None:

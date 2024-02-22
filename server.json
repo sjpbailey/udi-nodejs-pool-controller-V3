@@ -11,7 +11,8 @@
 	"logLevel": "INFO",
     "profile_version": "1.0.0",
 	"customParams": {
-		"multiplier": 1
+		"api_url": 1,
+        "circuits": "0"
 	},
     "credits": [
     	{
