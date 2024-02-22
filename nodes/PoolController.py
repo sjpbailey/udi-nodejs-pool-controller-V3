@@ -62,6 +62,14 @@ class PoolController(udi_interface.Node):
         # Tell the interface we exist.
         self.poly.addNode(self)
 
+    def parameterHandler(self, params):
+        self.Parameters.load(params)
+        LOGGER.debug('Loading parameters now')
+        self.check_params()
+
+    def handleLevelChange(self, level):
+        LOGGER.info('New log level: {}'.format(level))
+
     def start(self):
         self.discover()
         self.poly.updateProfile()
@@ -98,14 +106,6 @@ class PoolController(udi_interface.Node):
         # for display in the dashboard.
         self.poly.setCustomParamsDoc()
 
-    def parameterHandler(self, params):
-        self.Parameters.load(params)
-        LOGGER.debug('Loading parameters now')
-        self.check_params()
-
-    def handleLevelChange(self, level):
-        LOGGER.info('New log level: {}'.format(level))
-
     def poll(self, flag):
         if 'longPoll' in flag:
             LOGGER.debug('longPoll (controller)')
@@ -133,6 +133,7 @@ class PoolController(udi_interface.Node):
                 status = self.circuits[circuit].get('status')
                 self.poly.addNode(BodyNode(
                     self.poly, self.address, address, name, status, number, self.apiBaseUrl))
+
                 if address not in self.nodes:
                     self.poly.addNode(CircuitNode(self.poly, self.address,
                                                   address, name, status, number, self.apiBaseUrl))
