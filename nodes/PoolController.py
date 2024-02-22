@@ -123,39 +123,38 @@ class PoolController(udi_interface.Node):
         # Discover pool circuit nodes
         LOGGER.info('Found {} Circuits'.format(len(self.circuits)))
 
-        if self.circuits:
-            # Add pool and spa temperature nodes
-            temperatures = ['spa', 'pool']
+        # if self.circuits:
+        # Add pool and spa temperature nodes
+        temperatures = ['spa', 'pool']
 
-            for temperature in temperatures:
-                id = temperature
-                address = ('{}_heat'.format(temperature))
-                name = ('{} Heat'.format(temperature)).title()
-                type = temperature
+        for temperature in temperatures:
+            id = temperature
+            address = ('{}_heat'.format(temperature))
+            name = ('{} Heat'.format(temperature)).title()
+            type = temperature
 
-                if address not in self.nodes:
-                    self.poly.addNode(TemperatureNode(
-                        self.poly, self.address, address, name, type, self.temperatureDataJson, self.apiBaseUrl))
-                else:
-                    LOGGER.info(
-                        'Temperature {} already configured.'.format(name))
+            if address not in self.nodes:
+                self.poly.addNode(TemperatureNode(
+                    self.poly, self.address, address, name, type, self.temperatureDataJson, self.apiBaseUrl))
+            else:
+                LOGGER.info('Temperature {} already configured.'.format(name))
 
-        if self.circuits:
+        # if self.circuits:
 
-            for circuit in sorted(self.circuits, key=int):
-                id = circuit
-                number = circuit
-                address = self.circuits[circuit].get('numberStr')
-                name = self.circuits[circuit].get('friendlyName').title()
-                status = self.circuits[circuit].get('status')
-                self.poly.addNode(BodyNode(
+        for circuit in sorted(self.circuits, key=int):
+            id = circuit
+            number = circuit
+            address = self.circuits[circuit].get('numberStr')
+            name = self.circuits[circuit].get('friendlyName').title()
+            status = self.circuits[circuit].get('status')
+            self.poly.addNode(BodyNode(
+                self.poly, self.address, address, name, status, number, self.apiBaseUrl))
+
+            if address not in self.nodes:
+                self.poly.addNode(CircuitNode(
                     self.poly, self.address, address, name, status, number, self.apiBaseUrl))
-
-                if address not in self.nodes:
-                    self.poly.addNode(CircuitNode(
-                        self.poly, self.address, address, name, status, number, self.apiBaseUrl))
-                else:
-                    LOGGER.info('Circuit {} already configured.'.format(name))
+            else:
+                LOGGER.info('Circuit {} already configured.'.format(name))
 
         # self.poly.addNode(BodyNode(self.poly, self.address,'templateaddr', 'Template Node Name'))
 
