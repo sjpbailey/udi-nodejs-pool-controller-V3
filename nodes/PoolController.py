@@ -132,7 +132,7 @@ class PoolController(udi_interface.Node):
         # Discover pool circuit nodes
         LOGGER.info('Found {} Circuits'.format(len(self.circuits)))
 
-       """ if self.circuits:
+    """ if self.circuits:
 
             for circuit in sorted(self.circuits, key=str):
                 id = circuit
