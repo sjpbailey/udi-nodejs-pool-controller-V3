@@ -74,37 +74,47 @@ class PoolController(udi_interface.Node):
         self.discover()
         self.poly.updateProfile()
         LOGGER.info('Starting Pool Controller')
-        # Get nodejs pool controller api url and set up data
-        self.apiBaseUrl = self.api_url
+        try:
+            if self.api_url:
+                self.apiBaseUrl = self.api_url
 
-        # Get all data from nodejs pool controller api
-        allData = requests.get(url='{}/all'.format(self.apiBaseUrl))
-        self.allDataJson = allData.json()
+                # Get all data from nodejs pool controller api
+                allData = requests.get(url='{}/all'.format(self.apiBaseUrl))
+                self.allDataJson = allData.json()
 
-        if self.circuits:
-            # Get the list of circuits that are not in use
-            self.circuitsNotUsed = self.circuits
+                if 'circuits_not_used' in self.polyConfig['customParams']:
 
-            # Get circuits in use
-            allCircuits = self.allDataJson['circuit']
-            circuitsUsed = copy.deepcopy(allCircuits)
-            circuitsNotUsed = self.circuitsNotUsed
-            for key in allCircuits.keys():
-                for circuitNotUsed in circuitsNotUsed:
-                    if key == circuitNotUsed:
-                        del circuitsUsed[key]
-            self.circuits = circuitsUsed
+                    # Get the list of circuits that are not in use
+                    self.circuitsNotUsed = eval(
+                        '[' + self.polyConfig['customParams']['circuits_not_used'] + ']')
 
-        else:
-            self.circuits = self.allDataJson['circuit']
-            # Get temperature data
-            temperatureData = requests.get(
-                url='{}/temperatures'.format(self.apiBaseUrl))
-            self.temperatureDataJson = temperatureData.json()
+                    # Get circuits in use
+                    allCircuits = self.allDataJson['circuit']
+                    circuitsUsed = copy.deepcopy(allCircuits)
+                    circuitsNotUsed = self.circuitsNotUsed
+                    for key in allCircuits.keys():
+                        for circuitNotUsed in circuitsNotUsed:
+                            if key == circuitNotUsed:
+                                del circuitsUsed[key]
 
-        # Send the default custom parameters documentation file to Polyglot
-        # for display in the dashboard.
-        self.poly.setCustomParamsDoc()
+                    self.circuits = circuitsUsed
+
+                else:
+                    self.circuits = self.allDataJson['circuit']
+
+                # Get temperature data
+                temperatureData = requests.get(
+                    url='{}/temperatures'.format(self.apiBaseUrl))
+                self.temperatureDataJson = temperatureData.json()
+
+            else:
+                LOGGER.error(
+                    'NodeJs Pool Controller API url required in order to establish connection.  Enter custom parameter of \'api_url\' in Polyglot configuration.')
+                return False
+        except Exception as ex:
+            LOGGER.error(
+                'Error reading NodeJs Pool Controller API url from Polyglot Configuration: %s', str(ex))
+            return False
 
     def poll(self, flag):
         if 'longPoll' in flag:
