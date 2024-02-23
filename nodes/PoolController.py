@@ -138,7 +138,7 @@ class PoolController(udi_interface.Node):
                 id = circuit
                 number = circuit
                 # address = self.circuits[circuit].get('numberStr')
-                name = self.circuits[circuit].get('friendlyName').title()
+                # name = self.circuits[circuit].get('friendlyName').title()
                 status = self.circuits[circuit].get('status')
 
                 if address not in self.nodes:
