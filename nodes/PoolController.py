@@ -132,6 +132,11 @@ class PoolController(udi_interface.Node):
         # Discover pool circuit nodes
         LOGGER.info('Found {} Circuits'.format(len(self.circuits)))
         # if address not in self.nodes:
+        id = circuit
+        number = circuit
+        address = self.circuits[circuit].get('numberStr')
+        name = self.circuits[circuit].get('friendlyName').title()
+        status = self.circuits[circuit].get('status')
         self.poly.addNode(BodyNode(self, self.address, id,
                                    address, name, status, number, self.apiBaseUrl))
         if self.circuits:
