@@ -131,14 +131,7 @@ class PoolController(udi_interface.Node):
     def discover(self, *args, **kwargs):
         # Discover pool circuit nodes
         LOGGER.info('Found {} Circuits'.format(len(self.circuits)))
-        # if address not in self.nodes:
-        id = circuit
-        number = circuit
-        address = self.circuits[circuit].get('numberStr')
-        name = self.circuits[circuit].get('friendlyName').title()
-        status = self.circuits[circuit].get('status')
-        self.poly.addNode(BodyNode(self, self.address, id,
-                                   address, name, status, number, self.apiBaseUrl))
+
         if self.circuits:
 
             for circuit in sorted(self.circuits, key=int):
@@ -149,8 +142,10 @@ class PoolController(udi_interface.Node):
                 status = self.circuits[circuit].get('status')
 
                 if address not in self.nodes:
-                    self.poly.addNode(CircuitNode(self, self.address, id,
-                                                  address, name, status, number, self.apiBaseUrl))
+                    self.poly.addNode(CircuitNode(
+                        self, self.address, id, address, name, status, number, self.apiBaseUrl))
+                    self.poly.addNode(BodyNode(
+                        self, self.address, id, address, name, status, number, self.apiBaseUrl))
                 else:
                     LOGGER.info('Circuit {} already configured.'.format(name))
 
@@ -164,8 +159,8 @@ class PoolController(udi_interface.Node):
                 type = temperature
 
                 if address not in self.nodes:
-                    self.poly.addNode(TemperatureNode(self, self.address, id, address,
-                                                      name, type, self.temperatureDataJson, self.apiBaseUrl))
+                    self.poly.addNode(TemperatureNode(
+                        self, self.address, id, address, name, type, self.temperatureDataJson, self.apiBaseUrl))
                 else:
                     LOGGER.info(
                         'Temperature {} already configured.'.format(name))
