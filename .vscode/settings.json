@@ -1,10 +1,14 @@
 {
   "cSpell.words": [
+    "aiohttp",
+    "checkconnect",
+    "checkconnection",
     "CLIHCS",
     "CLIMD",
     "CLISPC",
     "CLISPH",
     "CLITEMP",
+    "poolcontrolpy",
     "poolheat",
     "SERVERDATA",
     "spaheat",
