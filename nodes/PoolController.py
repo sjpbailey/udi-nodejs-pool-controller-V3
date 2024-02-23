@@ -135,17 +135,17 @@ class PoolController(udi_interface.Node):
         if self.circuits:
 
             for circuit in sorted(self.circuits, key=int):
-                id = circuit
+                """id = circuit
                 number = circuit
                 address = self.circuits[circuit].get('numberStr')
                 name = self.circuits[circuit].get('friendlyName').title()
-                status = self.circuits[circuit].get('status')
+                status = self.circuits[circuit].get('status')"""
 
                 if address not in self.nodes:
                     self.poly.addNode(CircuitNode(
-                        self, self.address, id, address, name, status, number, self.apiBaseUrl))
+                        self, self.address, id, address, name, "status", 01, self.apiBaseUrl))
                     self.poly.addNode(BodyNode(
-                        self, self.address, id, address, name, status, number, self.apiBaseUrl))
+                        self, self.address, id, address, name, "status", 02, self.apiBaseUrl))
                 else:
                     LOGGER.info('Circuit {} already configured.'.format(name))
 
