@@ -134,7 +134,7 @@ class PoolController(udi_interface.Node):
 
         if self.circuits:
 
-            for circuit in sorted(self.circuits, key=float):
+            for circuit in sorted(self.circuits, key=str):
                 id = circuit
                 number = circuit
                 address = self.circuits[circuit].get('numberStr')
