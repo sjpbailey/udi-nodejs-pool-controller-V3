@@ -134,11 +134,11 @@ class PoolController(udi_interface.Node):
 
         if self.circuits:
 
-            for circuit in sorted(self.circuits, key=str):
+            for circuit in sorted(self.circuits, key=int):
                 id = circuit
                 number = circuit
-                # address = self.circuits[circuit].get('numberStr')
-                # name = self.circuits[circuit].get('friendlyName').title()
+                address = self.circuits[circuit].get('numberStr')
+                name = self.circuits[circuit].get('friendlyName').title()
                 status = self.circuits[circuit].get('status')
 
                 if address not in self.nodes:
