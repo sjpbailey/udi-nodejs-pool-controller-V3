@@ -143,9 +143,9 @@ class PoolController(udi_interface.Node):
 
                 if address not in self.nodes:
                     self.poly.addNode(CircuitNode(
-                        self, self.address, id, address, name, "status", 01, self.apiBaseUrl))
+                        self, self.address, id, address, name, "status", "01", self.apiBaseUrl))
                     self.poly.addNode(BodyNode(
-                        self, self.address, id, address, name, "status", 02, self.apiBaseUrl))
+                        self, self.address, id, address, name, "status", "02", self.apiBaseUrl))
                 else:
                     LOGGER.info('Circuit {} already configured.'.format(name))
 
