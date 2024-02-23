@@ -139,7 +139,7 @@ class PoolController(udi_interface.Node):
                 number = circuit
                 address = self.circuits[circuit].get('numberStr')
                 name = self.circuits[circuit].get('friendlyName').title()
-                status = self.circuits[circuit].get('status')"""
+                status = self.circuits[circuit].get('status')
 
                 if address not in self.nodes:
                     self.poly.addNode(CircuitNode(
@@ -147,7 +147,7 @@ class PoolController(udi_interface.Node):
                     self.poly.addNode(BodyNode(
                         self, self.address, id, address, name, "status", "02", self.apiBaseUrl))
                 else:
-                    LOGGER.info('Circuit {} already configured.'.format(name))
+                    LOGGER.info('Circuit {} already configured.'.format(name))"""
 
             # Add pool and spa temperature nodes
             temperatures = ['spa', 'pool']
