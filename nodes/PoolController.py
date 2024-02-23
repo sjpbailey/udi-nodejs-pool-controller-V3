@@ -81,7 +81,7 @@ class PoolController(udi_interface.Node):
                 # Get all data from nodejs pool controller api
                 allData = requests.get(url='{}/all'.format(self.apiBaseUrl))
                 self.allDataJson = allData.json()
-
+                LOGGER.info(self.allDataJson)
                 if 'circuits_not_used' in self.polyConfig['customParams']:
 
                     # Get the list of circuits that are not in use
@@ -106,7 +106,7 @@ class PoolController(udi_interface.Node):
                 temperatureData = requests.get(
                     url='{}/temperatures'.format(self.apiBaseUrl))
                 self.temperatureDataJson = temperatureData.json()
-
+                LOGGER.info(self.temperatureDataJson)
             else:
                 LOGGER.error(
                     'NodeJs Pool Controller API url required in order to establish connection.  Enter custom parameter of \'api_url\' in Polyglot configuration.')
