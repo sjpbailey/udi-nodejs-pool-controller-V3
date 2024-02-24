@@ -5,6 +5,7 @@ import time
 import json
 import requests
 import copy
+import logging
 
 # My Template Node
 from nodes import BodyNode
@@ -147,72 +148,6 @@ class PoolController(udi_interface.Node):
         # Discover pool circuit nodes
         LOGGER.info('Found {} Circuits'.format(len(self.circuits)))
 
-    """ try:
-            if self.api_url:
-                self.apiBaseUrl = self.api_url
-
-                # Get all data from nodejs pool controller api
-                allData = requests.get(url='{}/all'.format(self.apiBaseUrl))
-                self.allDataJson = allData.json()
-                LOGGER.info(self.allDataJson)
-                if 'circuits_not_used' in self.polyConfig['customParams']:
-
-                    # Get the list of circuits that are not in use
-                    self.circuitsNotUsed = eval(
-                        '[' + self.polyConfig['customParams']['circuits_not_used'] + ']')
-
-                    # Get circuits in use
-                    allCircuits = self.allDataJson['circuit']
-                    circuitsUsed = copy.deepcopy(allCircuits)
-                    circuitsNotUsed = self.circuitsNotUsed
-                    for key in allCircuits.keys():
-                        for circuitNotUsed in circuitsNotUsed:
-                            if key == circuitNotUsed:
-                                del circuitsUsed[key]
-
-                    self.circuits = circuitsUsed
-
-                else:
-                    self.circuits = self.allDataJson['circuit']
-
-        except Exception as ex:
-            LOGGER.error(
-                'Error reading NodeJs Pool Controller API url from Polyglot Configuration: %s', str(ex))
-            return False
-            # Add pool and spa temperature nodes
-        if self.circuits:
-
-            for circuit in sorted(self.circuits, key=int):
-                id = circuit
-                number = circuit
-                address = self.circuits[circuit].get('numberStr')
-                name = self.circuits[circuit].get('friendlyName').title()
-                status = self.circuits[circuit].get('status')
-
-                if address not in self.nodes:
-                    self.poly.addNode(CircuitNode(
-                        self, self.address, id, address, name, "status", "01", self.apiBaseUrl))
-                    self.poly.addNode(BodyNode(
-                        self, self.address, id, address, name, "status", "02", self.apiBaseUrl))
-                else:
-                    LOGGER.info('Circuit {} already configured.'.format(name))
-
-            temperatures = ['spa', 'pool']
-
-            for temperature in temperatures:
-
-                temperatureData = requests.get(
-                    url='{}/temperatures'.format(self.apiBaseUrl))
-                self.temperatureDataJson = temperatureData.json()
-                LOGGER.info(self.temperatureDataJson)
-                id = temperature
-                address = ('{}_heat'.format(temperature))
-                name = ('{} Heat'.format(temperature)).title()
-                type = temperature
-                self.poly.addNode(TemperatureNode(
-                    self, self.address, id, address, name, type, self.temperatureDataJson, self.apiBaseUrl))
-                LOGGER.info('Temperature {} already configured.'.format(name))"""
-
     def update(self, report=True):
 
         if self.apiBaseUrl:
@@ -236,8 +171,7 @@ class PoolController(udi_interface.Node):
                 self.setDriver('ST', 0, report)
 
     def delete(self):
-        LOGGER.info(
-            'Oh God I\'m being deleted. Nooooooooooooooooooooooooooooooooooooooooo.')
+        LOGGER.info('Oh No I\'m being deleted. No.')
 
     def stop(self):
         LOGGER.debug('NodeServer stopped.')
