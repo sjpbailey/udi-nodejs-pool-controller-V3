@@ -70,14 +70,14 @@ class PoolController(udi_interface.Node):
 
                 # Get all data from nodejs pool controller api
                 allData = requests.get(
-                    url='{}state/all'.format(self.apiBaseUrl))
+                    url='{}/state/all'.format(self.apiBaseUrl))
                 self.allDataJson = allData.json()
                 LOGGER.info(self.allDataJson)
                 if 'circuits' in self.polyConfig['customParams']:
 
                     # Get the list of circuits that are not in use
                     self.circuitsNotUsed = eval(
-                        '[' + self.polyConfig['customParams']['circuits'] + ']')
+                        '[' + self.circuits + ']')
 
                     # Get circuits in use
                     allCircuits = self.allDataJson['circuit']
@@ -216,7 +216,8 @@ class PoolController(udi_interface.Node):
 
         if self.apiBaseUrl:
             # Get node js pool controller status
-            controllerData = requests.get(url='{}/all'.format(self.apiBaseUrl))
+            controllerData = requests.get(
+                url='{}/state/all'.format(self.apiBaseUrl))
             if controllerData.status_code == 200:
                 self.setDriver('ST', 1, report)
             else:
