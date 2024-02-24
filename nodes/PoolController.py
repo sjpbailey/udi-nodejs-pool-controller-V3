@@ -54,6 +54,30 @@ class PoolController(udi_interface.Node):
         LOGGER.debug('Loading parameters now')
         self.check_params()
 
+        def check_params(self):
+            self.Notices.clear()
+        default_api_url = "http://localhost:3000"
+        default_circuits = "'0','1''"
+
+        self.api_url = self.Parameters.api_url
+        if self.api_url is None:
+            self.api_url = default_api_url
+            LOGGER.error(
+                'check_params: user not defined in customParams, please add it.  Using {}'.format(default_api_url))
+            self.api_url = default_api_url
+
+        self.circuits = self.Parameters.circuits
+        if self.circuits is None:
+            self.circuits = default_circuits
+            LOGGER.error('check_params: circuits not defined in customParams, please add it.  Using {}'.format(
+                default_circuits))
+            self.circuits = default_circuits
+
+        # Add a notice if they need to change the user/circuits from the default.
+        if self.api_url == default_api_url or self.circuits == default_circuits:
+            self.Notices['auth'] = 'Please set proper api_url and circuits in configuration page'
+            # self.Notices['test'] = 'This is only a test'
+
     def handleLevelChange(self, level):
         LOGGER.info('New log level: {}'.format(level))
 
@@ -73,11 +97,11 @@ class PoolController(udi_interface.Node):
                     url='{}state/all'.format(self.apiBaseUrl))
                 self.allDataJson = allData.json()
                 LOGGER.info(self.allDataJson)
-                if 'circuits' in self.polyConfig['customParams']:
+                if self.circuits:
 
                     # Get the list of circuits that are not in use
                     self.circuitsNotUsed = eval(
-                        '[' + self.polyConfig['customParams']['circuits'] + ']')
+                        '[' + self.circuits + ']')
 
                     # Get circuits in use
                     allCircuits = self.allDataJson['circuit']
@@ -242,30 +266,6 @@ class PoolController(udi_interface.Node):
 
     def set_module_logs(self, level):
         logging.getLogger('urllib3').setLevel(level)
-
-    def check_params(self):
-        self.Notices.clear()
-        default_api_url = "http://localhost:3000"
-        default_circuits = "'0','1''"
-
-        self.api_url = self.Parameters.api_url
-        if self.api_url is None:
-            self.api_url = default_api_url
-            LOGGER.error(
-                'check_params: user not defined in customParams, please add it.  Using {}'.format(default_api_url))
-            self.api_url = default_api_url
-
-        self.circuits = self.Parameters.circuits
-        if self.circuits is None:
-            self.circuits = default_circuits
-            LOGGER.error('check_params: circuits not defined in customParams, please add it.  Using {}'.format(
-                default_circuits))
-            self.circuits = default_circuits
-
-        # Add a notice if they need to change the user/circuits from the default.
-        if self.api_url == default_api_url or self.circuits == default_circuits:
-            self.Notices['auth'] = 'Please set proper api_url and circuits in configuration page'
-            # self.Notices['test'] = 'This is only a test'
 
     def remove_notice_test(self, command):
         LOGGER.info('remove_notice_test: notices={}'.format(self.Notices))
