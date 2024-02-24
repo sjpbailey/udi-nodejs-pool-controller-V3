@@ -102,7 +102,7 @@ class PoolController(udi_interface.Node):
             # Add pool and spa temperature nodes
         if self.circuits:
 
-            for circuit in sorted(self.circuits, 0):  # key=int):
+            for circuit in sorted(self.circuits):  # key=int):
                 id = circuit
                 number = circuit
                 address = self.circuits[circuit].get('numberStr')
