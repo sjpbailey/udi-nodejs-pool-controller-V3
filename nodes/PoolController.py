@@ -72,7 +72,7 @@ class PoolController(udi_interface.Node):
                 allData = requests.get(
                     url='{}/state/all'.format(self.apiBaseUrl))
                 self.allDataJson = allData.json()
-                LOGGER.info(self.allDataJson, indent=4, sort_keys=True)
+                LOGGER.info(self.allDataJson)
                 if self.circuits:
 
                     # Get the list of circuits that are not in use
