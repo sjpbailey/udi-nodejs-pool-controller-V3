@@ -92,7 +92,7 @@ class PoolController(udi_interface.Node):
                     self.circuits = circuitsUsed
 
                 else:
-                    self.circuits = self.allDataJson['circuit']
+                    self.circuits = allCircuits
 
         except Exception as ex:
             LOGGER.error(
