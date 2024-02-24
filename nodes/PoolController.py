@@ -62,7 +62,7 @@ class PoolController(udi_interface.Node):
         self.poly.updateProfile()
         LOGGER.info('Starting Pool Controller')
         # Discover pool circuit nodes
-        LOGGER.info('Found {} Circuits'.format(len(self.circuits)))
+        # LOGGER.info('Found {} Circuits'.format(len(self.circuits)))
 
         try:
             if self.api_url:
@@ -72,8 +72,8 @@ class PoolController(udi_interface.Node):
                 allData = requests.get(
                     url='{}/state/all'.format(self.apiBaseUrl))
                 self.allDataJson = allData.json()
-                LOGGER.info(self.allDataJson)
-                if 'circuits' in self.polyConfig['customParams']:
+                LOGGER.info(self.allDataJson, indent=4, sort_keys=True)
+                if self.circuits:
 
                     # Get the list of circuits that are not in use
                     self.circuitsNotUsed = eval(
