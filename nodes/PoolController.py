@@ -65,8 +65,8 @@ class PoolController(udi_interface.Node):
             LOGGER.error('check_params: user not defined in customParams, please add it.  Using {}'.format(
                 default_api_url))
             self.api_url = default_api_url
-
             self.circuits = self.Parameters.circuits
+
         if self.circuits is None:
             self.circuits = default_circuits
             LOGGER.error('check_params: circuits not defined in customParams, please add it.  Using {}'.format(
