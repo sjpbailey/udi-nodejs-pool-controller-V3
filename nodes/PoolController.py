@@ -80,7 +80,8 @@ class PoolController(udi_interface.Node):
                         '[' + self.circuits + ']')
 
                     # Get circuits in use
-                    allCircuits = self.allDataJson['circuit']
+                    allCircuits = requests.get(
+                        url='{}/state/circuits'.format(self.apiBaseUrl))
                     circuitsUsed = copy.deepcopy(allCircuits)
                     circuitsNotUsed = self.circuitsNotUsed
                     for key in allCircuits.keys():
