@@ -69,7 +69,8 @@ class PoolController(udi_interface.Node):
                 self.apiBaseUrl = self.api_url
 
                 # Get all data from nodejs pool controller api
-                allData = requests.get(url='{}/all'.format(self.apiBaseUrl))
+                allData = requests.get(
+                    url='{}state/all'.format(self.apiBaseUrl))
                 self.allDataJson = allData.json()
                 LOGGER.info(self.allDataJson)
                 if 'circuits_not_used' in self.polyConfig['customParams']:
