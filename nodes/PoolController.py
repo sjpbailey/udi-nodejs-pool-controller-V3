@@ -72,7 +72,9 @@ class PoolController(udi_interface.Node):
                 allData = requests.get(
                     url='{}/state/all'.format(self.apiBaseUrl))
                 self.allDataJson = allData.json()
-                LOGGER.info(self.allDataJson)
+                response = (json.dumps(self.allDataJson.json(),
+                            indent=4, sort_keys=True))
+                LOGGER.info(response)
                 if 'circuits' in self.polyConfig['customParams']:
 
                     # Get the list of circuits that are not in use
@@ -109,9 +111,9 @@ class PoolController(udi_interface.Node):
 
                 if address not in self.nodes:
                     self.poly.addNode(CircuitNode(
-                        self, self.address, id, address, name, "status", "01", self.apiBaseUrl))
+                        self, self.address, id, address, name, status, number, self.apiBaseUrl))
                     self.poly.addNode(BodyNode(
-                        self, self.address, id, address, name, "status", "02", self.apiBaseUrl))
+                        self, self.address, id, address, name, status, number, self.apiBaseUrl))
                 else:
                     LOGGER.info('Circuit {} already configured.'.format(name))
 
