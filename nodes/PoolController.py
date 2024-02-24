@@ -152,6 +152,11 @@ class PoolController(udi_interface.Node):
             temperatures = ['spa', 'pool']
 
             for temperature in temperatures:
+
+                temperatureData = requests.get(
+                    url='{}/temperatures'.format(self.apiBaseUrl))
+                self.temperatureDataJson = temperatureData.json()
+                LOGGER.info(self.temperatureDataJson)
                 id = temperature
                 address = ('{}_heat'.format(temperature))
                 name = ('{} Heat'.format(temperature)).title()
