@@ -119,7 +119,6 @@ class PoolController(udi_interface.Node):
     def poll(self, flag):
         if 'longPoll' in flag:
             LOGGER.debug('longPoll (controller)')
-            self.heartbeat()
         else:
             LOGGER.debug('shortPoll (controller)')
 
