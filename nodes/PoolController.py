@@ -85,10 +85,10 @@ class PoolController(udi_interface.Node):
                         url='{}/state/circuits'.format(self.apiBaseUrl))
                     circuitsUsed = copy.deepcopy(allCircuits)
                     circuitsNotUsed = self.circuitsNotUsed
-                    for key in allCircuits.keys():
+                    """for key in allCircuits.keys():
                         for circuitNotUsed in circuitsNotUsed:
                             if key == circuitNotUsed:
-                                del circuitsUsed[key]
+                                del circuitsUsed[key]"""
 
                     self.circuits = circuitsUsed
 
