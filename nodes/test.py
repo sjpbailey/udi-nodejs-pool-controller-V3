@@ -1,34 +1,32 @@
-import asyncio
-import aiohttp
 import requests
 import json
 
-"""from poolcontrolpy.poolcontrolpy import Controller
-
-
-async def checkconnection():
-
-    async with aiohttp.ClientSession() as client:
-        controller = Controller(client, "192.168.1.53", 4200)
-        return await controller.checkconnect()
-
-
-resp = asyncio.run(checkconnection())
-print(resp)
-# Get all data from nodejs pool controller api"""
 
 x = requests.get('http://192.168.1.53:4200/config/circuits/')
-
-# print(x.text)
+# print(json.dumps(x.json(), indent=4, sort_keys=True))
 
 
 y = requests.get("http://192.168.1.53:4200/state/all/")
-# y = json.dumps(y)
-print(type(y))
-print(y.text)
+# print(json.dumps(y.json(), indent=4, sort_keys=True))
 
-print(type(y))
+# print(type(y))
 
-z = requests.get("http://192.168.1.53:4200/state/pump/1/")
-
+# z = requests.get("http://192.168.1.53:4200/temperatures")
+# print(json.dumps(z.json(), indent=4, sort_keys=True))
 # print(z.text)
+
+
+a = requests.get("http://192.168.1.53:4200/config/options/pumps/")
+# print(json.dumps(a.json(), indent=4, sort_keys=True))
+
+
+u = requests.get("http://192.168.1.53:4200/state/circuit/setState/")
+# print(json.dumps(u.json(), indent=4, sort_keys=True))
+# print(u.text)
+
+
+p = requests.get("http://192.168.1.53:4200/config/options/bodies/")
+print(json.dumps(p.json(), indent=4, sort_keys=True))
+# print(p.text)
+for i in p:
+    print(i[1])
