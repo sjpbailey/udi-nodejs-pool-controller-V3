@@ -9,9 +9,9 @@ x = requests.get('http://192.168.1.53:4200/config/circuits/')
 # "http://192.168.1.53:4200/state/temps/"
 y = requests.get("http://192.168.1.53:4200/state/all/")
 # print(y.text)
-response = (json.dumps(y.json(), indent=4, sort_keys=True))
+# response = (json.dumps(y.json()#))
 
-print(response)
+# print(response)
 
 
 # z = requests.get("http://192.168.1.53:4200/temperatures")
@@ -22,9 +22,9 @@ print(response)
 a = requests.get("http://192.168.1.53:4200/state/pump/1")
 # print(json.dumps(a.json(), indent=4, sort_keys=True))
 
-
-u = requests.get("http://192.168.1.53:4200/state/circuit/setState/")
-# print(json.dumps(u.json(), indent=4, sort_keys=True))
+# "http://192.168.1.53:4200/state/circuits/"
+u = requests.get("http://192.168.1.53:4200/state/circuit/6/")
+print(json.dumps(u.json(), indent=4, sort_keys=True))
 # print(u.text)
 
 
