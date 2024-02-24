@@ -73,11 +73,11 @@ class PoolController(udi_interface.Node):
                     url='{}state/all'.format(self.apiBaseUrl))
                 self.allDataJson = allData.json()
                 LOGGER.info(self.allDataJson)
-                if 'circuits_not_used' in self.polyConfig['customParams']:
+                if 'circuits' in self.polyConfig['customParams']:
 
                     # Get the list of circuits that are not in use
                     self.circuitsNotUsed = eval(
-                        '[' + self.polyConfig['customParams']['circuits_not_used'] + ']')
+                        '[' + self.polyConfig['customParams']['circuits'] + ']')
 
                     # Get circuits in use
                     allCircuits = self.allDataJson['circuit']
