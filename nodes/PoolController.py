@@ -118,23 +118,6 @@ class PoolController(udi_interface.Node):
         # Discover pool circuit nodes
         LOGGER.info('Found {} Circuits'.format(len(self.circuits)))
 
-        if self.circuits:
-
-            for circuit in sorted(self.circuits, key=int):
-                """id = circuit
-                number = circuit
-                address = self.circuits[circuit].get('numberStr')
-                name = self.circuits[circuit].get('friendlyName').title()
-                status = self.circuits[circuit].get('status')
-
-                if address not in self.nodes:
-                    self.poly.addNode(CircuitNode(
-                        self, self.address, id, address, name, "status", "01", self.apiBaseUrl))
-                    self.poly.addNode(BodyNode(
-                        self, self.address, id, address, name, "status", "02", self.apiBaseUrl))
-                else:
-                    LOGGER.info('Circuit {} already configured.'.format(name))"""
-
         try:
             if self.api_url:
                 self.apiBaseUrl = self.api_url
@@ -168,21 +151,38 @@ class PoolController(udi_interface.Node):
                 'Error reading NodeJs Pool Controller API url from Polyglot Configuration: %s', str(ex))
             return False
             # Add pool and spa temperature nodes
-        temperatures = ['spa', 'pool']
+        if self.circuits:
 
-        for temperature in temperatures:
+            for circuit in sorted(self.circuits, key=int):
+                id = circuit
+                number = circuit
+                address = self.circuits[circuit].get('numberStr')
+                name = self.circuits[circuit].get('friendlyName').title()
+                status = self.circuits[circuit].get('status')
 
-            temperatureData = requests.get(
-                url='{}/temperatures'.format(self.apiBaseUrl))
-            self.temperatureDataJson = temperatureData.json()
-            LOGGER.info(self.temperatureDataJson)
-            id = temperature
-            address = ('{}_heat'.format(temperature))
-            name = ('{} Heat'.format(temperature)).title()
-            type = temperature
-            self.poly.addNode(TemperatureNode(
-                self, self.address, id, address, name, type, self.temperatureDataJson, self.apiBaseUrl))
-            LOGGER.info('Temperature {} already configured.'.format(name))
+                if address not in self.nodes:
+                    self.poly.addNode(CircuitNode(
+                        self, self.address, id, address, name, "status", "01", self.apiBaseUrl))
+                    self.poly.addNode(BodyNode(
+                        self, self.address, id, address, name, "status", "02", self.apiBaseUrl))
+                else:
+                    LOGGER.info('Circuit {} already configured.'.format(name))
+
+            temperatures = ['spa', 'pool']
+
+            for temperature in temperatures:
+
+                temperatureData = requests.get(
+                    url='{}/temperatures'.format(self.apiBaseUrl))
+                self.temperatureDataJson = temperatureData.json()
+                LOGGER.info(self.temperatureDataJson)
+                id = temperature
+                address = ('{}_heat'.format(temperature))
+                name = ('{} Heat'.format(temperature)).title()
+                type = temperature
+                self.poly.addNode(TemperatureNode(
+                    self, self.address, id, address, name, type, self.temperatureDataJson, self.apiBaseUrl))
+                LOGGER.info('Temperature {} already configured.'.format(name))
 
     def update(self, report=True):
 
