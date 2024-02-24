@@ -54,19 +54,19 @@ class PoolController(udi_interface.Node):
         LOGGER.debug('Loading parameters now')
         self.check_params()
 
-        def check_params(self):
-            self.Notices.clear()
+    def check_params(self):
+        self.Notices.clear()
         default_api_url = "http://localhost:3000"
         default_circuits = "'0','1''"
 
         self.api_url = self.Parameters.api_url
         if self.api_url is None:
             self.api_url = default_api_url
-            LOGGER.error(
-                'check_params: user not defined in customParams, please add it.  Using {}'.format(default_api_url))
+            LOGGER.error('check_params: user not defined in customParams, please add it.  Using {}'.format(
+                default_api_url))
             self.api_url = default_api_url
 
-        self.circuits = self.Parameters.circuits
+            self.circuits = self.Parameters.circuits
         if self.circuits is None:
             self.circuits = default_circuits
             LOGGER.error('check_params: circuits not defined in customParams, please add it.  Using {}'.format(
