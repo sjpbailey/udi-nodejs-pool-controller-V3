@@ -11,13 +11,6 @@ from nodes import BodyNode
 from nodes import CircuitNode
 from nodes import TemperatureNode
 
-"""
-Some shortcuts for udi interface components
-
-- LOGGER: to create log entries
-- Custom: to access the custom data class
-- ISY:    to communicate directly with the ISY (not commonly used)
-"""
 LOGGER = udi_interface.LOGGER
 LOG_HANDLER = udi_interface.LOG_HANDLER
 Custom = udi_interface.Custom
@@ -31,16 +24,10 @@ LOG_HANDLER.set_log_format(
 class PoolController(udi_interface.Node):
 
     def __init__(self, polyglot, primary, address, name):
-        """
-        Optional.
-        Super runs all the parent class necessities. You do NOT have
-        to override the __init__ method, but if you do, you MUST call super.
 
-        In most cases, you will want to do this for the controller node.
-        """
         super(PoolController, self).__init__(polyglot, primary, address, name)
         self.poly = polyglot
-        self.name = 'Template Controller'  # override what was passed in
+        self.name = 'Pool Controller'  # override what was passed in
         self.hb = 0
 
         # Create data storage classes to hold specific data that we need
