@@ -74,6 +74,8 @@ class PoolController(udi_interface.Node):
                     url='{}/state/all'.format(self.apiBaseUrl))
                 self.allDataJson = allData.json()
                 LOGGER.info(self.allDataJson)
+
+                temperatures = ['spa', 'pool']
                 for temperature in temperatures:
 
                     temperatureData = requests.get(
@@ -133,8 +135,6 @@ class PoolController(udi_interface.Node):
                         self, self.address, id, address, name, status, number, self.apiBaseUrl))
                 else:
                     LOGGER.info('Circuit {} already configured.'.format(name))
-
-            temperatures = ['spa', 'pool']
 
     def poll(self, flag):
         if 'longPoll' in flag:
