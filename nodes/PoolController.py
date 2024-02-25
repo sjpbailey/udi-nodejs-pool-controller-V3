@@ -65,45 +65,42 @@ class PoolController(udi_interface.Node):
         # Discover pool circuit nodes
         # LOGGER.info('Found {} Circuits'.format(len(self.circuits)))
 
-        while True:
-            if self.api_url:
-                self.apiBaseUrl = self.api_url
+        if self.api_url:
+            self.apiBaseUrl = self.api_url
+            # Get all data from nodejs pool controller api
+            allData = requests.get(
+                url='{}/state/all'.format(self.apiBaseUrl))
+            self.allDataJson = allData.json()
+            LOGGER.info(self.allDataJson)
 
-                # Get all data from nodejs pool controller api
-                allData = requests.get(
-                    url='{}/state/all'.format(self.apiBaseUrl))
-                self.allDataJson = allData.json()
-                LOGGER.info(self.allDataJson)
+            temperatures = ['spa', 'pool']
+            for temperature in temperatures:
 
-                temperatures = ['spa', 'pool']
-                for temperature in temperatures:
+                temperatureData = requests.get(
+                    url='{}/state/temps'.format(self.apiBaseUrl))
+                self.temperatureDataJson = temperatureData.json()
+                LOGGER.info(self.temperatureDataJson)
 
-                    temperatureData = requests.get(
-                        url='{}/state/temps'.format(self.apiBaseUrl))
-                    self.temperatureDataJson = temperatureData.json()
-                    LOGGER.info(self.temperatureDataJson)
+                id = temperature
+                LOGGER.info("temperature 1")
+                LOGGER.info(temperature)
 
-                    id = temperature
-                    LOGGER.info("temperature 1")
-                    LOGGER.info(temperature)
+                address = ('{}_heat'.format(temperature))
+                LOGGER.info("address 1")
+                LOGGER.info(address)
 
-                    address = ('{}_heat'.format(temperature))
-                    LOGGER.info("address 1")
-                    LOGGER.info(address)
+                name = ('{} Heat'.format(temperature)).title()
+                LOGGER.info("name 1")
+                LOGGER.info(name)
 
-                    name = ('{} Heat'.format(temperature)).title()
-                    LOGGER.info("name 1")
-                    LOGGER.info(name)
+                type = temperature
+                LOGGER.info("temperature 2")
+                LOGGER.info(type)
 
-                    type = temperature
-                    LOGGER.info("temperature 2")
-                    LOGGER.info(type)
-
-                    # node = (TempNode(
-                    #    self, self.address, id, address, name, type, self.temperatureDataJson, self.apiBaseUrl))
-                    # self.poly.addNode(node)
-                    LOGGER.info(
-                        'Temperature {} already configured.'.format(name))
+                # node = (TempNode(
+                #    self, self.address, id, address, name, type, self.temperatureDataJson, self.apiBaseUrl))
+                # self.poly.addNode(node)
+                LOGGER.info('Temperature {} already configured.'.format(name))
 
                 """if self.circuits:
 
