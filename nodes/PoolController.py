@@ -82,10 +82,17 @@ class PoolController(udi_interface.Node):
                         url='{}/state/temps'.format(self.apiBaseUrl))
                     self.temperatureDataJson = temperatureData.json()
                     LOGGER.info(self.temperatureDataJson)
+
                     id = temperature
+                    LOGGER.info("temperature")
+                    LOGGER.info(temperature)
+
                     address = ('{}_heat'.format(temperature))
+                    LOGGER.info("address")
                     LOGGER.info(address)
+
                     name = ('{} Heat'.format(temperature)).title()
+                    LOGGER.info("name")
                     LOGGER.info(name)
                     type = temperature
 
