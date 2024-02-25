@@ -65,7 +65,7 @@ class PoolController(udi_interface.Node):
         # Discover pool circuit nodes
         # LOGGER.info('Found {} Circuits'.format(len(self.circuits)))
 
-        try:
+        while True:
             if self.api_url:
                 self.apiBaseUrl = self.api_url
 
@@ -125,12 +125,12 @@ class PoolController(udi_interface.Node):
                     self.circuits = circuitsUsed
 
                 else:
-                    self.circuits = allCircuits"""
+                    self.circuits = allCircuits
 
-        except Exception as ex:
-            LOGGER.error(
-                'Error reading NodeJs Pool Controller API url from Polyglot Configuration: %s', str(ex))
-            return False
+        #except Exception as ex:
+        #    LOGGER.error(
+        #        'Error reading NodeJs Pool Controller API url from Polyglot Configuration: %s', str(ex))
+        #    return True
             # Add pool and spa temperature nodes
         if self.circuits:
 
@@ -148,7 +148,7 @@ class PoolController(udi_interface.Node):
                     self.poly.addNode(BodyNode(
                         self, self.address, id, address, name, status, number, self.apiBaseUrl))
                 else:
-                    LOGGER.info('Circuit {} already configured.'.format(name))
+                    LOGGER.info('Circuit {} already configured.'.format(name))"""
 
     def poll(self, flag):
         if 'longPoll' in flag:
