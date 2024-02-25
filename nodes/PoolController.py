@@ -86,8 +86,9 @@ class PoolController(udi_interface.Node):
                     address = ('{}_heat'.format(temperature))
                     name = ('{} Heat'.format(temperature)).title()
                     type = temperature
-                    self.poly.addNode(TemperatureNode(
+                    node = (TemperatureNode(
                         self, self.address, id, address, name, type, self.temperatureDataJson, self.apiBaseUrl))
+                    self.poly.addNode(node)
                     LOGGER.info(
                         'Temperature {} already configured.'.format(name))
 
