@@ -14,8 +14,8 @@ y = requests.get("http://192.168.1.53:4200/state/all/")
 # print(response)
 
 
-# z = requests.get("http://192.168.1.53:4200/temperatures")
-# print(json.dumps(z.json(), indent=4, sort_keys=True))
+z = requests.get("http://192.168.1.53:4200/state/temps/")
+print(json.dumps(z.json(), indent=4, sort_keys=True))
 # print(z.text)
 
 
@@ -24,7 +24,7 @@ a = requests.get("http://192.168.1.53:4200/state/pump/1")
 
 # "http://192.168.1.53:4200/state/circuits/"
 u = requests.get("http://192.168.1.53:4200/state/circuit/6/")
-print(json.dumps(u.json(), indent=4, sort_keys=True))
+# print(json.dumps(u.json(), indent=4, sort_keys=True))
 # print(u.text)
 
 
