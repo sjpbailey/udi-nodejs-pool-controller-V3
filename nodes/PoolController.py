@@ -41,7 +41,7 @@ class PoolController(udi_interface.Node):
         self.poly.subscribe(self.poly.START, self.start, address)
         self.poly.subscribe(self.poly.LOGLEVEL, self.handleLevelChange)
         self.poly.subscribe(self.poly.CUSTOMPARAMS, self.parameterHandler)
-        polyglot.subscribe(polyglot.ADDNODEDONE, self.node_queue)
+        # polyglot.subscribe(polyglot.ADDNODEDONE, self.node_queue)
         self.poly.subscribe(self.poly.POLL, self.poll)
 
         # Tell the interface we have subscribed to all the events we need.
@@ -51,8 +51,8 @@ class PoolController(udi_interface.Node):
         # Tell the interface we exist.
         self.poly.addNode(self)
 
-    def node_queue(self, data):
-        self.n_queue.append(data['address'])
+    # def node_queue(self, data):
+    #    self.n_queue.append(data['address'])
 
     def parameterHandler(self, params):
         self.Parameters.load(params)
