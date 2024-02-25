@@ -74,6 +74,21 @@ class PoolController(udi_interface.Node):
                     url='{}/state/all'.format(self.apiBaseUrl))
                 self.allDataJson = allData.json()
                 LOGGER.info(self.allDataJson)
+                for temperature in temperatures:
+
+                    temperatureData = requests.get(
+                        url='{}/state/temps'.format(self.apiBaseUrl))
+                    self.temperatureDataJson = temperatureData.json()
+                    LOGGER.info(self.temperatureDataJson)
+                    id = temperature
+                    address = ('{}_heat'.format(temperature))
+                    name = ('{} Heat'.format(temperature)).title()
+                    type = temperature
+                    self.poly.addNode(TemperatureNode(
+                        self, self.address, id, address, name, type, self.temperatureDataJson, self.apiBaseUrl))
+                    LOGGER.info(
+                        'Temperature {} already configured.'.format(name))
+
                 if self.circuits:
 
                     # Get the list of circuits that are not in use
@@ -105,6 +120,7 @@ class PoolController(udi_interface.Node):
 
             for circuit in sorted(self.circuits):  # key=int):
                 id = circuit
+                LOGGER.info(id)
                 number = circuit
                 address = self.circuits[circuit].get('numberStr')
                 name = self.circuits[circuit].get('friendlyName').title()
@@ -119,20 +135,6 @@ class PoolController(udi_interface.Node):
                     LOGGER.info('Circuit {} already configured.'.format(name))
 
             temperatures = ['spa', 'pool']
-
-            for temperature in temperatures:
-
-                temperatureData = requests.get(
-                    url='{}/temperatures'.format(self.apiBaseUrl))
-                self.temperatureDataJson = temperatureData.json()
-                LOGGER.info(self.temperatureDataJson)
-                id = temperature
-                address = ('{}_heat'.format(temperature))
-                name = ('{} Heat'.format(temperature)).title()
-                type = temperature
-                self.poly.addNode(TemperatureNode(
-                    self, self.address, id, address, name, type, self.temperatureDataJson, self.apiBaseUrl))
-                LOGGER.info('Temperature {} already configured.'.format(name))
 
     def poll(self, flag):
         if 'longPoll' in flag:
