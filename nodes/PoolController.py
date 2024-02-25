@@ -100,8 +100,8 @@ class PoolController(udi_interface.Node):
                 LOGGER.info("temperature 2")
                 LOGGER.info(type)
 
-                self.poly.addNode(TempNode(
-                    self, self.address, id, address, name, type, self.temperatureDataJson, self.apiBaseUrl))
+                self.poly.addNode(TempNode(self, self.address, id, address,
+                                  name, type, self.temperatureDataJson, self.apiBaseUrl))
 
                 LOGGER.info('Temperature {} already configured.'.format(name))
 
