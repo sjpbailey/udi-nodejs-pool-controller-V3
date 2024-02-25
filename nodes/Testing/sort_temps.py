@@ -8,11 +8,14 @@ x = requests.get('http://192.168.1.53:4200/config/circuits/')
 # "http://192.168.1.53:4200/config/options/circuits/"
 # "http://192.168.1.53:4200/state/all/"
 # "http://192.168.1.53:4200/state/temps/"
-y = requests.get("http://192.168.1.53:4200/config/options/circuits/")
+y = requests.get("http://192.168.1.53:4200/state/temps")
 # print(y.text)
-response = (json.dumps(y.json(), indent=4, sort_keys=True))
 
-print(response)
+print(y.text)
+print(type(y.text))
+# response = (json.dumps(y.json(), indent=4, sort_keys=True))
+
+# print(response)
 
 
 z = requests.get("http://192.168.1.53:4200/state/temps/")
@@ -37,7 +40,7 @@ p = requests.get("http://192.168.1.53:4200/config/options/schedules/")
 # "http://192.168.1.53:4200/config/options/schedules/"
 # "http://192.168.1.53:4200/config/options/bodies/"
 
-data = {
+"""data = {
     "air": 67.8,
     "bodies": [
         {
