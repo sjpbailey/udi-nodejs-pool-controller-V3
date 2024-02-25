@@ -24,7 +24,7 @@ class TempNode(udi_interface.Node):
 
     def start(self, report=True):
         temperatureData = requests.get(
-            url='{}/temperatures'.format(self.apiBaseUrl))
+            url='{}status/temps'.format(self.apiBaseUrl))
         temperatureDataJson = temperatureData.json()['temperature']
         if self.type == 'spa':
             status = temperatureDataJson['spaHeatMode']
