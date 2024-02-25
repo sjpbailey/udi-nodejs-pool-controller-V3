@@ -91,7 +91,7 @@ class PoolController(udi_interface.Node):
                     LOGGER.info(
                         'Temperature {} already configured.'.format(name))
 
-                if self.circuits:
+                """if self.circuits:
 
                     # Get the list of circuits that are not in use
                     self.circuitsNotUsed = eval(
@@ -103,15 +103,15 @@ class PoolController(udi_interface.Node):
                     circuitsUsed = copy.deepcopy(allCircuits)
                     LOGGER.info(allCircuits)
                     circuitsNotUsed = self.circuitsNotUsed
-                    """for key in allCircuits.keys():
-                        for circuitNotUsed in circuitsNotUsed:
-                            if key == circuitNotUsed:
-                                del circuitsUsed[key]"""
+                    #for key in allCircuits.keys():
+                    #    for circuitNotUsed in circuitsNotUsed:
+                    #        if key == circuitNotUsed:
+                    #            del circuitsUsed[key]
 
                     self.circuits = circuitsUsed
 
                 else:
-                    self.circuits = allCircuits
+                    self.circuits = allCircuits"""
 
         except Exception as ex:
             LOGGER.error(
@@ -163,9 +163,7 @@ class PoolController(udi_interface.Node):
                 self.setDriver('ST', 0, report)
 
     def update(self, report=True):
-
         if self.apiBaseUrl:
-
             # Get node js pool controller status
             controllerData = requests.get(url='{}/all'.format(self.apiBaseUrl))
             if controllerData.status_code == 200:
