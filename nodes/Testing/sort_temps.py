@@ -5,9 +5,10 @@ import json
 x = requests.get('http://192.168.1.53:4200/config/circuits/')
 # print(json.dumps(x.json(), indent=4, sort_keys=True))
 
+# "http://192.168.1.53:4200/config/options/circuits/"
 # "http://192.168.1.53:4200/state/all/"
 # "http://192.168.1.53:4200/state/temps/"
-y = requests.get("http://192.168.1.53:4200/state/all/")
+y = requests.get("http://192.168.1.53:4200/config/options/circuits/")
 # print(y.text)
 response = (json.dumps(y.json(), indent=4, sort_keys=True))
 
@@ -135,4 +136,4 @@ print()
 
 
 # Closing file
-# f.close()
+# f.close()"""

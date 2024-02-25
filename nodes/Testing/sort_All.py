@@ -11,7 +11,7 @@ y = requests.get("http://192.168.1.53:4200/state/all/")
 # print(y.text)
 response = (json.dumps(y.json(), indent=4, sort_keys=True))
 
-# print(response)
+print(response)
 
 
 z = requests.get("http://192.168.1.53:4200/state/temps/")
