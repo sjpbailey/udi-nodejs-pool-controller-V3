@@ -8,10 +8,10 @@ import requests
 LOGGER = udi_interface.LOGGER
 
 
-class TemperatureNode(udi_interface.Node):
+class TempNode(udi_interface.Node):
     def __init__(self, polyglot, primary, address, name, type, temperatureDataJson, apiBaseUrl):
 
-        super(TemperatureNode, self).__init__(polyglot, primary, address, name)
+        super(TempNode, self).__init__(polyglot, primary, address, name)
         self.poly = polyglot
         self.lpfx = '%s:%s' % (address, name)
 
