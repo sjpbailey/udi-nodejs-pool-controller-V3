@@ -84,8 +84,11 @@ class PoolController(udi_interface.Node):
                     LOGGER.info(self.temperatureDataJson)
                     id = temperature
                     address = ('{}_heat'.format(temperature))
+                    LOGGER.info(address)
                     name = ('{} Heat'.format(temperature)).title()
+                    LOGGER.info(name)
                     type = temperature
+
                     node = (TemperatureNode(
                         self, self.address, id, address, name, type, self.temperatureDataJson, self.apiBaseUrl))
                     self.poly.addNode(node)
