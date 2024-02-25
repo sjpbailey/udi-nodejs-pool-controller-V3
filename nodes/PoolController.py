@@ -10,7 +10,7 @@ import logging
 # My Template Node
 from nodes import BodyNode
 from nodes import CircuitNode
-from nodes import TemperatureNode
+from nodes import TempNode
 
 LOGGER = udi_interface.LOGGER
 LOG_HANDLER = udi_interface.LOG_HANDLER
@@ -99,7 +99,7 @@ class PoolController(udi_interface.Node):
                     LOGGER.info("temperature 2")
                     LOGGER.info(type)
 
-                    node = (TemperatureNode(
+                    node = (TempNode(
                         self, self.address, id, address, name, type, self.temperatureDataJson, self.apiBaseUrl))
                     self.poly.addNode(node)
                     LOGGER.info(
