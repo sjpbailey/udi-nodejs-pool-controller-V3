@@ -2,35 +2,35 @@ import requests
 import json
 
 
-x = requests.get('http://192.168.1.53:4200/config/circuits/')
+# x = requests.get('http://192.168.1.53:4200/config/circuits/')
 # print(json.dumps(x.json(), indent=4, sort_keys=True))
 
 # "http://192.168.1.53:4200/state/all/"
 # "http://192.168.1.53:4200/state/temps/"
-y = requests.get("http://192.168.1.53:4200/state/all/")
+# y = requests.get("http://192.168.1.53:4200/state/all/")
 # print(y.text)
-response = (json.dumps(y.json(), indent=4, sort_keys=True))
+# response = (json.dumps(y.json(), indent=4, sort_keys=True))
 
-print(response)
+# print(response)
 
 
-z = requests.get("http://192.168.1.53:4200/state/temps/")
+# z = requests.get("http://192.168.1.53:4200/state/temps/")
 # print(json.dumps(z.json(), indent=4, sort_keys=True))
 # for temps in z:
 #    print(temps[0])
 # print(z.text)
 
 
-a = requests.get("http://192.168.1.53:4200/state/pump/1")
+# a = requests.get("http://192.168.1.53:4200/state/pump/1")
 # print(json.dumps(a.json(), indent=4, sort_keys=True))
 
 # "http://192.168.1.53:4200/state/circuits/"
-u = requests.get("http://192.168.1.53:4200/state/circuit/6/")
+# u = requests.get("http://192.168.1.53:4200/state/circuit/6/")
 # print(json.dumps(u.json(), indent=4, sort_keys=True))
 # print(u.text)
 
 
-p = requests.get("http://192.168.1.53:4200/config/options/schedules/")
+# p = requests.get("http://192.168.1.53:4200/config/options/schedules/")
 # print(json.dumps(p.json(), indent=4, sort_keys=True))
 # print(p.text)
 # "http://192.168.1.53:4200/config/options/schedules/"
@@ -611,7 +611,7 @@ print("Chlorinators {}".format(data["chlorinators"]))
 print()
 print("Circuit Groups {}".format(data["circuitGroups"]))
 print()
-print("Circuits {}".format(data["circuits"]))
+print("Circuits {}".format(data["circuits"][0]["name"]))  # ["action"]))
 print()
 print("Temps  {}".format(data["temps"]))
 print()
@@ -629,7 +629,8 @@ print("Schedule {}".format(data["schedules"][0]))
 print()
 # ["name"]))
 # [0]["circuits"]["circuit"]["name"]))
-
+for i in data["circuits"][1]["name"]:
+    print(i)  # ['id'])
 
 """print()
 
