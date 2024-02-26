@@ -81,6 +81,11 @@ class PoolController(udi_interface.Node):
                 self.allDataJson["appVersion"]))
 
             LOGGER.info("Circuits {}".format(self.allDataJson["circuits"]))
+            LOGGER.info("Circuits {}".format(
+                self.allDataJson["circuits"][0]["name"]))
+            LOGGER.info("Circuits {}".format(
+                self.allDataJson["circuits"][1]["name"]))
+
             LOGGER.info("Temperatures {}".format(self.allDataJson["temps"]))
             LOGGER.info("Pumps {}".format(self.allDataJson["pumps"]))
             LOGGER.info("Filters {}".format(self.allDataJson["filters"]))
