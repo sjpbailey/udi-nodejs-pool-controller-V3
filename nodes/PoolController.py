@@ -75,10 +75,20 @@ class PoolController(udi_interface.Node):
             allData = requests.get(
                 url='{}/state/all'.format(self.apiBaseUrl))
             self.allDataJson = allData.json()
-            LOGGER.info(self.allDataJson)
+            # LOGGER.info(self.allDataJson)
 
             LOGGER.info("App Version {}".format(
                 self.allDataJson["appVersion"]))
+
+            LOGGER.info("Circuits {}".format(self.allDataJson["circuits"]))
+            LOGGER.info("Temperatures {}".format(self.allDataJson["temps"]))
+            LOGGER.info("Pumps {}".format(self.allDataJson["pumps"]))
+            LOGGER.info("Filters {}".format(self.allDataJson["filters"]))
+            LOGGER.info("Valves {}".format(self.allDataJson["valves"]))
+            LOGGER.info("Virtual Circuits {}".format(
+                self.allDataJson["virtualCircuits"]))
+            LOGGER.info("Heaters {}".format(self.allDataJson["heaters"]))
+            LOGGER.info("Schedules {}".format(self.allDataJson["schedules"]))
 
             """temperatures = ['spa', 'pool']
             for temperature in temperatures:
