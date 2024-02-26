@@ -11,11 +11,11 @@ x = requests.get('http://192.168.1.53:4200/config/circuits/')
 y = requests.get("http://192.168.1.53:4200/state/temps")
 # print(y.text)
 
-print(y.text)
-print(type(y.text))
-# response = (json.dumps(y.json(), indent=4, sort_keys=True))
+# print(y.text)
+# print(type(y.text))
+response = (json.dumps(y.json(), indent=4, sort_keys=True))
 
-# print(response)
+print(response)
 
 
 z = requests.get("http://192.168.1.53:4200/state/temps/")
