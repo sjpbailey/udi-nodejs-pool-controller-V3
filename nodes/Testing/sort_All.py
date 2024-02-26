@@ -37,7 +37,6 @@ p = requests.get("http://192.168.1.53:4200/config/options/schedules/")
 # "http://192.168.1.53:4200/config/options/bodies/"
 
 data = {
-    "alias": "Backyard",
     "appVersion": "8.0.1",
     "appVersionState": {
         "equipmentType": "appVersion",
@@ -45,7 +44,7 @@ data = {
         "gitLocalCommit": "a2e1e75549b1246b3757d7deb7f1ddabeb702d92",
         "githubRelease": "8.0.2",
         "installed": "8.0.1",
-        "nextCheckTime": "2024-02-25T23:50:02.867-0800",
+        "nextCheckTime": "2024-02-27T20:22:55.054-0800",
         "status": {
             "desc": "New version available",
             "name": "behind",
@@ -64,7 +63,7 @@ data = {
                 "name": "ready",
                 "val": 0
             },
-            "endTime": "2024-02-25T09:20:51.782-0800",
+            "endTime": "2024-02-26T03:49:49.559-0800",
             "equipmentType": "circuit",
             "freezeProtect": False,
             "id": 6,
@@ -82,6 +81,76 @@ data = {
                 "hasHeatSource": True,
                 "name": "pool",
                 "val": 12
+            }
+        },
+        {
+            "action": {
+                "desc": "Ready",
+                "name": "ready",
+                "val": 0
+            },
+            "endTime": "2024-02-26T00:20:20.334-0800",
+            "equipmentType": "circuit",
+            "freezeProtect": False,
+            "id": 2,
+            "isActive": True,
+            "isOn": False,
+            "manualPriorityActive": False,
+            "name": "Light",
+            "showInFeatures": True,
+            "startDelay": False,
+            "stopDelay": False,
+            "type": {
+                "desc": "Light",
+                "isLight": True,
+                "name": "light",
+                "val": 4
+            }
+        },
+        {
+            "action": {
+                "desc": "Ready",
+                "name": "ready",
+                "val": 0
+            },
+            "endTime": "2024-02-25T23:59:07.420-0800",
+            "equipmentType": "circuit",
+            "freezeProtect": False,
+            "id": 3,
+            "isActive": True,
+            "isOn": False,
+            "manualPriorityActive": False,
+            "name": "Skim",
+            "showInFeatures": True,
+            "startDelay": False,
+            "stopDelay": False,
+            "type": {
+                "desc": "Generic",
+                "name": "generic",
+                "val": 0
+            }
+        },
+        {
+            "action": {
+                "desc": "Ready",
+                "name": "ready",
+                "val": 0
+            },
+            "endTime": "2024-02-25T22:24:12.361-0800",
+            "equipmentType": "circuit",
+            "freezeProtect": False,
+            "id": 4,
+            "isActive": True,
+            "isOn": False,
+            "manualPriorityActive": False,
+            "name": "Sweep",
+            "showInFeatures": True,
+            "startDelay": False,
+            "stopDelay": False,
+            "type": {
+                "desc": "Generic",
+                "name": "generic",
+                "val": 0
             }
         }
     ],
@@ -112,19 +181,7 @@ data = {
         "maxPumps": 16,
         "maxSchedules": 100,
         "maxValves": 32,
-        "messages": [
-            {
-                "code": "rs485:0:connection",
-                "createDate": "2024-02-24T21:13:19.765-0800",
-                "message": "Primary RS485 port disconnected",
-                "type": {
-                    "desc": "Error",
-                    "icon": "fas fa-triangle-exclamation",
-                    "name": "error",
-                    "val": 4
-                }
-            }
-        ],
+        "messages": [],
         "model": "Nixie Single Body",
         "shared": False,
         "single": True,
@@ -138,7 +195,6 @@ data = {
                 "name": "pool",
                 "val": 0
             },
-            "cleanPercentage": 100,
             "equipmentType": "filter",
             "filterType": {
                 "desc": "Cartridge",
@@ -148,27 +204,20 @@ data = {
             },
             "id": 1,
             "isOn": False,
-            "name": "Filter 1",
-            "pressure": 0,
-            "pressureUnits": {
-                "desc": "Pounds per Sqare Inch",
-                "name": "psi",
-                "val": 0
-            },
-            "refPressure": 0
+            "name": "Filter 1"
         }
     ],
     "freeze": False,
     "heaters": [
         {
             "bodyId": 0,
-            "endTime": "2024-02-24T22:48:39.691-0800",
+            "endTime": "2024-02-25T23:22:40.992-0800",
             "equipmentType": "heater",
             "id": 256,
             "isOn": False,
             "name": "Heater 1",
             "shutdownDelay": False,
-            "startTime": "2024-02-24T21:21:04.574-0800",
+            "startTime": "2024-02-25T23:20:58.179-0800",
             "startupDelay": False,
             "type": {
                 "desc": "Gas Heater",
@@ -185,8 +234,8 @@ data = {
         "val": 0
     },
     "model": "Nixie Single Body",
-    "nextSunrise": "2024-02-25T14:32:43.000-0800",
-    "nextSunset": "2024-02-25T01:44:04.000-0800",
+    "nextSunrise": "",
+    "nextSunset": "",
     "pumps": [
         {
             "address": 96,
@@ -198,7 +247,7 @@ data = {
                             "name": "ready",
                             "val": 0
                         },
-                        "endTime": "2024-02-25T09:20:51.782-0800",
+                        "endTime": "2024-02-26T03:49:49.559-0800",
                         "equipmentType": "circuit",
                         "freezeProtect": False,
                         "id": 6,
@@ -228,7 +277,7 @@ data = {
                     }
                 }
             ],
-            "command": 0,
+            "command": 4,
             "driveState": 255,
             "equipmentType": "pump",
             "flow": 0,
@@ -248,7 +297,7 @@ data = {
                 "name": "ok",
                 "val": 0
             },
-            "time": 1241,
+            "time": 61,
             "type": {
                 "desc": "Intelliflo VSF",
                 "hasAddress": True,
@@ -271,7 +320,7 @@ data = {
                     "name": "ready",
                     "val": 0
                 },
-                "endTime": "2024-02-25T09:20:51.782-0800",
+                "endTime": "2024-02-26T03:49:49.559-0800",
                 "equipmentType": "circuit",
                 "freezeProtect": False,
                 "id": 6,
@@ -301,7 +350,7 @@ data = {
                 "name": "always",
                 "val": 0
             },
-            "endTime": 840,
+            "endTime": 710,
             "endTimeType": {
                 "desc": "Manual",
                 "name": "manual",
@@ -366,10 +415,10 @@ data = {
             },
             "scheduleTime": {
                 "calculated": True,
-                "calculatedDate": "2024-02-24T00:00:00.000-0800",
-                "endTime": "2024-02-25T14:00:59.999-0800",
+                "calculatedDate": "2024-02-26T00:00:00.000-0800",
+                "endTime": "2024-02-26T11:50:59.999-0800",
                 "shouldBeOn": False,
-                "startTime": "2024-02-25T10:00:00.000-0800"
+                "startTime": "2024-02-26T10:00:00.000-0800"
             },
             "scheduleType": {
                 "days": "multi",
@@ -392,22 +441,22 @@ data = {
             "triggered": False
         }
     ],
-    "startTime": "2024-02-24T21:13:19.595-0800",
+    "startTime": "2024-02-25T23:19:23.454-0800",
     "status": {
         "desc": "Ready",
         "name": "ready",
         "percent": 100,
         "val": 1
     },
-    "sunrise": "2024-02-24T14:34:02.000-0800",
-    "sunset": "2024-02-24T01:43:03.000-0800",
+    "sunrise": "",
+    "sunset": "",
     "systemUnits": {
         "desc": "English",
         "name": "english",
         "val": 0
     },
     "temps": {
-        "air": 67.8,
+        "air": 49.15,
         "bodies": [
             {
                 "circuit": 6,
@@ -436,11 +485,11 @@ data = {
                 "isCovered": False,
                 "isOn": False,
                 "name": "Pool",
-                "setPoint": 78,
+                "setPoint": 40,
                 "showInDashboard": True,
                 "startDelay": False,
                 "stopDelay": False,
-                "temp": 69.89,
+                "temp": 65.91,
                 "type": {
                     "desc": "Pool",
                     "name": "pool",
@@ -454,26 +503,45 @@ data = {
             "name": "F",
             "val": 0
         },
-        "waterSensor1": 68.08,
-        "waterSensor2": 0
+        "waterSensor1": 62.85,
+        "waterSensor2": 63.45
     },
-    "time": "2024-02-24T23:55:00.814-0800",
+    "time": "2024-02-26T01:00:01.908-0800",
     "valve": 0,
     "valveMode": {},
-    "valves": [],
-    "virtualCircuits": [
+    "valves": [
         {
-            "equipmentType": "virtualCircuit",
-            "id": 244,
+            "equipmentType": "valve",
+            "id": 50,
             "isActive": True,
-            "isOn": False,
-            "name": "Pool Heater",
+            "isDiverted": False,
+            "isIntake": False,
+            "isReturn": False,
+            "name": "Valve Skim",
+            "pinId": 0,
             "type": {
-                "desc": "Pool Heater",
-                "name": "poolHeater",
-                "val": 244
+                "desc": "Standard",
+                "name": "standard",
+                "val": 0
             }
         },
+        {
+            "equipmentType": "valve",
+            "id": 51,
+            "isActive": True,
+            "isDiverted": False,
+            "isIntake": False,
+            "isReturn": False,
+            "name": "Valve Sweep",
+            "pinId": 0,
+            "type": {
+                "desc": "Standard",
+                "name": "standard",
+                "val": 0
+            }
+        }
+    ],
+    "virtualCircuits": [
         {
             "equipmentType": "virtualCircuit",
             "id": 246,
@@ -500,6 +568,18 @@ data = {
         },
         {
             "equipmentType": "virtualCircuit",
+            "id": 244,
+            "isActive": True,
+            "isOn": False,
+            "name": "Pool Heater",
+            "type": {
+                "desc": "Pool Heater",
+                "name": "poolHeater",
+                "val": 244
+            }
+        },
+        {
+            "equipmentType": "virtualCircuit",
             "id": 258,
             "isActive": True,
             "isOn": False,
@@ -515,14 +595,41 @@ data = {
 
 
 print()
-print("Pool Location {}".format(data["alias"]))
+# print("Pool Location {}".format(data["name"]))
 print()
 print("App Version {}".format(data["appVersion"]))
+print()
+print("App Version {}".format(data["appVersionState"]))
+print()
+print("Battery Voltage {}".format(data["batteryVoltage"]))
+print()
+print("Chemical Controllers {}".format(data["chemControllers"]))
+print()
+print("Chemical Dosers {}".format(data["chemDosers"]))
+print()
+print("Chlorinators {}".format(data["chlorinators"]))
+print()
+print("Circuit Groups {}".format(data["circuitGroups"]))
+print()
+print("Circuits {}".format(data["circuits"]))
+print()
+print("Temps  {}".format(data["temps"]))
+print()
+print("Pumps  {}".format(data["pumps"]))
+print()
+print("Filters  {}".format(data["filters"]))
+print()
+print("Valves  {}".format(data["valves"]))
+print()
+print("Virtual Circuits  {}".format(data["virtualCircuits"]))
+print()
+print("Heater {}".format(data["heaters"]))
 print()
 print("Schedule {}".format(data["schedules"][0]))
 print()
 # ["name"]))
-print("Pool Name {}".format(data["schedules"][0]["circuit"]["name"]))
+# [0]["circuits"]["circuit"]["name"]))
+
 
 """print()
 
