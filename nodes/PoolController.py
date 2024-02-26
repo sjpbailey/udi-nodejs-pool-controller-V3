@@ -77,7 +77,6 @@ class PoolController(udi_interface.Node):
             self.allDataJson = allData.json()
             LOGGER.info(self.allDataJson)
 
-            LOGGER.info()
             LOGGER.info("App Version {}".format(allData["appVersion"]))
 
             """temperatures = ['spa', 'pool']
