@@ -77,7 +77,10 @@ class PoolController(udi_interface.Node):
             self.allDataJson = allData.json()
             LOGGER.info(self.allDataJson)
 
-            temperatures = ['spa', 'pool']
+            LOGGER.info()
+            LOGGER.info("App Version {}".format(allData["appVersion"]))
+
+            """temperatures = ['spa', 'pool']
             for temperature in temperatures:
 
                 temperatureData = requests.get(
@@ -108,7 +111,7 @@ class PoolController(udi_interface.Node):
 
                 LOGGER.info('Temperature {} already configured.'.format(name))
 
-                """if self.circuits:
+                if self.circuits:
 
                     # Get the list of circuits that are not in use
                     self.circuitsNotUsed = eval(
