@@ -8,12 +8,24 @@ headers = {
 }
 
 json_data = {
-    'id': 6,
+    'id': 2,
     'isOn': 0,
 }
 
 response = requests.put(
     'http://192.168.1.53:4200/state/circuit/setState/', headers=headers, json=json_data)
+
+
+headers = {
+    'accept': 'application/json',
+    # Already added when you pass json=
+    # 'Content-Type': 'application/json',
+}
+
+json_data = 70
+
+response = requests.put(
+    'http://192.168.1.53:4200/state/body/setPoint/', headers=headers, json=json_data)
 
 
 # x = requests.get('http://192.168.1.53:4200/config/circuits/')
