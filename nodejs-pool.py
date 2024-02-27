@@ -13,7 +13,7 @@ if __name__ == "__main__":
 
         polyglot = udi_interface.Interface([count_ctl])
         polyglot.start()
-        control = count_ctl(
+        control = PoolController(
             polyglot, 'controller', 'controller', 'PoolController')
         polyglot.runForever()
     except (KeyboardInterrupt, SystemExit):
