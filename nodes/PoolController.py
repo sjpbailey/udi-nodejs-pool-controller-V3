@@ -105,16 +105,13 @@ class PoolController(udi_interface.Node):
             LOGGER.info("Schedules {}".format(self.allDataJson["schedules"]))
 
             for i in self.allDataJson["circuits"]:
-                i(["name"]) == name
-                name = name
+                i(["name"])
                 LOGGER.info(i["name"])  # , i["id"], i['isOn'])
-                address = i(["id"])
-                i(["id"]) == id
-                id = id
+                i(["id"])
                 LOGGER.info(i["id"])
                 # LOGGER.info(i["isOn"])
                 self.poly.addNode(CircuitNode(
-                    self, self.address, id, address, name, self.allDataJson))
+                    self, self.address, i(["id"]), i(["id"]), i(["name"]), self.allDataJson))
 
             """temperatures = ['spa', 'pool']
             for temperature in temperatures:
