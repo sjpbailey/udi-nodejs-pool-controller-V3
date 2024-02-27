@@ -11,23 +11,30 @@ LOGGER = udi_interface.LOGGER
 
 class CircuitNode(udi_interface.Node):
 
-    def __init__(self, polyglot, primary, address, name, status, number, apiBaseUrl):
+    def __init__(self, polyglot, primary, address, name, number, allDataJson):
         super(CircuitNode, self).__init__(polyglot, primary, address, name)
         self.poly = polyglot
         self.lpfx = '%s:%s' % (address, name)
-        self.status = status
+
         self.number = number
-        self.apiBaseUrl = apiBaseUrl
+        self.allDataJson = allDataJson
 
         self.poly.subscribe(self.poly.START, self.start, address)
         self.poly.subscribe(self.poly.POLL, self.poll)
 
     def start(self):
-        circuitData = requests.get(
+        for i in self.allDataJson["circuits"]:
+            name = i(["name"])
+            LOGGER.info(i["name"])  # , i["id"], i['isOn'])
+            address = i(["id"])
+            id = i(["id"])
+            LOGGER.info(i["id"])
+
+        """circuitData = requests.get(
             url='{0}/circuit/{1}'.format(self.apiBaseUrl, self.number))
         circuitDataJson = circuitData.json()
         status = circuitDataJson['status']
-        self.setDriver('ST', status)
+        self.setDriver('ST', status)"""
 
         self.http = urllib3.PoolManager()
 
@@ -38,16 +45,18 @@ class CircuitNode(udi_interface.Node):
             LOGGER.debug('shortPoll (node)')
 
     def cmd_on(self, command):
-        requests.get(
+        pass
+        """requests.get(
             url='{0}/circuit/{1}/toggle'.format(self.apiBaseUrl, self.number))
         self.update()
-        print(self.name + ' turned on')
+        print(self.name + ' turned on')"""
 
     def cmd_off(self, command):
-        requests.get(
+        pass
+        """requests.get(
             url='{0}/circuit/{1}/toggle'.format(self.apiBaseUrl, self.number))
         self.update()
-        print(self.name + ' turned off')
+        print(self.name + ' turned off')"""
 
     def query(self, command=None):
         self.reportDrivers()
