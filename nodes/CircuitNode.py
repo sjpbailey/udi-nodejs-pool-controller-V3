@@ -11,12 +11,12 @@ LOGGER = udi_interface.LOGGER
 
 class CircuitNode(udi_interface.Node):
 
-    def __init__(self, polyglot, primary, address, name, number, allDataJson):
+    def __init__(self, polyglot, primary, address, id, name, allDataJson):
         super(CircuitNode, self).__init__(polyglot, primary, address, name)
         self.poly = polyglot
         self.lpfx = '%s:%s' % (address, name)
 
-        self.number = number
+        self.number = id
         self.allDataJson = allDataJson
 
         self.poly.subscribe(self.poly.START, self.start, address)
