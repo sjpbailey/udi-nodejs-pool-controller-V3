@@ -25,7 +25,7 @@ headers = {
 json_data = 70
 
 response = requests.put(
-    'http://192.168.1.53:4200/state/temps/setPoint/', headers=headers, json=json_data)
+    'http://192.168.1.53:4200/state/temps/bodies/0/setPoint/', headers=headers, json=json_data)
 
 
 # x = requests.get('http://192.168.1.53:4200/config/circuits/')
@@ -33,13 +33,17 @@ response = requests.put(
 
 # "http://192.168.1.53:4200/state/all/"
 # "http://192.168.1.53:4200/state/temps/"
-y = requests.get("http://192.168.1.53:4200/state/all/")
+# y = requests.get("http://192.168.1.53:4200/state/all/")
 # print(y.text)
-response = (json.dumps(y.json(), indent=4, sort_keys=True))
+# response = (json.dumps(y.json(), indent=4, sort_keys=True))
 
-print(response)
+# print(response)
 
+headers = {'accept': 'application/json', }
+response = requests.get(
+    'http://192.168.1.53:4200/config/options/bodies/', headers=headers)
 
+print(response.text)
 # z = requests.get("http://192.168.1.53:4200/state/temps/")
 # print(json.dumps(z.json(), indent=4, sort_keys=True))
 # for temps in z:
@@ -624,6 +628,12 @@ print()
 # print("Pool Location {}".format(data["name"]))
 print()
 print("App Version {}".format(data["appVersion"]))
+print()
+print("Setpoint {}".format(data["temps"]["bodies"][0]["setPoint"]))
+print()
+# print("Bodies {}".format(data["config"]["options"]))  # [0]["setPoint"]))
+
+
 print()
 """print("App Version {}".format(data["appVersionState"]))
 print()
