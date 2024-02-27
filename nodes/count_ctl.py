@@ -19,15 +19,17 @@ case the device is just a count that has two values, the count and the count
 multiplied by a user defined multiplier. These get updated at every
 shortPoll interval.
 '''
-class Controller(udi_interface.Node):
+
+
+class PoolController(udi_interface.Node):
     id = 'ctl'
     drivers = [
-            {'driver': 'ST', 'value': 1, 'uom': 2},
-            {'driver': 'GV0', 'value': 0, 'uom': 56},
-            ]
+        {'driver': 'ST', 'value': 1, 'uom': 2},
+        {'driver': 'GV0', 'value': 0, 'uom': 56},
+    ]
 
     def __init__(self, polyglot, parent, address, name):
-        super(Controller, self).__init__(polyglot, parent, address, name)
+        super(PoolController, self).__init__(polyglot, parent, address, name)
 
         self.poly = polyglot
         self.count = 0
@@ -51,6 +53,7 @@ class Controller(udi_interface.Node):
     will return before the node is fully created. Using this, we can wait
     until it is fully created before we try to use it.
     '''
+
     def node_queue(self, data):
         self.n_queue.append(data['address'])
 
@@ -63,8 +66,32 @@ class Controller(udi_interface.Node):
     Read the user entered custom parameters.  Here is where the user will
     configure the number of child nodes that they want created.
     '''
+
     def parameterHandler(self, params):
-        self.Parameters.load(params)
+        self.Notices.clear()
+        default_api_url = "http://localhost:3000"
+        default_circuits = "'0','1''"
+
+        self.api_url = self.Parameters.api_url
+        if self.api_url is None:
+            self.api_url = default_api_url
+            LOGGER.error(
+                'check_params: user not defined in customParams, please add it.  Using {}'.format(default_api_url))
+            self.api_url = default_api_url
+
+        self.circuits = self.Parameters.circuits
+        if self.circuits is None:
+            self.circuits = default_circuits
+            LOGGER.error('check_params: circuits not defined in customParams, please add it.  Using {}'.format(
+                default_circuits))
+            self.circuits = default_circuits
+
+        # Add a notice if they need to change the user/circuits from the default.
+        if self.api_url == default_api_url or self.circuits == default_circuits:
+            self.Notices['auth'] = 'Please set proper api_url and circuits in configuration page'
+            # self.Notices['test'] = 'This is only a test'
+
+        '''self.Parameters.load(params)
         validChildren = False
 
         if self.Parameters['nodes'] is not None:
@@ -81,7 +108,7 @@ class Controller(udi_interface.Node):
             self.poly.Notices.clear()
         else:
             self.poly.Notices['nodes'] = 'Please configure the number of child nodes to create.'
-
+            '''
 
     '''
     This is called when the node is added to the interface module. It is
@@ -92,10 +119,10 @@ class Controller(udi_interface.Node):
     Here we load the custom parameter configuration document and push
     the profiles to the ISY.
     '''
+
     def start(self):
         self.poly.setCustomParamsDoc()
         self.poly.updateProfile()
-
 
     '''
     Create the children nodes.  Since this will be called anytime the
@@ -104,6 +131,7 @@ class Controller(udi_interface.Node):
     number of nodes.  Because this is just a simple example, we'll first
     delete any existing nodes then create the number requested.
     '''
+
     def createChildren(self, how_many):
         # delete any existing nodes
         nodes = self.poly.getNodes()
@@ -116,7 +144,8 @@ class Controller(udi_interface.Node):
             address = 'child_{}'.format(i)
             title = 'Child Counter {}'.format(i)
             try:
-                node = count_child.CounterNode(self.poly, self.address, address, title)
+                node = count_child.CounterNode(
+                    self.poly, self.address, address, title)
                 self.poly.addNode(node)
                 self.wait_for_node_done()
             except Exception as e:
@@ -124,10 +153,10 @@ class Controller(udi_interface.Node):
 
         self.setDriver('GV0', how_many, True, True)
 
-
     '''
     Change all the child node active status drivers to false
     '''
+
     def stop(self):
 
         nodes = self.poly.getNodes()
@@ -137,11 +166,11 @@ class Controller(udi_interface.Node):
 
         self.poly.stop()
 
-
     '''
     Just to show how commands are implemented. The commands here need to
     match what is in the nodedef profile file. 
     '''
+
     def noop(self):
         LOGGER.info('Discover not implemented')
 
