@@ -112,17 +112,14 @@ class PoolController(udi_interface.Node):
                 id = i["id"]
                 LOGGER.info(i["name"])  # , i["id"], i['isOn'])
                 LOGGER.info(i["id"])
-                node = CircuitNode(self.poly, self.address,
-                                   id, name, self.allDataJson)
-                self.poly.addNode(node)
-                self.wait_for_node_done()
-            """try:
-                node = CircuitNode(
+
+            try:
+                node = CircuitNode.PoolController(
                     self.poly, self.address, id, name, self.allDataJson)
                 self.poly.addNode(node)
                 self.wait_for_node_done()
             except Exception as e:
-                LOGGER.error('Failed to create {}: {}'.format(name, e))"""
+                LOGGER.error('Failed to create {}: {}'.format(name, e))
 
             # self.poly.addNode(TemplateNode(
             #    self.poly, self.address, 'templateaddr', 'Template Node Name'))
