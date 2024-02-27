@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from nodes import PoolController
+from nodes import TemplateController
 import udi_interface
 import sys
 
@@ -9,9 +10,9 @@ LOGGER = udi_interface.LOGGER
 if __name__ == "__main__":
     try:
 
-        polyglot = udi_interface.Interface([PoolController])
+        polyglot = udi_interface.Interface([TemplateController])
         polyglot.start()
-        control = PoolController(
+        control = TemplateController(
             polyglot, 'controller', 'controller', 'PoolController')
         polyglot.runForever()
     except (KeyboardInterrupt, SystemExit):
