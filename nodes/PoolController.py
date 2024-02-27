@@ -114,7 +114,7 @@ class PoolController(udi_interface.Node):
                 LOGGER.info(i["name"])  # , i["id"], i['isOn'])
                 LOGGER.info(i["id"])
                 self.allDataJson = self.allDataJson
-                id1 = id[-7:].lstrip('.')
+                id1 = id
                 address = id1
             if name is not None:
                 node = CircuitNode.CircuitNode(
