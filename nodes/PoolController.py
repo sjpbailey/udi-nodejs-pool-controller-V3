@@ -109,13 +109,13 @@ class PoolController(udi_interface.Node):
 
             for i in self.allDataJson["circuits"]:
                 name = i["name"]
-                id = i["id"]
+                address = i["id"]
                 LOGGER.info(i["name"])  # , i["id"], i['isOn'])
                 LOGGER.info(i["id"])
                 self.allDataJson = self.allDataJson
             try:
                 node = CircuitNode.CircuitNode(
-                    self.poly, self.address, id, name, self.allDataJson)
+                    self.poly, self.address, address, name, self.allDataJson)
                 self.poly.addNode(node)
                 self.wait_for_node_done()
             except Exception as e:
