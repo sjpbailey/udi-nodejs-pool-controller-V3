@@ -2,6 +2,7 @@
 
 from nodes import PoolController
 from nodes import TemplateController
+from nodes import count_ctl
 import udi_interface
 import sys
 
@@ -10,9 +11,9 @@ LOGGER = udi_interface.LOGGER
 if __name__ == "__main__":
     try:
 
-        polyglot = udi_interface.Interface([TemplateController])
+        polyglot = udi_interface.Interface([count_ctl])
         polyglot.start()
-        control = TemplateController(
+        control = count_ctl(
             polyglot, 'controller', 'controller', 'PoolController')
         polyglot.runForever()
     except (KeyboardInterrupt, SystemExit):
