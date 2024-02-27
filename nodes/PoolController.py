@@ -105,9 +105,7 @@ class PoolController(udi_interface.Node):
             LOGGER.info("Schedules {}".format(self.allDataJson["schedules"]))
 
             for i in self.allDataJson["circuits"]:
-                i(["name"])
                 LOGGER.info(i["name"])  # , i["id"], i['isOn'])
-                i(["id"])
                 LOGGER.info(i["id"])
                 # LOGGER.info(i["isOn"])
                 self.poly.addNode(CircuitNode(
