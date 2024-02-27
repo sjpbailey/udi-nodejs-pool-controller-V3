@@ -120,7 +120,7 @@ class PoolController(udi_interface.Node):
                 node = CircuitNode.CircuitNode(
                     self.poly, self.address, address, id, name, self.allDataJson)
                 self.poly.addNode(node)
-                self.wait_for_node_done()
+                # self.wait_for_node_done()
 
             """temperatures = ['spa', 'pool']
             for temperature in temperatures:
