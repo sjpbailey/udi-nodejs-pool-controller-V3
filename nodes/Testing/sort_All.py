@@ -9,7 +9,7 @@ headers = {
 
 json_data = {
     'id': 6,
-    'isOn': 1,
+    'isOn': 0,
 }
 
 response = requests.put(
