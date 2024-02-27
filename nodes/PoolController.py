@@ -114,7 +114,7 @@ class PoolController(udi_interface.Node):
                 LOGGER.info(i["id"])
 
             try:
-                node = CircuitNode.CounterNode(
+                node = CircuitNode(
                     self.poly, self.address, id, name, self.allDataJson)
                 self.poly.addNode(node)
                 self.wait_for_node_done()
