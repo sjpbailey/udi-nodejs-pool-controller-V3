@@ -90,7 +90,8 @@ class PoolController(udi_interface.Node):
             LOGGER.info("Circuits {}".format(
                 self.allDataJson["circuits"][3]["name"]))
             for i in self.allDataJson["circuits"]:
-                LOGGER.info(i["name"], i["id"], i['isOn'])
+                LOGGER.info(i["name"])  # , i["id"], i['isOn'])
+
             # LOGGER.info("Circuits {}".format(
             #    self.allDataJson["circuits"][4]["name"]))
             # LOGGER.info("Circuits {}".format(
