@@ -1,5 +1,19 @@
 import requests
 import json
+import requests
+
+headers = {
+    'accept': 'application/json',
+    'Content-Type': 'application/json',
+}
+
+json_data = {
+    'id': 6,
+    'isOn': 1,
+}
+
+response = requests.put(
+    'http://192.168.1.53:4200/state/circuit/setState/', headers=headers, json=json_data)
 
 
 # x = requests.get('http://192.168.1.53:4200/config/circuits/')
@@ -599,7 +613,7 @@ print()
 print()
 print("App Version {}".format(data["appVersion"]))
 print()
-print("App Version {}".format(data["appVersionState"]))
+"""print("App Version {}".format(data["appVersionState"]))
 print()
 print("Battery Voltage {}".format(data["batteryVoltage"]))
 print()
@@ -609,10 +623,16 @@ print("Chemical Dosers {}".format(data["chemDosers"]))
 print()
 print("Chlorinators {}".format(data["chlorinators"]))
 print()
-print("Circuit Groups {}".format(data["circuitGroups"]))
+print("Circuit Groups {}".format(data["circuitGroups"]))"""
 print()
-print("Circuits {}".format(data["circuits"][0]["name"]))  # ["action"]))
-print()
+# ["action"]))
+# print("Circuits {}".format(data["circuits"]
+#      [0]["name"]))
+# print("Circuits {}".format(data["circuits"][1]["name"]))
+# print("Circuits {}".format(data["circuits"][2]["name"]))
+# print("Circuits {}".format(data["circuits"][3]["name"]))
+# print("Circuits {}".format(data["circuits"][0]["id"]))
+"""print()
 print("Temps  {}".format(data["temps"]))
 print()
 print("Pumps  {}".format(data["pumps"]))
@@ -628,12 +648,12 @@ print()
 print("Schedule {}".format(data["schedules"][0]))
 print()
 # ["name"]))
-# [0]["circuits"]["circuit"]["name"]))
-for i in data["circuits"][1]["name"]:
-    print(i)  # ['id'])
+# [0]["circuits"]["circuit"]["name"]))b"""
+################ CIRCUITS ######################################
+for i in data["circuits"]:
+    print(i["name"], i["id"], i['isOn'])
 
 """print()
-
 print("Air Temp {}".format(data["air"]))
 print()
 print("Water Temp {}".format(data["waterSensor1"]))
