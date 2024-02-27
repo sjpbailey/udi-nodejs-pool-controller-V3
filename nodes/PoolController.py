@@ -114,9 +114,11 @@ class PoolController(udi_interface.Node):
                 LOGGER.info(i["name"])  # , i["id"], i['isOn'])
                 LOGGER.info(i["id"])
                 self.allDataJson = self.allDataJson
+                id1 = id[-7:].lstrip('.')
+                address = id1
             if name is not None:
                 node = CircuitNode.CircuitNode(
-                    self.poly, self.address, id, name, self.allDataJson)
+                    self.poly, self.address, address, id, name, self.allDataJson)
                 self.poly.addNode(node)
                 self.wait_for_node_done()
 
@@ -217,15 +219,6 @@ class PoolController(udi_interface.Node):
             # Get node js pool controller status
             controllerData = requests.get(
                 url='{}/state/all'.format(self.apiBaseUrl))
-            if controllerData.status_code == 200:
-                self.setDriver('ST', 1, report)
-            else:
-                self.setDriver('ST', 0, report)
-
-    def update(self, report=True):
-        if self.apiBaseUrl:
-            # Get node js pool controller status
-            controllerData = requests.get(url='{}/all'.format(self.apiBaseUrl))
             if controllerData.status_code == 200:
                 self.setDriver('ST', 1, report)
             else:
