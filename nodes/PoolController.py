@@ -114,19 +114,11 @@ class PoolController(udi_interface.Node):
                 LOGGER.info(i["name"])  # , i["id"], i['isOn'])
                 LOGGER.info(i["id"])
                 self.allDataJson = self.allDataJson
-            try:
+            if name is not None:
                 node = CircuitNode.CircuitNode(
                     self.poly, self.address, id, name, self.allDataJson)
                 self.poly.addNode(node)
                 self.wait_for_node_done()
-            except Exception as e:
-                LOGGER.error('Failed to create {}: {}'.format(name, e))
-
-            # self.poly.addNode(TemplateNode(
-            #    self.poly, self.address, 'templateaddr', 'Template Node Name'))
-            # LOGGER.info(i["isOn"])
-            # self.poly.addNode(CircuitNode(
-            #    self, self.address, self.allDataJson))
 
             """temperatures = ['spa', 'pool']
             for temperature in temperatures:
