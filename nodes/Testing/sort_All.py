@@ -22,10 +22,14 @@ headers = {
     # 'Content-Type': 'application/json',
 }
 
-json_data = 70
+json_data = {
+
+    "setPoint": 70,
+
+}
 
 response = requests.put(
-    'http://192.168.1.53:4200/state/temps/bodies/0/setPoint/', headers=headers, json=json_data)
+    'http://192.168.1.53:4200/state/body/setPoint/', headers=headers, json=json_data)
 
 
 # x = requests.get('http://192.168.1.53:4200/config/circuits/')
