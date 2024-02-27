@@ -2,25 +2,27 @@ import requests
 import json
 import requests
 
-headers = {
+
+################### Commands ###################################
+"""headers = {
     'accept': 'application/json',
     'Content-Type': 'application/json',
 }
 
 json_data = {
     'id': 2,
-    'isOn': 1,
+    'isOn': 0,
 }
 
 response = requests.put(
     'http://192.168.1.53:4200/state/circuit/setState/', headers=headers, json=json_data)
 
 
-headers = {
-    'accept': 'application/json',
-    # Already added when you pass json=
-    # 'Content-Type': 'application/json',
-}
+# headers = {
+#    'accept': 'application/json',
+# Already added when you pass json=
+# 'Content-Type': 'application/json',
+# }
 
 json_data = {
 
@@ -29,7 +31,14 @@ json_data = {
 }
 
 response = requests.put(
-    'http://192.168.1.53:4200/state/body/setPoint/', headers=headers, json=json_data)
+    'http://192.168.1.53:4200/temps/bodies', headers=headers, json=json_data)
+
+
+headers = {'accept': 'application/json', }
+response = requests.get(
+    'http://192.168.1.53:4200/config/options/bodies/', headers=headers)
+
+print(response.text)
 
 
 # x = requests.get('http://192.168.1.53:4200/config/circuits/')
@@ -37,17 +46,22 @@ response = requests.put(
 
 # "http://192.168.1.53:4200/state/all/"
 # "http://192.168.1.53:4200/state/temps/"
-# y = requests.get("http://192.168.1.53:4200/state/all/")
+#y = requests.get("http://192.168.1.53:4200/state/all/")
 # print(y.text)
-# response = (json.dumps(y.json(), indent=4, sort_keys=True))
+#response = (json.dumps(y.json(), indent=4, sort_keys=True))
 
 # print(response)
 
-headers = {'accept': 'application/json', }
-response = requests.get(
-    'http://192.168.1.53:4200/config/options/bodies/', headers=headers)
 
-print(response.text)
+################ CIRCUITS ######################################
+for i in y:
+    print(i[0])  # ["name"], i["id"], i['isOn'])
+print()
+# ["temps"]["bodies"][0]["setPoint"]))
+print("Setpoint {}".format(y["alias"]))
+print()
+
+
 # z = requests.get("http://192.168.1.53:4200/state/temps/")
 # print(json.dumps(z.json(), indent=4, sort_keys=True))
 # for temps in z:
@@ -69,6 +83,7 @@ print(response.text)
 # print(p.text)
 # "http://192.168.1.53:4200/config/options/schedules/"
 # "http://192.168.1.53:4200/config/options/bodies/"
+# """
 
 data = {
     "appVersion": "8.0.1",
@@ -638,8 +653,8 @@ print()
 # print("Bodies {}".format(data["config"]["options"]))  # [0]["setPoint"]))
 
 
-print()
-"""print("App Version {}".format(data["appVersionState"]))
+"""print()
+print("App Version {}".format(data["appVersionState"]))
 print()
 print("Battery Voltage {}".format(data["batteryVoltage"]))
 print()
@@ -649,7 +664,7 @@ print("Chemical Dosers {}".format(data["chemDosers"]))
 print()
 print("Chlorinators {}".format(data["chlorinators"]))
 print()
-print("Circuit Groups {}".format(data["circuitGroups"]))"""
+print("Circuit Groups {}".format(data["circuitGroups"]))
 print()
 # ["action"]))
 # print("Circuits {}".format(data["circuits"]
@@ -658,7 +673,7 @@ print()
 # print("Circuits {}".format(data["circuits"][2]["name"]))
 # print("Circuits {}".format(data["circuits"][3]["name"]))
 # print("Circuits {}".format(data["circuits"][0]["id"]))
-"""print()
+print()
 print("Temps  {}".format(data["temps"]))
 print()
 print("Pumps  {}".format(data["pumps"]))
@@ -674,7 +689,8 @@ print()
 print("Schedule {}".format(data["schedules"][0]))
 print()
 # ["name"]))
-# [0]["circuits"]["circuit"]["name"]))b"""
+# [0]["circuits"]["circuit"]["name"]))"""
+
 ################ CIRCUITS ######################################
 for i in data["circuits"]:
     print(i["name"], i["id"], i['isOn'])
