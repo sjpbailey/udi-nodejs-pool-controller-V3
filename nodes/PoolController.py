@@ -109,7 +109,7 @@ class PoolController(udi_interface.Node):
                 LOGGER.info(i["id"])
                 # LOGGER.info(i["isOn"])
                 self.poly.addNode(CircuitNode(
-                    self, self.address, i(["id"]), i(["id"]), i(["name"]), self.allDataJson))
+                    self, self.address, self.allDataJson))
 
             """temperatures = ['spa', 'pool']
             for temperature in temperatures:
