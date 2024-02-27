@@ -54,6 +54,9 @@ class PoolController(udi_interface.Node):
     # def node_queue(self, data):
     #    self.n_queue.append(data['address'])
 
+    def node_queue(self, data):
+        self.n_queue.append(data['address'])
+
     def parameterHandler(self, params):
         self.Parameters.load(params)
         LOGGER.debug('Loading parameters now')
