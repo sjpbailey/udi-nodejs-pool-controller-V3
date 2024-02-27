@@ -31,6 +31,7 @@ class PoolController(udi_interface.Node):
         self.poly = polyglot
         self.name = 'Pool Controller'  # override what was passed in
         self.hb = 0
+        self.n_queue = []
 
         # Create data storage classes to hold specific data that we need
         # to interact with.
