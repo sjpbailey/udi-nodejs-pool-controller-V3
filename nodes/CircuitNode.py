@@ -23,7 +23,7 @@ class CircuitNode(udi_interface.Node):
 
         self.number = id
         self.allDataJson = allDataJson
-        self.start(self)
+        self.start()
 
     def start(self):
 
