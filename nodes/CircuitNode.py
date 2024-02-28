@@ -2,6 +2,7 @@
 import udi_interface
 import sys
 import time
+import requests
 import urllib3
 
 LOGGER = udi_interface.LOGGER
@@ -82,6 +83,18 @@ class CircuitNode(udi_interface.Node):
             LOGGER.debug('%s: get ST=%s', self.lpfx, self.getDriver('ST'))
 
     def cmd_on(self, command):
+        headers = {
+            'accept': 'application/json',
+            'Content-Type': 'application/json',
+        }
+
+        json_data = {
+            'id': 2,
+            'isOn': 1,
+        }
+
+        response = requests.put(
+            'http://192.168.1.53:4200/state/circuit/setState/', headers=headers, json=json_data)
         """
         Example command received from ISY.
         Set DON on TemplateNode.
@@ -90,6 +103,19 @@ class CircuitNode(udi_interface.Node):
         self.setDriver('ST', 1)
 
     def cmd_off(self, command):
+        headers = {
+            'accept': 'application/json',
+            'Content-Type': 'application/json',
+        }
+
+        json_data = {
+            'id': 2,
+            'isOn': 0,
+        }
+
+        response = requests.put(
+            'http://192.168.1.53:4200/state/circuit/setState/', headers=headers, json=json_data)
+
         """
         Example command received from ISY.
         Set DOF on TemplateNode
