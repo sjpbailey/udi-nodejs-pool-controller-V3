@@ -9,7 +9,8 @@ CMD-ctl-REMOVE_NOTICES_ALL-NAME = Remove All Notices
 CMD-ctl-REMOVE_NOTICE_TEST-NAME = Remove Notice Test
 ST-ctl-ST-NAME = NodeServer Online
 ST-ctl-GV1-NAME = Air Temperature
-
+ST-ctl-GV2-NAME = Setpoint
+ST-ctl-GV3-NAME = Pool Temp
 
 # mynodetype
 ND-switchnodeid-NAME = Circuits

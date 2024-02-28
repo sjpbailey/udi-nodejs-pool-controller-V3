@@ -6,6 +6,9 @@
         <sts>
             <st id="ST" editor="bool" />
             <st id="GV1" editor="TEMP" />
+            <st id="GV2" editor="TEMP" />
+            <st id="GV3" editor="TEMP" />
+
 
         </sts>
         <cmds>

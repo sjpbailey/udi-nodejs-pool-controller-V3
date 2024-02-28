@@ -105,8 +105,20 @@ class PoolController(udi_interface.Node):
                 url='{}/state/all'.format(self.apiBaseUrl))
             self.allDataJson = allData.json()
             # LOGGER.info(self.allDataJson)
-            print("Air Temp  {}".format(self.allDataJson["temps"]["air"]))
+
+            LOGGER.info("Air Temp  {}".format(
+                self.allDataJson["temps"]["air"]))
             self.setDriver('GV1', self.allDataJson["temps"]["air"])
+
+            LOGGER.info("Setpoint Temp  {}".format(
+                self.allDataJson["temps"]["bodies"][0]["setPoint"]))
+            self.setDriver(
+                'GV2', self.allDataJson["temps"]["bodies"][0]["setPoint"])
+
+            LOGGER.info("Pool Temp  {}".format(
+                self.allDataJson["temps"]["bodies"][0]["temp"]))
+            self.setDriver(
+                'GV3', self.allDataJson["temps"]["bodies"][0]["temp"])
 
             LOGGER.info("Temperatures {}".format(self.allDataJson["temps"]))
             LOGGER.info("Pumps {}".format(self.allDataJson["pumps"]))
@@ -183,4 +195,6 @@ class PoolController(udi_interface.Node):
     drivers = [
         {'driver': 'ST', 'value': 1, 'uom': 2, 'name': "Online"},
         {'driver': 'GV1', 'value': None, 'uom': 17, 'name': "Air Temp"},
+        {'driver': 'GV2', 'value': None, 'uom': 17, 'name': "Setpoint"},
+        {'driver': 'GV3', 'value': None, 'uom': 17, 'name': "Pool Temp"},
     ]
