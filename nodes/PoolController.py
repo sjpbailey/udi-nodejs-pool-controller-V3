@@ -275,9 +275,11 @@ class PoolController(udi_interface.Node):
                 id1 = id
                 address = id1
                 if name is not None:
-                    node = PoolNode(
-                        self.poly, self.address, address, name, id, isOn, self.allDataJson)
+                    node = PoolNode(self.poly, self.address,
+                                    'templateaddr', 'Template Node Name')
+                    # self.poly, self.address, address, name, id, isOn, self.allDataJson)
                     self.poly.addNode(node)
+                # self.poly.addNode(TemplateNode(self.poly, self.address, 'templateaddr', 'Template Node Name'))
 
     def delete(self):
 
@@ -325,7 +327,7 @@ class PoolController(udi_interface.Node):
                             'title': 'Level Parameter',
                             'defaultValue': '100',
                             'isRequired': True,
-                            }
+                    }
                 ]
             }
         ],
