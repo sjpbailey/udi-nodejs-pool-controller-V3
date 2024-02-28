@@ -48,8 +48,17 @@ class CircuitNode(udi_interface.Node):
 
         self.poly.subscribe(self.poly.START, self.start, address)
         self.poly.subscribe(self.poly.POLL, self.poll)
+        self.id = id
+        self.name = name
+        self.isOn = isOn
 
     def start(self):
+        LOGGER.info("Circuits {}".format(self.allDataJson["circuits"]))
+        LOGGER.info(self.isOn)
+        if self.isOn == True:
+            self.setDriver('GV1', 1)
+        else:
+            self.setDriver('GV1', 0)
         """
         Optional.
         This method is called after Polyglot has added the node per the
@@ -147,7 +156,10 @@ class CircuitNode(udi_interface.Node):
     of variable to display. Check the UOM's in the WSDK for a complete list.
     UOM 2 is boolean so the ISY will display 'True/False'
     """
-    drivers = [{'driver': 'ST', 'value': 0, 'uom': 2}]
+    drivers = [
+        {'driver': 'ST', 'value': 0, 'uom': 2, 'name': "Online"},
+        {'driver': 'GV1', 'value': 0, 'uom': 2, 'name': "OnOff"}
+    ]
 
     """
     id of the node from the nodedefs.xml that is in the profile.zip. This tells

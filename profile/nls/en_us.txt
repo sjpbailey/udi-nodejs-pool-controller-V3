@@ -22,4 +22,5 @@ CDM-50 = Critical
 ND-circuit-NAME = Circuits
 ND-circuit-ICON = Switch
 ST-cirnode-ST-NAME = Node Status
-CMD-cirnode-PING-NAME = Ping
+ST-cirnode-GV1-NAME = OnOff
+CMD-cirnode-QUERY-NAME = Query
