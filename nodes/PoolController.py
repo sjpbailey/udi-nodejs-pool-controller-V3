@@ -10,7 +10,7 @@ import logging
 
 # My Template Node
 from nodes import PoolNode
-
+from nodes import TemplateNode
 """
 Some shortcuts for udi interface components
 
@@ -275,8 +275,8 @@ class PoolController(udi_interface.Node):
                 id1 = id
                 address = id1
                 if name is not None:
-                    node = PoolNode.PoolNode(self.poly, self.address,
-                                             'templateaddr', 'Template Node Name')
+                    node = TemplateNode.PoolNode(self.poly, self.address,
+                                                 'pooladdr', 'Template Node Name')
                     # self.poly, self.address, address, name, id, isOn, self.allDataJson)
                     self.poly.addNode(node)
                 # self.poly.addNode(TemplateNode(self.poly, self.address, 'templateaddr', 'Template Node Name'))
@@ -327,7 +327,7 @@ class PoolController(udi_interface.Node):
                             'title': 'Level Parameter',
                             'defaultValue': '100',
                             'isRequired': True,
-                            }
+                        }
                 ]
             }
         ],

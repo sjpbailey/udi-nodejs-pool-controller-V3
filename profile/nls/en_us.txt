@@ -12,8 +12,8 @@ ST-ctl-ST-NAME = NodeServer Online
 
 
 # mynodetype
-ND-poolnode-NAME = Circuits
-ND-poolnode-ICON = Switch
-ST-pol-ST-NAME = Node Status
-ST-pol-GV1-NAME = OnOff
-CMD-pol-QUERY-NAME = Query
+ND-templatenodeid-NAME = Circuits
+ND-templatenodeid-ICON = Switch
+ST-template-ST-NAME = Node Status
+ST-template-GV1-NAME = OnOff
+CMD-template-QUERY-NAME = Query

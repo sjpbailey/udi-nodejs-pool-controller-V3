@@ -19,9 +19,10 @@
                 <cmd id="REMOVE_NOTICE_TEST" />
             </accepts>
         </cmds>
+
     </nodeDef>
     <!-- templatenodeid -->
-    <nodeDef id="poolnode" nls="pol">
+    <nodeDef id="templatenodeid" nls="template">
         <editors />
         <sts>
             <st id="ST" editor="bool" />
