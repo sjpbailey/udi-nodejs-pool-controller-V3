@@ -54,12 +54,6 @@ class CircuitNode(udi_interface.Node):
         self.allDataJson = allDataJson
 
     def start(self):
-        LOGGER.info("Circuits {}".format(self.allDataJson["circuits"]))
-        LOGGER.info(self.isOn)
-        if self.isOn == True:
-            self.setDriver('GV1', 1)
-        else:
-            self.setDriver('GV1', 0)
         """
         Optional.
         This method is called after Polyglot has added the node per the
