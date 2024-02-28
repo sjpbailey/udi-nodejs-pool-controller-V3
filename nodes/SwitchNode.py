@@ -17,9 +17,10 @@ class SwitchNode(udi_interface.Node):
 
         self.poly.subscribe(self.poly.START, self.start, address)
         self.poly.subscribe(self.poly.POLL, self.poll)
+        self.address = address
 
     def start(self):
-
+        LOGGER.info(self.address)
         self.http = urllib3.PoolManager()
 
     def poll(self, polltype):
@@ -28,7 +29,6 @@ class SwitchNode(udi_interface.Node):
         else:
             LOGGER.debug('shortPoll (node)')
             self.setDriver('ST', 1)
-            LOGGER.debug('%s: get ST=%s', self.lpfx, self.getDriver('ST'))
 
     def cmd_on(self, command):
 
