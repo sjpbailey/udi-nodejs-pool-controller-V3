@@ -233,7 +233,7 @@ class PoolController(udi_interface.Node):
         example controller start method and from DISCOVER command recieved
         from ISY as an exmaple.
         """
-        self.poly.addNode(TemplateNode(self.poly, self.address,
+        self.poly.addNode(CircuitNode(self.poly, self.address,
                           'templateaddr', 'Template Node Name'))
 
     def delete(self):
