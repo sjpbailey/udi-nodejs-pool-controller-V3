@@ -202,7 +202,7 @@ class PoolController(udi_interface.Node):
     def poll(self, flag):
         if 'longPoll' in flag:
             LOGGER.debug('longPoll (controller)')
-            #self.reportDrivers()
+            # self.reportDrivers()
         else:
             LOGGER.debug('shortPoll (controller)')
 
@@ -276,13 +276,13 @@ class PoolController(udi_interface.Node):
                     node = CircuitNode.CircuitNode(
                         self.poly, self.address, address, id, name, isOn, self.allDataJson)
                     self.poly.addNode(node)
-        
+
     def delete(self):
-        
+
         LOGGER.info('Oh God I\'m being deleted. No.')
 
     def stop(self):
-        
+
         LOGGER.debug('NodeServer stopped.')
 
     def set_module_logs(self, level):
@@ -293,8 +293,7 @@ class PoolController(udi_interface.Node):
         This is an example if using custom Params for user and password and an example with a Dictionary
         """
         self.Notices.clear()
-        default_api_url = "http://localhost:4200
-        
+        default_api_url = "http://localhost:4200"
 
         self.api_url = self.Parameters.api_url
         if self.api_url is None:
@@ -302,12 +301,12 @@ class PoolController(udi_interface.Node):
             LOGGER.error(
                 'check_params: user not defined in customParams, please add it.  Using {}'.format(default_api_url))
             self.api_url = default_api_url
-            
+
         # Add a notice if they need to change the user/circuits from the default.
         if self.api_url == default_api_url:
             self.Notices['auth'] = 'Please set proper api_url and circuits in configuration page'
             # self.Notices['test'] = 'This is only a test'
-            
+
         """self.Notices.clear()
         self.Notices['hello'] = 'Hey there, my IP is {}'.format(
             self.poly.network_interface['addr'])
@@ -355,7 +354,7 @@ class PoolController(udi_interface.Node):
                             'title': 'Level Parameter',
                             'defaultValue': '100',
                             'isRequired': True,
-                        }
+                    }
                 ]
             }
         ],
