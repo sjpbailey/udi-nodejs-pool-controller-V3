@@ -1,9 +1,4 @@
 
-
-"""
-Get the polyinterface objects we need. 
-a different Python module which doesn't have the new LOG_HANDLER functionality
-"""
 import udi_interface
 import requests
 import logging
@@ -11,13 +6,7 @@ import logging
 # My Template Node
 from nodes import PoolNode
 from nodes import SwitchNode
-"""
-Some shortcuts for udi interface components
 
-- LOGGER: to create log entries
-- Custom: to access the custom data class
-- ISY:    to communicate directly with the ISY (not commonly used)
-"""
 LOGGER = udi_interface.LOGGER
 LOG_HANDLER = udi_interface.LOG_HANDLER
 Custom = udi_interface.Custom
@@ -29,44 +18,9 @@ LOG_HANDLER.set_log_format(
 
 
 class PoolController(udi_interface.Node):
-    """
-    The Node class represents a node on the ISY. The first node started and
-    that is is used for interaction with the node server is typically called
-    a 'Controller' node. If this node has the address 'controller', Polyglot
-    will automatically populate the 'ST' driver of this node with the node
-    server's on-line/off-line status.
-
-    This node will also typically handle discovery & creation of other nodes
-    and deal with the user configurable options of the node server.
-
-    Class Variables:
-      self.name: String name of the node
-      self.address: String Address of Node, must be less than 14 characters
-                    (ISY limitation)
-      self.primary: String Address of Node's parent, must be less than 14
-                    characters (ISY limitation)
-      self.poly: Interface class object.  Provides access to the interface API.
-
-    Class Methods
-      query(): Queries and reports ALL drivers for ALL nodes to the ISY.
-      getDriver('ST'): gets the current value from Polyglot for driver 'ST'
-        returns a STRING, cast as needed
-      setDriver('ST', value, report, force, uom): Updates the driver with
-        the value (and possibly a new UOM)
-      reportDriver('ST', force): Send the driver value to the ISY, normally
-        it will only send if the value has changed, force will always send
-      reportDrivers(): Send all driver values to the ISY
-      status()
-    """
 
     def __init__(self, polyglot, primary, address, name):
-        """
-        Optional.
-        Super runs all the parent class necessities. You do NOT have
-        to override the __init__ method, but if you do, you MUST call super.
 
-        In most cases, you will want to do this for the controller node.
-        """
         super(PoolController, self).__init__(polyglot, primary, address, name)
         self.poly = polyglot
         self.name = 'Pool Controller'  # override what was passed in
@@ -89,9 +43,6 @@ class PoolController(udi_interface.Node):
         self.poly.subscribe(self.poly.START, self.start, address)
         self.poly.subscribe(self.poly.LOGLEVEL, self.handleLevelChange)
         self.poly.subscribe(self.poly.CUSTOMPARAMS, self.parameterHandler)
-        self.poly.subscribe(self.poly.CUSTOMTYPEDPARAMS,
-                            self.typedParameterHandler)
-        self.poly.subscribe(self.poly.CUSTOMTYPEDDATA, self.typedDataHandler)
         self.poly.subscribe(self.poly.POLL, self.poll)
 
         # Tell the interface we have subscribed to all the events we need.
@@ -102,16 +53,6 @@ class PoolController(udi_interface.Node):
         self.poly.addNode(self)
 
     def start(self):
-        """
-        The Polyglot v3 Interface will publish an event to let you know you
-        can start your integration. (see the START event subscribed to above)
-
-        This is where you do your initialization / device setup.
-        Polyglot v3 Interface startup done.
-
-        Here is where you start your integration. I.E. if you need to 
-        initiate communication with a device, do so here.
-        """
 
         # Send the profile files to the ISY if neccessary. The profile version
         # number will be checked and compared. If it has changed since the last
@@ -131,18 +72,7 @@ class PoolController(udi_interface.Node):
         # than wait for a poll interval.  The user will get more
         # immediate feedback that the node server is running
 
-    """
-    Called via the CUSTOMPARAMS event. When the user enters or
-    updates Custom Parameters via the dashboard. The full list of
-    parameters will be sent to your node server via this event.
-
-    Here we're loading them into our local storage so that we may
-    use them as needed.
-
-    New or changed parameters are marked so that you may trigger
-    other actions when the user changes or adds a parameter.
-
-    NOTE: Be carefull to not change parameters here. Changing
+    """NOTE: Be carefull to not change parameters here. Changing
     parameters will result in a new event, causing an infinite loop.
     """
 
@@ -151,55 +81,8 @@ class PoolController(udi_interface.Node):
         LOGGER.debug('Loading parameters now')
         self.check_params()
 
-    """
-    Called via the CUSTOMTYPEDPARAMS event. This event is sent When
-    the Custom Typed Parameters are created.  See the check_params()
-    below.  Generally, this event can be ignored.
-
-    Here we're re-load the parameters into our local storage.
-    The local storage should be considered read-only while processing
-    them here as changing them will cause the event to be sent again,
-    creating an infinite loop.
-    """
-
-    def typedParameterHandler(self, params):
-        self.TypedParameters.load(params)
-        LOGGER.debug('Loading typed parameters now')
-        LOGGER.debug(params)
-
-    """
-    Called via the CUSTOMTYPEDDATA event. This event is sent when
-    the user enters or updates Custom Typed Parameters via the dashboard.
-    'params' will be the full list of parameters entered by the user.
-
-    Here we're loading them into our local storage so that we may
-    use them as needed.  The local storage should be considered 
-    read-only while processing them here as changing them will
-    cause the event to be sent again, creating an infinite loop.
-    """
-
-    def typedDataHandler(self, params):
-        self.TypedData.load(params)
-        LOGGER.debug('Loading typed data now')
-        LOGGER.debug(params)
-
-    """
-    Called via the LOGLEVEL event.
-    """
-
     def handleLevelChange(self, level):
         LOGGER.info('New log level: {}'.format(level))
-
-    """
-    Called via the POLL event.  The POLL event is triggerd at
-    the intervals specified in the node server configuration. There
-    are two separate poll events, a long poll and a short poll. Which
-    one is indicated by the flag.  flag will hold the poll type either
-    'longPoll' or 'shortPoll'.
-
-    Use this if you want your node server to do something at fixed
-    intervals.
-    """
 
     def poll(self, flag):
         if 'longPoll' in flag:
@@ -209,16 +92,7 @@ class PoolController(udi_interface.Node):
             LOGGER.debug('shortPoll (controller)')
 
     def query(self, command=None):
-        """
-        Optional.
 
-        The query method will be called when the ISY attempts to query the
-        status of the node directly.  You can do one of two things here.
-        You can send the values currently held by Polyglot back to the
-        ISY by calling reportDriver() or you can actually query the 
-        device represented by the node and report back the current 
-        status.
-        """
         nodes = self.poly.getNodes()
         for node in nodes:
             nodes[node].reportDrivers()
@@ -240,20 +114,6 @@ class PoolController(udi_interface.Node):
                 self.allDataJson["appVersion"]))
 
             LOGGER.info("Circuits {}".format(self.allDataJson["circuits"]))
-            LOGGER.info("Circuits {}".format(
-                self.allDataJson["circuits"][0]["name"]))
-            LOGGER.info("Circuits {}".format(
-                self.allDataJson["circuits"][1]["name"]))
-            LOGGER.info("Circuits {}".format(
-                self.allDataJson["circuits"][2]["name"]))
-            LOGGER.info("Circuits {}".format(
-                self.allDataJson["circuits"][3]["name"]))
-
-            # LOGGER.info("Circuits {}".format(
-            #    self.allDataJson["circuits"][4]["name"]))
-            # LOGGER.info("Circuits {}".format(
-            #    self.allDataJson["circuits"][5]["name"]))
-
             LOGGER.info("Temperatures {}".format(self.allDataJson["temps"]))
             LOGGER.info("Pumps {}".format(self.allDataJson["pumps"]))
             LOGGER.info("Filters {}".format(self.allDataJson["filters"]))
@@ -279,21 +139,17 @@ class PoolController(udi_interface.Node):
                         self.poly, self.address, address, name)
                     # self.poly, self.address, address, name, id, isOn, self.allDataJson)
                     self.poly.addNode(node)
-                # self.poly.addNode(TemplateNode(self.poly, self.address, 'templateaddr', 'Template Node Name'))
 
     def delete(self):
-
         LOGGER.info('Oh God I\'m being deleted. No.')
 
     def stop(self):
-
         LOGGER.debug('NodeServer stopped.')
 
     def set_module_logs(self, level):
         logging.getLogger('urllib3').setLevel(level)
 
     def check_params(self):
-
         self.Notices.clear()
         default_api_url = "http://localhost:4200"
 
@@ -308,92 +164,6 @@ class PoolController(udi_interface.Node):
         if self.api_url == default_api_url:
             self.Notices['auth'] = 'Please set proper api_url and circuits in configuration page'
             # self.Notices['test'] = 'This is only a test'
-
-        # Lets try a simpler thing here
-        self.TypedParameters.load([
-            {
-                'name': 'template_test',
-                'title': 'Test parameters',
-                'desc': 'Test parameters for template',
-                'isList': False,
-                'params': [
-                        {
-                            'name': 'id',
-                            'title': 'The Item ID number',
-                            'isRequired': True,
-                        },
-                    {
-                            'name': 'level',
-                            'title': 'Level Parameter',
-                            'defaultValue': '100',
-                            'isRequired': True,
-                    }
-                ]
-            }
-        ],
-            True
-        )
-
-        '''
-        self.TypedParameters.load( [
-                {
-                    'name': 'item',
-                    'title': 'Item',
-                    'desc': 'Description of Item',
-                    'isList': False,
-                    'params': [
-                        {
-                            'name': 'id',
-                            'title': 'The Item ID',
-                            'isRequired': True,
-                        },
-                        {
-                            'name': 'title',
-                            'title': 'The Item Title',
-                            'defaultValue': 'The Default Title',
-                            'isRequired': True,
-                        },
-                        {
-                            'name': 'extra',
-                            'title': 'The Item Extra Info',
-                            'isRequired': False,
-                        }
-                    ]
-                },
-                {
-                    'name': 'itemlist',
-                    'title': 'Item List',
-                    'desc': 'Description of Item List',
-                    'isList': True,
-                    'params': [
-                        {
-                            'name': 'id',
-                            'title': 'The Item ID',
-                            'isRequired': True,
-                        },
-                        {
-                            'name': 'title',
-                            'title': 'The Item Title',
-                            'defaultValue': 'The Default Title',
-                            'isRequired': True,
-                        },
-                        {
-                            'name': 'names',
-                            'title': 'The Item Names',
-                            'isRequired': False,
-                            'isList': True,
-                            'defaultValue': ['somename']
-                        },
-                        {
-                            'name': 'extra',
-                            'title': 'The Item Extra Info',
-                            'isRequired': False,
-                            'isList': True,
-                        }
-                    ]
-                },
-            ], True)
-            '''
 
     def remove_notice_test(self, command):
         LOGGER.info('remove_notice_test: notices={}'.format(self.Notices))
