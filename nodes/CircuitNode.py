@@ -143,5 +143,5 @@ class CircuitNode(udi_interface.Node):
     commands = {
         'DON': cmd_on,
         'DOF': cmd_off,
-        'PING': cmd_ping
+        'QUERY': query
     }
