@@ -3,6 +3,7 @@
     "aiohttp",
     "checkconnect",
     "checkconnection",
+    "cirnode",
     "CLIHCS",
     "CLIMD",
     "CLISPC",

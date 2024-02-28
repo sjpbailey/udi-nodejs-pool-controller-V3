@@ -1,6 +1,6 @@
 
 # controller
-ND-controller-NAME = Template NodeServer Controller
+ND-controller-NAME = Pool Controller
 ND-controller-ICON = GenericCtl
 CMD-ctl-QUERY-NAME = Query
 CMD-ctl-DISCOVER-NAME = Re-Discover
@@ -19,7 +19,7 @@ CDM-40 = Error
 CDM-50 = Critical
 
 # mynodetype
-ND-templatenodeid-NAME = Template Node
-ND-templatenodeid-ICON = Switch
-ST-tmplnode-ST-NAME = Node Status
-CMD-tmplnode-PING-NAME = Ping
+ND-circuit-NAME = Circuits
+ND-circuit-ICON = Switch
+ST-cirnode-ST-NAME = Node Status
+CMD-cirnode-PING-NAME = Ping

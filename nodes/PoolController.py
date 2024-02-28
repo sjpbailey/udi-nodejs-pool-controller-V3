@@ -22,9 +22,11 @@ Custom = udi_interface.Custom
 ISY = udi_interface.ISY
 
 # IF you want a different log format than the current default
-LOG_HANDLER.set_log_format('%(asctime)s %(threadName)-10s %(name)-18s %(levelname)-8s %(module)s:%(funcName)s: %(message)s')
+LOG_HANDLER.set_log_format(
+    '%(asctime)s %(threadName)-10s %(name)-18s %(levelname)-8s %(module)s:%(funcName)s: %(message)s')
 
-class TemplateController(udi_interface.Node):
+
+class PoolController(udi_interface.Node):
     """
     The Node class represents a node on the ISY. The first node started and
     that is is used for interaction with the node server is typically called
@@ -54,6 +56,7 @@ class TemplateController(udi_interface.Node):
       reportDrivers(): Send all driver values to the ISY
       status()
     """
+
     def __init__(self, polyglot, primary, address, name):
         """
         Optional.
@@ -62,13 +65,13 @@ class TemplateController(udi_interface.Node):
 
         In most cases, you will want to do this for the controller node.
         """
-        super(TemplateController, self).__init__(polyglot, primary, address, name)
+        super(PoolController, self).__init__(polyglot, primary, address, name)
         self.poly = polyglot
         self.name = 'Template Controller'  # override what was passed in
         self.hb = 0
 
         # Create data storage classes to hold specific data that we need
-        # to interact with.  
+        # to interact with.
         self.Parameters = Custom(polyglot, 'customparams')
         self.Notices = Custom(polyglot, 'notices')
         self.TypedParameters = Custom(polyglot, 'customtypedparams')
@@ -78,13 +81,14 @@ class TemplateController(udi_interface.Node):
         # how you will get information from Polyglog.  See the API
         # documentation for the full list of events you can subscribe to.
         #
-        # The START event is unique in that you can subscribe to 
+        # The START event is unique in that you can subscribe to
         # the start event for each node you define.
 
         self.poly.subscribe(self.poly.START, self.start, address)
         self.poly.subscribe(self.poly.LOGLEVEL, self.handleLevelChange)
         self.poly.subscribe(self.poly.CUSTOMPARAMS, self.parameterHandler)
-        self.poly.subscribe(self.poly.CUSTOMTYPEDPARAMS, self.typedParameterHandler)
+        self.poly.subscribe(self.poly.CUSTOMTYPEDPARAMS,
+                            self.typedParameterHandler)
         self.poly.subscribe(self.poly.CUSTOMTYPEDDATA, self.typedDataHandler)
         self.poly.subscribe(self.poly.POLL, self.poll)
 
@@ -92,10 +96,8 @@ class TemplateController(udi_interface.Node):
         # Once we call ready(), the interface will start publishing data.
         self.poly.ready()
 
-        # Tell the interface we exist.  
+        # Tell the interface we exist.
         self.poly.addNode(self)
-
-
 
     def start(self):
         """
@@ -123,13 +125,13 @@ class TemplateController(udi_interface.Node):
         # heartbeat in your node server
         self.heartbeat(0)
 
-        # Device discovery. Here you may query for your device(s) and 
+        # Device discovery. Here you may query for your device(s) and
         # their capabilities.  Also where you can create nodes that
         # represent the found device(s)
         self.discover()
 
         # Here you may want to send updated values to the ISY rather
-        # than wait for a poll interval.  The user will get more 
+        # than wait for a poll interval.  The user will get more
         # immediate feedback that the node server is running
 
     """
@@ -146,6 +148,7 @@ class TemplateController(udi_interface.Node):
     NOTE: Be carefull to not change parameters here. Changing
     parameters will result in a new event, causing an infinite loop.
     """
+
     def parameterHandler(self, params):
         self.Parameters.load(params)
         LOGGER.debug('Loading parameters now')
@@ -161,6 +164,7 @@ class TemplateController(udi_interface.Node):
     them here as changing them will cause the event to be sent again,
     creating an infinite loop.
     """
+
     def typedParameterHandler(self, params):
         self.TypedParameters.load(params)
         LOGGER.debug('Loading typed parameters now')
@@ -176,6 +180,7 @@ class TemplateController(udi_interface.Node):
     read-only while processing them here as changing them will
     cause the event to be sent again, creating an infinite loop.
     """
+
     def typedDataHandler(self, params):
         self.TypedData.load(params)
         LOGGER.debug('Loading typed data now')
@@ -184,6 +189,7 @@ class TemplateController(udi_interface.Node):
     """
     Called via the LOGLEVEL event.
     """
+
     def handleLevelChange(self, level):
         LOGGER.info('New log level: {}'.format(level))
 
@@ -197,6 +203,7 @@ class TemplateController(udi_interface.Node):
     Use this if you want your node server to do something at fixed
     intervals.
     """
+
     def poll(self, flag):
         if 'longPoll' in flag:
             LOGGER.debug('longPoll (controller)')
@@ -204,7 +211,7 @@ class TemplateController(udi_interface.Node):
         else:
             LOGGER.debug('shortPoll (controller)')
 
-    def query(self,command=None):
+    def query(self, command=None):
         """
         Optional.
 
@@ -226,7 +233,8 @@ class TemplateController(udi_interface.Node):
         example controller start method and from DISCOVER command recieved
         from ISY as an exmaple.
         """
-        self.poly.addNode(TemplateNode(self.poly, self.address, 'templateaddr', 'Template Node Name'))
+        self.poly.addNode(TemplateNode(self.poly, self.address,
+                          'templateaddr', 'Template Node Name'))
 
     def delete(self):
         """
@@ -235,7 +243,7 @@ class TemplateController(udi_interface.Node):
         process is co-resident and controlled by Polyglot, it will be
         terminiated within 5 seconds of receiving this message.
         """
-        LOGGER.info('Oh God I\'m being deleted. Nooooooooooooooooooooooooooooooooooooooooo.')
+        LOGGER.info('Oh God I\'m being deleted. No.')
 
     def stop(self):
         """
@@ -245,26 +253,26 @@ class TemplateController(udi_interface.Node):
         """
         LOGGER.debug('NodeServer stopped.')
 
-
     """
     This is an example of implementing a heartbeat function.  It uses the
     long poll intervale to alternately send a ON and OFF command back to
     the ISY.  Programs on the ISY can then monitor this and take action
     when the heartbeat fails to update.
     """
-    def heartbeat(self,init=False):
+
+    def heartbeat(self, init=False):
         LOGGER.debug('heartbeat: init={}'.format(init))
         if init is not False:
             self.hb = init
         LOGGER.debug('heartbeat: hb={}'.format(self.hb))
         if self.hb == 0:
-            self.reportCmd("DON",2)
+            self.reportCmd("DON", 2)
             self.hb = 1
         else:
-            self.reportCmd("DOF",2)
+            self.reportCmd("DOF", 2)
             self.hb = 0
 
-    def set_module_logs(self,level):
+    def set_module_logs(self, level):
         logging.getLogger('urllib3').setLevel(level)
 
     def check_params(self):
@@ -272,7 +280,8 @@ class TemplateController(udi_interface.Node):
         This is an example if using custom Params for user and password and an example with a Dictionary
         """
         self.Notices.clear()
-        self.Notices['hello'] = 'Hey there, my IP is {}'.format(self.poly.network_interface['addr'])
+        self.Notices['hello'] = 'Hey there, my IP is {}'.format(
+            self.poly.network_interface['addr'])
         self.Notices['hello2'] = 'Hello Friends!'
         default_user = "YourUserName"
         default_password = "YourPassword"
@@ -280,13 +289,15 @@ class TemplateController(udi_interface.Node):
         self.user = self.Parameters.user
         if self.user is None:
             self.user = default_user
-            LOGGER.error('check_params: user not defined in customParams, please add it.  Using {}'.format(default_user))
+            LOGGER.error(
+                'check_params: user not defined in customParams, please add it.  Using {}'.format(default_user))
             self.user = default_user
 
         self.password = self.Parameters.password
         if self.password is None:
             self.password = default_password
-            LOGGER.error('check_params: password not defined in customParams, please add it.  Using {}'.format(default_password))
+            LOGGER.error('check_params: password not defined in customParams, please add it.  Using {}'.format(
+                default_password))
             self.password = default_password
 
         # Add a notice if they need to change the user/password from the default.
@@ -295,30 +306,30 @@ class TemplateController(udi_interface.Node):
             self.Notices['test'] = 'This is only a test'
 
         # Typed Parameters allow for more complex parameter entries.
-        # It may be better to do this during __init__() 
+        # It may be better to do this during __init__()
 
         # Lets try a simpler thing here
-        self.TypedParameters.load( [
-                {
-                    'name': 'template_test',
-                    'title': 'Test parameters',
-                    'desc': 'Test parameters for template',
-                    'isList': False,
-                    'params': [
+        self.TypedParameters.load([
+            {
+                'name': 'template_test',
+                'title': 'Test parameters',
+                'desc': 'Test parameters for template',
+                'isList': False,
+                'params': [
                         {
                             'name': 'id',
                             'title': 'The Item ID number',
                             'isRequired': True,
                         },
-                        {
+                    {
                             'name': 'level',
                             'title': 'Level Parameter',
                             'defaultValue': '100',
                             'isRequired': True,
                         }
-                    ]
-                }
-            ],
+                ]
+            }
+        ],
             True
         )
 
@@ -383,12 +394,12 @@ class TemplateController(udi_interface.Node):
             ], True)
             '''
 
-    def remove_notice_test(self,command):
+    def remove_notice_test(self, command):
         LOGGER.info('remove_notice_test: notices={}'.format(self.Notices))
         # Remove the test notice
         self.Notices.delete('test')
 
-    def remove_notices_all(self,command):
+    def remove_notices_all(self, command):
         LOGGER.info('remove_notices_all: notices={}'.format(self.Notices))
         # Remove all existing notices
         self.Notices.clear()

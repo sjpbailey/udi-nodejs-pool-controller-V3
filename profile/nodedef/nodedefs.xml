@@ -21,7 +21,7 @@
         </cmds>
     </nodeDef>
     <!-- templatenodeid -->
-    <nodeDef id="templatenodeid" nls="tmplnode">
+    <nodeDef id="circuit" nls="cirnode">
         <editors />
         <sts>
             <st id="ST" editor="bool" />
@@ -31,7 +31,7 @@
             <accepts>
                 <cmd id="DON" />
                 <cmd id="DOF" />
-                <cmd id="PING" />
+                <cmd id="QUERY" />
             </accepts>
         </cmds>
     </nodeDef>
