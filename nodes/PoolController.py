@@ -69,7 +69,7 @@ class PoolController(udi_interface.Node):
         """
         super(PoolController, self).__init__(polyglot, primary, address, name)
         self.poly = polyglot
-        self.name = 'Template Controller'  # override what was passed in
+        self.name = 'Pool Controller'  # override what was passed in
         self.hb = 0
 
         # Create data storage classes to hold specific data that we need

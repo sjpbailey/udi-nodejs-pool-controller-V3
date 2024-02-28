@@ -21,7 +21,7 @@
         </cmds>
     </nodeDef>
     <!-- templatenodeid -->
-    <nodeDef id="circuit" nls="cirnode">
+    <nodeDef id="Circuit" nls="cir">
         <editors />
         <sts>
             <st id="ST" editor="bool" />
