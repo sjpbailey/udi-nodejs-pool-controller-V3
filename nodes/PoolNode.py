@@ -51,8 +51,8 @@ class PoolNode(udi_interface.Node):
         self.poly.subscribe(self.poly.POLL, self.poll)
         self.id = id
         self.name = name
-        self.isOn = isOn
-        self.allDataJson = allDataJson
+        # self.isOn = isOn
+        # self.allDataJson = allDataJson
 
     def start(self):
 
