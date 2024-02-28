@@ -22,7 +22,7 @@
 
     </nodeDef>
     <!-- templatenodeid -->
-    <nodeDef id="templatenodeid" nls="template">
+    <nodeDef id="switchnodeid" nls="template">
         <editors />
         <sts>
             <st id="ST" editor="bool" />

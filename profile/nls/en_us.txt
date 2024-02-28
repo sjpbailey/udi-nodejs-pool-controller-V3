@@ -12,8 +12,8 @@ ST-ctl-ST-NAME = NodeServer Online
 
 
 # mynodetype
-ND-templatenodeid-NAME = Circuits
-ND-templatenodeid-ICON = Switch
+ND-switchnodeid-NAME = Circuits
+ND-switchnodeid-ICON = Switch
 ST-template-ST-NAME = Node Status
 ST-template-GV1-NAME = OnOff
 CMD-template-QUERY-NAME = Query
