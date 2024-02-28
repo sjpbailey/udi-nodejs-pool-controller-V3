@@ -276,7 +276,7 @@ class PoolController(udi_interface.Node):
                 address = id1
                 if name is not None:
                     node = TemplateNode(
-                        self.poly, self.address, 'templateaddr', 'Template Node Name')
+                        self.poly, self.address, address, 'Template Node Name')
                     # self.poly, self.address, address, name, id, isOn, self.allDataJson)
                     self.poly.addNode(node)
                 # self.poly.addNode(TemplateNode(self.poly, self.address, 'templateaddr', 'Template Node Name'))
