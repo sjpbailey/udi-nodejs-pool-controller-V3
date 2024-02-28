@@ -11,7 +11,6 @@ import logging
 from nodes import BodyNode
 from nodes import CircuitNode
 from nodes import TempNode
-from nodes import TemplateNode
 
 LOGGER = udi_interface.LOGGER
 LOG_HANDLER = udi_interface.LOG_HANDLER
