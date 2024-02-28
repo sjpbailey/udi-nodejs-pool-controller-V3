@@ -275,7 +275,7 @@ class PoolController(udi_interface.Node):
                 id1 = id
                 address = id1
                 if name is not None:
-                    node = CircuitNode.CircuitNode(
+                    node = CircuitNode(
                         self.poly, self.address, address, id, name, isOn, self.allDataJson)
                     self.poly.addNode(node)
 
