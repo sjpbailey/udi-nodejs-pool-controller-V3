@@ -5,6 +5,8 @@ Get the polyinterface objects we need.
 a different Python module which doesn't have the new LOG_HANDLER functionality
 """
 import udi_interface
+import requests
+import logging
 
 # My Template Node
 from nodes import CircuitNode
