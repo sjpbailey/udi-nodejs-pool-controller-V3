@@ -276,7 +276,7 @@ class PoolController(udi_interface.Node):
                 address = id1
                 if name is not None:
                     node = CircuitNode(
-                        self.poly, self.address, address, id, name, isOn, self.allDataJson)
+                        self.poly, self.address, address, name, id, isOn, self.allDataJson)
                     self.poly.addNode(node)
 
     def delete(self):
@@ -291,9 +291,7 @@ class PoolController(udi_interface.Node):
         logging.getLogger('urllib3').setLevel(level)
 
     def check_params(self):
-        """
-        This is an example if using custom Params for user and password and an example with a Dictionary
-        """
+
         self.Notices.clear()
         default_api_url = "http://localhost:4200"
 
@@ -308,35 +306,6 @@ class PoolController(udi_interface.Node):
         if self.api_url == default_api_url:
             self.Notices['auth'] = 'Please set proper api_url and circuits in configuration page'
             # self.Notices['test'] = 'This is only a test'
-
-        """self.Notices.clear()
-        self.Notices['hello'] = 'Hey there, my IP is {}'.format(
-            self.poly.network_interface['addr'])
-        self.Notices['hello2'] = 'Hello Friends!'
-        default_user = "YourUserName"
-        default_password = "YourPassword"
-
-        self.user = self.Parameters.user
-        if self.user is None:
-            self.user = default_user
-            LOGGER.error(
-                'check_params: user not defined in customParams, please add it.  Using {}'.format(default_user))
-            self.user = default_user
-
-        self.password = self.Parameters.password
-        if self.password is None:
-            self.password = default_password
-            LOGGER.error('check_params: password not defined in customParams, please add it.  Using {}'.format(
-                default_password))
-            self.password = default_password
-
-        # Add a notice if they need to change the user/password from the default.
-        if self.user == default_user or self.password == default_password:
-            self.Notices['auth'] = 'Please set proper user and password in configuration page'
-            self.Notices['test'] = 'This is only a test'"""
-
-        # Typed Parameters allow for more complex parameter entries.
-        # It may be better to do this during __init__()
 
         # Lets try a simpler thing here
         self.TypedParameters.load([
