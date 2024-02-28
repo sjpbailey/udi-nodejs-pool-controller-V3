@@ -8,7 +8,7 @@ import urllib3
 LOGGER = udi_interface.LOGGER
 
 
-class CircuitNode(udi_interface.Node):
+class PoolNode(udi_interface.Node):
     """
     This is the class that all the Nodes will be represented by. You will
     add this to Polyglot/ISY with the interface.addNode method.
@@ -42,7 +42,7 @@ class CircuitNode(udi_interface.Node):
         :param address: This nodes address
         :param name: This nodes name
         """
-        super(CircuitNode, self).__init__(polyglot, primary, address, name)
+        super(PoolNode, self).__init__(polyglot, primary, address, name)
         self.poly = polyglot
         self.lpfx = '%s:%s' % (address, name)
 
@@ -101,7 +101,7 @@ class CircuitNode(udi_interface.Node):
         {'driver': 'GV1', 'value': 0, 'uom': 2, 'name': "OnOff"}
     ]
 
-    id = 'Circuit'
+    id = 'poolnode'
 
     commands = {
         'DON': cmd_on,

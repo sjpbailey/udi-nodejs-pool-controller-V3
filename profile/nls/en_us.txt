@@ -19,8 +19,8 @@ CDM-40 = Error
 CDM-50 = Critical
 
 # mynodetype
-ND-Circuit-NAME = Circuits
-ND-Circuit-ICON = Switch
-ST-cir-ST-NAME = Node Status
-ST-cir-GV1-NAME = OnOff
-CMD-cir-QUERY-NAME = Query
+ND-poolnode-NAME = Circuits
+ND-poolnode-ICON = Switch
+ST-pol-ST-NAME = Node Status
+ST-pol-GV1-NAME = OnOff
+CMD-pol-QUERY-NAME = Query

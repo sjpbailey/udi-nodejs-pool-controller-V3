@@ -1,5 +1,5 @@
 
 """ Node classes used by the Python template Node Server. """
 
-from .CircuitNode import CircuitNode
+from .PoolNode import PoolNode
 from .PoolController import PoolController
