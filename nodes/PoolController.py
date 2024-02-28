@@ -119,6 +119,8 @@ class PoolController(udi_interface.Node):
             address = 'zone_{}'.format(address)
             self.poly.addNode(SwitchNode(
                 self.poly, self.address, address, name, self.allDataJson))
+            print("Air Temp  {}".format(self.allDataJson["temps"]["air"]))
+            self.setDriver('GV1', self.allDataJson["temps"]["air"])
 
             LOGGER.info("Temperatures {}".format(self.allDataJson["temps"]))
             LOGGER.info("Pumps {}".format(self.allDataJson["pumps"]))
@@ -179,4 +181,5 @@ class PoolController(udi_interface.Node):
     }
     drivers = [
         {'driver': 'ST', 'value': 1, 'uom': 2, 'name': "Online"},
+        {'driver': 'GV1', 'value': 1, 'uom': 17, 'name': "Air Temp"},
     ]
