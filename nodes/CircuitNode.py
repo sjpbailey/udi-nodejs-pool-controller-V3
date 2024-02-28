@@ -26,17 +26,19 @@ class CircuitNode(udi_interface.Node):
         self.poly.subscribe(self.poly.POLL, self.poll)
 
     def start(self):
+        for i in self.allDataJson["circuits"]:
+            name = i(["name"])
+            LOGGER.info(i["name"])  # , i["id"], i['isOn'])
+            address = i(["id"])
+            id = i(["id"])
+            LOGGER.info(i["id"])
+
         if self.isOn == True:
             self.setDriver('GV1', 1)
         else:
             self.setDriver('GV1', 0)
 
-        """for i in self.allDataJson["circuits"]:
-            name = i(["name"])
-            LOGGER.info(i["name"])  # , i["id"], i['isOn'])
-            address = i(["id"])
-            id = i(["id"])
-            LOGGER.info(i["id"])"""
+        """"""
 
         """circuitData = requests.get(
             url='{0}/circuit/{1}'.format(self.apiBaseUrl, self.number))
@@ -66,11 +68,6 @@ class CircuitNode(udi_interface.Node):
         response = requests.put(
             'http://192.168.1.53:4200/state/circuit/setState/', headers=headers, json=json_data)
 
-        """requests.get(
-            url='{0}/circuit/{1}/toggle'.format(self.apiBaseUrl, self.number))
-        self.update()
-        print(self.name + ' turned on')"""
-
     def cmd_off(self, command):
         headers = {
             'accept': 'application/json',
@@ -85,17 +82,12 @@ class CircuitNode(udi_interface.Node):
         response = requests.put(
             'http://192.168.1.53:4200/state/circuit/setState/', headers=headers, json=json_data)
 
-        """requests.get(
-            url='{0}/circuit/{1}/toggle'.format(self.apiBaseUrl, self.number))
-        self.update()
-        print(self.name + ' turned off')"""
-
     def query(self, command=None):
         self.reportDrivers()
 
     drivers = [
         {'driver': 'ST', 'value': 0, 'uom': 2, 'name': "Online"},
-        {'driver': 'GV1', 'value': 0, 'uom': 2, 'name': "Online"}
+        {'driver': 'GV1', 'value': 0, 'uom': 2, 'name': "OnOff"}
     ]
 
     id = 'CIRCUIT'
