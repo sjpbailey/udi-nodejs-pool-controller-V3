@@ -51,6 +51,7 @@ class CircuitNode(udi_interface.Node):
         self.id = id
         self.name = name
         self.isOn = isOn
+        self.allDataJson = allDataJson
 
     def start(self):
         LOGGER.info("Circuits {}".format(self.allDataJson["circuits"]))
