@@ -643,12 +643,12 @@ data = {
 }
 
 
-print()
-# print("Pool Location {}".format(data["name"]))
+"""print()
+print("Pool Location {}".format(data["circuits"][0]["light"]))
 print()
 print("App Version {}".format(data["appVersion"]))
 print()
-print("Setpoint {}".format(data["temps"]["bodies"][0]["setPoint"]))
+print("Setpoint {}".format(data["temps"]["bodies"][0]))"""
 print()
 # print("Bodies {}".format(data["config"]["options"]))  # [0]["setPoint"]))
 

@@ -11,10 +11,13 @@ LOGGER = udi_interface.LOGGER
 
 class CircuitNode(udi_interface.Node):
 
-    def __init__(self, polyglot, primary, address, id, name, allDataJson):
+    def __init__(self, polyglot, primary, address, id, name, isOn, allDataJson):
         super(CircuitNode, self).__init__(polyglot, primary, address, name)
         self.poly = polyglot
         self.lpfx = '%s:%s' % (id, name)
+        self.id = id
+        self.name = name
+        self.isOn = isOn
 
         self.number = id
         self.allDataJson = allDataJson
@@ -23,18 +26,20 @@ class CircuitNode(udi_interface.Node):
         self.poly.subscribe(self.poly.POLL, self.poll)
 
     def start(self):
-        for i in self.allDataJson["circuits"]:
+        self.setDriver('ST', self.isOn)
+
+        """for i in self.allDataJson["circuits"]:
             name = i(["name"])
             LOGGER.info(i["name"])  # , i["id"], i['isOn'])
             address = i(["id"])
             id = i(["id"])
-            LOGGER.info(i["id"])
+            LOGGER.info(i["id"])"""
 
         """circuitData = requests.get(
             url='{0}/circuit/{1}'.format(self.apiBaseUrl, self.number))
         circuitDataJson = circuitData.json()
         status = circuitDataJson['status']
-        self.setDriver('ST', status)"""
+        """
 
         self.http = urllib3.PoolManager()
 
@@ -45,14 +50,38 @@ class CircuitNode(udi_interface.Node):
             LOGGER.debug('shortPoll (node)')
 
     def cmd_on(self, command):
-        pass
+        headers = {
+            'accept': 'application/json',
+            'Content-Type': 'application/json',
+        }
+
+        json_data = {
+            'id': 2,
+            'isOn': 1,
+        }
+
+        response = requests.put(
+            'http://192.168.1.53:4200/state/circuit/setState/', headers=headers, json=json_data)
+
         """requests.get(
             url='{0}/circuit/{1}/toggle'.format(self.apiBaseUrl, self.number))
         self.update()
         print(self.name + ' turned on')"""
 
     def cmd_off(self, command):
-        pass
+        headers = {
+            'accept': 'application/json',
+            'Content-Type': 'application/json',
+        }
+
+        json_data = {
+            'id': 2,
+            'isOn': 0,
+        }
+
+        response = requests.put(
+            'http://192.168.1.53:4200/state/circuit/setState/', headers=headers, json=json_data)
+
         """requests.get(
             url='{0}/circuit/{1}/toggle'.format(self.apiBaseUrl, self.number))
         self.update()
@@ -68,5 +97,6 @@ class CircuitNode(udi_interface.Node):
     commands = {
         'DON': cmd_on,
         'DOF': cmd_off,
+        'QUERY': query,
 
     }

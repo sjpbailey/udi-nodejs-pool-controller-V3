@@ -111,14 +111,17 @@ class PoolController(udi_interface.Node):
             for i in self.allDataJson["circuits"]:
                 name = i["name"]
                 id = i["id"]
+                isOn = i["isOn"]
                 LOGGER.info(i["name"])  # , i["id"], i['isOn'])
+                LOGGER.info(i["id"])
+                LOGGER.info(i["isOn"])
                 LOGGER.info(i["id"])
                 self.allDataJson = self.allDataJson
                 id1 = id
                 address = id1
                 if name is not None:
                     node = CircuitNode.CircuitNode(
-                        self.poly, self.address, address, id, name, self.allDataJson)
+                        self.poly, self.address, address, id, name, isOn, self.allDataJson)
                     self.poly.addNode(node)
                     # self.wait_for_node_done()
 
