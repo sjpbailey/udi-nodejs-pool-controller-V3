@@ -107,20 +107,19 @@ class PoolController(udi_interface.Node):
 
     def discover(self, *args, **kwargs):
         LOGGER.info('Starting Pool Controller')
-        self.allDataJson = self.allDataJson
 
         for i in self.allDataJson["circuits"]:
-            self.name = i["name"]
-            self.id = i["id"]
-            self.isOn = i["isOn"]
+            name = i["name"]
+            id = i["id"]
+            isOn = i["isOn"]
             LOGGER.info(i["name"])  # , i["id"], i['isOn'])
             LOGGER.info(i["id"])
             LOGGER.info(i["isOn"])
             LOGGER.info(i["id"])
             self.allDataJson = self.allDataJson
             id1 = id
-            self.address = id1
-            node = SwitchNode(self.poly, self.address, self.address, self.name)
+            address = id1
+            node = SwitchNode(self.poly, self.address, address, self.name)
             # self.poly, self.address, address, name, id, isOn, self.allDataJson)
             self.poly.addNode(node)
             # Discover pool circuit nodes
@@ -198,19 +197,6 @@ class PoolController(udi_interface.Node):
         # Remove all existing notices
         self.Notices.clear()
 
-    """
-    Optional.
-    Since the controller is a node in ISY, it will actual show up as a node.
-    Thus it needs to know the drivers and what id it will use. The controller
-    should report the node server status and have any commands that are
-    needed to control operation of the node server.
-
-    Typically, node servers will use the 'ST' driver to report the node server
-    status and it a best pactice to do this unless you have a very good
-    reason not to.
-
-    The id must match the nodeDef id="controller" in the nodedefs.xml
-    """
     id = 'controller'
     commands = {
         'QUERY': query,
