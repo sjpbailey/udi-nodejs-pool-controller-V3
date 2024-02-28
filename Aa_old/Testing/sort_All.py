@@ -4,14 +4,14 @@ import requests
 
 
 ################### Commands ###################################
-"""headers = {
+headers = {
     'accept': 'application/json',
     'Content-Type': 'application/json',
 }
 
 json_data = {
     'id': 2,
-    'isOn': 0,
+    'isOn': 1,
 }
 
 response = requests.put(
@@ -46,20 +46,20 @@ print(response.text)
 
 # "http://192.168.1.53:4200/state/all/"
 # "http://192.168.1.53:4200/state/temps/"
-#y = requests.get("http://192.168.1.53:4200/state/all/")
+# y = requests.get("http://192.168.1.53:4200/state/all/")
 # print(y.text)
-#response = (json.dumps(y.json(), indent=4, sort_keys=True))
+# response = (json.dumps(y.json(), indent=4, sort_keys=True))
 
 # print(response)
 
 
 ################ CIRCUITS ######################################
-for i in y:
+"""for i in y:
     print(i[0])  # ["name"], i["id"], i['isOn'])
 print()
 # ["temps"]["bodies"][0]["setPoint"]))
 print("Setpoint {}".format(y["alias"]))
-print()
+print()"""
 
 
 # z = requests.get("http://192.168.1.53:4200/state/temps/")
