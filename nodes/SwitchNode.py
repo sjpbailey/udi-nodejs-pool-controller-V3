@@ -48,7 +48,8 @@ class SwitchNode(udi_interface.Node):
         self.reportDrivers()
 
     drivers = [
-        {'driver': 'ST', 'value': 0, 'uom': 2}
+        {'driver': 'ST', 'value': 0, 'uom': 2},
+        {'driver': 'GV1', 'value': 0, 'uom': 2}
     ]
 
     id = 'switchnodeid'
