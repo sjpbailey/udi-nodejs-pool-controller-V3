@@ -31,7 +31,8 @@ class PoolNode(udi_interface.Node):
         specific node
     """
 
-    def __init__(self, polyglot, primary, address, name, id, isOn, allDataJson):
+    # self, polyglot, primary, address, name, id, isOn, allDataJson):
+    def __init__(self, polyglot, primary, address, name):
         """
         Optional.
         Super runs all the parent class necessities. You do NOT have
