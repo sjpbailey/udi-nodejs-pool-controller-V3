@@ -31,7 +31,7 @@ class CircuitNode(udi_interface.Node):
         specific node
     """
 
-    def __init__(self, polyglot, primary, address, name, isOn, allDataJson):
+    def __init__(self, polyglot, primary, address, id, name, isOn, allDataJson):
         """
         Optional.
         Super runs all the parent class necessities. You do NOT have
