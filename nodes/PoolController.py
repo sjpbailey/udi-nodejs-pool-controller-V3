@@ -119,7 +119,7 @@ class PoolController(udi_interface.Node):
             self.allDataJson = self.allDataJson
             id1 = id
             address = id1
-            node = SwitchNode(self.poly, self.address, address, self.name)
+            node = SwitchNode(self.poly, self.address, address, name)
             # self.poly, self.address, address, name, id, isOn, self.allDataJson)
             self.poly.addNode(node)
             # Discover pool circuit nodes
