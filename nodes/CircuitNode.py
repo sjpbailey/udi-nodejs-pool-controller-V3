@@ -28,7 +28,7 @@ class CircuitNode(udi_interface.Node):
     def start(self):
 
         LOGGER.info("Circuits {}".format(self.allDataJson["circuits"]))
-
+        LOGGER.info(self.isOn)
         if self.isOn == True:
             self.setDriver('GV1', 1)
         else:
