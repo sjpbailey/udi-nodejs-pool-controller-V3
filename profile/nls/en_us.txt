@@ -16,3 +16,10 @@ ND-switchnodeid-ICON = Switch
 ST-switch0-ST-NAME = Node Status
 ST-switch0-GV1-NAME = OnOff
 CMD-switch0-QUERY-NAME = Query
+
+
+# mynodetype
+ND-templatenodeid-NAME = Template Node
+ST-tmplnode-ST-NAME = Node Status
+CMD-tmplnode-PING-NAME = Ping
+CMD-tmplnode-QUERY-NAME = Query

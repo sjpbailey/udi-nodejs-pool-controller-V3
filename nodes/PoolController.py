@@ -7,6 +7,7 @@ import json
 # My Template Node
 from nodes import PoolNode
 from nodes import SwitchNode
+from nodes import TemplateNode
 
 LOGGER = udi_interface.LOGGER
 LOG_HANDLER = udi_interface.LOG_HANDLER
@@ -117,6 +118,9 @@ class PoolController(udi_interface.Node):
             address = id
             self.poly.addNode(SwitchNode(
                 self.poly, self.address, address, name, self.allDataJson))
+            self.poly.addNode(TemplateNode(
+                self.poly, self.address, 'templateaddr', 'Template Node Name'))
+
             # self.poly, self.address, address, name, id, isOn, self.allDataJson)
             # self.poly.addNode(node)
             # Discover pool circuit nodes

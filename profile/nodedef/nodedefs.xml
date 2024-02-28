@@ -39,4 +39,21 @@
         </cmds>
     </nodeDef>
 
+    <nodeDef id="templatenodeid" nls="ttmplnodemp">
+        <editors />
+        <sts>
+            <st id="ST" editor="bool" />
+            <!--st id="GV1" editor="bool" /-->
+
+        </sts>
+        <cmds>
+            <sends />
+            <accepts>
+                <cmd id="DON" />
+                <cmd id="DOF" />
+                <cmd id="QUERY" />
+            </accepts>
+        </cmds>
+    </nodeDef>
+
 </nodeDefs>

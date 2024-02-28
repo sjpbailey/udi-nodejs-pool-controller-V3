@@ -3,4 +3,5 @@
 
 from .SwitchNode import SwitchNode
 from .PoolNode import PoolNode
+from .TemplateNode import TemplateNode
 from .PoolController import PoolController
