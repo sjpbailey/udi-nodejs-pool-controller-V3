@@ -120,11 +120,6 @@ class PoolController(udi_interface.Node):
         # for display in the dashboard.
         self.poly.setCustomParamsDoc()
 
-        # Initializing a heartbeat is an example of something you'd want
-        # to do during start.  Note that it is not required to have a
-        # heartbeat in your node server
-        self.heartbeat(0)
-
         # Device discovery. Here you may query for your device(s) and
         # their capabilities.  Also where you can create nodes that
         # represent the found device(s)
@@ -207,7 +202,7 @@ class PoolController(udi_interface.Node):
     def poll(self, flag):
         if 'longPoll' in flag:
             LOGGER.debug('longPoll (controller)')
-            self.heartbeat()
+            #self.reportDrivers()
         else:
             LOGGER.debug('shortPoll (controller)')
 
@@ -227,50 +222,68 @@ class PoolController(udi_interface.Node):
             nodes[node].reportDrivers()
 
     def discover(self, *args, **kwargs):
-        """
-        Example
-        Do discovery here. Does not have to be called discovery. Called from
-        example controller start method and from DISCOVER command recieved
-        from ISY as an exmaple.
-        """
-        self.poly.addNode(CircuitNode(self.poly, self.address,
-                          'templateaddr', 'Template Node Name'))
+        LOGGER.info('Starting Pool Controller')
+        # Discover pool circuit nodes
+        # LOGGER.info('Found {} Circuits'.format(len(self.circuits)))
 
+        if self.api_url:
+            self.apiBaseUrl = self.api_url
+            # Get all data from nodejs pool controller api
+            allData = requests.get(
+                url='{}/state/all'.format(self.apiBaseUrl))
+            self.allDataJson = allData.json()
+            # LOGGER.info(self.allDataJson)
+
+            LOGGER.info("App Version {}".format(
+                self.allDataJson["appVersion"]))
+
+            LOGGER.info("Circuits {}".format(self.allDataJson["circuits"]))
+            LOGGER.info("Circuits {}".format(
+                self.allDataJson["circuits"][0]["name"]))
+            LOGGER.info("Circuits {}".format(
+                self.allDataJson["circuits"][1]["name"]))
+            LOGGER.info("Circuits {}".format(
+                self.allDataJson["circuits"][2]["name"]))
+            LOGGER.info("Circuits {}".format(
+                self.allDataJson["circuits"][3]["name"]))
+
+            # LOGGER.info("Circuits {}".format(
+            #    self.allDataJson["circuits"][4]["name"]))
+            # LOGGER.info("Circuits {}".format(
+            #    self.allDataJson["circuits"][5]["name"]))
+
+            LOGGER.info("Temperatures {}".format(self.allDataJson["temps"]))
+            LOGGER.info("Pumps {}".format(self.allDataJson["pumps"]))
+            LOGGER.info("Filters {}".format(self.allDataJson["filters"]))
+            LOGGER.info("Valves {}".format(self.allDataJson["valves"]))
+            LOGGER.info("Virtual Circuits {}".format(
+                self.allDataJson["virtualCircuits"]))
+            LOGGER.info("Heaters {}".format(self.allDataJson["heaters"]))
+            LOGGER.info("Schedules {}".format(self.allDataJson["schedules"]))
+
+            for i in self.allDataJson["circuits"]:
+                name = i["name"]
+                id = i["id"]
+                isOn = i["isOn"]
+                LOGGER.info(i["name"])  # , i["id"], i['isOn'])
+                LOGGER.info(i["id"])
+                LOGGER.info(i["isOn"])
+                LOGGER.info(i["id"])
+                self.allDataJson = self.allDataJson
+                id1 = id
+                address = id1
+                if name is not None:
+                    node = CircuitNode.CircuitNode(
+                        self.poly, self.address, address, id, name, isOn, self.allDataJson)
+                    self.poly.addNode(node)
+        
     def delete(self):
-        """
-        Example
-        This is call3ed by Polyglot upon deletion of the NodeServer. If the
-        process is co-resident and controlled by Polyglot, it will be
-        terminiated within 5 seconds of receiving this message.
-        """
+        
         LOGGER.info('Oh God I\'m being deleted. No.')
 
     def stop(self):
-        """
-        This is called by Polyglot when the node server is stopped.  You have
-        the opportunity here to cleanly disconnect from your device or do
-        other shutdown type tasks.
-        """
+        
         LOGGER.debug('NodeServer stopped.')
-
-    """
-    This is an example of implementing a heartbeat function.  It uses the
-    long poll intervale to alternately send a ON and OFF command back to
-    the ISY.  Programs on the ISY can then monitor this and take action
-    when the heartbeat fails to update.
-    """
-
-    def heartbeat(self, init=False):
-        LOGGER.debug('heartbeat: init={}'.format(init))
-        if init is not False:
-            self.hb = init
-        LOGGER.debug('heartbeat: hb={}'.format(self.hb))
-        if self.hb == 0:
-            self.reportCmd("DON", 2)
-            self.hb = 1
-        else:
-            self.reportCmd("DOF", 2)
-            self.hb = 0
 
     def set_module_logs(self, level):
         logging.getLogger('urllib3').setLevel(level)
@@ -280,6 +293,22 @@ class PoolController(udi_interface.Node):
         This is an example if using custom Params for user and password and an example with a Dictionary
         """
         self.Notices.clear()
+        default_api_url = "http://localhost:4200
+        
+
+        self.api_url = self.Parameters.api_url
+        if self.api_url is None:
+            self.api_url = default_api_url
+            LOGGER.error(
+                'check_params: user not defined in customParams, please add it.  Using {}'.format(default_api_url))
+            self.api_url = default_api_url
+            
+        # Add a notice if they need to change the user/circuits from the default.
+        if self.api_url == default_api_url:
+            self.Notices['auth'] = 'Please set proper api_url and circuits in configuration page'
+            # self.Notices['test'] = 'This is only a test'
+            
+        """self.Notices.clear()
         self.Notices['hello'] = 'Hey there, my IP is {}'.format(
             self.poly.network_interface['addr'])
         self.Notices['hello2'] = 'Hello Friends!'
@@ -303,7 +332,7 @@ class PoolController(udi_interface.Node):
         # Add a notice if they need to change the user/password from the default.
         if self.user == default_user or self.password == default_password:
             self.Notices['auth'] = 'Please set proper user and password in configuration page'
-            self.Notices['test'] = 'This is only a test'
+            self.Notices['test'] = 'This is only a test'"""
 
         # Typed Parameters allow for more complex parameter entries.
         # It may be better to do this during __init__()
@@ -425,5 +454,5 @@ class PoolController(udi_interface.Node):
         'REMOVE_NOTICE_TEST': remove_notice_test,
     }
     drivers = [
-        {'driver': 'ST', 'value': 1, 'uom': 2},
+        {'driver': 'ST', 'value': 1, 'uom': 2, 'name': "Online"},
     ]
