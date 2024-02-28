@@ -10,7 +10,7 @@ LOGGER = udi_interface.LOGGER
 if __name__ == "__main__":
     try:
 
-        polyglot = udi_interface.Interface([count_ctl])
+        polyglot = udi_interface.Interface([PoolController])
         polyglot.start()
         control = PoolController(
             polyglot, 'controller', 'controller', 'PoolController')
