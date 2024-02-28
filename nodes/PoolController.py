@@ -99,7 +99,7 @@ class PoolController(udi_interface.Node):
         self.poly.ready()
 
         # Tell the interface we exist.
-        # self.poly.addNode(self)
+        self.poly.addNode(self)
 
     def start(self):
         """
