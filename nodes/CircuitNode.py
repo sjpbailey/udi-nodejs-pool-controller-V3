@@ -26,25 +26,24 @@ class CircuitNode(udi_interface.Node):
         self.poly.subscribe(self.poly.POLL, self.poll)
 
     def start(self):
-        for i in self.allDataJson["circuits"]:
-            name = i(["name"])
-            LOGGER.info(i["name"])  # , i["id"], i['isOn'])
-            address = i(["id"])
-            id = i(["id"])
-            LOGGER.info(i["id"])
+        LOGGER.info("Circuits {}".format(self.allDataJson["circuits"]))
 
         if self.isOn == True:
             self.setDriver('GV1', 1)
         else:
             self.setDriver('GV1', 0)
 
-        """"""
-
         """circuitData = requests.get(
             url='{0}/circuit/{1}'.format(self.apiBaseUrl, self.number))
         circuitDataJson = circuitData.json()
         status = circuitDataJson['status']
         """
+        """for i in self.allDataJson["circuits"]:
+            name = i(["name"])
+            LOGGER.info(i["name"])  # , i["id"], i['isOn'])
+            address = i(["id"])
+            id = i(["id"])
+            LOGGER.info(i["id"])"""
 
         self.http = urllib3.PoolManager()
 
