@@ -9,7 +9,7 @@ import requests
 import logging
 
 # My Template Node
-from nodes import CircuitNode
+from nodes import PoolNode
 
 """
 Some shortcuts for udi interface components
