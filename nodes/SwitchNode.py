@@ -19,20 +19,7 @@ class SwitchNode(udi_interface.Node):
         self.poly.subscribe(self.poly.POLL, self.poll)
 
     def start(self):
-        """
-        Optional.
-        This method is called after Polyglot has added the node per the
-        START event subscription above
-        """
-        LOGGER.debug('%s: get ST=%s', self.lpfx, self.getDriver('ST'))
-        self.setDriver('ST', 1)
-        LOGGER.debug('%s: get ST=%s', self.lpfx, self.getDriver('ST'))
-        self.setDriver('ST', 0)
-        LOGGER.debug('%s: get ST=%s', self.lpfx, self.getDriver('ST'))
-        self.setDriver('ST', 1)
-        LOGGER.debug('%s: get ST=%s', self.lpfx, self.getDriver('ST'))
-        self.setDriver('ST', 0)
-        LOGGER.debug('%s: get ST=%s', self.lpfx, self.getDriver('ST'))
+
         self.http = urllib3.PoolManager()
 
     def poll(self, polltype):
@@ -40,10 +27,7 @@ class SwitchNode(udi_interface.Node):
             LOGGER.debug('longPoll (node)')
         else:
             LOGGER.debug('shortPoll (node)')
-            if int(self.getDriver('ST')) == 1:
-                self.setDriver('ST', 0)
-            else:
-                self.setDriver('ST', 1)
+            self.setDriver('ST', 1)
             LOGGER.debug('%s: get ST=%s', self.lpfx, self.getDriver('ST'))
 
     def cmd_on(self, command):
