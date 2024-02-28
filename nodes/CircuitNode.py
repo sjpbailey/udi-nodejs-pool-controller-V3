@@ -14,16 +14,15 @@ class CircuitNode(udi_interface.Node):
     def __init__(self, polyglot, primary, address, id, name, isOn, allDataJson):
         super(CircuitNode, self).__init__(polyglot, primary, address, name)
         self.poly = polyglot
-        self.lpfx = '%s:%s' % (id, name)
+        self.lpfx = '%s:%s' % (address, name)
+        self.poly.subscribe(self.poly.START, self.start, id)
+        self.poly.subscribe(self.poly.POLL, self.poll)
         self.id = id
         self.name = name
         self.isOn = isOn
 
         self.number = id
         self.allDataJson = allDataJson
-
-        self.poly.subscribe(self.poly.START, self.start, id)
-        self.poly.subscribe(self.poly.POLL, self.poll)
 
     def start(self):
         LOGGER.info("Circuits {}".format(self.allDataJson["circuits"]))

@@ -32,9 +32,6 @@ class PoolController(udi_interface.Node):
         self.name = 'Pool Controller'  # override what was passed in
         self.hb = 0
         self.n_queue = []
-
-        # Create data storage classes to hold specific data that we need
-        # to interact with.
         self.Parameters = Custom(polyglot, 'customparams')
         self.Notices = Custom(polyglot, 'notices')
         self.TypedData = Custom(polyglot, 'customtypeddata')
@@ -44,16 +41,9 @@ class PoolController(udi_interface.Node):
         self.poly.subscribe(self.poly.CUSTOMPARAMS, self.parameterHandler)
         polyglot.subscribe(polyglot.ADDNODEDONE, self.node_queue)
         self.poly.subscribe(self.poly.POLL, self.poll)
-
-        # Tell the interface we have subscribed to all the events we need.
-        # Once we call ready(), the interface will start publishing data.
         self.poly.ready()
 
-        # Tell the interface we exist.
         self.poly.addNode(self)
-
-    # def node_queue(self, data):
-    #    self.n_queue.append(data['address'])
 
     def node_queue(self, data):
         self.n_queue.append(data['address'])
