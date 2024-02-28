@@ -21,7 +21,7 @@ class CircuitNode(udi_interface.Node):
         self.name = name
         self.isOn = isOn
 
-        self.number = id
+        # self.number = id
         self.allDataJson = allDataJson
         self.start()
 
