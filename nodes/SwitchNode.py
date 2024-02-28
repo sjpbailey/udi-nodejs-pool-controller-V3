@@ -1,5 +1,6 @@
 
 import udi_interface
+import json
 import sys
 import time
 import urllib3
@@ -9,7 +10,7 @@ LOGGER = udi_interface.LOGGER
 
 class SwitchNode(udi_interface.Node):
 
-    def __init__(self, polyglot, primary, address, name):
+    def __init__(self, polyglot, primary, address, name, allDataJson):
 
         super(SwitchNode, self).__init__(polyglot, primary, address, name)
         self.poly = polyglot
@@ -18,6 +19,8 @@ class SwitchNode(udi_interface.Node):
         self.poly.subscribe(self.poly.START, self.start, address)
         self.poly.subscribe(self.poly.POLL, self.poll)
         self.address = address
+        self.name = name
+        self.allDataJson = allDataJson
 
     def start(self):
         LOGGER.info(self.address)
@@ -28,7 +31,7 @@ class SwitchNode(udi_interface.Node):
             LOGGER.debug('longPoll (node)')
         else:
             LOGGER.debug('shortPoll (node)')
-            self.setDriver('ST', 1)
+            # self.setDriver('ST', 1)
 
     def cmd_on(self, command):
 
@@ -37,12 +40,6 @@ class SwitchNode(udi_interface.Node):
     def cmd_off(self, command):
 
         self.setDriver('ST', 0)
-
-    def cmd_ping(self, command):
-
-        LOGGER.debug("cmd_ping:")
-        r = self.http.request('GET', "google.com")
-        LOGGER.debug("cmd_ping: r={}".format(r))
 
     def query(self, command=None):
         self.reportDrivers()

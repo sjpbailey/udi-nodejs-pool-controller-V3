@@ -7,13 +7,12 @@ CMD-ctl-DISCOVER-NAME = Re-Discover
 CMD-ctl-UPDATE_PROFILE-NAME = Update Profile
 CMD-ctl-REMOVE_NOTICES_ALL-NAME = Remove All Notices
 CMD-ctl-REMOVE_NOTICE_TEST-NAME = Remove Notice Test
-CMD-ctl-SET_DM-NAME = Set Logger Level
 ST-ctl-ST-NAME = NodeServer Online
 
 
 # mynodetype
 ND-switchnodeid-NAME = Circuits
 ND-switchnodeid-ICON = Switch
-ST-switch-ST-NAME = Node Status
-ST-switch-GV1-NAME = OnOff
-CMD-switch-QUERY-NAME = Query
+ST-switch0-ST-NAME = Node Status
+ST-switch0-GV1-NAME = OnOff
+CMD-switch0-QUERY-NAME = Query

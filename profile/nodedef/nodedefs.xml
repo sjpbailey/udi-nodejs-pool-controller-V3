@@ -19,10 +19,10 @@
                 <cmd id="REMOVE_NOTICE_TEST" />
             </accepts>
         </cmds>
-
     </nodeDef>
+
     <!-- templatenodeid -->
-    <nodeDef id="switchnodeid" nls="switch">
+    <nodeDef id="switchnodeid" nls="switch0">
         <editors />
         <sts>
             <st id="ST" editor="bool" />
@@ -38,4 +38,5 @@
             </accepts>
         </cmds>
     </nodeDef>
+
 </nodeDefs>

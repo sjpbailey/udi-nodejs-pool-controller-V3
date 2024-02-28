@@ -2,6 +2,7 @@
 import udi_interface
 import requests
 import logging
+import json
 
 # My Template Node
 from nodes import PoolNode
@@ -41,7 +42,6 @@ class PoolController(udi_interface.Node):
         # the start event for each node you define.
 
         self.poly.subscribe(self.poly.START, self.start, address)
-        self.poly.subscribe(self.poly.LOGLEVEL, self.handleLevelChange)
         self.poly.subscribe(self.poly.CUSTOMPARAMS, self.parameterHandler)
         self.poly.subscribe(self.poly.POLL, self.poll)
 
@@ -63,14 +63,6 @@ class PoolController(udi_interface.Node):
         # for display in the dashboard.
         self.poly.setCustomParamsDoc()
 
-        if self.api_url:
-            self.apiBaseUrl = self.api_url
-            # Get all data from nodejs pool controller api
-            allData = requests.get(
-                url='{}/state/all'.format(self.apiBaseUrl))
-            self.allDataJson = allData.json()
-            # LOGGER.info(self.allDataJson)
-
         # Device discovery. Here you may query for your device(s) and
         # their capabilities.  Also where you can create nodes that
         # represent the found device(s)
@@ -80,7 +72,7 @@ class PoolController(udi_interface.Node):
         # than wait for a poll interval.  The user will get more
         # immediate feedback that the node server is running
 
-    """NOTE: Be carefull to not change parameters here. Changing
+    """NOTE: Be careful to not change parameters here. Changing
     parameters will result in a new event, causing an infinite loop.
     """
 
@@ -88,9 +80,6 @@ class PoolController(udi_interface.Node):
         self.Parameters.load(params)
         LOGGER.debug('Loading parameters now')
         self.check_params()
-
-    def handleLevelChange(self, level):
-        LOGGER.info('New log level: {}'.format(level))
 
     def poll(self, flag):
         if 'longPoll' in flag:
@@ -117,11 +106,11 @@ class PoolController(udi_interface.Node):
             LOGGER.info(i["isOn"])
             LOGGER.info(i["id"])
             self.allDataJson = self.allDataJson
-            id1 = id
-            address = id1
-            node = SwitchNode(self.poly, self.address, address, name)
+            address = id
+            self.poly.addNode(SwitchNode(
+                self.poly, self.address, address, name, self.allDataJson))
             # self.poly, self.address, address, name, id, isOn, self.allDataJson)
-            self.poly.addNode(node)
+            # self.poly.addNode(node)
             # Discover pool circuit nodes
             # LOGGER.info('Found {} Circuits'.format(len(self.circuits)))
 
