@@ -10,7 +10,8 @@
       </accepts>
     </cmds>
   </nodeDef>
-  <nodeDef id="BODY" nls="BDY">
+
+  <!--nodeDef id="BODY" nls="BDY">
     <sts>
       <st id="GV0" editor="bool" />
       <st id="GV1" editor="TEMP" />
@@ -26,7 +27,8 @@
         <cmd id="QUERY" />
       </accepts>
     </cmds>
-  </nodeDef>
+  </nodeDef-->
+
   <nodeDef id="CIRCUIT" nls="CRT">
     <sts>
       <st id="ST" editor="bool" />
@@ -43,7 +45,8 @@
       </accepts>
     </cmds>
   </nodeDef>
-  <nodeDef id="TEMPERATURE" nls="TMP">
+
+  <!--nodeDef id="TEMPERATURE" nls="TMP">
     <sts>
       <st id="ST" editor="bool" />
       <st id="GV0" editor="TEMP" />
@@ -59,5 +62,6 @@
         </cmd>
       </accepts>
     </cmds>
-  </nodeDef>
+  </nodeDef-->
+
 </nodeDefs>
