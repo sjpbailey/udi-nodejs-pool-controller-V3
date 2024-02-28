@@ -134,11 +134,11 @@ class PoolController(udi_interface.Node):
                 self.allDataJson = self.allDataJson
                 id1 = id
                 address = id1
-                if name is not None:
-                    node = SwitchNode(
-                        self.poly, self.address, address, name)
-                    # self.poly, self.address, address, name, id, isOn, self.allDataJson)
-                    self.poly.addNode(node)
+            if name is not None:
+                node = SwitchNode(
+                    self.poly, self.address, address, name)
+                # self.poly, self.address, address, name, id, isOn, self.allDataJson)
+                self.poly.addNode(node)
 
     def delete(self):
         LOGGER.info('Oh God I\'m being deleted. No.')
