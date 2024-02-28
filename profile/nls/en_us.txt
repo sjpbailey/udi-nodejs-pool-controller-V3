@@ -19,7 +19,8 @@ MODE-1 = On
 
 ND-CIRCUIT-NAME = Pool Circuit
 ND-CIRCUIT-ICON = Switch
-ST-CRT-ST-NAME = Current State
+ST-CRT-ST-NAME = Online
+ST-CRT-GV1-NAME = Status
 CMD-CRT-DON-NAME = On
 CMD-CRT-DOF-NAME = Off
 CMD-CRT-QUERY-NAME = Query

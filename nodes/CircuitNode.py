@@ -26,7 +26,10 @@ class CircuitNode(udi_interface.Node):
         self.poly.subscribe(self.poly.POLL, self.poll)
 
     def start(self):
-        self.setDriver('ST', self.isOn)
+        if self.isOn == True:
+            self.setDriver('GV1', 1)
+        else:
+            self.setDriver('GV1', 0)
 
         """for i in self.allDataJson["circuits"]:
             name = i(["name"])
@@ -90,7 +93,10 @@ class CircuitNode(udi_interface.Node):
     def query(self, command=None):
         self.reportDrivers()
 
-    drivers = [{'driver': 'ST', 'value': 0, 'uom': 2, 'name': "Online"}]
+    drivers = [
+        {'driver': 'ST', 'value': 0, 'uom': 2, 'name': "Online"},
+        {'driver': 'GV1', 'value': 0, 'uom': 2, 'name': "Online"}
+    ]
 
     id = 'CIRCUIT'
 
