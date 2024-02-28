@@ -107,11 +107,8 @@ class PoolController(udi_interface.Node):
 
     def discover(self, *args, **kwargs):
         LOGGER.info('Starting Pool Controller')
-        self.address = self.address
-        self.name = self.name
-        node = SwitchNode(self.poly, self.address, self.address, self.name)
-        # self.poly, self.address, address, name, id, isOn, self.allDataJson)
-        self.poly.addNode(node)
+        self.allDataJson = self.allDataJson
+
         for i in self.allDataJson["circuits"]:
             self.name = i["name"]
             self.id = i["id"]
@@ -123,8 +120,11 @@ class PoolController(udi_interface.Node):
             self.allDataJson = self.allDataJson
             id1 = id
             self.address = id1
-        # Discover pool circuit nodes
-        # LOGGER.info('Found {} Circuits'.format(len(self.circuits)))
+            node = SwitchNode(self.poly, self.address, self.address, self.name)
+            # self.poly, self.address, address, name, id, isOn, self.allDataJson)
+            self.poly.addNode(node)
+            # Discover pool circuit nodes
+            # LOGGER.info('Found {} Circuits'.format(len(self.circuits)))
 
         """if self.api_url:
             self.apiBaseUrl = self.api_url
