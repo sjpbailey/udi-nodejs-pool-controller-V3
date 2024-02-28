@@ -23,8 +23,10 @@ class CircuitNode(udi_interface.Node):
 
         self.number = id
         self.allDataJson = allDataJson
+        self.start(self)
 
     def start(self):
+
         LOGGER.info("Circuits {}".format(self.allDataJson["circuits"]))
 
         if self.isOn == True:
