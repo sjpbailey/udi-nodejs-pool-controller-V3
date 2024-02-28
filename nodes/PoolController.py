@@ -119,26 +119,7 @@ class PoolController(udi_interface.Node):
             address = 'zone_{}'.format(address)
             self.poly.addNode(SwitchNode(
                 self.poly, self.address, address, name, self.allDataJson))
-            # self.poly.addNode(TemplateNode(
-            #    self.poly, self.address, address, name))
 
-            # self.poly, self.address, address, name, id, isOn, self.allDataJson)
-            # self.poly.addNode(node)
-            # Discover pool circuit nodes
-            # LOGGER.info('Found {} Circuits'.format(len(self.circuits)))
-
-        """if self.api_url:
-            self.apiBaseUrl = self.api_url
-            # Get all data from nodejs pool controller api
-            allData = requests.get(
-                url='{}/state/all'.format(self.apiBaseUrl))
-            self.allDataJson = allData.json()
-            # LOGGER.info(self.allDataJson)
-
-            LOGGER.info("App Version {}".format(
-                self.allDataJson["appVersion"]))
-
-            LOGGER.info("Circuits {}".format(self.allDataJson["circuits"]))
             LOGGER.info("Temperatures {}".format(self.allDataJson["temps"]))
             LOGGER.info("Pumps {}".format(self.allDataJson["pumps"]))
             LOGGER.info("Filters {}".format(self.allDataJson["filters"]))
@@ -147,22 +128,12 @@ class PoolController(udi_interface.Node):
                 self.allDataJson["virtualCircuits"]))
             LOGGER.info("Heaters {}".format(self.allDataJson["heaters"]))
             LOGGER.info("Schedules {}".format(self.allDataJson["schedules"]))
+            # self.poly.addNode(TemplateNode(
+            #    self.poly, self.address, address, name))
 
-            for i in self.allDataJson["circuits"]:
-                name = i["name"]
-                id = i["id"]
-                isOn = i["isOn"]
-                LOGGER.info(i["name"])  # , i["id"], i['isOn'])
-                LOGGER.info(i["id"])
-                LOGGER.info(i["isOn"])
-                LOGGER.info(i["id"])
-                self.allDataJson = self.allDataJson
-                id1 = id
-                address = id1
-                self.poly.addNode(SwitchNode(
-                    self.poly, self.address, id, name))
-
-                if name is not None:"""
+            # self.poly.addNode(node)
+            # Discover pool circuit nodes
+            # LOGGER.info('Found {} Circuits'.format(len(self.circuits)))
 
     def delete(self):
         LOGGER.info('Oh God I\'m being deleted. No.')
