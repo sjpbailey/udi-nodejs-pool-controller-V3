@@ -12,7 +12,7 @@ issues = 0
 
 # Open the editors file and check for errors
 editor_tree = ET.parse(
-    '/Users/stevenbailey/UDI Development PG3/Nodeservers/udi-nodejs-pool-controller-V3/profile/editor/editors.xml')
+    '/Users/stevenbailey/UDI Development PG3/Nodeservers/udi-poly-gpm-scruggs-python/profile/editor/editors.xml')
 root = editor_tree.getroot()
 editors = {}
 for item in root:

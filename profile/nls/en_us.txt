@@ -1,36 +1,25 @@
-ND-controller-NAME = Pool Controller
+
+# controller
+ND-controller-NAME = Template NodeServer Controller
 ND-controller-ICON = GenericCtl
-ST-ctl-ST-NAME = NodeJS Pool Controller Online
+CMD-ctl-QUERY-NAME = Query
+CMD-ctl-DISCOVER-NAME = Re-Discover
+CMD-ctl-UPDATE_PROFILE-NAME = Update Profile
+CMD-ctl-REMOVE_NOTICES_ALL-NAME = Remove All Notices
+CMD-ctl-REMOVE_NOTICE_TEST-NAME = Remove Notice Test
+CMD-ctl-SET_DM-NAME = Set Logger Level
+ST-ctl-ST-NAME = NodeServer Online
 
+# Debug/Logger Modes
+CDM-9 = Debug + Modules
+CDM-10 = Debug
+CDM-20 = Info
+CDM-30 = Warning
+CDM-40 = Error
+CDM-50 = Critical
 
-ND-BODY-NAME = Pool Body
-ND-BODY-ICON = GenericCtl
-ST-BDY-ST-NAME = Pool Status
-ST-BDY-GV0-NAME = Heat Mode
-ST-BDY-GV1-NAME = Air Temperature
-ST-BDY-GV2-NAME = Pool Temperature
-ST-BDY-GV3-NAME = Pool Setpoint
-ST-BDY-GV4-NAME = Spa Status
-ST-BDY-GV5-NAME = Spa Temperature
-ST-BDY-GV6-NAME = Spa Setpoint
-
-MODE-0 = Off
-MODE-1 = On
-
-ND-CIRCUIT-NAME = Pool Circuit
-ND-CIRCUIT-ICON = Switch
-ST-CRT-ST-NAME = Online
-ST-CRT-GV1-NAME = Status
-CMD-CRT-DON-NAME = On
-CMD-CRT-DOF-NAME = Off
-CMD-CRT-QUERY-NAME = Query
-
-ND-TEMPERATURE-NAME = Heater Control
-ND-TEMPERATURE-ICON = TempSensor
-ST-TMP-ST-NAME = Current State
-ST-TMP-GV0-NAME = Setpoint
-ST-TMP-GV1-NAME = Current Temperature
-CMD-TMP-DON-NAME = On
-CMD-TMP-DOF-NAME = Off
-CMD-TMP-SET_TEMP-NAME = Setpoint
-
+# mynodetype
+ND-templatenodeid-NAME = Template Node
+ND-templatenodeid-ICON = Switch
+ST-tmplnode-ST-NAME = Node Status
+CMD-tmplnode-PING-NAME = Ping

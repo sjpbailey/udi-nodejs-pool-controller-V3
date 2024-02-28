@@ -1,0 +1,66 @@
+<nodeDefs>
+  <nodeDef id="controller" nls="ctl">
+    <sts>
+      <st id="ST" editor="bool" />
+    </sts>
+    <cmds>
+      <sends />
+      <accepts>
+        <cmd id="QUERY" />
+      </accepts>
+    </cmds>
+  </nodeDef>
+
+  <!--nodeDef id="BODY" nls="BDY">
+    <sts>
+      <st id="GV0" editor="bool" />
+      <st id="GV1" editor="TEMP" />
+      <st id="GV2" editor="TEMP" />
+      <st id="GV3" editor="TEMP" />
+      <st id="GV4" editor="bool" />
+      <st id="GV5" editor="TEMP" />
+      <st id="GV6" editor="TEMP" />
+    </sts>
+    <cmds>
+      <sends />
+      <accepts>
+        <cmd id="QUERY" />
+      </accepts>
+    </cmds>
+  </nodeDef-->
+
+  <nodeDef id="CIRCUIT" nls="CRT">
+    <sts>
+      <st id="ST" editor="bool" />
+      <st id="GV1" editor="bool" />
+    </sts>
+    <cmds>
+      <sends />
+      <accepts>
+        <cmd id="DON" />
+        <cmd id="DOF" />
+        <cmd id="QUERY" />
+
+      </accepts>
+    </cmds>
+  </nodeDef>
+
+  <!--nodeDef id="TEMPERATURE" nls="TMP">
+    <sts>
+      <st id="ST" editor="bool" />
+      <st id="GV0" editor="TEMP" />
+      <st id="GV1" editor="TEMP" />
+    </sts>
+    <cmds>
+      <sends />
+      <accepts>
+        <cmd id="DON" />
+        <cmd id="DOF" />
+        <cmd id="SET_TEMP">
+          <p id="" editor="TEMP" init="CLISPH" />
+        </cmd>
+      </accepts>
+    </cmds>
+  </nodeDef-->
+
+</nodeDefs>

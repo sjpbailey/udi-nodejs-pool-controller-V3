@@ -1,26 +1,9 @@
 <editors>
-  <editor id="bool">
-    <range uom="2" subset="0,1" />
-  </editor>
-
-  <editor id="CTL_ST">
-    <range uom="25" subset="0-1" nls="IX_CTL_ST" />
-  </editor>
-
-  <editor id="MODE">
-    <range uom="25" subset="0,1" nls="MODE" />
-  </editor>
-
-  <editor id="TEMP">
-    <range uom="17" min="-100000" max="100000" step="1" prec="1"/>
-  </editor>
-
-  <editor id="TMP_ST">
-    <range uom="25" subset="0,1" nls="IX_TMP_ST" />
-  </editor>
-
-  <editor id="CTL_TEMP">
-    <range uom="17" min="34" max="104" step="1" prec="0" />
-  </editor>
+    <!-- Boolean -->
+    <editor id="bool">
+        <range uom="2" subset="0,1" />
+    </editor>
+    <editor id="I_DEBUG">
+      <range uom="25" subset="9,10,20,30,40,50" nls="CDM"/>
+    </editor>
 </editors>
-

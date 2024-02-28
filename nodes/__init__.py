@@ -1,5 +1,5 @@
 
 """ Node classes used by the Python template Node Server. """
 
-from .BodyNode import BodyNode
-from .PoolController import PoolController
+from .TemplateNode            import TemplateNode
+from .TemplateController      import TemplateController
