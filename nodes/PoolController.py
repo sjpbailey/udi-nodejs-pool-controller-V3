@@ -63,6 +63,14 @@ class PoolController(udi_interface.Node):
         # for display in the dashboard.
         self.poly.setCustomParamsDoc()
 
+        if self.api_url:
+            self.apiBaseUrl = self.api_url
+            # Get all data from nodejs pool controller api
+            allData = requests.get(
+                url='{}/state/all'.format(self.apiBaseUrl))
+            self.allDataJson = allData.json()
+            # LOGGER.info(self.allDataJson)
+
         # Device discovery. Here you may query for your device(s) and
         # their capabilities.  Also where you can create nodes that
         # represent the found device(s)
@@ -99,10 +107,26 @@ class PoolController(udi_interface.Node):
 
     def discover(self, *args, **kwargs):
         LOGGER.info('Starting Pool Controller')
+        self.address = self.address
+        self.name = self.name
+        node = SwitchNode(self.poly, self.address, self.address, self.name)
+        # self.poly, self.address, address, name, id, isOn, self.allDataJson)
+        self.poly.addNode(node)
+        for i in self.allDataJson["circuits"]:
+            self.name = i["name"]
+            self.id = i["id"]
+            self.isOn = i["isOn"]
+            LOGGER.info(i["name"])  # , i["id"], i['isOn'])
+            LOGGER.info(i["id"])
+            LOGGER.info(i["isOn"])
+            LOGGER.info(i["id"])
+            self.allDataJson = self.allDataJson
+            id1 = id
+            self.address = id1
         # Discover pool circuit nodes
         # LOGGER.info('Found {} Circuits'.format(len(self.circuits)))
 
-        if self.api_url:
+        """if self.api_url:
             self.apiBaseUrl = self.api_url
             # Get all data from nodejs pool controller api
             allData = requests.get(
@@ -135,12 +159,9 @@ class PoolController(udi_interface.Node):
                 id1 = id
                 address = id1
                 self.poly.addNode(SwitchNode(
-                    self.poly, self.address, address, name))
+                    self.poly, self.address, id, name))
 
-                """if name is not None:
-                    node = SwitchNode(self.poly, self.address, address, name)
-                    # self.poly, self.address, address, name, id, isOn, self.allDataJson)
-                    self.poly.addNode(node)"""
+                if name is not None:"""
 
     def delete(self):
         LOGGER.info('Oh God I\'m being deleted. No.')
