@@ -105,6 +105,17 @@ class PoolController(udi_interface.Node):
                 url='{}/state/all'.format(self.apiBaseUrl))
             self.allDataJson = allData.json()
             # LOGGER.info(self.allDataJson)
+            print("Air Temp  {}".format(self.allDataJson["temps"]["air"]))
+            self.setDriver('GV1', self.allDataJson["temps"]["air"])
+
+            LOGGER.info("Temperatures {}".format(self.allDataJson["temps"]))
+            LOGGER.info("Pumps {}".format(self.allDataJson["pumps"]))
+            LOGGER.info("Filters {}".format(self.allDataJson["filters"]))
+            LOGGER.info("Valves {}".format(self.allDataJson["valves"]))
+            LOGGER.info("Virtual Circuits {}".format(
+                self.allDataJson["virtualCircuits"]))
+            LOGGER.info("Heaters {}".format(self.allDataJson["heaters"]))
+            LOGGER.info("Schedules {}".format(self.allDataJson["schedules"]))
 
         for i in self.allDataJson["circuits"]:
             name = i["name"]
@@ -119,17 +130,7 @@ class PoolController(udi_interface.Node):
             address = 'zone_{}'.format(address)
             self.poly.addNode(SwitchNode(
                 self.poly, self.address, address, name, self.allDataJson))
-            print("Air Temp  {}".format(self.allDataJson["temps"]["air"]))
-            self.setDriver('GV1', self.allDataJson["temps"]["air"])
 
-            LOGGER.info("Temperatures {}".format(self.allDataJson["temps"]))
-            LOGGER.info("Pumps {}".format(self.allDataJson["pumps"]))
-            LOGGER.info("Filters {}".format(self.allDataJson["filters"]))
-            LOGGER.info("Valves {}".format(self.allDataJson["valves"]))
-            LOGGER.info("Virtual Circuits {}".format(
-                self.allDataJson["virtualCircuits"]))
-            LOGGER.info("Heaters {}".format(self.allDataJson["heaters"]))
-            LOGGER.info("Schedules {}".format(self.allDataJson["schedules"]))
             # self.poly.addNode(TemplateNode(
             #    self.poly, self.address, address, name))
 
@@ -181,5 +182,5 @@ class PoolController(udi_interface.Node):
     }
     drivers = [
         {'driver': 'ST', 'value': 1, 'uom': 2, 'name': "Online"},
-        {'driver': 'GV1', 'value': 1, 'uom': 17, 'name': "Air Temp"},
+        {'driver': 'GV1', 'value': None, 'uom': 17, 'name': "Air Temp"},
     ]
