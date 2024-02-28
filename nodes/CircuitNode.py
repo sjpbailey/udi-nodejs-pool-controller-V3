@@ -134,7 +134,7 @@ class CircuitNode(udi_interface.Node):
     id of the node from the nodedefs.xml that is in the profile.zip. This tells
     the ISY what fields and commands this node has.
     """
-    id = 'templatenodeid'
+    id = 'CIRCUIT'
 
     """
     This is a dictionary of commands. If ISY sends a command to the NodeServer,
