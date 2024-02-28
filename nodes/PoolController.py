@@ -97,6 +97,14 @@ class PoolController(udi_interface.Node):
     def discover(self, *args, **kwargs):
         LOGGER.info('Starting Pool Controller')
 
+        if self.api_url:
+            self.apiBaseUrl = self.api_url
+            # Get all data from nodejs pool controller api
+            allData = requests.get(
+                url='{}/state/all'.format(self.apiBaseUrl))
+            self.allDataJson = allData.json()
+            # LOGGER.info(self.allDataJson)
+
         for i in self.allDataJson["circuits"]:
             name = i["name"]
             id = i["id"]
