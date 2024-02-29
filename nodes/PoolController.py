@@ -139,7 +139,7 @@ class PoolController(udi_interface.Node):
             LOGGER.info(i["id"])
             self.allDataJson = self.allDataJson
             id = id
-            address = 'zone_{}'.format(address)
+            address = 'zone_{}'.format(id)
             self.poly.addNode(SwitchNode(
                 self.poly, self.address, address, name, self.allDataJson))
 
