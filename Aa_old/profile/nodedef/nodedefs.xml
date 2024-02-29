@@ -7,11 +7,14 @@
       <sends />
       <accepts>
         <cmd id="QUERY" />
-      </accepts>
-    </cmds>
-  </nodeDef>
+        <cmd id="SET_TEMP">
+          <p id="" editor="CTL_TEMP" init="CLISPH" />
 
-  <!--nodeDef id="BODY" nls="BDY">
+        </accepts>
+      </cmds>
+    </nodeDef>
+
+    <!--nodeDef id="BODY" nls="BDY">
     <sts>
       <st id="GV0" editor="bool" />
       <st id="GV1" editor="TEMP" />
@@ -29,23 +32,23 @@
     </cmds>
   </nodeDef-->
 
-  <nodeDef id="CIRCUIT" nls="CRT">
-    <sts>
-      <st id="ST" editor="bool" />
-      <st id="GV1" editor="bool" />
-    </sts>
-    <cmds>
-      <sends />
-      <accepts>
-        <cmd id="DON" />
-        <cmd id="DOF" />
-        <cmd id="QUERY" />
+    <nodeDef id="CIRCUIT" nls="CRT">
+      <sts>
+        <st id="ST" editor="bool" />
+        <st id="GV1" editor="bool" />
+      </sts>
+      <cmds>
+        <sends />
+        <accepts>
+          <cmd id="DON" />
+          <cmd id="DOF" />
+          <cmd id="QUERY" />
 
-      </accepts>
-    </cmds>
-  </nodeDef>
+        </accepts>
+      </cmds>
+    </nodeDef>
 
-  <!--nodeDef id="TEMPERATURE" nls="TMP">
+    <!--nodeDef id="TEMPERATURE" nls="TMP">
     <sts>
       <st id="ST" editor="bool" />
       <st id="GV0" editor="TEMP" />
@@ -63,4 +66,4 @@
     </cmds>
   </nodeDef-->
 
-</nodeDefs>
+  </nodeDefs>

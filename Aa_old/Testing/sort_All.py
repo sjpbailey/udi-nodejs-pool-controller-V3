@@ -37,8 +37,8 @@ response = requests.put(
 
 
 headers = {'accept': 'application/json', }
-response = requests.get(
-    'http://192.168.1.53:4200/config/options/bodies/', headers=headers)
+# response = requests.get(
+#    'http://192.168.1.53:4200/temps/bodies/setPoint', headers=headers)
 
 # print(response.text)
 
@@ -91,12 +91,20 @@ print()"""
 # "http://192.168.1.53:4200/config/options/bodies/"
 # """
 
-
-response = requests.get(
-    'http://192.168.1.53:4200/config/options/heaters/', headers=headers)
 headers = {
 }
-print(response.text)
+
+json_data = 70
+
+response = requests.put(
+    'http://192.168.1.53:4200/state/body/setPoint/', headers=headers, json=json_data)
+print(response)
+
+response = requests.get(
+    'http://192.168.1.53:4200/state/body/setPoint', headers=headers)
+headers = {
+}
+print(response)
 
 data = {
     "appVersion": "8.0.1",
@@ -691,26 +699,26 @@ print()
 # print("Circuits {}".format(data["circuits"][3]["name"]))
 # print("Circuits {}".format(data["circuits"][0]["id"]))"""
 print()
-"""print("Air Temp  {}".format(data["temps"]["air"]))
+"""print("Air Temp  {}".format(data["temps"]["air"]))"""
 print()
 print("Setpoint Temp  {}".format(data["temps"]["bodies"][0]["setPoint"]))
 print()
-print("Pool Temp  {}".format(data["temps"]["bodies"][0]["temp"]))
+# print("Pool Temp  {}".format(data["temps"]["bodies"][0]["temp"]))
 print()
-print("Pumps  {}".format(data["pumps"]))
+# print("Pumps  {}".format(data["pumps"]))
 print()
-print("Filters  {}".format(data["filters"]))
+# print("Filters  {}".format(data["filters"]))
 print()
-print("Valves  {}".format(data["valves"]))
+# print("Valves  {}".format(data["valves"]))
 print()
-print("Virtual Circuits  {}".format(data["virtualCircuits"]))
+# print("Virtual Circuits  {}".format(data["virtualCircuits"]))
 print()
 print("Heater {}".format(data["heaters"]))
 print()
-print("Schedule {}".format(data["schedules"][0]))
-print()
+# print("Schedule {}".format(data["schedules"][0]))
+# print()
 # ["name"]))
-# [0]["circuits"]["circuit"]["name"]))"""
+# [0]["circuits"]["circuit"]["name"]))
 
 ################ CIRCUITS ######################################
 # for i in data["circuits"]:

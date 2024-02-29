@@ -12,4 +12,8 @@
     <range uom="17" min="-100000" max="100000" step="1" prec="1"/>
   </editor>
 
+  <editor id="CTL_TEMP">
+    <range uom="17" min="34" max="104" step="1" prec="0" />
+  </editor>
+
 </editors>

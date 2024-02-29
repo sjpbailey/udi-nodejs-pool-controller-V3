@@ -174,26 +174,26 @@ class PoolController(udi_interface.Node):
             self.Notices['auth'] = 'Please set proper api_url and circuits in configuration page'
             # self.Notices['test'] = 'This is only a test'
 
-    def remove_notice_test(self, command):
-        LOGGER.info('remove_notice_test: notices={}'.format(self.Notices))
-        # Remove the test notice
-        self.Notices.delete('test')
-
-    def remove_notices_all(self, command):
-        LOGGER.info('remove_notices_all: notices={}'.format(self.Notices))
-        # Remove all existing notices
-        self.Notices.clear()
+    def cmd_set_temp(self, command):
+        value = int(command.get('value'))
+        if self.type == 'spa':
+            requests.get(
+                url='{0}/spaheat/setpoint/{1}'.format(self.apiBaseUrl, value))
+            self.update()
+        else:
+            requests.get(
+                url='{0}/poolheat/setpoint/{1}'.format(self.apiBaseUrl, value))
+            self.update()
 
     id = 'controller'
     commands = {
         'QUERY': query,
-        'DISCOVER': discover,
-        'REMOVE_NOTICES_ALL': remove_notices_all,
-        'REMOVE_NOTICE_TEST': remove_notice_test,
+        'SET_TEMP': cmd_set_temp,
     }
     drivers = [
         {'driver': 'ST', 'value': 1, 'uom': 2, 'name': "Online"},
         {'driver': 'GV1', 'value': None, 'uom': 17, 'name': "Air Temp"},
         {'driver': 'GV2', 'value': None, 'uom': 17, 'name': "Setpoint"},
         {'driver': 'GV3', 'value': None, 'uom': 17, 'name': "Pool Temp"},
+        {'driver': 'CLISPH', 'value': 0, 'uom': 17, 'name': "Setpoint adj"},
     ]
