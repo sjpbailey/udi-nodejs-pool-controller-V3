@@ -120,14 +120,14 @@ class PoolController(udi_interface.Node):
             self.setDriver(
                 'GV3', self.allDataJson["temps"]["bodies"][0]["temp"])
 
-            LOGGER.info("Temperatures {}".format(self.allDataJson["temps"]))
-            LOGGER.info("Pumps {}".format(self.allDataJson["pumps"]))
-            LOGGER.info("Filters {}".format(self.allDataJson["filters"]))
-            LOGGER.info("Valves {}".format(self.allDataJson["valves"]))
-            LOGGER.info("Virtual Circuits {}".format(
-                self.allDataJson["virtualCircuits"]))
+            # LOGGER.info("Temperatures {}".format(self.allDataJson["temps"]))
+            # LOGGER.info("Pumps {}".format(self.allDataJson["pumps"]))
+            # LOGGER.info("Filters {}".format(self.allDataJson["filters"]))
+            # LOGGER.info("Valves {}".format(self.allDataJson["valves"]))
+            # LOGGER.info("Virtual Circuits {}".format(
+            #    self.allDataJson["virtualCircuits"]))
             LOGGER.info("Heaters {}".format(self.allDataJson["heaters"]))
-            LOGGER.info("Schedules {}".format(self.allDataJson["schedules"]))
+            # LOGGER.info("Schedules {}".format(self.allDataJson["schedules"]))
 
         for i in self.allDataJson["circuits"]:
             name = i["name"]
@@ -136,10 +136,9 @@ class PoolController(udi_interface.Node):
             LOGGER.info(i["name"])  # , i["id"], i['isOn'])
             LOGGER.info(i["id"])
             LOGGER.info(i["isOn"])
-            LOGGER.info(i["id"])
             self.allDataJson = self.allDataJson
-            id = id
             address = 'zone_{}'.format(id)
+            LOGGER.info(address)
             self.poly.addNode(SwitchNode(
                 self.poly, self.address, address, name, self.allDataJson))
 
