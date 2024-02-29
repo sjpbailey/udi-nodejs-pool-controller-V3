@@ -25,8 +25,9 @@ class SwitchNode(udi_interface.Node):
         LOGGER.info(name)
         self.allDataJson = allDataJson
         id = address.strip('zone_')
-        LOGGER.info(id)
-        self.id = id
+        id1 = id
+        LOGGER.info(id1)
+        self.id1 = id1
 
     def start(self):
         LOGGER.info(self.address)
@@ -42,7 +43,7 @@ class SwitchNode(udi_interface.Node):
     def cmd_on(self, command):
 
         json_data = {
-            'id': self.id,
+            'id': self.id1,
             'isOn': 1,
         }
 
@@ -54,7 +55,7 @@ class SwitchNode(udi_interface.Node):
     def cmd_off(self, command):
 
         json_data = {
-            'id': self.id,
+            'id': self.id1,
             'isOn': 0,
         }
 
