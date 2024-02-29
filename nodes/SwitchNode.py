@@ -20,7 +20,9 @@ class SwitchNode(udi_interface.Node):
         self.poly.subscribe(self.poly.START, self.start, address)
         self.poly.subscribe(self.poly.POLL, self.poll)
         self.address = address
+        LOGGER.info(self.address)
         self.name = name
+        LOGGER.info(name)
         self.allDataJson = allDataJson
 
         LOGGER.info(self.id)
