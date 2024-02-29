@@ -42,7 +42,7 @@ class SwitchNode(udi_interface.Node):
     def cmd_on(self, command):
 
         json_data = {
-            'id': 1,
+            'id': self.id,
             'isOn': 1,
         }
 
@@ -54,7 +54,7 @@ class SwitchNode(udi_interface.Node):
     def cmd_off(self, command):
 
         json_data = {
-            'id': 1,
+            'id': self.id,
             'isOn': 0,
         }
 
