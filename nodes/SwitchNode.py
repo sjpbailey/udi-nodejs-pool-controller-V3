@@ -36,9 +36,9 @@ class SwitchNode(udi_interface.Node):
             # self.setDriver('ST', 1)
 
     def cmd_on(self, command):
-        self.id = id
+
         json_data = {
-            'id': id,
+            'id': self.id,
             'isOn': 1,
         }
 
@@ -48,9 +48,9 @@ class SwitchNode(udi_interface.Node):
         self.setDriver('ST', 1)
 
     def cmd_off(self, command):
-        self.id = id
+
         json_data = {
-            'id': id,
+            'id': self.id,
             'isOn': 0,
         }
 
