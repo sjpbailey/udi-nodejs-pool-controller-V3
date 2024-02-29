@@ -141,7 +141,7 @@ class PoolController(udi_interface.Node):
             address = id
             address = 'zone_{}'.format(address)
             self.poly.addNode(SwitchNode(
-                self.poly, self.address, address, name, self.allDataJson))
+                self.poly, self.address, address, name, id, self.allDataJson))
 
             # self.poly.addNode(TemplateNode(
             #    self.poly, self.address, address, name))
