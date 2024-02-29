@@ -22,7 +22,7 @@ class SwitchNode(udi_interface.Node):
         self.address = address
         self.name = name
         self.allDataJson = allDataJson
-        self.id = self.id
+        self.id = id
 
     def start(self):
         LOGGER.info(self.address)
@@ -36,8 +36,9 @@ class SwitchNode(udi_interface.Node):
             # self.setDriver('ST', 1)
 
     def cmd_on(self, command):
+        self.id = id
         json_data = {
-            'id': self.id,
+            'id': id,
             'isOn': 1,
         }
 
@@ -47,8 +48,9 @@ class SwitchNode(udi_interface.Node):
         self.setDriver('ST', 1)
 
     def cmd_off(self, command):
+        self.id = id
         json_data = {
-            'id': self.id,
+            'id': id,
             'isOn': 0,
         }
 
