@@ -1,6 +1,7 @@
 
 import udi_interface
 import json
+import requests
 import sys
 import time
 import urllib3
@@ -34,10 +35,24 @@ class SwitchNode(udi_interface.Node):
             # self.setDriver('ST', 1)
 
     def cmd_on(self, command):
+        json_data = {
+            'id': 2,
+            'isOn': 1,
+        }
+
+        response = requests.put(
+            'http://192.168.1.53:4200/state/circuit/setState/',  json=json_data)
 
         self.setDriver('ST', 1)
 
     def cmd_off(self, command):
+        json_data = {
+            'id': 2,
+            'isOn': 0,
+        }
+
+        response = requests.put(
+            'http://192.168.1.53:4200/state/circuit/setState/',  json=json_data)
 
         self.setDriver('ST', 0)
 

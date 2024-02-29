@@ -31,14 +31,16 @@ json_data = {
 }
 
 response = requests.put(
-    'http://192.168.1.53:4200/temps/bodies', headers=headers, json=json_data)
+    'http://192.168.1.53:4200/temps/bodies/[0]/setPoint', headers=headers, json=json_data)
+
+# print("Setpoint Temp  {}".format(data["temps"]["bodies"][0]["setPoint"]))
 
 
 headers = {'accept': 'application/json', }
 response = requests.get(
     'http://192.168.1.53:4200/config/options/bodies/', headers=headers)
 
-print(response.text)
+# print(response.text)
 
 
 # x = requests.get('http://192.168.1.53:4200/config/circuits/')
@@ -78,12 +80,23 @@ print()"""
 # print(u.text)
 
 
-# p = requests.get("http://192.168.1.53:4200/config/options/schedules/")
+# http://192.168.1.53:4200/config/options/heaters/
+
+# http://192.168.1.53:4200/config/options/schedules/
+# temps/bodies/[0]/setPoint
+# p = requests.get("http://192.168.1.53:4200/config/options/heaters/")
 # print(json.dumps(p.json(), indent=4, sort_keys=True))
 # print(p.text)
 # "http://192.168.1.53:4200/config/options/schedules/"
 # "http://192.168.1.53:4200/config/options/bodies/"
 # """
+
+
+response = requests.get(
+    'http://192.168.1.53:4200/config/options/heaters/', headers=headers)
+headers = {
+}
+print(response.text)
 
 data = {
     "appVersion": "8.0.1",
@@ -649,7 +662,11 @@ print()
 print("App Version {}".format(data["appVersion"]))
 print()
 print("Setpoint {}".format(data["temps"]["bodies"][0]))"""
+
+
 print()
+print()
+# print("Schedule {}".format(data["schedules"][0]))
 # print("Bodies {}".format(data["config"]["options"]))  # [0]["setPoint"]))
 
 
@@ -674,13 +691,13 @@ print()
 # print("Circuits {}".format(data["circuits"][3]["name"]))
 # print("Circuits {}".format(data["circuits"][0]["id"]))"""
 print()
-print("Air Temp  {}".format(data["temps"]["air"]))
+"""print("Air Temp  {}".format(data["temps"]["air"]))
 print()
 print("Setpoint Temp  {}".format(data["temps"]["bodies"][0]["setPoint"]))
 print()
 print("Pool Temp  {}".format(data["temps"]["bodies"][0]["temp"]))
 print()
-"""print("Pumps  {}".format(data["pumps"]))
+print("Pumps  {}".format(data["pumps"]))
 print()
 print("Filters  {}".format(data["filters"]))
 print()
@@ -696,8 +713,8 @@ print()
 # [0]["circuits"]["circuit"]["name"]))"""
 
 ################ CIRCUITS ######################################
-for i in data["circuits"]:
-    print(i["name"], i["id"], i['isOn'])
+# for i in data["circuits"]:
+#    print(i["name"], i["id"], i['isOn'])
 
 """print()
 print("Air Temp {}".format(data["air"]))
