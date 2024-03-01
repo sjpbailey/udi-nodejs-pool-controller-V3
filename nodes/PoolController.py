@@ -28,19 +28,10 @@ class PoolController(udi_interface.Node):
         self.name = 'Pool Controller'  # override what was passed in
         self.hb = 0
 
-        # Create data storage classes to hold specific data that we need
-        # to interact with.
         self.Parameters = Custom(polyglot, 'customparams')
         self.Notices = Custom(polyglot, 'notices')
         self.TypedParameters = Custom(polyglot, 'customtypedparams')
         self.TypedData = Custom(polyglot, 'customtypeddata')
-
-        # Subscribe to various events from the Interface class.  This is
-        # how you will get information from Polyglog.  See the API
-        # documentation for the full list of events you can subscribe to.
-        #
-        # The START event is unique in that you can subscribe to
-        # the start event for each node you define.
 
         self.poly.subscribe(self.poly.START, self.start, address)
         self.poly.subscribe(self.poly.CUSTOMPARAMS, self.parameterHandler)
@@ -78,6 +69,9 @@ class PoolController(udi_interface.Node):
             # Get all data from nodejs pool controller api
             allData = requests.get(
                 url='{}/state/all'.format(self.apiBaseUrl))
+            LOGGER.info(allData)
+            if allData == 200:
+                self.setDriver('ST', 1)
             self.allDataJson = allData.json()
             # LOGGER.info(self.allDataJson)
 
