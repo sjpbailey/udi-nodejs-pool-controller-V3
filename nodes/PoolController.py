@@ -129,10 +129,8 @@ class PoolController(udi_interface.Node):
             self.poly.addNode(SwitchNode(
                 self.poly, self.address, address, name, self.allDataJson))
             # LOGGER.info('Found {} Circuits'.format(len(self.circuits)))
-            self.poly.addNode(TemplateNode(
+            self.poly.addNode(PoolNode(
                 self.poly, self.address, 'templateaddr', 'Template Node Name', self.allDataJson))
-            self.poly.addNode(PoolBodyNode(
-                self.poly, self.address, "body_1", "Pool Body", self.allDataJson))
 
     def delete(self):
         LOGGER.info('Oh God I\'m being deleted. No.')

@@ -22,8 +22,8 @@ CMD-switch0-QUERY-NAME = Query
 
 
 # mynodetype
-ND-poolbody-NAME = Template Node
-ND-poolbody-ICON = Irrigation	
+ND-poolnode-NAME = Pool Body
+ND-poolnode-ICON = Irrigation	
 ST-bodypool-ST-NAME = Node Status
 ST-bodypool-GV0-NAME = Pool Running
 ST-bodypool-GV1-NAME = Air Temperature
