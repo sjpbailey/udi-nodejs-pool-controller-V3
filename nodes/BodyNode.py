@@ -9,11 +9,11 @@ import urllib3
 LOGGER = udi_interface.LOGGER
 
 
-class SwitchNode(udi_interface.Node):
+class BodyNode(udi_interface.Node):
 
     def __init__(self, polyglot, primary, address, name, allDataJson):
 
-        super(SwitchNode, self).__init__(polyglot, primary, address, name)
+        super(BodyNode, self).__init__(polyglot, primary, address, name)
         self.poly = polyglot
         self.lpfx = '%s:%s' % (address, name)
 
