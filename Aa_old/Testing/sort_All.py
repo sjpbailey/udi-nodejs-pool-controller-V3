@@ -16,10 +16,11 @@ headers = {
     # 'Content-Type': 'application/json',
 }
 
-json_data = {"id": 1,
-             "name": "Pool",
-             "setPoint": 45,
-             }
+json_data = {
+    "id": 1,
+    "name": "Pool",
+    "setPoint": 79,
+}
 
 response = requests.put(
     'http://192.168.1.53:4200/state/body/setPoint', headers=headers, json=json_data)
@@ -27,7 +28,7 @@ response = requests.put(
 print()
 print(response.text)
 
-z = requests.get("http://192.168.1.53:4200/state/body/")
+z = requests.get("http://192.168.1.53:4200/state/setPoint/")
 print(z.text)
 ################### Commands ###################################
 '''headers = {
