@@ -11,7 +11,7 @@ import requests
 import requests
 
 
-json_data = {
+"""json_data = {
     "id": 1,
     "name": "Pool",
     "setPoint": '75',
@@ -37,7 +37,7 @@ headers = {
 response = requests.get(
     'http://192.168.1.53:4200/config/options/bodies/', headers=headers)
 
-# print(response.text)
+print(response.text)"""
 ################### Commands ###################################
 '''headers = {
     'accept': 'application/json',
@@ -107,10 +107,10 @@ print()"""
 z = requests.get("http://192.168.1.53:4200/state/temps")
 # print(json.dumps(z.json(), indent=4, sort_keys=True))
 # print(z.text)
-q = requests.get('http://192.168.1.53:4200/config/options/bodies/setPoint')
-q = json.dumps(z.json(), indent=4, sort_keys=True)
+# q = requests.get('http://192.168.1.53:4200/state/temps/air')
+# z = json.dumps(q.json(), indent=4, sort_keys=True)
 # print("Setpoint Temp  {}".format(z["temps"]["bodies"][0]["setPoint"]))
-print(q)
+# print(z)
 # for i in z:
 #    print(i)
 # print(z.text)
@@ -718,7 +718,7 @@ print()
 # print("Bodies {}".format(data["config"]["options"]))  # [0]["setPoint"]))
 
 
-"""print()
+print()
 print("App Version {}".format(data["appVersionState"]))
 print()
 print("Battery Voltage {}".format(data["batteryVoltage"]))
@@ -730,6 +730,12 @@ print()
 print("Chlorinators {}".format(data["chlorinators"]))
 print()
 print("Circuit Groups {}".format(data["circuitGroups"]))
+print()
+print("Pool Temp  {}".format(data["temps"]["bodies"][0]["temp"]))
+print()
+print("Setpoint Temp  {}".format(data["temps"]["bodies"][0]["setPoint"]))
+print()
+print("Pool Running  {}".format(data["temps"]["bodies"][0]["isOn"]))
 print()
 # ["action"]))
 # print("Circuits {}".format(data["circuits"]
@@ -743,7 +749,7 @@ print()
 '''print()
 print("Setpoint Temp  {}".format(data["temps"]["bodies"][0]["setPoint"]))
 print()
-# print("Pool Temp  {}".format(data["temps"]["bodies"][0]["temp"]))
+print("Pool Temp  {}".format(data["temps"]["bodies"][0]["temp"]))
 print()
 # print("Pumps  {}".format(data["pumps"]))
 print()
