@@ -86,9 +86,9 @@ class PoolController(udi_interface.Node):
 
             isON = self.allDataJson["temps"]["bodies"][0]["isOn"]
             LOGGER.info(isON)
-            if isOn == True:
+            if isON == True:
                 self.setDriver('GV0', 1)
-            if isOn == False:
+            if isON == False:
                 self.setDriver('GV0', 0)
 
             LOGGER.info("Air Temp  {}".format(
