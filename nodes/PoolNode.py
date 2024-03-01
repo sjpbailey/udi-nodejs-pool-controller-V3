@@ -10,7 +10,7 @@ LOGGER = udi_interface.LOGGER
 
 class PoolNode(udi_interface.Node):
 
-    def __init__(self, polyglot, primary, address, name, allData):
+    def __init__(self, polyglot, primary, address, name, allData, apiBaseUrl):
 
         super(PoolNode, self).__init__(polyglot, primary, address, name)
         self.poly = polyglot
@@ -19,7 +19,8 @@ class PoolNode(udi_interface.Node):
         self.poly.subscribe(self.poly.START, self.start, address)
         self.poly.subscribe(self.poly.POLL, self.poll)
 
-        self.allData = allData
+        self.allData = self.allData
+        self.apiBaseUrl = self.apiBaseUrl
 
     def start(self):
 
