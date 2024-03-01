@@ -56,7 +56,7 @@ class PoolController(udi_interface.Node):
             LOGGER.debug('longPoll (controller)')
         else:
             LOGGER.debug('shortPoll (controller)')
-            self.discover()
+            # self.discover()
             self.reportDrivers()
             self.query()
 
