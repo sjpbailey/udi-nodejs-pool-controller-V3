@@ -10,7 +10,7 @@ LOGGER = udi_interface.LOGGER
 
 class PoolNode(udi_interface.Node):
 
-    def __init__(self, polyglot, primary, address, name, apiBaseUrl):
+    def __init__(self, polyglot, primary, address, name, allData):
 
         super(PoolNode, self).__init__(polyglot, primary, address, name)
         self.poly = polyglot
@@ -22,43 +22,39 @@ class PoolNode(udi_interface.Node):
         apiBaseUrl = self.apiBaseUrl
 
     def start(self):
-        if self.api_url:
-            self.apiBaseUrl = self.api_url
-            # Get all data from nodejs pool controller api
-            allData = requests.get(
-                url='{}/state/all'.format(self.apiBaseUrl))
 
-            if allData.status_code == 200:
-                self.setDriver('ST', 1)
-            else:
-                self.setDriver('ST', 0)
+        allData = requests.get(
+            url='{}/state/all'.format(self.apiBaseUrl))
 
-            self.allDataJson = allData.json()
-            # LOGGER.info(self.allDataJson)
+        if allData.status_code == 200:
+            self.setDriver('ST', 1)
+        else:
+            self.setDriver('ST', 0)
 
-            LOGGER.info("Pool Running  {}".format(
-                self.allDataJson["temps"]["bodies"][0]["isOn"]))
+        self.allDataJson = allData.json()
+        # LOGGER.info(self.allDataJson)
 
-            isON = self.allDataJson["temps"]["bodies"][0]["isOn"]
-            LOGGER.info(isON)
-            if isON == True:
-                self.setDriver('GV0', 1)
-            if isON == False:
-                self.setDriver('GV0', 0)
+        LOGGER.info("Pool Running  {}".format(
+            self.allDataJson["temps"]["bodies"][0]["isOn"]))
 
-            LOGGER.info("Air Temp  {}".format(
-                self.allDataJson["temps"]["air"]))
-            self.setDriver('GV1', self.allDataJson["temps"]["air"])
+        isON = self.allDataJson["temps"]["bodies"][0]["isOn"]
+        LOGGER.info(isON)
+        if isON == True:
+            self.setDriver('GV0', 1)
+        if isON == False:
+            self.setDriver('GV0', 0)
 
-            LOGGER.info("Setpoint Temp  {}".format(
-                self.allDataJson["temps"]["bodies"][0]["setPoint"]))
-            self.setDriver(
-                'GV2', self.allDataJson["temps"]["bodies"][0]["setPoint"])
+        LOGGER.info("Air Temp  {}".format(self.allDataJson["temps"]["air"]))
+        self.setDriver('GV1', self.allDataJson["temps"]["air"])
 
-            LOGGER.info("Pool Temp  {}".format(
-                self.allDataJson["temps"]["bodies"][0]["temp"]))
-            self.setDriver(
-                'GV3', self.allDataJson["temps"]["bodies"][0]["temp"])
+        LOGGER.info("Setpoint Temp  {}".format(
+            self.allDataJson["temps"]["bodies"][0]["setPoint"]))
+        self.setDriver(
+            'GV2', self.allDataJson["temps"]["bodies"][0]["setPoint"])
+
+        LOGGER.info("Pool Temp  {}".format(
+            self.allDataJson["temps"]["bodies"][0]["temp"]))
+        self.setDriver('GV3', self.allDataJson["temps"]["bodies"][0]["temp"])
         self.http = urllib3.PoolManager()
 
     def poll(self, polltype):
