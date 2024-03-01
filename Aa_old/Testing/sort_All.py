@@ -13,23 +13,37 @@ import requests
 headers = {
     'accept': 'application/json',
     # Already added when you pass json=
-    # 'Content-Type': 'application/json',
+    'Content-Type': 'application/json',
 }
 
 json_data = {
     "id": 1,
+    "circuit": 6,
     "name": "Pool",
-    "setPoint": 79,
+    "setPoint": 75,
 }
+
+# 'http://192.168.1.53:4200/state/body/setPoint'
+# 'http://192.168.1.53:4200/config/options/bodies/setPoint'
+
 
 response = requests.put(
     'http://192.168.1.53:4200/state/body/setPoint', headers=headers, json=json_data)
 
 print()
 print(response)
+print(response.text)
 
 z = requests.get("http://192.168.1.53:4200/state/setPoint/")
 # print(z.text)
+
+headers = {
+    'accept': 'application/json',
+}
+response = requests.get(
+    'http://192.168.1.53:4200/config/options/bodies/', headers=headers)
+
+print(response.text)
 ################### Commands ###################################
 '''headers = {
     'accept': 'application/json',
@@ -99,9 +113,10 @@ print()"""
 z = requests.get("http://192.168.1.53:4200/state/temps")
 # print(json.dumps(z.json(), indent=4, sort_keys=True))
 # print(z.text)
+q = requests.get('http://192.168.1.53:4200/config/options/bodies/setPoint')
 q = json.dumps(z.json(), indent=4, sort_keys=True)
 # print("Setpoint Temp  {}".format(z["temps"]["bodies"][0]["setPoint"]))
-# print(q)
+print(q)
 # for i in z:
 #    print(i)
 # print(z.text)
