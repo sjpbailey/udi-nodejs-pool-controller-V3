@@ -11,7 +11,7 @@ import requests
 import requests
 
 
-"""json_data = {
+json_data = {
     "id": 1,
     "name": "Pool",
     "setPoint": '75',
@@ -28,7 +28,7 @@ print()
 print(response)
 print(response.text)
 
-z = requests.get("http://192.168.1.53:4200/state/setPoint/")
+"""z = requests.get("http://192.168.1.53:4200/state/setPoint/")
 # print(z.text)
 
 headers = {
