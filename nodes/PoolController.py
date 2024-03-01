@@ -7,7 +7,6 @@ import json
 # My Template Node
 
 from nodes import SwitchNode
-from nodes import PoolNode1
 
 
 LOGGER = udi_interface.LOGGER
