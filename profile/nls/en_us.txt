@@ -4,14 +4,8 @@ ND-controller-NAME = Pool Controller
 ND-controller-ICON = GenericCtl
 CMD-ctl-QUERY-NAME = Query
 CMD-ctl-UPDATE_PROFILE-NAME = Update Profile
-
 CMD-TMP-SET_TEMP-NAME = Setpoint
 ST-ctl-ST-NAME = NodeServer Online
-ST-ctl-GV0-NAME = Pool Running
-ST-ctl-GV1-NAME = Air Temperature
-ST-ctl-GV2-NAME = Setpoint
-ST-ctl-GV3-NAME = Pool Temp
-CMD-TMP-SET_TEMP-NAME = Setpoint
 
 # mynodetype
 ND-switchnodeid-NAME = Circuits
