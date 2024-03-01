@@ -17,10 +17,9 @@ headers = {
 }
 
 json_data = {
-    "id": 1,
-    "circuit": 6,
-    "name": "Pool",
-    "setPoint": 75,
+    # "id": 1,
+    # "name": "Pool",
+    "setPoint": '75',
 }
 
 # 'http://192.168.1.53:4200/state/body/setPoint'
