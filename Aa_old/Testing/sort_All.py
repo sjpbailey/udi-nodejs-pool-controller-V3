@@ -17,7 +17,7 @@ headers = {
 }
 
 json_data = {
-    # "id": 1,
+    "id": 1,
     # "name": "Pool",
     "setPoint": '75',
 }
@@ -42,7 +42,7 @@ headers = {
 response = requests.get(
     'http://192.168.1.53:4200/config/options/bodies/', headers=headers)
 
-print(response.text)
+# print(response.text)
 ################### Commands ###################################
 '''headers = {
     'accept': 'application/json',
