@@ -38,16 +38,16 @@ response = requests.put(
 # 'Content-Type': 'application/json',
 # }
 
-json_data = {
+'''json_data = {
 
     "setPoint": 70,
 
 }
 
-response = requests.put(
-    'http://192.168.1.53:4200/state/body/', headers=headers, json=json_data)
+response = requests.get(
+    'http://192.168.1.53:4200/state/temps/', headers=headers, json=json_data)
 
-# print("Setpoint Temp  {}".format(data["temps"]["bodies"][0]["setPoint"]))
+print("Setpoint Temp  {}".format(response["temps"]["bodies"][0]["setPoint"]))'''
 
 
 # headers = {'accept': 'application/json', }
@@ -80,14 +80,16 @@ print("Setpoint {}".format(y["alias"]))
 print()"""
 
 
-'''# + [0]["bodies"])
-z = requests.get("http://192.168.1.53:4200/state/temps")
+# + [0]["bodies"])
+z = requests.get("http://192.168.1.53:4200/state/all/systemUnits")
 # print(json.dumps(z.json(), indent=4, sort_keys=True))
 print(z.text)
 q = json.dumps(z.json(), indent=4, sort_keys=True)
-for i in z:
-    print(i)
-# print(z.text)'''
+# print("Setpoint Temp  {}".format(z["temps"]["bodies"][0]["setPoint"]))
+
+# for i in q:
+#    print(i)
+# print(z.text)
 
 
 # "http://192.168.1.53:4200/state/circuits/"
