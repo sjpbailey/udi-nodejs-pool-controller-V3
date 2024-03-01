@@ -26,10 +26,10 @@ response = requests.put(
     'http://192.168.1.53:4200/state/body/setPoint', headers=headers, json=json_data)
 
 print()
-print(response.text)
+print(response)
 
 z = requests.get("http://192.168.1.53:4200/state/setPoint/")
-print(z.text)
+# print(z.text)
 ################### Commands ###################################
 '''headers = {
     'accept': 'application/json',
@@ -101,7 +101,7 @@ z = requests.get("http://192.168.1.53:4200/state/temps")
 # print(z.text)
 q = json.dumps(z.json(), indent=4, sort_keys=True)
 # print("Setpoint Temp  {}".format(z["temps"]["bodies"][0]["setPoint"]))
-print(q)
+# print(q)
 # for i in z:
 #    print(i)
 # print(z.text)
