@@ -8,11 +8,11 @@ import urllib3
 LOGGER = udi_interface.LOGGER
 
 
-class TemplateNode(udi_interface.Node):
+class PoolNode(udi_interface.Node):
 
     def __init__(self, polyglot, primary, address, name, apiBaseUrl):
 
-        super(TemplateNode, self).__init__(polyglot, primary, address, name)
+        super(PoolNode, self).__init__(polyglot, primary, address, name)
         self.poly = polyglot
         self.lpfx = '%s:%s' % (address, name)
 
