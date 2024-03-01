@@ -1,7 +1,7 @@
 
 # controller
 ND-controller-NAME = Pool Controller
-ND-controller-ICON = GenericCtl
+ND-controller-ICON = Irrigation
 CMD-ctl-QUERY-NAME = Query
 CMD-ctl-UPDATE_PROFILE-NAME = Update Profile
 CMD-TMP-SET_TEMP-NAME = Setpoint
@@ -9,14 +9,14 @@ ST-ctl-ST-NAME = NodeServer Online
 
 # mynodetype
 ND-switchnodeid-NAME = Circuits
-ND-switchnodeid-ICON = Switch
+ND-switchnodeid-ICON = Irrigation
 ST-switch0-ST-NAME = Node Status
 ST-switch0-GV1-NAME = OnOff
 CMD-switch0-QUERY-NAME = Query
 
 
 # mynodetype
-ND-poolnode-NAME = Pool Body
+ND-poolnode-NAME = Body Pool
 ND-poolnode-ICON = Irrigation	
 ST-bodypool-ST-NAME = Node Status
 ST-bodypool-GV0-NAME = Pool Running
