@@ -86,7 +86,7 @@ class PoolController(udi_interface.Node):
             LOGGER.info("Pool Running  {}".format(
                 self.allDataJson["temps"]["bodies"][0]["isOn"]))
 
-            isON = self.allDataJson["temps"]["bodies"][0]["isOn"]
+            '''isON = self.allDataJson["temps"]["bodies"][0]["isOn"]
             LOGGER.info(isON)
             if isON == True:
                 self.setDriver('GV0', 1)
@@ -105,7 +105,7 @@ class PoolController(udi_interface.Node):
             LOGGER.info("Pool Temp  {}".format(
                 self.allDataJson["temps"]["bodies"][0]["temp"]))
             self.setDriver(
-                'GV3', self.allDataJson["temps"]["bodies"][0]["temp"])
+                'GV3', self.allDataJson["temps"]["bodies"][0]["temp"])'''
 
             # LOGGER.info("Temperatures {}".format(self.allDataJson["temps"]))
             # LOGGER.info("Pumps {}".format(self.allDataJson["pumps"]))
@@ -113,7 +113,7 @@ class PoolController(udi_interface.Node):
             # LOGGER.info("Valves {}".format(self.allDataJson["valves"]))
             # LOGGER.info("Virtual Circuits {}".format(
             #    self.allDataJson["virtualCircuits"]))
-            LOGGER.info("Heaters {}".format(self.allDataJson["heaters"]))
+            # LOGGER.info("Heaters {}".format(self.allDataJson["heaters"]))
             # LOGGER.info("Schedules {}".format(self.allDataJson["schedules"]))
 
         for i in self.allDataJson["circuits"]:
@@ -129,8 +129,8 @@ class PoolController(udi_interface.Node):
             self.poly.addNode(SwitchNode(
                 self.poly, self.address, address, name, self.allDataJson))
             # LOGGER.info('Found {} Circuits'.format(len(self.circuits)))
-            self.poly.addNode(PoolNode(
-                self.poly, self.address, 'templateaddr', 'Template Node Name', self.apiBaseUrl))
+            # self.poly.addNode(PoolNode(
+            #    self.poly, self.address, 'templateaddr', 'Template Node Name', self.apiBaseUrl))
 
     def delete(self):
         LOGGER.info('Oh God I\'m being deleted. No.')
@@ -175,9 +175,9 @@ class PoolController(udi_interface.Node):
     }
     drivers = [
         {'driver': 'ST', 'value': 0, 'uom': 2, 'name': "Online"},
-        {'driver': 'GV0', 'value': 0, 'uom': 2, 'name': "Pool Running"},
-        {'driver': 'GV1', 'value': None, 'uom': 17, 'name': "Air Temp"},
-        {'driver': 'GV2', 'value': None, 'uom': 17, 'name': "Setpoint"},
-        {'driver': 'GV3', 'value': None, 'uom': 17, 'name': "Pool Temp"},
+        # {'driver': 'GV0', 'value': 0, 'uom': 2, 'name': "Pool Running"},
+        # {'driver': 'GV1', 'value': None, 'uom': 17, 'name': "Air Temp"},
+        # {'driver': 'GV2', 'value': None, 'uom': 17, 'name': "Setpoint"},
+        # {'driver': 'GV3', 'value': None, 'uom': 17, 'name': "Pool Temp"},
         {'driver': 'CLISPH', 'value': 0, 'uom': 17, 'name': "Setpoint adj"},
     ]
