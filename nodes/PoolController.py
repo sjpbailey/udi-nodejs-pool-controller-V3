@@ -28,6 +28,8 @@ class PoolController(udi_interface.Node):
         self.name = 'Pool Controller'  # override what was passed in
         self.hb = 0
 
+        # Create data storage classes to hold specific data that we need
+        # to interact with.
         self.Parameters = Custom(polyglot, 'customparams')
         self.Notices = Custom(polyglot, 'notices')
         self.TypedParameters = Custom(polyglot, 'customtypedparams')
@@ -69,18 +71,19 @@ class PoolController(udi_interface.Node):
             # Get all data from nodejs pool controller api
             allData = requests.get(
                 url='{}/state/all'.format(self.apiBaseUrl))
-            LOGGER.info(allData)
+
             if allData.status_code == 200:
                 self.setDriver('ST', 1)
             else:
                 self.setDriver('ST', 0)
+
+            self.allDataJson = allData.json()
             # LOGGER.info(self.allDataJson)
 
             LOGGER.info("Pool Running  {}".format(
                 self.allDataJson["temps"]["bodies"][0]["isOn"]))
 
             isOn = self.allDataJson["temps"]["bodies"][0]["isOn"]
-
             if isOn == True:
                 self.setDriver('GV0', 1)
             if isOn == False:
