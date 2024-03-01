@@ -45,37 +45,13 @@ class PoolController(udi_interface.Node):
         self.poly.subscribe(self.poly.START, self.start, address)
         self.poly.subscribe(self.poly.CUSTOMPARAMS, self.parameterHandler)
         self.poly.subscribe(self.poly.POLL, self.poll)
-
-        # Tell the interface we have subscribed to all the events we need.
-        # Once we call ready(), the interface will start publishing data.
         self.poly.ready()
-
-        # Tell the interface we exist.
         self.poly.addNode(self)
 
     def start(self):
-
-        # Send the profile files to the ISY if neccessary. The profile version
-        # number will be checked and compared. If it has changed since the last
-        # start, the new files will be sent.
         self.poly.updateProfile()
-
-        # Send the default custom parameters documentation file to Polyglot
-        # for display in the dashboard.
         self.poly.setCustomParamsDoc()
-
-        # Device discovery. Here you may query for your device(s) and
-        # their capabilities.  Also where you can create nodes that
-        # represent the found device(s)
         self.discover()
-
-        # Here you may want to send updated values to the ISY rather
-        # than wait for a poll interval.  The user will get more
-        # immediate feedback that the node server is running
-
-    """NOTE: Be careful to not change parameters here. Changing
-    parameters will result in a new event, causing an infinite loop.
-    """
 
     def parameterHandler(self, params):
         self.Parameters.load(params)
@@ -85,12 +61,11 @@ class PoolController(udi_interface.Node):
     def poll(self, flag):
         if 'longPoll' in flag:
             LOGGER.debug('longPoll (controller)')
-            # self.reportDrivers()
+            self.reportDrivers()
         else:
             LOGGER.debug('shortPoll (controller)')
 
     def query(self, command=None):
-
         nodes = self.poly.getNodes()
         for node in nodes:
             nodes[node].reportDrivers()
@@ -141,12 +116,6 @@ class PoolController(udi_interface.Node):
             LOGGER.info(address)
             self.poly.addNode(SwitchNode(
                 self.poly, self.address, address, name, self.allDataJson))
-
-            # self.poly.addNode(TemplateNode(
-            #    self.poly, self.address, address, name))
-
-            # self.poly.addNode(node)
-            # Discover pool circuit nodes
             # LOGGER.info('Found {} Circuits'.format(len(self.circuits)))
 
     def delete(self):
