@@ -1,6 +1,7 @@
 {
   "cSpell.words": [
     "aiohttp",
+    "bodynodeid",
     "checkconnect",
     "checkconnection",
     "cirnode",
@@ -15,6 +16,7 @@
     "poolnode",
     "SERVERDATA",
     "spaheat",
+    "switchnodeid",
     "triggerd"
   ]
 }
