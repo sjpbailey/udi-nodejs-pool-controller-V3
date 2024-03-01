@@ -19,8 +19,8 @@ class PoolNode(udi_interface.Node):
         self.poly.subscribe(self.poly.START, self.start, address)
         self.poly.subscribe(self.poly.POLL, self.poll)
 
-        self.allData = self.allData
-        self.apiBaseUrl = self.apiBaseUrl
+        self.allData = allData
+        self.apiBaseUrl = apiBaseUrl
 
     def start(self):
 
