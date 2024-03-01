@@ -27,6 +27,8 @@ response = requests.put(
 print()
 print(response)
 print(response.text)
+if response.status_code == 200:
+    print("oky")
 
 """z = requests.get("http://192.168.1.53:4200/state/setPoint/")
 # print(z.text)
