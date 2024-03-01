@@ -16,7 +16,7 @@ class TemplateNode(udi_interface.Node):
 
         self.poly.subscribe(self.poly.START, self.start, address)
         self.poly.subscribe(self.poly.POLL, self.poll)
-        self.allDataJson = self.allDataJson
+        self.allDataJson = allDataJson
 
     def start(self):
 
