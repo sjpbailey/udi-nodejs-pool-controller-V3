@@ -3,20 +3,32 @@ import json
 import requests
 import requests
 
-headers = {'accept':
-           'application/json',
-           'Content-Type': 'application/json',
-           }
+# Note: json_data will not be serialized by requests
+# exactly as it was in the original request.
+# data = '{"setPoint":89}'
+# response = requests.put('http://192.168.1.53:4200/state/body/setPoint/', headers=headers, data=data)
 
-'''json_data = {
+import requests
 
-    'isOn': False,
-    'setPoint': 89,
+headers = {
+    'accept': 'application/json',
+    # Already added when you pass json=
+    # 'Content-Type': 'application/json',
 }
 
-response = requests.put(
-    'https://192.168.1.53:4201/state/body/setPoint/', headers=headers, json=json_data)'''
+json_data = {"id": 1,
+             "name": "Pool",
+             "setPoint": 45,
+             }
 
+response = requests.put(
+    'http://192.168.1.53:4200/state/body/setPoint', headers=headers, json=json_data)
+
+print()
+print(response.text)
+
+z = requests.get("http://192.168.1.53:4200/state/body/")
+print(z.text)
 ################### Commands ###################################
 '''headers = {
     'accept': 'application/json',
@@ -80,14 +92,16 @@ print("Setpoint {}".format(y["alias"]))
 print()"""
 
 
+# http://192.168.1.53:4200/state/all/systemUnits
+# https://192.168.1.53:4201/state/pump/1/
 # + [0]["bodies"])
-z = requests.get("http://192.168.1.53:4200/state/all/systemUnits")
+z = requests.get("http://192.168.1.53:4200/state/temps")
 # print(json.dumps(z.json(), indent=4, sort_keys=True))
-print(z.text)
+# print(z.text)
 q = json.dumps(z.json(), indent=4, sort_keys=True)
 # print("Setpoint Temp  {}".format(z["temps"]["bodies"][0]["setPoint"]))
-
-# for i in q:
+print(q)
+# for i in z:
 #    print(i)
 # print(z.text)
 
