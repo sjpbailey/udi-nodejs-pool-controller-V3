@@ -54,10 +54,10 @@ class PoolController(udi_interface.Node):
     def poll(self, flag):
         if 'longPoll' in flag:
             LOGGER.debug('longPoll (controller)')
-            self.reportDrivers()
-            self.query()
         else:
             LOGGER.debug('shortPoll (controller)')
+            self.reportDrivers()
+            self.query()
 
     def query(self, command=None):
         nodes = self.poly.getNodes()
