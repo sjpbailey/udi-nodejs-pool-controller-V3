@@ -1,10 +1,24 @@
 import requests
 import json
 import requests
+import requests
 
+headers = {'accept':
+           'application/json',
+           'Content-Type': 'application/json',
+           }
+
+'''json_data = {
+
+    'isOn': False,
+    'setPoint': 89,
+}
+
+response = requests.put(
+    'https://192.168.1.53:4201/state/body/setPoint/', headers=headers, json=json_data)'''
 
 ################### Commands ###################################
-headers = {
+'''headers = {
     'accept': 'application/json',
     'Content-Type': 'application/json',
 }
@@ -15,7 +29,7 @@ json_data = {
 }
 
 response = requests.put(
-    'http://192.168.1.53:4200/state/circuit/setState/', headers=headers, json=json_data)
+    'http://192.168.1.53:4200/state/circuit/setState/', headers=headers, json=json_data)'''
 
 
 # headers = {
@@ -31,12 +45,12 @@ json_data = {
 }
 
 response = requests.put(
-    'http://192.168.1.53:4200/temps/bodies/[0]/setPoint', headers=headers, json=json_data)
+    'http://192.168.1.53:4200/state/body/', headers=headers, json=json_data)
 
 # print("Setpoint Temp  {}".format(data["temps"]["bodies"][0]["setPoint"]))
 
 
-headers = {'accept': 'application/json', }
+# headers = {'accept': 'application/json', }
 # response = requests.get(
 #    'http://192.168.1.53:4200/temps/bodies/setPoint', headers=headers)
 
@@ -47,8 +61,10 @@ headers = {'accept': 'application/json', }
 # print(json.dumps(x.json(), indent=4, sort_keys=True))
 
 # "http://192.168.1.53:4200/state/all/"
+
+
 # "http://192.168.1.53:4200/state/temps/"
-# y = requests.get("http://192.168.1.53:4200/state/all/")
+# y = requests.get("http://192.168.1.53:4200/state/body/")
 # print(y.text)
 # response = (json.dumps(y.json(), indent=4, sort_keys=True))
 
@@ -64,15 +80,15 @@ print("Setpoint {}".format(y["alias"]))
 print()"""
 
 
-# z = requests.get("http://192.168.1.53:4200/state/temps/")
+'''# + [0]["bodies"])
+z = requests.get("http://192.168.1.53:4200/state/temps")
 # print(json.dumps(z.json(), indent=4, sort_keys=True))
-# for temps in z:
-#    print(temps[0])
-# print(z.text)
+print(z.text)
+q = json.dumps(z.json(), indent=4, sort_keys=True)
+for i in z:
+    print(i)
+# print(z.text)'''
 
-
-# a = requests.get("http://192.168.1.53:4200/state/pump/1")
-# print(json.dumps(a.json(), indent=4, sort_keys=True))
 
 # "http://192.168.1.53:4200/state/circuits/"
 # u = requests.get("http://192.168.1.53:4200/state/circuit/6/")
@@ -91,20 +107,18 @@ print()"""
 # "http://192.168.1.53:4200/config/options/bodies/"
 # """
 
-headers = {
+'''headers = {
+    'accept': 'application/json',
+    'Content-Type': 'application/json',
 }
 
 json_data = 70
 
-response = requests.put(
+response = requests.get(
     'http://192.168.1.53:4200/state/body/setPoint/', headers=headers, json=json_data)
 print(response)
 
-response = requests.get(
-    'http://192.168.1.53:4200/state/body/setPoint', headers=headers)
-headers = {
-}
-print(response)
+print(response)'''
 
 data = {
     "appVersion": "8.0.1",
@@ -700,7 +714,7 @@ print()
 # print("Circuits {}".format(data["circuits"][0]["id"]))"""
 print()
 """print("Air Temp  {}".format(data["temps"]["air"]))"""
-print()
+'''print()
 print("Setpoint Temp  {}".format(data["temps"]["bodies"][0]["setPoint"]))
 print()
 # print("Pool Temp  {}".format(data["temps"]["bodies"][0]["temp"]))
@@ -714,7 +728,7 @@ print()
 # print("Virtual Circuits  {}".format(data["virtualCircuits"]))
 print()
 print("Heater {}".format(data["heaters"]))
-print()
+print()'''
 # print("Schedule {}".format(data["schedules"][0]))
 # print()
 # ["name"]))
