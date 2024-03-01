@@ -10,15 +10,10 @@ import requests
 
 import requests
 
-headers = {
-    'accept': 'application/json',
-    # Already added when you pass json=
-    'Content-Type': 'application/json',
-}
 
 json_data = {
     "id": 1,
-    # "name": "Pool",
+    "name": "Pool",
     "setPoint": '75',
 }
 
@@ -27,7 +22,7 @@ json_data = {
 
 
 response = requests.put(
-    'http://192.168.1.53:4200/state/body/setPoint', headers=headers, json=json_data)
+    'http://192.168.1.53:4200/state/body/setPoint', json=json_data)
 
 print()
 print(response)
