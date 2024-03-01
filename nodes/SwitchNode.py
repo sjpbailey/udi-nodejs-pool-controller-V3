@@ -38,7 +38,7 @@ class SwitchNode(udi_interface.Node):
             LOGGER.debug('longPoll (node)')
         else:
             LOGGER.debug('shortPoll (node)')
-            # self.setDriver('ST', 1)
+            self.reportDrivers()
 
     def cmd_on(self, command):
 

@@ -8,7 +8,7 @@ import requests
 # data = '{"setPoint":89}'
 # response = requests.put('http://192.168.1.53:4200/state/body/setPoint/', headers=headers, data=data)
 
-import requests
+'''import requests
 
 
 json_data = {
@@ -28,7 +28,7 @@ print()
 print(response)
 print(response.text)
 if response.status_code == 200:
-    print("oky")
+    print("oky")'''
 
 """z = requests.get("http://192.168.1.53:4200/state/setPoint/")
 # print(z.text)
@@ -108,7 +108,8 @@ print()"""
 # + [0]["bodies"])
 z = requests.get("http://192.168.1.53:4200/state/temps")
 # print(json.dumps(z.json(), indent=4, sort_keys=True))
-# print(z.text)
+print(z.text)
+# print("Pool Running  {}".format(z["temps"]["bodies"][0]["isOn"]))
 # q = requests.get('http://192.168.1.53:4200/state/temps/air')
 # z = json.dumps(q.json(), indent=4, sort_keys=True)
 # print("Setpoint Temp  {}".format(z["temps"]["bodies"][0]["setPoint"]))
