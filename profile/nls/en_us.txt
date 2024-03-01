@@ -22,14 +22,14 @@ CMD-switch0-QUERY-NAME = Query
 
 
 # mynodetype
-ND-bodynodeid-NAME = Template Node
-ND-bodynodeid-ICON = Irrigation	
-ST-body0-ST-NAME = Node Status
-ST-body0-GV0-NAME = Pool Running
-ST-body0-GV1-NAME = Air Temperature
-ST-body0-GV2-NAME = Setpoint
-ST-body0-GV3-NAME = Pool Temp
-CMD-body0-QUERY-NAME = Query
+ND-poolbody-NAME = Template Node
+ND-poolbody-ICON = Irrigation	
+ST-bodypool-ST-NAME = Node Status
+ST-bodypool-GV0-NAME = Pool Running
+ST-bodypool-GV1-NAME = Air Temperature
+ST-bodypool-GV2-NAME = Setpoint
+ST-bodypool-GV3-NAME = Pool Temp
+CMD-bodypool-QUERY-NAME = Query
 
-#CMD-body0-SET_TEMP-NAME = Setpoint
-#CMD-body0-PING-NAME = Ping
+#CMD-bodypool-SET_TEMP-NAME = Setpoint
+#CMD-bodypool-PING-NAME = Ping

@@ -7,7 +7,7 @@ import json
 # My Template Node
 from nodes import PoolNode
 from nodes import SwitchNode
-from nodes import BodyNode
+from nodes import PoolBodyNode
 from nodes import TemplateNode
 
 LOGGER = udi_interface.LOGGER
@@ -130,8 +130,8 @@ class PoolController(udi_interface.Node):
                 self.poly, self.address, address, name, self.allDataJson))
             # LOGGER.info('Found {} Circuits'.format(len(self.circuits)))
             self.poly.addNode(TemplateNode(
-                self.poly, self.address, 'templateaddr', 'Template Node Name'))
-            self.poly.addNode(BodyNode(
+                self.poly, self.address, 'templateaddr', 'Template Node Name', self.allDataJson))
+            self.poly.addNode(PoolBodyNode(
                 self.poly, self.address, "body_1", "Pool Body", self.allDataJson))
 
     def delete(self):

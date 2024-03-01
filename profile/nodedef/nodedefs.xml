@@ -23,7 +23,7 @@
     </nodeDef>
 
     <!-- bodydeid -->
-    <nodeDef id="bodynodeid" nls="body0">
+    <nodeDef id="poolbody" nls="bodypool">
         <editors />
         <sts>
             <st id="GV0" editor="bool" />

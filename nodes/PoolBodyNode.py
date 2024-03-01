@@ -99,7 +99,7 @@ class BodyNode(udi_interface.Node):
         {'driver': 'CLISPH', 'value': 0, 'uom': 17, 'name': "Setpoint adj"},
     ]
 
-    id = 'bodynodeid'
+    id = 'poolbody'
 
     commands = {
         # 'DON': cmd_on,

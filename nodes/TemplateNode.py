@@ -8,7 +8,7 @@ LOGGER = udi_interface.LOGGER
 
 
 class TemplateNode(udi_interface.Node):
-    def __init__(self, polyglot, primary, address, name):
+    def __init__(self, polyglot, primary, address, name, allDataJson):
 
         super(TemplateNode, self).__init__(polyglot, primary, address, name)
         self.poly = polyglot
@@ -16,6 +16,7 @@ class TemplateNode(udi_interface.Node):
 
         self.poly.subscribe(self.poly.START, self.start, address)
         self.poly.subscribe(self.poly.POLL, self.poll)
+        self.allDataJson = self.allDataJson
 
     def start(self):
 
