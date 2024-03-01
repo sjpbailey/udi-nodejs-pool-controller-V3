@@ -70,9 +70,10 @@ class PoolController(udi_interface.Node):
             allData = requests.get(
                 url='{}/state/all'.format(self.apiBaseUrl))
             LOGGER.info(allData)
-            if allData == 200:
+            if allData.status_code == 200:
                 self.setDriver('ST', 1)
-            self.allDataJson = allData.json()
+            else:
+                self.setDriver('ST', 0)
             # LOGGER.info(self.allDataJson)
 
             LOGGER.info("Pool Running  {}".format(
