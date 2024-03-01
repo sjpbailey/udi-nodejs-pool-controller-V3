@@ -19,19 +19,19 @@ class PoolNode(udi_interface.Node):
         self.poly.subscribe(self.poly.START, self.start, address)
         self.poly.subscribe(self.poly.POLL, self.poll)
 
-        apiBaseUrl = self.apiBaseUrl
+        allData = self.allData
 
     def start(self):
 
-        allData = requests.get(
+        self.allData = requests.get(
             url='{}/state/all'.format(self.apiBaseUrl))
 
-        if allData.status_code == 200:
+        if self.allData.status_code == 200:
             self.setDriver('ST', 1)
         else:
             self.setDriver('ST', 0)
 
-        self.allDataJson = allData.json()
+        self.allDataJson = self.allData.json()
         # LOGGER.info(self.allDataJson)
 
         LOGGER.info("Pool Running  {}".format(
