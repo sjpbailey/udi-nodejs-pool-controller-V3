@@ -107,7 +107,7 @@ print()"""
 # https://192.168.1.53:4201/state/pump/1/
 # + [0]["bodies"])
 z = requests.get("http://192.168.1.53:4200/state/temps")
-# print(json.dumps(z.json(), indent=4, sort_keys=True))
+print(json.dumps(z.json(), indent=4, sort_keys=True))
 print(z.text)
 # print("Pool Running  {}".format(z["temps"]["bodies"][0]["isOn"]))
 # q = requests.get('http://192.168.1.53:4200/state/temps/air')
