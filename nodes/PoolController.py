@@ -86,8 +86,8 @@ class PoolController(udi_interface.Node):
             isOn = self.allDataJson["temps"]["bodies"][0]["isOn"]
             if isOn == True:
                 self.setDriver('GV0', 1)
-            else:
-                self.setDriver('GV0', 1)
+            if isOn == False:
+                self.setDriver('GV0', 0)
 
             LOGGER.info("Air Temp  {}".format(
                 self.allDataJson["temps"]["air"]))
@@ -168,8 +168,8 @@ class PoolController(udi_interface.Node):
         'SET_TEMP': cmd_set_temp,
     }
     drivers = [
-        {'driver': 'ST', 'value': 1, 'uom': 2, 'name': "Online"},
-        {'driver': 'GV0', 'value': 1, 'uom': 2, 'name': "Pool Running"},
+        {'driver': 'ST', 'value': 0, 'uom': 2, 'name': "Online"},
+        {'driver': 'GV0', 'value': 0, 'uom': 2, 'name': "Pool Running"},
         {'driver': 'GV1', 'value': None, 'uom': 17, 'name': "Air Temp"},
         {'driver': 'GV2', 'value': None, 'uom': 17, 'name': "Setpoint"},
         {'driver': 'GV3', 'value': None, 'uom': 17, 'name': "Pool Temp"},
