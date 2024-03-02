@@ -4,10 +4,10 @@
     <nodeDef id="controller" nls="ctl">
         <editors />
         <sts>
-            <st id="GV0" editor="bool" />
+            <!--st id="GV0" editor="bool" />
             <st id="GV1" editor="TEMP" />
             <st id="GV2" editor="TEMP" />
-            <st id="GV3" editor="TEMP" />
+            <st id="GV3" editor="TEMP" /-->
             <st id="ST" editor="bool" />
         </sts>
         <cmds>
