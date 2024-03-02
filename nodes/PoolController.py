@@ -116,15 +116,15 @@ class PoolController(udi_interface.Node):
             # LOGGER.info("Heaters {}".format(self.allDataJson["heaters"]))
             # LOGGER.info("Schedules {}".format(self.allDataJson["schedules"]))
             self.poly.addNode(PoolNode(self.poly, self.address,
-                                       'pooladdr', 'Body Pool', allData, self.apiBaseUrl))
+                              'pooladdr', 'Body Pool', allData, self.apiBaseUrl))
 
         for i in self.allDataJson["circuits"]:
             name = i["name"]
             id = i["id"]
-            isOn = i["isOn"]
+            # isOn = i["isOn"]
             LOGGER.info(i["name"])  # , i["id"], i['isOn'])
             LOGGER.info(i["id"])
-            LOGGER.info(i["isOn"])
+            # LOGGER.info(i["isOn"])
             self.allDataJson = self.allDataJson
             address = 'zone_{}'.format(id)
             LOGGER.info(address)
