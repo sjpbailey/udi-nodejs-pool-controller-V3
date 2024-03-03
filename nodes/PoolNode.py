@@ -69,10 +69,18 @@ class PoolNode(udi_interface.Node):
             LOGGER.debug('%s: get ST=%s', self.lpfx, self.getDriver('ST'))
 
     def cmd_on(self, command):
+        json_data = {"id": 6, "state": True}  # True-Start False-Stop
+
+        response = requests.put(
+            'http://192.168.1.53:4200/state/circuit/setState', json=json_data)
 
         self.setDriver('ST', 1)
 
     def cmd_off(self, command):
+        json_data = {"id": 6, "state": False}  # True-Start False-Stop
+
+        response = requests.put(
+            'http://192.168.1.53:4200/state/circuit/setState', json=json_data)
 
         self.setDriver('ST', 0)
 

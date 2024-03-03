@@ -36,8 +36,8 @@
         <cmds>
             <sends />
             <accepts>
-                <!--cmd id="DON" />
-                <cmd id="DOF" /-->
+                <cmd id="DON" />
+                <cmd id="DOF" />
                 <cmd id="QUERY" />
             </accepts>
         </cmds>
