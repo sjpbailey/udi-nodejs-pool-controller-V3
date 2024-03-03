@@ -2,10 +2,7 @@ import json
 import requests
 
 
-# Note: json_data will not be serialized by requests
-# exactly as it was in the original request.
-# data = '{"setPoint":89}'
-# response = requests.put('http://192.168.1.53:4200/state/body/setPoint/', headers=headers, data=data)
+################### Commands ###################################
 
 ###### Heating Setpoint ######
 json_data = {
@@ -25,8 +22,7 @@ if response.status_code == 200:
 
 ###### Pump Speed ######
 json_data = {"id": 50, "circuits": [
-    {"speed": 2400, "units": {"val": 0}, "id": 1, "circuit": 6}]}
-
+    {"speed": 2200, "units": {"val": 0}, "id": 1, "circuit": 6}]}
 
 response = requests.put(
     'http://192.168.1.53:4200/config/pump', json=json_data)
@@ -38,12 +34,11 @@ if response.status_code == 200:
     print("Pump Speed")
 
 
-###### Pool Start from Api ######
-json_data = {"id": 6, "state": True}
+###### Pool Start/Stop ######
+json_data = {"id": 6, "state": False}
 
-
-response = requests.put(
-    'http://192.168.1.53:4200/state/circuit/setState', json=json_data)
+# response = requests.put(
+#    'http://192.168.1.53:4200/state/circuit/setState', json=json_data)
 
 print()
 print(response)
@@ -73,7 +68,7 @@ response = requests.get(
     'http://192.168.1.53:4200/config/options/bodies/', headers=headers)
 
 print(response.text)"""
-################### Commands ###################################
+
 '''headers = {
     'accept': 'application/json',
     'Content-Type': 'application/json',
