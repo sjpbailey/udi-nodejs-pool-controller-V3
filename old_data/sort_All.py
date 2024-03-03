@@ -5,7 +5,7 @@ import requests
 ################### Commands ###################################
 
 ###### Heating Setpoint ######
-json_data = {
+'''json_data = {
     "id": 1,
     # "name": "Pool",
     "heatSetpoint": '45',
@@ -18,8 +18,8 @@ print()
 print(response)
 print(response.text)
 if response.status_code == 200:
-    print("Heat Setpoint")
-
+    print("Heat Setpoint")'''
+'''
 ###### Pump Speed ######
 json_data = {"id": 50, "circuits": [
     {"speed": 2200, "units": {"val": 0}, "id": 1, "circuit": 6}]}
@@ -31,9 +31,9 @@ print()
 print(response)
 print(response.text)
 if response.status_code == 200:
-    print("Pump Speed")
+    print("Pump Speed")'''
 
-
+'''
 ###### Pool Start/Stop ######
 json_data = {"id": 6, "state": False}  # True-Start False-Stop
 
@@ -44,35 +44,21 @@ print()
 print(response)
 print(response.text)
 if response.status_code == 200:
-    print("Start/Stop")
+    print("Start/Stop")'''
 
-
-'''{'http://192.168.1.53:4200/state/circuit/setState', useProxy: false}
-widgets.js:424 {method: 'put', url: 'state/circuit/setState', data: '{"id":6,"state":false}'}
 '''
+###### Pump Status ######
 
-# {
-#   "method": "put",
-#   "url": "/config/pump",
-#   "data": "{\"id\":50,\"circuits\":[{\"speed\":2300,\"units\":{\"val\":0},\"id\":1,\"circuit\":6}]}"
-# }
+response = requests.get('https://192.168.1.53:4200/config/options/pumps/')
+print()
+print(response)
+print(response.text)
+if response.status_code == 200:
+    print("Pump Status?")'''
 
 
-"""z = requests.get("http://192.168.1.53:4200/state/setPoint/")
-# print(z.text)
-
-headers = {
-    'accept': 'application/json',
-}
-response = requests.get(
-    'http://192.168.1.53:4200/config/options/bodies/', headers=headers)
-
-print(response.text)"""
-
-'''headers = {
-    'accept': 'application/json',
-    'Content-Type': 'application/json',
-}
+'''
+###### Override Circuit ######
 
 json_data = {
     'id': 2,
@@ -80,32 +66,7 @@ json_data = {
 }
 
 response = requests.put(
-    'http://192.168.1.53:4200/state/circuit/setState/', headers=headers, json=json_data)'''
-
-
-# headers = {
-#    'accept': 'application/json',
-# Already added when you pass json=
-# 'Content-Type': 'application/json',
-# }
-
-'''json_data = {
-
-    "setPoint": 70,
-
-}
-
-response = requests.get(
-    'http://192.168.1.53:4200/state/temps/', headers=headers, json=json_data)
-
-print("Setpoint Temp  {}".format(response["temps"]["bodies"][0]["setPoint"]))'''
-
-
-# headers = {'accept': 'application/json', }
-# response = requests.get(
-#    'http://192.168.1.53:4200/temps/bodies/setPoint', headers=headers)
-
-# print(response.text)
+    'http://192.168.1.53:4200/state/circuit/setState/', json=json_data)'''
 
 
 # x = requests.get('http://192.168.1.53:4200/config/circuits/')
@@ -134,9 +95,12 @@ print()"""
 # http://192.168.1.53:4200/state/all/systemUnits
 # https://192.168.1.53:4201/state/pump/1/
 # + [0]["bodies"])
-# z = requests.get("http://192.168.1.53:4200/state/temps")
-# print(json.dumps(z.json(), indent=4, sort_keys=True))
+z = requests.get("http://192.168.1.53:4200/state/pumps/")
+print(json.dumps(z.json(), indent=4, sort_keys=True))
 # print(z.text)
+print()
+
+
 # print("Pool Running  {}".format(z["temps"]["bodies"][0]["isOn"]))
 # q = requests.get('http://192.168.1.53:4200/state/temps/air')
 # z = json.dumps(q.json(), indent=4, sort_keys=True)
@@ -164,18 +128,6 @@ print()"""
 # "http://192.168.1.53:4200/config/options/bodies/"
 # """
 
-'''headers = {
-    'accept': 'application/json',
-    'Content-Type': 'application/json',
-}
-
-json_data = 70
-
-response = requests.get(
-    'http://192.168.1.53:4200/state/body/setPoint/', headers=headers, json=json_data)
-print(response)
-
-print(response)'''
 
 data = {
     "appVersion": "8.0.1",
