@@ -35,10 +35,10 @@ if response.status_code == 200:
 
 
 ###### Pool Start/Stop ######
-json_data = {"id": 6, "state": False}
+json_data = {"id": 6, "state": False}  # True-Start False-Stop
 
-# response = requests.put(
-#    'http://192.168.1.53:4200/state/circuit/setState', json=json_data)
+response = requests.put(
+    'http://192.168.1.53:4200/state/circuit/setState', json=json_data)
 
 print()
 print(response)
