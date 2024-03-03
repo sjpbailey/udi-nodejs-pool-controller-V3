@@ -7,13 +7,11 @@ import requests
 # data = '{"setPoint":89}'
 # response = requests.put('http://192.168.1.53:4200/state/body/setPoint/', headers=headers, data=data)
 
-'''import requests
-
 
 json_data = {
     "id": 1,
-    "name": "Pool",
-    "setPoint": '75',
+    # "name": "Pool",
+    "heatSetpoint": '45',
 }
 
 # 'http://192.168.1.53:4200/state/body/setPoint'
@@ -27,7 +25,7 @@ print()
 print(response)
 print(response.text)
 if response.status_code == 200:
-    print("oky")'''
+    print("oky")
 
 """z = requests.get("http://192.168.1.53:4200/state/setPoint/")
 # print(z.text)
@@ -105,9 +103,9 @@ print()"""
 # http://192.168.1.53:4200/state/all/systemUnits
 # https://192.168.1.53:4201/state/pump/1/
 # + [0]["bodies"])
-z = requests.get("http://192.168.1.53:4200/state/temps")
-print(json.dumps(z.json(), indent=4, sort_keys=True))
-print(z.text)
+# z = requests.get("http://192.168.1.53:4200/state/temps")
+# print(json.dumps(z.json(), indent=4, sort_keys=True))
+# print(z.text)
 # print("Pool Running  {}".format(z["temps"]["bodies"][0]["isOn"]))
 # q = requests.get('http://192.168.1.53:4200/state/temps/air')
 # z = json.dumps(q.json(), indent=4, sort_keys=True)
@@ -714,7 +712,7 @@ print()
 print("Setpoint {}".format(data["temps"]["bodies"][0]))"""
 
 
-print()
+'''print()
 print()
 # print("Schedule {}".format(data["schedules"][0]))
 # print("Bodies {}".format(data["config"]["options"]))  # [0]["setPoint"]))
@@ -744,8 +742,8 @@ print()
 #      [0]["name"]))
 # print("Circuits {}".format(data["circuits"][1]["name"]))
 # print("Circuits {}".format(data["circuits"][2]["name"]))
-# print("Circuits {}".format(data["circuits"][3]["name"]))
-# print("Circuits {}".format(data["circuits"][0]["id"]))"""
+# print("Circuits {}".format(data["circuits"][3]["name"]))'''
+# print("Circuits {}".format(data["circuits"][0]["id"]))
 print()
 """print("Air Temp  {}".format(data["temps"]["air"]))"""
 '''print()
