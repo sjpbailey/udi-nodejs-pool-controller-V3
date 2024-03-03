@@ -7,16 +7,12 @@ import requests
 # data = '{"setPoint":89}'
 # response = requests.put('http://192.168.1.53:4200/state/body/setPoint/', headers=headers, data=data)
 
-
+###### Heating Setpoint ######
 json_data = {
     "id": 1,
     # "name": "Pool",
     "heatSetpoint": '45',
 }
-
-# 'http://192.168.1.53:4200/state/body/setPoint'
-# 'http://192.168.1.53:4200/config/options/bodies/setPoint'
-
 
 response = requests.put(
     'http://192.168.1.53:4200/state/body/setPoint', json=json_data)
@@ -25,7 +21,47 @@ print()
 print(response)
 print(response.text)
 if response.status_code == 200:
-    print("oky")
+    print("Heat Setpoint")
+
+###### Pump Speed ######
+json_data = {"id": 50, "circuits": [
+    {"speed": 2400, "units": {"val": 0}, "id": 1, "circuit": 6}]}
+
+
+response = requests.put(
+    'http://192.168.1.53:4200/config/pump', json=json_data)
+
+print()
+print(response)
+print(response.text)
+if response.status_code == 200:
+    print("Pump Speed")
+
+
+###### Pool Start from Api ######
+json_data = {"id": 6, "state": True}
+
+
+response = requests.put(
+    'http://192.168.1.53:4200/state/circuit/setState', json=json_data)
+
+print()
+print(response)
+print(response.text)
+if response.status_code == 200:
+    print("Start/Stop")
+
+
+'''{'http://192.168.1.53:4200/state/circuit/setState', useProxy: false}
+widgets.js:424 {method: 'put', url: 'state/circuit/setState', data: '{"id":6,"state":false}'}
+'''
+
+# {
+#   "method": "put",
+#   "url": "/config/pump",
+#   "data": "{\"id\":50,\"circuits\":[{\"speed\":2300,\"units\":{\"val\":0},\"id\":1,\"circuit\":6}]}"
+# }
+
 
 """z = requests.get("http://192.168.1.53:4200/state/setPoint/")
 # print(z.text)
