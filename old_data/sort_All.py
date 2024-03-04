@@ -101,7 +101,7 @@ z = requests.get("http://192.168.1.53:4200/state/pumps/")
 # print()
 
 z = requests.get("http://192.168.1.53:4200/state/filters/")
-# print(json.dumps(z.json(), indent=4, sort_keys=True))
+print(json.dumps(z.json(), indent=4, sort_keys=True))
 # print(z.text)
 # print()
 
@@ -701,7 +701,7 @@ data = {
 
 # refPressure
 print()
-print("Filter PSI {}".format(data["filters"][0]["refPressure"]))
+print("Filter PSI {}".format(data["filters"][0]["pressure"]))
 print()
 """print("App Version {}".format(data["appVersion"]))
 print()
