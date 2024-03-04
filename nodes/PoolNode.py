@@ -112,6 +112,17 @@ class PoolNode(udi_interface.Node):
     def query(self, command=None):
         self.reportDrivers()
 
+    def cmd_set_temp(self, command):
+        value = int(command.get('value'))
+        json_data = {
+            "id": 1,
+            # "name": "Pool",
+            "heatSetpoint": value,
+        }
+
+        response = requests.put(
+            'http://192.168.1.53:4200/state/body/setPoint', json=json_data)
+
     drivers = [
         {'driver': 'GV0', 'value': 0, 'uom': 2, 'name': "Pool Running"},
         {'driver': 'GV1', 'value': None, 'uom': 17, 'name': "Air Temp"},
@@ -131,5 +142,6 @@ class PoolNode(udi_interface.Node):
     commands = {
         'DON': cmd_on,
         'DOF': cmd_off,
+        'SET_TEMP': cmd_set_temp,
         'QUERY': query
     }

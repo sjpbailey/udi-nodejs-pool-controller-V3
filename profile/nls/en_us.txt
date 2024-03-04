@@ -2,10 +2,11 @@
 # controller
 ND-controller-NAME = Pool Controller
 ND-controller-ICON = Irrigation
+ST-ctl-ST-NAME = NodeServer Online
 CMD-ctl-QUERY-NAME = Query
 CMD-ctl-UPDATE_PROFILE-NAME = Update Profile
 CMD-TMP-SET_TEMP-NAME = Setpoint
-ST-ctl-ST-NAME = NodeServer Online
+
 
 # mynodetype
 ND-poolnode-NAME = Body Pool

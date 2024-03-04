@@ -701,8 +701,13 @@ data = {
 
 # refPressure
 print()
-print("Filter PSI {}".format(data["filters"][0]["pressure"]))
+# print("Filter PSI {}".format(data["filters"][0]["pressure"]))
 print()
+print()
+print("Filter PSI {}".format(data["heaters"]))
+print()
+print()
+print("Setpoint {}".format(data["temps"]["bodies"][0]))
 """print("App Version {}".format(data["appVersion"]))
 print()
 print("Setpoint {}".format(data["temps"]["bodies"][0]))"""

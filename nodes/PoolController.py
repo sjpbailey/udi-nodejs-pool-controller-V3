@@ -157,27 +157,11 @@ class PoolController(udi_interface.Node):
             self.Notices['auth'] = 'Please set proper api_url and circuits in configuration page'
             # self.Notices['test'] = 'This is only a test'
 
-    def cmd_set_temp(self, command):
-        value = int(command.get('value'))
-        if self.type == 'spa':
-            requests.get(
-                url='{0}/spaheat/setpoint/{1}'.format(self.apiBaseUrl, value))
-            self.update()
-        else:
-            requests.get(
-                url='{0}/poolheat/setpoint/{1}'.format(self.apiBaseUrl, value))
-            self.update()
-
     id = 'controller'
     commands = {
         'QUERY': query,
-        'SET_TEMP': cmd_set_temp,
+
     }
     drivers = [
         {'driver': 'ST', 'value': 0, 'uom': 2, 'name': "Online"},
-        # {'driver': 'GV0', 'value': 0, 'uom': 2, 'name': "Pool Running"},
-        # {'driver': 'GV1', 'value': None, 'uom': 17, 'name': "Air Temp"},
-        # {'driver': 'GV2', 'value': None, 'uom': 17, 'name': "Setpoint"},
-        # {'driver': 'GV3', 'value': None, 'uom': 17, 'name': "Pool Temp"},
-        {'driver': 'CLISPH', 'value': 0, 'uom': 17, 'name': "Setpoint adj"},
     ]
