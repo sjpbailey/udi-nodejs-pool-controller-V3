@@ -55,7 +55,7 @@
     <nodeDef id="switchnodeid" nls="switch0">
         <editors />
         <sts>
-            <st id="ST" editor="ONLINE" />
+            <st id="ST" editor="RUNIN" />
             <!--st id="GV1" editor="bool" /-->
         </sts>
         <cmds>
