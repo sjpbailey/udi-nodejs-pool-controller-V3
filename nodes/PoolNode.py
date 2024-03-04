@@ -78,8 +78,8 @@ class PoolNode(udi_interface.Node):
         self.setDriver('GV7', self.allDataJson["pumps"][0]["flow"])
 
         LOGGER.info("Filter PSI  {}".format(
-            self.allDataJson["filters"][0]["refPressure"]))
-        self.setDriver('GV8', self.allDataJson["filters"][0]["refPressure"])
+            self.allDataJson["filters"][0]["pressure"]))
+        self.setDriver('GV8', self.allDataJson["filters"][0]["pressure"])
 
         self.http = urllib3.PoolManager()
 
