@@ -56,6 +56,24 @@ class PoolNode(udi_interface.Node):
         LOGGER.info("Pool Temp  {}".format(
             self.allDataJson["temps"]["bodies"][0]["temp"]))
         self.setDriver('GV3', self.allDataJson["temps"]["bodies"][0]["temp"])
+
+        LOGGER.info("Pump Status  {}".format(
+            self.allDataJson["pumps"][0]["circuits"][0]["circuit"]["isOn"]))
+        self.setDriver(
+            'GV4', self.allDataJson["pumps"][0]["circuits"][0]["circuit"]["isOn"])
+
+        LOGGER.info("Pump Watts  {}".format(
+            self.allDataJson["pumps"][0]["watts"]))
+        self.setDriver('GV5', self.allDataJson["pumps"][0]["watts"])
+
+        LOGGER.info("Pump RPM  {}".format(
+            self.allDataJson["pumps"][0]["rpm"]))
+        self.setDriver('GV6', self.allDataJson["pumps"][0]["rpm"])
+
+        LOGGER.info("Pump GPM  {}".format(
+            self.allDataJson["pumps"][0]["flow"]))
+        self.setDriver('GV7', self.allDataJson["pumps"][0]["flow"])
+
         self.http = urllib3.PoolManager()
 
     def poll(self, polltype):
@@ -92,6 +110,10 @@ class PoolNode(udi_interface.Node):
         {'driver': 'GV1', 'value': None, 'uom': 17, 'name': "Air Temp"},
         {'driver': 'GV2', 'value': None, 'uom': 17, 'name': "Setpoint"},
         {'driver': 'GV3', 'value': None, 'uom': 17, 'name': "Pool Temp"},
+        {'driver': 'GV4', 'value': None, 'uom': 2, 'name': "Pump Status"},
+        {'driver': 'GV5', 'value': None, 'uom': 73, 'name': "Pump Watts"},
+        {'driver': 'GV6', 'value': None, 'uom': 89, 'name': "Pump RPM"},
+        {'driver': 'GV7', 'value': None, 'uom': 69, 'name': "Pump GPM"},
         {'driver': 'CLISPH', 'value': 0, 'uom': 17, 'name': "Setpoint adj"},
         {'driver': 'ST', 'value': 0, 'uom': 2, 'name': "Online"},
     ]
