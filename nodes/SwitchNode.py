@@ -11,7 +11,7 @@ LOGGER = udi_interface.LOGGER
 
 class SwitchNode(udi_interface.Node):
 
-    def __init__(self, polyglot, primary, address, name, allDataJson):
+    def __init__(self, polyglot, primary, address, name, allDataJson, api_url):
 
         super(SwitchNode, self).__init__(polyglot, primary, address, name)
         self.poly = polyglot
@@ -28,6 +28,7 @@ class SwitchNode(udi_interface.Node):
         id1 = id
         LOGGER.info(id1)
         self.id1 = id1
+        self.api_url = api_url
 
     def start(self):
         LOGGER.info(self.address)
