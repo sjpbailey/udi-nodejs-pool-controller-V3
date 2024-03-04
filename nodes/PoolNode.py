@@ -139,7 +139,7 @@ class PoolNode(udi_interface.Node):
         {'driver': 'GV3', 'value': None, 'uom': 17, 'name': "Pool Temp"},
         {'driver': 'GV4', 'value': None, 'uom': 2, 'name': "Pump Status"},
         {'driver': 'GV8', 'value': None, 'uom': 52, 'name': "Filter PSI"},
-        {'driver': 'CLISPH', 'value': 0, 'uom': 17, 'name': "Setpoint adj"},
+        {'driver': 'CLISPH', 'value': 45, 'uom': 17, 'name': "Setpoint adj"},
         {'driver': 'ST', 'value': 0, 'uom': 2, 'name': "Online"},
     ]
 
