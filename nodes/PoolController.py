@@ -110,8 +110,9 @@ class PoolController(udi_interface.Node):
             self.poly.addNode(SwitchNode(
                 self.poly, self.address, address, name, self.apiBaseUrl, self.api_url))
             # LOGGER.info('Found {} Circuits'.format(len(self.circuits)))
+            LOGGER.info("Circuit Installation Complete")
         else:
-            LOGGER.info("OTHER THAN VSF PUMP")
+            LOGGER.info("Circuit Not Found")
 
         for i in self.allDataJson["pumps"]:
             self.allDataJson = self.allDataJson
@@ -124,9 +125,28 @@ class PoolController(udi_interface.Node):
             address = 'pump_{}'.format(address)
             if i["type"]['desc'] == "Intelliflo VSF":
                 LOGGER.info("Install Intelliflo VSF")
-
                 self.poly.addNode(PumpNode(
                     self.poly, self.address, address, name, allData, self.apiBaseUrl, self.api_url))
+        else:
+            LOGGER.info("Pump Not Found")
+
+        for i in self.allDataJson["heaters"]:
+            LOGGER.info(i['name'])
+            LOGGER.info(i['id'])
+            LOGGER.info(i['type']['desc'])
+            LOGGER.info(i['isOn'])
+            LOGGER.info("Heater Discovery Complete")
+
+        else:
+            LOGGER.info("No Heaters Found")
+
+        for i in self.allDataJson["virtualCircuits"]:
+            LOGGER.info(i['name'])
+            LOGGER.info(i['id'])
+            LOGGER.info(i['isOn'])
+            LOGGER.info("Virtual Circuit Discovery Complete")
+        else:
+            LOGGER.info("No Virtual Circuits Found")
 
     def delete(self):
         LOGGER.info('Being deleted')
