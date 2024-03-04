@@ -10,6 +10,8 @@ This works with Eisy/Polisy
 
 [Resource](https://www.troublefreepool.com/threads/nodejs-pool-controller-work-with-pump-only.246189/)
 
+[Resource](https://sites.google.com/view/randypool/swg/poolcontroller)
+
 ### Installation
 
 1."Configuration" and add the base url to your nodejs-poolController application installation as a "Custom Configuration Parameter" with a key of "api_url"
