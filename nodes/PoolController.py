@@ -108,10 +108,10 @@ class PoolController(udi_interface.Node):
             address = 'zone_{}'.format(id)
             LOGGER.info(address)
             self.poly.addNode(SwitchNode(
-                self.poly, self.address, address, name, self.allDataJson, self.api_url))
+                self.poly, self.address, address, name, self.apiBaseUrl, self.api_url))
             # LOGGER.info('Found {} Circuits'.format(len(self.circuits)))
         else:
-            LOGGER.info("OTHER DEVICE")
+            LOGGER.info("OTHER THAN VSF PUMP")
 
         for i in self.allDataJson["pumps"]:
             name = i["name"]
