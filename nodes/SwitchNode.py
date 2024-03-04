@@ -48,7 +48,7 @@ class SwitchNode(udi_interface.Node):
         }
 
         response = requests.put(
-            'http://192.168.1.53:4200/state/circuit/setState/',  json=json_data)
+            self.api_url + '/state/circuit/setState/',  json=json_data)
 
         self.setDriver('ST', 1)
 
@@ -60,7 +60,7 @@ class SwitchNode(udi_interface.Node):
         }
 
         response = requests.put(
-            'http://192.168.1.53:4200/state/circuit/setState/',  json=json_data)
+            self.api_url + '/state/circuit/setState/',  json=json_data)
 
         self.setDriver('ST', 0)
 
