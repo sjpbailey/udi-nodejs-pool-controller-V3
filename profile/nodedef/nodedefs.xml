@@ -34,6 +34,7 @@
             <st id="GV5" editor="WATT" />
             <st id="GV6" editor="RPM" />
             <st id="GV7" editor="GPM" />
+            <st id="GV8" editor="PSI" />
 
             <st id="ST" editor="bool" />
 

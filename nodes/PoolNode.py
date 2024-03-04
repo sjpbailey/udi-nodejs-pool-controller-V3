@@ -77,6 +77,10 @@ class PoolNode(udi_interface.Node):
             self.allDataJson["pumps"][0]["flow"]))
         self.setDriver('GV7', self.allDataJson["pumps"][0]["flow"])
 
+        LOGGER.info("Filter PSI  {}".format(
+            self.allDataJson["filters"][0]["refPressure"]))
+        self.setDriver('GV8', self.allDataJson["filters"][0]["refPressure"])
+
         self.http = urllib3.PoolManager()
 
     def poll(self, polltype):
@@ -117,6 +121,7 @@ class PoolNode(udi_interface.Node):
         {'driver': 'GV5', 'value': None, 'uom': 73, 'name': "Pump Watts"},
         {'driver': 'GV6', 'value': None, 'uom': 89, 'name': "Pump RPM"},
         {'driver': 'GV7', 'value': None, 'uom': 69, 'name': "Pump GPM"},
+        {'driver': 'GV8', 'value': None, 'uom': 52, 'name': "Pump GPM"},
         {'driver': 'CLISPH', 'value': 0, 'uom': 17, 'name': "Setpoint adj"},
         {'driver': 'ST', 'value': 0, 'uom': 2, 'name': "Online"},
     ]

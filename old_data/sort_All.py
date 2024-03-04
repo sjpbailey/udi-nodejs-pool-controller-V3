@@ -96,9 +96,14 @@ print()"""
 # https://192.168.1.53:4201/state/pump/1/
 # + [0]["bodies"])
 z = requests.get("http://192.168.1.53:4200/state/pumps/")
-print(json.dumps(z.json(), indent=4, sort_keys=True))
+# print(json.dumps(z.json(), indent=4, sort_keys=True))
 # print(z.text)
-print()
+# print()
+
+z = requests.get("http://192.168.1.53:4200/state/filters/")
+# print(json.dumps(z.json(), indent=4, sort_keys=True))
+# print(z.text)
+# print()
 
 
 # print("Pool Running  {}".format(z["temps"]["bodies"][0]["isOn"]))
@@ -288,16 +293,24 @@ data = {
                 "name": "pool",
                 "val": 0
             },
+            "cleanPercentage": 0,
             "equipmentType": "filter",
             "filterType": {
                 "desc": "Cartridge",
-                "hasBackwash": False,
+                "hasBackwash":  False,
                 "name": "cartridge",
                 "val": 1
             },
             "id": 1,
-            "isOn": False,
-            "name": "Filter 1"
+            "isOn": True,
+            "name": "Filter 1",
+            "pressure": 15.65,
+            "pressureUnits": {
+                "desc": "Pounds per Sqare Inch",
+                "name": "psi",
+                "val": 0
+            },
+            "refPressure": 15.65
         }
     ],
     "freeze": False,
@@ -686,11 +699,11 @@ data = {
     ]
 }
 
-
-"""print()
-print("Pool Location {}".format(data["circuits"][0]["light"]))
+# refPressure
 print()
-print("App Version {}".format(data["appVersion"]))
+print("Filter PSI {}".format(data["filters"][0]["refPressure"]))
+print()
+"""print("App Version {}".format(data["appVersion"]))
 print()
 print("Setpoint {}".format(data["temps"]["bodies"][0]))"""
 
