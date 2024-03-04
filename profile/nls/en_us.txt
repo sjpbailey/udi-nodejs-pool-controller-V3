@@ -24,9 +24,8 @@ ST-bodypool-GV5-NAME = Pump Watts
 ST-bodypool-GV6-NAME = Pump RPM
 ST-bodypool-GV7-NAME = Pump GPM
 CMD-bodypool-QUERY-NAME = Query
-
 CMD-bodypool-SET_TEMP-NAME = Heat Setpoint
-#CMD-bodypool-PING-NAME = Ping
+CMD-bodypool-SET_SPEED-NAME = Pump RPM
 
 # mynodetype
 ND-switchnodeid-NAME = Circuits
