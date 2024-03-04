@@ -95,13 +95,13 @@ print()"""
 # http://192.168.1.53:4200/state/all/systemUnits
 # https://192.168.1.53:4201/state/pump/1/
 # + [0]["bodies"])
-z = requests.get("http://192.168.1.53:4200/state/pumps/")
+# z = requests.get("http://192.168.1.53:4200/state/pumps/")
 # print(json.dumps(z.json(), indent=4, sort_keys=True))
-# print(z.text)
+# print(z.text[0])
 # print()
 
-z = requests.get("http://192.168.1.53:4200/state/filters/")
-print(json.dumps(z.json(), indent=4, sort_keys=True))
+# z = requests.get("http://192.168.1.53:4200/state/filters/")
+# print(json.dumps(z.json(), indent=4, sort_keys=True))
 # print(z.text)
 # print()
 
@@ -699,7 +699,29 @@ data = {
     ]
 }
 
-# refPressure
+print()
+print("Pumps  {}".format(data["pumps"][0]))
+print()
+print("Type  {}".format(data["pumps"][0]["type"]['desc']))
+print()
+print("Speed Setpoint  {}".format(data["pumps"][0]["circuits"][0]["speed"]))
+print()
+print("Minimum Speed  {}".format(data["pumps"][0]["type"]['minSpeed']))
+print()
+print("Maximum Speed  {}".format(data["pumps"][0]["type"]['maxSpeed']))
+print()
+print("Maximum GPM  {}".format(data["pumps"][0]["type"]['maxFlow']))
+print()
+print("Address  {}".format(data["pumps"][0]["address"]))
+print()
+
+print("Max Speed  {}".format(data["pumps"][0]["circuits"][0]))
+print()
+
+
+print("Pumps  {}".format(data["pumps"][0]["circuits"][0]["units"]['val']))
+print()
+"""
 print()
 # print("Filter PSI {}".format(data["filters"][0]["pressure"]))
 print()
@@ -708,7 +730,7 @@ print("Filter PSI {}".format(data["heaters"]))
 print()
 print()
 print("Setpoint {}".format(data["temps"]["bodies"][0]))
-"""print("App Version {}".format(data["appVersion"]))
+print("App Version {}".format(data["appVersion"]))
 print()
 print("Setpoint {}".format(data["temps"]["bodies"][0]))"""
 
