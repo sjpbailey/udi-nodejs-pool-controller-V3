@@ -130,7 +130,7 @@ class PoolNode(udi_interface.Node):
             {"speed": value, "units": {"val": 0}, "id": 1, "circuit": 6}]}
 
         response = requests.put(
-            self.api_url + + '/config/pump', json=json_data)
+            self.api_url + '/config/pump', json=json_data)
 
     drivers = [
         {'driver': 'GV0', 'value': 0, 'uom': 2, 'name': "Pool Running"},
