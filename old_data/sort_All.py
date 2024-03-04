@@ -699,6 +699,33 @@ data = {
     ]
 }
 
+###### Virtual Circuits ######
+print()
+# ["bodies"][0]["temp"]))
+print("Pool Temp  {}".format(data["virtualCircuits"]))
+print()
+
+for i in data["virtualCircuits"]:
+    print(i['name'])
+    print(i['id'])
+    print(i['isOn'])
+    # print(i['name'])
+
+
+###### Heaters ######
+print()
+# ["bodies"][0]["temp"]))
+print("Pool Temp  {}".format(data["heaters"]))
+print()
+for i in data["heaters"]:
+    print(i['name'])
+    print(i['id'])
+    print(i['type']['desc'])
+    print(i['isOn'])
+    # print(i['name'])
+
+'''
+###### PUMPS ######
 print()
 print("Pumps  {}".format(data["pumps"][0]))
 print()
@@ -729,7 +756,7 @@ for i in data["pumps"]:
     # print(i["circuits"][0])
     # print(i["rpm"])
 if i["type"]['desc'] == "Intelliflo VSF":
-    print("Intelliflo")
+    print("Intelliflo")'''
 
 """
 print()

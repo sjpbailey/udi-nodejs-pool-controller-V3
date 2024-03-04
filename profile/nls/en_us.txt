@@ -40,6 +40,7 @@ ND-pumpnode-NAME = Pump
 ND-pumpnode-ICON = Irrigation	
 ST-pumppool-ST-NAME = Node Status
 ST-pumppool-GV0-NAME = Pool Running
+ST-bodypool-GV30-NAME = -
 ST-pumppool-GV1-NAME = Pump Status
 ST-pumppool-GV2-NAME = Pump Watts
 ST-pumppool-GV3-NAME = Pump RPM
