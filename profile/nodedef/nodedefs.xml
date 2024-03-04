@@ -30,11 +30,13 @@
             <st id="GV1" editor="TEMP" />
             <st id="GV2" editor="TEMP" />
             <st id="GV3" editor="TEMP" />
+            <st id="GV8" editor="PSI" />
+
             <st id="GV4" editor="bool" />
             <st id="GV5" editor="WATT" />
             <st id="GV6" editor="RPM" />
             <st id="GV7" editor="GPM" />
-            <st id="GV8" editor="PSI" />
+
 
             <st id="ST" editor="bool" />
 
