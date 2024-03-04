@@ -8,7 +8,7 @@ This works with Eisy/Polisy
 
 ![Nixie Install](https://github.com/tagyoureit/nodejs-poolController/wiki/DIY-Standalone-Nixie-Pool-Controller)
 
-![Resource](https://www.troublefreepool.com/threads/nodejs-pool-controller-work-with-pump-only.246189/)
+[Resource](https://www.troublefreepool.com/threads/nodejs-pool-controller-work-with-pump-only.246189/)
 
 ### Installation
 
