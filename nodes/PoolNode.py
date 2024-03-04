@@ -59,8 +59,11 @@ class PoolNode(udi_interface.Node):
 
         LOGGER.info("Pump Status  {}".format(
             self.allDataJson["pumps"][0]["circuits"][0]["circuit"]["isOn"]))
-        self.setDriver(
-            'GV4', self.allDataJson["pumps"][0]["circuits"][0]["circuit"]["isOn"])
+        pisOn = self.allDataJson["pumps"][0]["circuits"][0]["circuit"]["isOn"]
+        if pisOn == True:
+            self.setDriver('GV4', 1)
+        if pisOn == False:
+            self.setDriver('GV4', 0)
 
         LOGGER.info("Pump Watts  {}".format(
             self.allDataJson["pumps"][0]["watts"]))
