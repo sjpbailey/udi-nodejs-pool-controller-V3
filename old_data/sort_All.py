@@ -126,13 +126,19 @@ print()"""
 
 # http://192.168.1.53:4200/config/options/schedules/
 # temps/bodies/[0]/setPoint
-# p = requests.get("http://192.168.1.53:4200/config/options/heaters/")
-# print(json.dumps(p.json(), indent=4, sort_keys=True))
+p = requests.get("http://192.168.1.53:4200/config/options/heaters/")
+p = (json.dumps(p.json(), indent=4, sort_keys=True))
 # print(p.text)
 # "http://192.168.1.53:4200/config/options/schedules/"
 # "http://192.168.1.53:4200/config/options/bodies/"
 # """
-
+for i in p:
+    print(i[0:1])
+    '''print(i['name'])
+    print(i['id'])
+    print(i['type']['desc'])
+    print(i['isOn'])
+    # print(i['name'])'''
 
 data = {
     "appVersion": "8.0.1",
