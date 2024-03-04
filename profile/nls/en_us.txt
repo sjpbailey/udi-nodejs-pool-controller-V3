@@ -13,6 +13,8 @@ ND-poolnode-ICON = Irrigation
 ST-bodypool-ST-NAME = Node Status
 ST-bodypool-GV0-NAME = Pool Running
 ST-bodypool-GV1-NAME = Air Temperature
+ST-bodypool-GV8-NAME = Filter PSI
+ST-bodypool-GV30-NAME = -
 ST-bodypool-GV2-NAME = Setpoint
 ST-bodypool-GV3-NAME = Pool Temp
 
@@ -20,7 +22,7 @@ ST-bodypool-GV4-NAME = Pump Status
 ST-bodypool-GV5-NAME = Pump Watts
 ST-bodypool-GV6-NAME = Pump RPM
 ST-bodypool-GV7-NAME = Pump GPM
-ST-bodypool-GV8-NAME = Filter PSI
+
 
 
 CMD-bodypool-QUERY-NAME = Query
