@@ -28,6 +28,10 @@
     <range uom="52" min="-100000" max="100000" step="1" prec="1"/>
   </editor>
 
+  <editor id="STATUS">
+    <range uom="80" subset="0,1" />
+  </editor>
+
   <editor id="CTL_TEMP">
     <range uom="17" min="34" max="104" step="1" prec="0" />
   </editor>
