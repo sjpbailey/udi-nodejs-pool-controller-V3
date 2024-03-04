@@ -8,6 +8,7 @@ import json
 from nodes import TemplateNode
 from nodes import PoolNode
 from nodes import SwitchNode
+from nodes import PumpNode
 
 
 LOGGER = udi_interface.LOGGER
@@ -109,6 +110,19 @@ class PoolController(udi_interface.Node):
             self.poly.addNode(SwitchNode(
                 self.poly, self.address, address, name, self.allDataJson, self.api_url))
             # LOGGER.info('Found {} Circuits'.format(len(self.circuits)))
+        else:
+            LOGGER.info("OTHER DEVICE")
+
+        for i in self.allDataJson["pumps"]:
+            name = i["name"]
+            LOGGER.info(i["name"])
+            address = i["address"]
+            LOGGER.info(i["address"])
+            LOGGER.info(i["type"]['desc'])
+            if i["type"]['desc'] == "Intelliflo VSF":
+                LOGGER.info("Intelliflo")
+                self.poly.addNode(PumpNode(
+                    self.poly, self.address, address, name, self.allDataJson, self.api_url))
 
     def delete(self):
         LOGGER.info('Being deleted')

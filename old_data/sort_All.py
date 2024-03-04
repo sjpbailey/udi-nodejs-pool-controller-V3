@@ -715,12 +715,22 @@ print()
 print("Address  {}".format(data["pumps"][0]["address"]))
 print()
 
-print("Max Speed  {}".format(data["pumps"][0]["circuits"][0]))
+print("Circuit  {}".format(data["pumps"][0]["circuits"][0]))
 print()
 
-
-print("Pumps  {}".format(data["pumps"][0]["circuits"][0]["units"]['val']))
+print("RPM  {}".format(data["pumps"][0]["circuits"][0]["units"]['val']))
 print()
+
+for i in data["pumps"]:
+    # ["name"], i["id"], i['isOn'])
+    print(i["name"])
+    print(i["address"])  # , i["rpm"], i["circuits"][0], i["name"])
+    print(i["type"]['desc'])
+    # print(i["circuits"][0])
+    # print(i["rpm"])
+if i["type"]['desc'] == "Intelliflo VSF":
+    print("Intelliflo")
+
 """
 print()
 # print("Filter PSI {}".format(data["filters"][0]["pressure"]))

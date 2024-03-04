@@ -8,11 +8,11 @@ import urllib3
 LOGGER = udi_interface.LOGGER
 
 
-class PoolNode(udi_interface.Node):
+class PumpNode(udi_interface.Node):
 
     def __init__(self, polyglot, primary, address, name, allData, apiBaseUrl, api_url):
 
-        super(PoolNode, self).__init__(polyglot, primary, address, name)
+        super(PumpNode, self).__init__(polyglot, primary, address, name)
         self.poly = polyglot
         self.lpfx = '%s:%s' % (address, name)
 
@@ -46,42 +46,25 @@ class PoolNode(udi_interface.Node):
         if isON == False:
             self.setDriver('GV0', 0)
 
-        LOGGER.info("Air Temp  {}".format(self.allDataJson["temps"]["air"]))
-        self.setDriver('GV1', self.allDataJson["temps"]["air"])
-
-        LOGGER.info("Setpoint Temp  {}".format(
-            self.allDataJson["temps"]["bodies"][0]["setPoint"]))
-        self.setDriver(
-            'GV2', self.allDataJson["temps"]["bodies"][0]["setPoint"])
-
-        LOGGER.info("Pool Temp  {}".format(
-            self.allDataJson["temps"]["bodies"][0]["temp"]))
-        self.setDriver('GV3', self.allDataJson["temps"]["bodies"][0]["temp"])
-
         LOGGER.info("Pump Status  {}".format(
             self.allDataJson["pumps"][0]["circuits"][0]["circuit"]["isOn"]))
         pisOn = self.allDataJson["pumps"][0]["circuits"][0]["circuit"]["isOn"]
         if pisOn == True:
-            self.setDriver('GV4', 1)
+            self.setDriver('GV1', 1)
         if pisOn == False:
-            self.setDriver('GV4', 0)
+            self.setDriver('GV1', 0)
 
         LOGGER.info("Pump Watts  {}".format(
             self.allDataJson["pumps"][0]["watts"]))
-        self.setDriver('GV5', self.allDataJson["pumps"][0]["watts"])
+        self.setDriver('GV2', self.allDataJson["pumps"][0]["watts"])
 
         LOGGER.info("Pump RPM  {}".format(
             self.allDataJson["pumps"][0]["rpm"]))
-        self.setDriver('GV6', self.allDataJson["pumps"][0]["rpm"])
+        self.setDriver('GV3', self.allDataJson["pumps"][0]["rpm"])
 
         LOGGER.info("Pump GPM  {}".format(
             self.allDataJson["pumps"][0]["flow"]))
-        self.setDriver('GV7', self.allDataJson["pumps"][0]["flow"])
-
-        LOGGER.info("Filter PSI  {}".format(
-            self.allDataJson["filters"][0]["pressure"]))
-        self.setDriver('GV8', self.allDataJson["filters"][0]["pressure"])
-
+        self.setDriver('GV4', self.allDataJson["pumps"][0]["flow"])
         self.http = urllib3.PoolManager()
 
     def poll(self, polltype):
@@ -113,17 +96,6 @@ class PoolNode(udi_interface.Node):
     def query(self, command=None):
         self.reportDrivers()
 
-    def cmd_set_temp(self, command):
-        value = int(command.get('value'))
-        json_data = {
-            "id": 1,
-            # "name": "Pool",
-            "heatSetpoint": value,
-        }
-
-        response = requests.put(
-            self.api_url + '/state/body/setPoint', json=json_data)
-
     def cmd_set_sped(self, command):
         value = int(command.get('value'))
         json_data = {"id": 50, "circuits": [
@@ -134,25 +106,19 @@ class PoolNode(udi_interface.Node):
 
     drivers = [
         {'driver': 'GV0', 'value': 0, 'uom': 2, 'name': "Pool Running"},
-        {'driver': 'GV1', 'value': None, 'uom': 17, 'name': "Air Temp"},
-        {'driver': 'GV2', 'value': None, 'uom': 17, 'name': "Setpoint"},
-        {'driver': 'GV3', 'value': None, 'uom': 17, 'name': "Pool Temp"},
-        {'driver': 'GV4', 'value': None, 'uom': 2, 'name': "Pump Status"},
-        {'driver': 'GV5', 'value': None, 'uom': 73, 'name': "Pump Watts"},
-        {'driver': 'GV6', 'value': None, 'uom': 89, 'name': "Pump RPM"},
-        {'driver': 'GV7', 'value': None, 'uom': 69, 'name': "Pump GPM"},
-        {'driver': 'GV8', 'value': None, 'uom': 52, 'name': "Filter PSI"},
-        {'driver': 'CLISPH', 'value': 0, 'uom': 17, 'name': "Setpoint adj"},
+        {'driver': 'GV1', 'value': None, 'uom': 2, 'name': "Pump Status"},
+        {'driver': 'GV2', 'value': None, 'uom': 73, 'name': "Pump Watts"},
+        {'driver': 'GV3', 'value': None, 'uom': 89, 'name': "Pump RPM"},
+        {'driver': 'GV4', 'value': None, 'uom': 69, 'name': "Pump GPM"},
         {'driver': 'SPDSPH', 'value': 0, 'uom': 89, 'name': "Setpoint adj"},
         {'driver': 'ST', 'value': 0, 'uom': 2, 'name': "Online"},
     ]
 
-    id = 'poolnode'
+    id = 'pumpnode'
 
     commands = {
         'DON': cmd_on,
         'DOF': cmd_off,
-        'SET_TEMP': cmd_set_temp,
         'SET_SPEED': cmd_set_sped,
         'QUERY': query
     }

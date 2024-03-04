@@ -35,3 +35,14 @@ ST-switch0-GV1-NAME = OnOff
 CMD-switch0-QUERY-NAME = Query
 
 
+# mynodetype
+ND-pumpnode-NAME = Pump
+ND-pumpnode-ICON = Irrigation	
+ST-pumppool-ST-NAME = Node Status
+ST-pumppool-GV0-NAME = Pool Running
+ST-pumppool-GV1-NAME = Pump Status
+ST-pumppool-GV2-NAME = Pump Watts
+ST-pumppool-GV3-NAME = Pump RPM
+ST-pumppool-GV4-NAME = Pump GPM
+CMD-pumppool-QUERY-NAME = Query
+CMD-pumppool-SET_SPEED-NAME = Pump RPM

@@ -69,4 +69,30 @@
         </cmds>
     </nodeDef>
 
+    <!-- bodydeid -->
+    <nodeDef id="pumpnode" nls="pumppool">
+        <editors />
+        <sts>
+            <st id="GV0" editor="bool" />
+            <st id="GV1" editor="bool" />
+            <st id="GV2" editor="WATT" />
+            <st id="GV3" editor="RPM" />
+            <st id="GV4" editor="GPM" />
+            <st id="ST" editor="bool" />
+
+        </sts>
+        <cmds>
+            <sends />
+            <accepts>
+                <cmd id="DON" />
+                <cmd id="DOF" />
+                <cmd id="QUERY" />
+
+                <cmd id="SET_SPEED">
+                    <p id="" editor="CTL_RPM" init="SPDSPH" />
+                </cmd>
+            </accepts>
+        </cmds>
+    </nodeDef>
+
 </nodeDefs>
