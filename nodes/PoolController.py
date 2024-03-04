@@ -121,6 +121,7 @@ class PoolController(udi_interface.Node):
             address = i["address"]
             LOGGER.info(i["address"])
             LOGGER.info(i["type"]['desc'])
+            address = 'pump_{}'.format(address)
             if i["type"]['desc'] == "Intelliflo VSF":
                 LOGGER.info("Install Intelliflo VSF")
 
