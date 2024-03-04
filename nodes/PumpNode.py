@@ -10,7 +10,7 @@ LOGGER = udi_interface.LOGGER
 
 class PumpNode(udi_interface.Node):
 
-    def __init__(self, polyglot, primary, address, name, apiBaseUrl, api_url):
+    def __init__(self, polyglot, primary, address, name, allData, apiBaseUrl, api_url):
 
         super(PumpNode, self).__init__(polyglot, primary, address, name)
         self.poly = polyglot
