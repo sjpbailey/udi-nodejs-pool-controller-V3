@@ -10,7 +10,7 @@ LOGGER = udi_interface.LOGGER
 
 class PoolNode(udi_interface.Node):
 
-    def __init__(self, polyglot, primary, address, name, allData, apiBaseUrl):
+    def __init__(self, polyglot, primary, address, name, allData, apiBaseUrl, api_url):
 
         super(PoolNode, self).__init__(polyglot, primary, address, name)
         self.poly = polyglot
@@ -21,6 +21,7 @@ class PoolNode(udi_interface.Node):
 
         self.allData = allData
         self.apiBaseUrl = apiBaseUrl
+        self.api_url = api_url
 
     def start(self):
 
@@ -97,7 +98,7 @@ class PoolNode(udi_interface.Node):
         json_data = {"id": 6, "state": True}  # True-Start False-Stop
 
         response = requests.put(
-            'http://192.168.1.53:4200/state/circuit/setState', json=json_data)
+            self.api_url + '/state/circuit/setState', json=json_data)
 
         self.setDriver('ST', 1)
 
@@ -105,7 +106,7 @@ class PoolNode(udi_interface.Node):
         json_data = {"id": 6, "state": False}  # True-Start False-Stop
 
         response = requests.put(
-            'http://192.168.1.53:4200/state/circuit/setState', json=json_data)
+            self.api_url + '/state/circuit/setState', json=json_data)
 
         self.setDriver('ST', 0)
 
@@ -121,7 +122,15 @@ class PoolNode(udi_interface.Node):
         }
 
         response = requests.put(
-            'http://192.168.1.53:4200/state/body/setPoint', json=json_data)
+            self.api_url + '/state/body/setPoint', json=json_data)
+
+    def cmd_set_sped(self, command):
+        value = int(command.get('value'))
+        json_data = {"id": 50, "circuits": [
+            {"speed": value, "units": {"val": 0}, "id": 1, "circuit": 6}]}
+
+        response = requests.put(
+            self.api_url + + '/config/pump', json=json_data)
 
     drivers = [
         {'driver': 'GV0', 'value': 0, 'uom': 2, 'name': "Pool Running"},
@@ -134,6 +143,7 @@ class PoolNode(udi_interface.Node):
         {'driver': 'GV7', 'value': None, 'uom': 69, 'name': "Pump GPM"},
         {'driver': 'GV8', 'value': None, 'uom': 52, 'name': "Pump GPM"},
         {'driver': 'CLISPH', 'value': 0, 'uom': 17, 'name': "Setpoint adj"},
+        {'driver': 'SPDSPH', 'value': 0, 'uom': 89, 'name': "Setpoint adj"},
         {'driver': 'ST', 'value': 0, 'uom': 2, 'name': "Online"},
     ]
 
@@ -143,5 +153,6 @@ class PoolNode(udi_interface.Node):
         'DON': cmd_on,
         'DOF': cmd_off,
         'SET_TEMP': cmd_set_temp,
+        'SET_SPEED': cmd_set_sped,
         'QUERY': query
     }

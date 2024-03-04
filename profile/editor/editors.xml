@@ -36,4 +36,8 @@
     <range uom="17" min="34" max="104" step="1" prec="0" />
   </editor>
 
+  <editor id="CTL_RPM">
+    <range uom="89" min="034" max="4000" step="1" prec="0" />
+  </editor>
+
 </editors>

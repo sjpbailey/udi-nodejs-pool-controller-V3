@@ -45,6 +45,9 @@
                 <cmd id="SET_TEMP">
                     <p id="" editor="CTL_TEMP" init="CLISPH" />
                 </cmd>
+                <cmd id="SET_SPEED">
+                    <p id="" editor="CTL_RPM" init="SPDSPH" />
+                </cmd>
             </accepts>
         </cmds>
     </nodeDef>

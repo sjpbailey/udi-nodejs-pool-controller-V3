@@ -116,7 +116,7 @@ class PoolController(udi_interface.Node):
             # LOGGER.info("Heaters {}".format(self.allDataJson["heaters"]))
             # LOGGER.info("Schedules {}".format(self.allDataJson["schedules"]))
             self.poly.addNode(PoolNode(self.poly, self.address,
-                              'pooladdr', 'Body Pool', allData, self.apiBaseUrl))
+                              'pooladdr', 'Body Pool', allData, self.apiBaseUrl, self.api_url))
 
         for i in self.allDataJson["circuits"]:
             name = i["name"]
