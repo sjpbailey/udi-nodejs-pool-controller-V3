@@ -5,6 +5,7 @@
 This works with Eisy/Polisy
 
 1. Install Nodejs Pool Controller and Dashboard required as a Nixie controller.
+[Nixie Install](https://github.com/tagyoureit/nodejs-poolController/wiki/DIY-Standalone-Nixie-Pool-Controller)
 
 ### Installation
 
