@@ -129,7 +129,7 @@ class PoolController(udi_interface.Node):
             address = 'zone_{}'.format(id)
             LOGGER.info(address)
             self.poly.addNode(SwitchNode(
-                self.poly, self.address, address, name, self.allDataJson))
+                self.poly, self.address, address, name, self.allDataJson, self.api_url))
             # LOGGER.info('Found {} Circuits'.format(len(self.circuits)))
 
     def delete(self):
