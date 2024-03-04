@@ -28,11 +28,10 @@
             <st id="GV2" editor="TEMP" />
             <st id="GV8" editor="PSI" />
             <st id="GV30" editor="STATUS" />
-            <st id="GV4" editor="bool" />
+            <!--st id="GV4" editor="bool" />
             <st id="GV5" editor="WATT" />
             <st id="GV6" editor="RPM" />
-            <st id="GV7" editor="GPM" />
-
+            <st id="GV7" editor="GPM" /-->
             <st id="ST" editor="bool" />
 
         </sts>
@@ -45,9 +44,9 @@
                 <cmd id="SET_TEMP">
                     <p id="" editor="CTL_TEMP" init="CLISPH" />
                 </cmd>
-                <cmd id="SET_SPEED">
+                <!--cmd id="SET_SPEED">
                     <p id="" editor="CTL_RPM" init="SPDSPH" />
-                </cmd>
+                </cmd-->
             </accepts>
         </cmds>
     </nodeDef>

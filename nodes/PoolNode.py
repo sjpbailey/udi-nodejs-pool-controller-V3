@@ -124,13 +124,13 @@ class PoolNode(udi_interface.Node):
         response = requests.put(
             self.api_url + '/state/body/setPoint', json=json_data)
 
-    def cmd_set_sped(self, command):
+    '''def cmd_set_sped(self, command):
         value = int(command.get('value'))
         json_data = {"id": 50, "circuits": [
             {"speed": value, "units": {"val": 0}, "id": 1, "circuit": 6}]}
 
         response = requests.put(
-            self.api_url + '/config/pump', json=json_data)
+            self.api_url + '/config/pump', json=json_data)'''
 
     drivers = [
         {'driver': 'GV0', 'value': 0, 'uom': 2, 'name': "Pool Running"},
@@ -138,12 +138,12 @@ class PoolNode(udi_interface.Node):
         {'driver': 'GV2', 'value': None, 'uom': 17, 'name': "Setpoint"},
         {'driver': 'GV3', 'value': None, 'uom': 17, 'name': "Pool Temp"},
         {'driver': 'GV4', 'value': None, 'uom': 2, 'name': "Pump Status"},
-        {'driver': 'GV5', 'value': None, 'uom': 73, 'name': "Pump Watts"},
-        {'driver': 'GV6', 'value': None, 'uom': 89, 'name': "Pump RPM"},
-        {'driver': 'GV7', 'value': None, 'uom': 69, 'name': "Pump GPM"},
+        # {'driver': 'GV5', 'value': None, 'uom': 73, 'name': "Pump Watts"},
+        # {'driver': 'GV6', 'value': None, 'uom': 89, 'name': "Pump RPM"},
+        # {'driver': 'GV7', 'value': None, 'uom': 69, 'name': "Pump GPM"},
         {'driver': 'GV8', 'value': None, 'uom': 52, 'name': "Filter PSI"},
         {'driver': 'CLISPH', 'value': 0, 'uom': 17, 'name': "Setpoint adj"},
-        {'driver': 'SPDSPH', 'value': 0, 'uom': 89, 'name': "Setpoint adj"},
+        # {'driver': 'SPDSPH', 'value': 0, 'uom': 89, 'name': "Setpoint adj"},
         {'driver': 'ST', 'value': 0, 'uom': 2, 'name': "Online"},
     ]
 
@@ -153,6 +153,6 @@ class PoolNode(udi_interface.Node):
         'DON': cmd_on,
         'DOF': cmd_off,
         'SET_TEMP': cmd_set_temp,
-        'SET_SPEED': cmd_set_sped,
+        # 'SET_SPEED': cmd_set_sped,
         'QUERY': query
     }
