@@ -15,6 +15,7 @@ ST-bodypool-GV0-NAME = Pool Running
 ST-bodypool-GV1-NAME = Air Temperature
 ST-bodypool-GV2-NAME = Setpoint
 ST-bodypool-GV3-NAME = Pool Temp
+
 ST-bodypool-GV4-NAME = Pump Status
 ST-bodypool-GV5-NAME = Pump Watts
 ST-bodypool-GV6-NAME = Pump RPM
