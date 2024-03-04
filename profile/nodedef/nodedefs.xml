@@ -42,6 +42,9 @@
                 <cmd id="DON" />
                 <cmd id="DOF" />
                 <cmd id="QUERY" />
+                <cmd id="SET_TEMP">
+                    <p id="" editor="CTL_TEMP" init="CLISPH" />
+                </cmd>
             </accepts>
         </cmds>
     </nodeDef>
