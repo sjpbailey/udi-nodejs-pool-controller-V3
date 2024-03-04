@@ -125,7 +125,7 @@ class PoolController(udi_interface.Node):
                 LOGGER.info("Install Intelliflo VSF")
 
                 self.poly.addNode(PumpNode(
-                    self.poly, self.address, address, name, allData, self.apiBaseUrl, self.api_ur))
+                    self.poly, self.address, address, name, allData, self.apiBaseUrl, self.api_url))
 
     def delete(self):
         LOGGER.info('Being deleted')
