@@ -105,13 +105,13 @@ class PumpNode(udi_interface.Node):
             self.api_url + '/config/pump', json=json_data)
 
     drivers = [
-        {'driver': 'GV0', 'value': 0, 'uom': 2, 'name': "Pool Running"},
-        {'driver': 'GV1', 'value': None, 'uom': 2, 'name': "Pump Status"},
+        {'driver': 'GV0', 'value': 0, 'uom': 25, 'name': "Pool Running"},
+        {'driver': 'GV1', 'value': None, 'uom': 25, 'name': "Pump Status"},
         {'driver': 'GV2', 'value': None, 'uom': 73, 'name': "Pump Watts"},
         {'driver': 'GV3', 'value': None, 'uom': 89, 'name': "Pump RPM"},
         {'driver': 'GV4', 'value': None, 'uom': 69, 'name': "Pump GPM"},
         {'driver': 'SPDSPH', 'value': 0, 'uom': 89, 'name': "Setpoint adj"},
-        {'driver': 'ST', 'value': 0, 'uom': 2, 'name': "Online"},
+        {'driver': 'ST', 'value': 0, 'uom': 25, 'name': "Online"},
     ]
 
     id = 'pumpnode'

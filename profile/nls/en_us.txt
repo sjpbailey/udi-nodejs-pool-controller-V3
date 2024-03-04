@@ -47,3 +47,10 @@ ST-pumppool-GV3-NAME = Pump RPM
 ST-pumppool-GV4-NAME = Pump GPM
 CMD-pumppool-QUERY-NAME = Query
 CMD-pumppool-SET_SPEED-NAME = Pump RPM
+
+RUNIN-0 = Stopped
+RUNIN-1 = Running
+
+ONLINE-0= Failed
+ONLINE-1= Online
+
