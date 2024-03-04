@@ -114,13 +114,16 @@ class PoolController(udi_interface.Node):
             LOGGER.info("OTHER THAN VSF PUMP")
 
         for i in self.allDataJson["pumps"]:
+            self.allDataJson = self.allDataJson
+            self.api_url = self.api_url
             name = i["name"]
             LOGGER.info(i["name"])
             address = i["address"]
             LOGGER.info(i["address"])
             LOGGER.info(i["type"]['desc'])
             if i["type"]['desc'] == "Intelliflo VSF":
-                LOGGER.info("Intelliflo")
+                LOGGER.info("Install Intelliflo VSF")
+
                 self.poly.addNode(PumpNode(
                     self.poly, self.address, address, name, self.allDataJson, self.api_url))
 
