@@ -1,5 +1,5 @@
 
-# controller
+# Pool controller
 ND-controller-NAME = Pool Controller
 ND-controller-ICON = Irrigation
 ST-ctl-ST-NAME = NodeServer Online
@@ -8,7 +8,7 @@ CMD-ctl-UPDATE_PROFILE-NAME = Update Profile
 CMD-TMP-SET_TEMP-NAME = Setpoint
 
 
-# mynodetype
+# Pool Body
 ND-poolnode-NAME = Body Pool
 ND-poolnode-ICON = Irrigation	
 ST-bodypool-ST-NAME = Node Status
@@ -27,7 +27,7 @@ CMD-bodypool-QUERY-NAME = Query
 CMD-bodypool-SET_TEMP-NAME = Heat Setpoint
 #CMD-bodypool-SET_SPEED-NAME = Pump RPM
 
-# mynodetype
+# Circuit Nodes
 ND-switchnodeid-NAME = Circuits
 ND-switchnodeid-ICON = Irrigation
 ST-switch0-ST-NAME = Node Status
@@ -35,12 +35,12 @@ ST-switch0-GV1-NAME = OnOff
 CMD-switch0-QUERY-NAME = Query
 
 
-# mynodetype
+# Pump Node
 ND-pumpnode-NAME = Pump
 ND-pumpnode-ICON = Irrigation	
 ST-pumppool-ST-NAME = Node Status
 ST-pumppool-GV0-NAME = Pool Running
-ST-bodypool-GV30-NAME = -
+ST-pumppool-GV30-NAME = -
 ST-pumppool-GV1-NAME = Pump Status
 ST-pumppool-GV2-NAME = Pump Watts
 ST-pumppool-GV3-NAME = Pump RPM
