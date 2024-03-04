@@ -85,28 +85,6 @@ class PoolController(udi_interface.Node):
 
             LOGGER.info("Pool Running  {}".format(
                 self.allDataJson["temps"]["bodies"][0]["isOn"]))
-
-            '''isON = self.allDataJson["temps"]["bodies"][0]["isOn"]
-            LOGGER.info(isON)
-            if isON == True:
-                self.setDriver('GV0', 1)
-            if isON == False:
-                self.setDriver('GV0', 0)
-
-            LOGGER.info("Air Temp  {}".format(
-                self.allDataJson["temps"]["air"]))
-            self.setDriver('GV1', self.allDataJson["temps"]["air"])
-
-            LOGGER.info("Setpoint Temp  {}".format(
-                self.allDataJson["temps"]["bodies"][0]["setPoint"]))
-            self.setDriver(
-                'GV2', self.allDataJson["temps"]["bodies"][0]["setPoint"])
-
-            LOGGER.info("Pool Temp  {}".format(
-                self.allDataJson["temps"]["bodies"][0]["temp"]))
-            self.setDriver(
-                'GV3', self.allDataJson["temps"]["bodies"][0]["temp"])'''
-
             # LOGGER.info("Temperatures {}".format(self.allDataJson["temps"]))
             # LOGGER.info("Pumps {}".format(self.allDataJson["pumps"]))
             # LOGGER.info("Filters {}".format(self.allDataJson["filters"]))
@@ -115,8 +93,8 @@ class PoolController(udi_interface.Node):
             #    self.allDataJson["virtualCircuits"]))
             # LOGGER.info("Heaters {}".format(self.allDataJson["heaters"]))
             # LOGGER.info("Schedules {}".format(self.allDataJson["schedules"]))
-            self.poly.addNode(PoolNode(self.poly, self.address,
-                              'pooladdr', 'Body Pool', allData, self.apiBaseUrl, self.api_url))
+            self.poly.addNode(PoolNode(self.poly, self.address, 'pooladdr',
+                              'Body Pool', allData, self.apiBaseUrl, self.api_url))
 
         for i in self.allDataJson["circuits"]:
             name = i["name"]
@@ -133,7 +111,7 @@ class PoolController(udi_interface.Node):
             # LOGGER.info('Found {} Circuits'.format(len(self.circuits)))
 
     def delete(self):
-        LOGGER.info('Oh God I\'m being deleted. No.')
+        LOGGER.info('Being deleted')
 
     def stop(self):
         LOGGER.debug('NodeServer stopped.')
@@ -155,7 +133,6 @@ class PoolController(udi_interface.Node):
         # Add a notice if they need to change the user/circuits from the default.
         if self.api_url == default_api_url:
             self.Notices['auth'] = 'Please set proper api_url and circuits in configuration page'
-            # self.Notices['test'] = 'This is only a test'
 
     id = 'controller'
     commands = {
