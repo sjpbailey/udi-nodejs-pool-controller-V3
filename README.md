@@ -20,6 +20,8 @@ This works with Eisy/Polisy
 
 [Sequent 8 Relay HAT](https://sequentmicrosystems.com/products/8-relays-stackable-card-for-raspberry-pi)
 
+[RPi-4 8gb](https://www.canakit.com/raspberry-pi-4-8gb.html)
+
 ### Installation
 
 1."Configuration" and add the base url to your nodejs-poolController application installation as a "Custom Configuration Parameter" with a key of "api_url"
