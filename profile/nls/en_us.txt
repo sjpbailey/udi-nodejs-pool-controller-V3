@@ -30,7 +30,7 @@ CMD-bodypool-SET_TEMP-NAME = Heat Setpoint
 # Circuit Nodes
 ND-switchnodeid-NAME = Circuits
 ND-switchnodeid-ICON = Irrigation
-ST-switch0-ST-NAME = Command On
+ST-switch0-ST-NAME = Node Status
 ST-switch0-GV1-NAME = Device Status
 CMD-switch0-QUERY-NAME = Query
 
@@ -51,6 +51,6 @@ CMD-pumppool-SET_SPEED-NAME = Pump RPM
 RUNIN-0 = Stopped
 RUNIN-1 = Running
 
-ONLINE-0= Failed
-ONLINE-1= Online
+ONLINE-0 = Failed
+ONLINE-1 = Online
 
