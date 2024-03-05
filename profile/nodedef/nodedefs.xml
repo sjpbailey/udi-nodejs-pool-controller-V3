@@ -56,7 +56,7 @@
         <editors />
         <sts>
             <st id="ST" editor="RUNIN" />
-            <!--st id="GV1" editor="bool" /-->
+            <st id="GV1" editor="RUNIN" />
         </sts>
         <cmds>
             <sends />

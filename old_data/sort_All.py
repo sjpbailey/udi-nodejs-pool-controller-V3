@@ -833,9 +833,12 @@ print()'''
 # [0]["circuits"]["circuit"]["name"]))
 
 ################ CIRCUITS ######################################
-# for i in data["circuits"]:
-#    print(i["name"], i["id"], i['isOn'])
-
+for i in data["circuits"]:
+    print(i["name"])
+    print(i["id"])
+    print(i['isOn'])
+print("Circuit On {}".format(data["circuits"][0]['isOn']))
+#      [0]["name"]))
 """print()
 print("Air Temp {}".format(data["air"]))
 print()

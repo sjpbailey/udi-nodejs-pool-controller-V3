@@ -33,6 +33,15 @@ class SwitchNode(udi_interface.Node):
     def start(self):
         LOGGER.info(self.address)
         self.http = urllib3.PoolManager()
+        LOGGER.info("Circuit On {}".format(
+            self.allDataJson["circuits"][0]['isOn']))
+
+        isON = self.allDataJson["circuits"][0]['isOn']
+        LOGGER.info(isON)
+        if isON == True:
+            self.setDriver('GV1', 1)
+        if isON == False:
+            self.setDriver('GV1', 0)
 
     def poll(self, polltype):
         if 'longPoll' in polltype:
