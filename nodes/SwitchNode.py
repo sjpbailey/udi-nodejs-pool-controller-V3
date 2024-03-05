@@ -34,7 +34,7 @@ class SwitchNode(udi_interface.Node):
         LOGGER.info(self.address)
         self.http = urllib3.PoolManager()
         self.allData = requests.get(
-            url='{}/state/all'.format(self.apiBaseUrl))
+            url='{}/state/all'.format(self.allDataJson))
 
         if self.allData.status_code == 200:
             self.setDriver('ST', 1)
