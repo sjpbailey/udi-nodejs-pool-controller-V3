@@ -33,6 +33,15 @@ class SwitchNode(udi_interface.Node):
     def start(self):
         LOGGER.info(self.address)
         self.http = urllib3.PoolManager()
+        self.allData = requests.get(
+            url='{}/state/all'.format(self.apiBaseUrl))
+
+        if self.allData.status_code == 200:
+            self.setDriver('ST', 1)
+        else:
+            self.setDriver('ST', 0)
+
+        self.allDataJson = self.allData.json()
         # LOGGER.info("Circuit On {}".format(
         #    self.allDataJson["circuits"][0]['isOn']))
 
@@ -60,7 +69,7 @@ class SwitchNode(udi_interface.Node):
         response = requests.put(
             self.api_url + '/state/circuit/setState/',  json=json_data)
 
-        self.setDriver('ST', 1)
+        # self.setDriver('ST', 1)
 
     def cmd_off(self, command):
 
@@ -72,7 +81,7 @@ class SwitchNode(udi_interface.Node):
         response = requests.put(
             self.api_url + '/state/circuit/setState/',  json=json_data)
 
-        self.setDriver('ST', 0)
+        # self.setDriver('ST', 0)
 
     def query(self, command=None):
         self.reportDrivers()
