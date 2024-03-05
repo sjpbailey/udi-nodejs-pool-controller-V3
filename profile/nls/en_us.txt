@@ -31,7 +31,7 @@ CMD-bodypool-SET_TEMP-NAME = Heat Setpoint
 ND-switchnodeid-NAME = Circuits
 ND-switchnodeid-ICON = Irrigation
 ST-switch0-ST-NAME = Node Status
-ST-switch0-GV1-NAME = Device Status
+ST-switch0-GV1-NAME = Device Command
 CMD-switch0-QUERY-NAME = Query
 
 
