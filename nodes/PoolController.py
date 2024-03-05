@@ -178,5 +178,5 @@ class PoolController(udi_interface.Node):
 
     }
     drivers = [
-        {'driver': 'ST', 'value': 0, 'uom': 2, 'name': "Online"},
+        {'driver': 'ST', 'value': 0, 'uom': 25, 'name': "Online"},
     ]
