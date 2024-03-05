@@ -831,7 +831,7 @@ print()'''
 # print()
 # ["name"]))
 # [0]["circuits"]["circuit"]["name"]))
-
+print("Circuit On {}".format(data["circuits"][0]['isOn']))
 ################ CIRCUITS ######################################
 for i in data["circuits"]:
     print(i["name"])
