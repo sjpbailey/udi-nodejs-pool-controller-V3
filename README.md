@@ -1,6 +1,6 @@
 # nodejs-poolController Plugin for Single Body Nixie Controller
 
-## Using Sequent Mega-BAS and a 8 Relay Hat
+## Using Sequent Mega-BAS with a Sequent 8 Relay Hat
 
 0. This works with Eisy/Polisy, You can add additional circuits tied to relays to start and stop
  the Device however if at anytime a modification is made to pool controller you will need to reinstall this Plugin.
@@ -27,4 +27,6 @@
 
 1."Configuration" and add the base url to your nodejs-poolController application installation as a "Custom Configuration Parameter" with a key of "api_url"
 
-api_url: <http://localhost:3000>
+KEY      VALUE
+api_url: http://localhost:4200
+Example: api_url  http://Your-RPI-IP:4200 
