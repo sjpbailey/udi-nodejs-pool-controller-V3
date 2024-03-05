@@ -2,7 +2,9 @@
 
 ## Using Sequent Mega-BAS and a 8 Relay Hat
 
-This works with Eisy/Polisy
+This works with Eisy/Polisy, You can add additional circuits tied to relays to start and stop
+ the Device however if at anytime a modification is made to pool controller you will need to reinstall this Plugin.
+
 
 1. Install Nodejs Pool Controller and Dashboard required as a Nixie controller, additional parts listed.
 
