@@ -117,10 +117,13 @@ print()"""
 
 
 # "http://192.168.1.53:4200/state/circuits/"
-# u = requests.get("http://192.168.1.53:4200/state/circuit/6/")
-# print(json.dumps(u.json(), indent=4, sort_keys=True))
+u = requests.get("http://192.168.1.53:4200/state/circuit/6/")
+u = (json.dumps(u.json(), indent=4, sort_keys=True))
 # print(u.text)
-
+'''for i in u["circuits"]:
+    print(i["name"])
+    print(i["id"])
+    print(i['isOn'])'''
 
 # http://192.168.1.53:4200/config/options/heaters/
 
@@ -132,9 +135,9 @@ p = (json.dumps(p.json(), indent=4, sort_keys=True))
 # "http://192.168.1.53:4200/config/options/schedules/"
 # "http://192.168.1.53:4200/config/options/bodies/"
 # """
-for i in p:
+'''for i in p:
     print(i[0:1])
-    '''print(i['name'])
+    print(i['name'])
     print(i['id'])
     print(i['type']['desc'])
     print(i['isOn'])
@@ -831,7 +834,7 @@ print()'''
 # print()
 # ["name"]))
 # [0]["circuits"]["circuit"]["name"]))
-print("Circuit On {}".format(data["circuits"][0]['isOn']))
+print("Circuit On {}".format(data["circuits"][3]['isOn']))
 ################ CIRCUITS ######################################
 for i in data["circuits"]:
     print(i["name"])
