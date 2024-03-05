@@ -30,8 +30,6 @@ class PoolController(udi_interface.Node):
         self.name = 'Pool Controller'  # override what was passed in
         self.hb = 0
 
-        # Create data storage classes to hold specific data that we need
-        # to interact with.
         self.Parameters = Custom(polyglot, 'customparams')
         self.Notices = Custom(polyglot, 'notices')
         self.TypedParameters = Custom(polyglot, 'customtypedparams')
@@ -58,7 +56,6 @@ class PoolController(udi_interface.Node):
             LOGGER.debug('longPoll (controller)')
         else:
             LOGGER.debug('shortPoll (controller)')
-            # self.discover()
             self.reportDrivers()
             self.query()
 

@@ -12,6 +12,8 @@ This works with Eisy/Polisy
 
 [Resource](https://sites.google.com/view/randypool/swg/poolcontroller)
 
+[Nodejs PoolController](https://github.com/tagyoureit/nodejs-poolController)
+
 [RS485 Converter](https://www.waveshare.com/usb-to-rs485.htm)
 
 [Sequent BAS HAT](https://sequentmicrosystems.com/products/building-automation-8-layer-stackable-hat-v4-for-raspberry-pi)

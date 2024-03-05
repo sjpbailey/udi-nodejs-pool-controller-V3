@@ -100,15 +100,11 @@ class PoolNode(udi_interface.Node):
         response = requests.put(
             self.api_url + '/state/circuit/setState', json=json_data)
 
-        self.setDriver('ST', 1)
-
     def cmd_off(self, command):
         json_data = {"id": 6, "state": False}  # True-Start False-Stop
 
         response = requests.put(
             self.api_url + '/state/circuit/setState', json=json_data)
-
-        self.setDriver('ST', 0)
 
     def query(self, command=None):
         self.reportDrivers()
