@@ -11,7 +11,7 @@ LOGGER = udi_interface.LOGGER
 
 class SwitchNode(udi_interface.Node):
 
-    def __init__(self, polyglot, primary, address, name, allDataJson, api_url):
+    def __init__(self, polyglot, primary, address, name, apiBaseUrl, api_url):
 
         super(SwitchNode, self).__init__(polyglot, primary, address, name)
         self.poly = polyglot
@@ -23,7 +23,7 @@ class SwitchNode(udi_interface.Node):
         LOGGER.info(self.address)
         self.name = name
         LOGGER.info(name)
-        self.allDataJson = allDataJson
+        self.apiBaseUrl = apiBaseUrl
         id = address.strip('zone_')
         id1 = id
         LOGGER.info(id1)
@@ -34,7 +34,7 @@ class SwitchNode(udi_interface.Node):
         LOGGER.info(self.address)
         self.http = urllib3.PoolManager()
         self.allData = requests.get(
-            url='{}/state/all'.format(self.allDataJson))
+            url='{}/state/all'.format(self.apiBaseUrl))
 
         if self.allData.status_code == 200:
             self.setDriver('ST', 1)
