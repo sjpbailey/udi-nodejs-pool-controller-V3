@@ -28,6 +28,7 @@
 1."Configuration" and add the base url to your nodejs-poolController application installation as a "Custom Configuration Parameter" with a key of "api_url"
 
 KEY      VALUE
+
 api_url: [http://localhost:4200]
 
 Example: api_url  [http://Your-RPI-IP:4200]
