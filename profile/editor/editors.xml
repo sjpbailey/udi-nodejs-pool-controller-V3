@@ -5,7 +5,7 @@
   </editor>
 
   <editor id="ONLINE">
-    <range uom="2" subset="0,1" nls="ONLINE" />
+    <range uom="25" subset="0,1" nls="ONLINE" />
   </editor>
 
   <editor id="RUNIN">
