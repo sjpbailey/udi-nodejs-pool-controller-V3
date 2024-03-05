@@ -31,4 +31,4 @@
 
 api_url: [http://localhost:4200]
 
-Example: api_url  [http://Your-RPI-IP:4200]
+(![Example:](https://github.com/sjpbailey/udi-nodejs-pool-controller-V3/blob/main/images/Screenshot%202024-03-04%20at%2011.02.50%20PM.png))  
