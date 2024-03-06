@@ -123,26 +123,28 @@ class PoolController(udi_interface.Node):
             LOGGER.info(i["address"])
             LOGGER.info(i["type"]['desc'])
             address = 'pump_{}'.format(address)
+            LOGGER.info("ID:  {}".format(i["id"]))
+            pid = i["id"]
             if i["type"]['desc'] == "Intelliflo VSF":
                 LOGGER.info("Install Intelliflo VSF")
                 self.poly.addNode(PumpNode(
-                    self.poly, self.address, address, name, allData, self.apiBaseUrl, self.api_url))
+                    self.poly, self.address, address, name, allData, self.apiBaseUrl, self.api_url, pid))
             elif i["type"]['desc'] == "Intelliflo VS":
                 LOGGER.info("Install Intelliflo VS")
                 self.poly.addNode(PumpIVSNode(
-                    self.poly, self.address, address, name, allData, self.apiBaseUrl, self.api_url))
+                    self.poly, self.address, address, name, allData, self.apiBaseUrl, self.api_url, pid))
             elif i["type"]['desc'] == "Intelliflo VF":
                 LOGGER.info("Install Intelliflo VF")
                 self.poly.addNode(PumpIVFNode(
-                    self.poly, self.address, address, name, allData, self.apiBaseUrl, self.api_url))
+                    self.poly, self.address, address, name, allData, self.apiBaseUrl, self.api_url, pid))
             elif i["type"]['desc'] == "SuperFlo VS":
                 LOGGER.info("Install SuperFlo VS")
                 self.poly.addNode(PumpISVSNode(
-                    self.poly, self.address, address, name, allData, self.apiBaseUrl, self.api_url))
+                    self.poly, self.address, address, name, allData, self.apiBaseUrl, self.api_url, pid))
             elif i["type"]['desc'] == "Two Speed":
                 LOGGER.info("Install Two Speed")
                 self.poly.addNode(Pump2SPDNode(
-                    self.poly, self.address, address, name, allData, self.apiBaseUrl, self.api_url))
+                    self.poly, self.address, address, name, allData, self.apiBaseUrl, self.api_url, pid))
 
             else:
                 LOGGER.info("Pump Not Found")

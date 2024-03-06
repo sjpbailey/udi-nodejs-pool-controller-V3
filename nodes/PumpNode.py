@@ -11,7 +11,7 @@ LOGGER = udi_interface.LOGGER
 
 class PumpNode(udi_interface.Node):
 
-    def __init__(self, polyglot, primary, address, name, allData, apiBaseUrl, api_url):
+    def __init__(self, polyglot, primary, address, name, allData, apiBaseUrl, api_url, pid):
 
         super(PumpNode, self).__init__(polyglot, primary, address, name)
         self.poly = polyglot
@@ -23,9 +23,9 @@ class PumpNode(udi_interface.Node):
         # self.allData = allData
         self.apiBaseUrl = apiBaseUrl
         self.api_url = api_url
+        self.pid = pid
 
     def start(self):
-
         self.allData = requests.get(
             url='{}/state/all'.format(self.apiBaseUrl))
 
@@ -95,7 +95,7 @@ class PumpNode(udi_interface.Node):
 
     def cmd_set_sped(self, command):
         value = int(command.get('value'))
-        json_data = {"id": 50, "circuits": [
+        json_data = {"id": self.pid, "circuits": [
             {"speed": value, "units": {"val": 0}, "id": 1, "circuit": 6}]}
 
         response = requests.put(
