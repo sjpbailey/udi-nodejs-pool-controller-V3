@@ -5,7 +5,6 @@ import logging
 import json
 
 # My Template Node
-from nodes import TemplateNode
 from nodes import PoolNode
 from nodes import SwitchNode
 from nodes import PumpNode
