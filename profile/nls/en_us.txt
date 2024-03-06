@@ -88,6 +88,18 @@ ST-pumpIsvsP-GV4-NAME = Pump GPM
 CMD-pumpIsvsP-QUERY-NAME = Query
 CMD-pumpIsvsP-SET_SPEED-NAME = Pump Relays
 
+# Pump Node Two Speed Pump Low and High
+ND-pump2spd-NAME = Pump VF
+ND-pump2spd-ICON = Irrigation	
+ST-pump2spdP-ST-NAME = Node Status
+ST-pump2spdP-GV0-NAME = Pool Running
+ST-pump2spdP-GV30-NAME = -
+ST-pump2spdP-GV1-NAME = Pump Status
+ST-pump2spdP-GV2-NAME = Pump Watts
+ST-pump2spdP-GV3-NAME = Pump RPM
+ST-pump2spdP-GV4-NAME = Pump GPM
+CMD-pump2spdP-QUERY-NAME = Query
+CMD-pump2spdP-SET_SPEED-NAME = Pump Relays
 
 
 
@@ -97,7 +109,10 @@ RUNIN-1 = Running
 ONLINE-0 = Failed
 ONLINE-1 = Online
 
-RELAY-0 = RELAY 1
-RELAY-1 = RELAY 2
-RELAY-2 = RELAY 3
-RELAY-3 = RELAY 4
+RELAY4-0 = RELAY 1
+RELAY4-1 = RELAY 2
+RELAY4-2 = RELAY 3
+RELAY4-3 = RELAY 4
+
+RELAY2-0 = Low
+RELAY2-1 = High

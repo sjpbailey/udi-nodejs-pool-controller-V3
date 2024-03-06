@@ -52,8 +52,12 @@
     <range uom="69" min="0" max="300" step="1" prec="0" />
   </editor>
 
-  <editor id = "CTL_RLY">
-    <range uom="25" subset="0-3" nls="RELAY" />
+  <editor id = "CTL_RLY4">
+    <range uom="25" subset="0-3" nls="RELAY4" />
+  </editor>
+
+  <editor id = "CTL_RLY2">
+    <range uom="25" subset="0-1" nls="RELAY2" />
   </editor>
 
 </editors>
