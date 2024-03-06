@@ -135,6 +135,10 @@ class PoolController(udi_interface.Node):
                 LOGGER.info("Install Intelliflo VF")
                 self.poly.addNode(PumpIVFNode(
                     self.poly, self.address, address, name, allData, self.apiBaseUrl, self.api_url))
+            elif i["type"]['desc'] == "SuperFlo VS":
+                LOGGER.info("Install SuperFlo VS")
+                self.poly.addNode(PumpISVSNode(
+                    self.poly, self.address, address, name, allData, self.apiBaseUrl, self.api_url))
 
             else:
                 LOGGER.info("Pump Not Found")
