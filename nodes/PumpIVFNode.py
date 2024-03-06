@@ -55,18 +55,24 @@ class PumpIVFNode(udi_interface.Node):
         if pisOn == False:
             self.setDriver('GV1', 0)
 
-        LOGGER.info("Pump Watts  {}".format(
-            self.allDataJson["pumps"][0]["watts"]))
-        self.setDriver('GV2', self.allDataJson["pumps"][0]["watts"])
+        try:
+            LOGGER.info("Pump Watts  {}".format(
+                self.allDataJson["pumps"][0]["watts"]))
+            self.setDriver('GV2', self.allDataJson["pumps"][0]["watts"])
+        except KeyError:
+            pass
 
         LOGGER.info("Pump RPM  {}".format(
             self.allDataJson["pumps"][0]["rpm"]))
         self.setDriver(
             'GV3', self.allDataJson["pumps"][0]["circuits"][0]['units']['val'])
 
-        LOGGER.info("Pump GPM  {}".format(
-            self.allDataJson["pumps"][0]["flow"]))
-        self.setDriver('GV4', self.allDataJson["pumps"][0]["flow"])
+        try:
+            LOGGER.info("Pump GPM  {}".format(
+                self.allDataJson["pumps"][0]["flow"]))
+            self.setDriver('GV4', self.allDataJson["pumps"][0]["flow"])
+        except KeyError:
+            pass
         self.http = urllib3.PoolManager()
 
     def poll(self, polltype):
