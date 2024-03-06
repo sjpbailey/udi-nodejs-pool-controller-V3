@@ -11,6 +11,7 @@ from nodes import SwitchNode
 from nodes import PumpNode
 from nodes import PumpIVSNode
 from nodes import PumpIVFNode
+from nodes import PumpISVSNode
 
 
 LOGGER = udi_interface.LOGGER

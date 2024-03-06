@@ -52,5 +52,8 @@
     <range uom="69" min="0" max="300" step="1" prec="0" />
   </editor>
 
+  <editor id = "CTL_RLY">
+    <range uom="25" subset="0-4" nls="RELAY" />
+  </editor>
 
 </editors>

@@ -69,8 +69,8 @@ response = requests.put(
     'http://192.168.1.53:4200/state/circuit/setState/', json=json_data)'''
 
 
-'''x = requests.get("http://192.168.1.53:4200/state/all/")
-print(json.dumps(x.json(), indent=4, sort_keys=True))
+# x = requests.get("http://192.168.1.53:4200/state/all/")
+# print(json.dumps(x.json(), indent=4, sort_keys=True))
 # 'http://192.168.1.53:4200/config/circuits/'
 # "http://192.168.1.53:4200/state/all/"'''
 
@@ -117,13 +117,13 @@ print()"""
 
 
 # "http://192.168.1.53:4200/state/circuits/"
-u = requests.get("http://192.168.1.53:4200/state/circuit/6/")
+'''u = requests.get("http://192.168.1.53:4200/state/circuit/6/")
 u = (json.dumps(u.json(), indent=4, sort_keys=True))
 # print(u.text)
-'''for i in u["circuits"]:
+for i in u["circuits"]:
     print(i["name"])
     print(i["id"])
-    print(i['isOn'])'''
+    print(i['isOn'])
 
 # http://192.168.1.53:4200/config/options/heaters/
 
@@ -134,7 +134,7 @@ p = (json.dumps(p.json(), indent=4, sort_keys=True))
 # print(p.text)
 # "http://192.168.1.53:4200/config/options/schedules/"
 # "http://192.168.1.53:4200/config/options/bodies/"
-# """
+# '''
 '''for i in p:
     print(i[0:1])
     print(i['name'])
@@ -350,6 +350,8 @@ data = {
     "model": "Nixie Single Body",
     "nextSunrise": "2024-03-06T14:18:55.000-0800",
     "nextSunset": "2024-03-06T01:53:56.000-0800",
+
+
     "pumps": [
         {
             "address": 96,
@@ -556,8 +558,92 @@ data = {
                 "name": "vf",
                 "val": 5
             }
+        },
+
+
+        {
+            "address": 97,
+            "circuits": [
+                {
+                    "circuit": {
+                        "action": {
+                            "desc": "Ready",
+                            "name": "ready",
+                            "val": 0
+                        },
+                        "endTime": "2024-03-06T00:38:44.114-0800",
+                        "equipmentType": "circuit",
+                        "freezeProtect": False,
+                        "id": 6,
+                        "isActive": True,
+                        "isOn": False,
+                        "manualPriorityActive": False,
+                        "name": "Pool",
+                        "priority": "manual",
+                        "showInFeatures": True,
+                        "startDelay": False,
+                        "stopDelay": False,
+                        "type": {
+                            "body": 1,
+                            "desc": "Pool",
+                            "hasHeatSource": True,
+                            "name": "pool",
+                            "val": 12
+                        }
+                    },
+                    "id": 1,
+                    "master": 1,
+                    "relay": 1,
+                    "units": "undefined"
+                }
+            ],
+            "equipmentType": "pump",
+            "id": 51,
+            "maxFlow": 130,
+            "maxSpeed": 3450,
+            "minFlow": 0,
+            "minSpeed": 0,
+            "name": "Pump 2",
+            "pumpOnDelay": False,
+            "relay": 0,
+            "status": {
+                "desc": "Ok",
+                "name": "ok",
+                "val": 0
+            },
+            "type": {
+                "desc": "SuperFlo VS",
+                "equipmentMaster": 1,
+                "hasAddress": False,
+                "maxCircuits": 8,
+                "maxRelays": 4,
+                "maxSpeeds": 4,
+                "name": "sf",
+                "relays": [
+                    {
+                        "id": 1,
+                        "name": "Program #1"
+                    },
+                    {
+                        "id": 2,
+                        "name": "Program #2"
+                    },
+                    {
+                        "id": 3,
+                        "name": "Program #3"
+                    },
+                    {
+                        "id": 4,
+                        "name": "Program #4"
+                    }
+                ],
+                "val": 100
+            }
         }
+
+
     ],
+
     "schedules": [
         {
             "circuit": {
@@ -921,7 +1007,7 @@ print()
 # print()
 #'''
 
-###### PUMP 3 VF ######
+'''###### PUMP 3 VF ######
 # print()
 # print("Pumps  {}".format(data["pumps"][1]))
 print()
@@ -953,7 +1039,46 @@ print()
 print("Max Flow  {}".format(data["pumps"][2]["maxFlow"]))
 print()
 # print("Circuit  {}".format(data["pumps"][1]["circuits"][0]))
+# print()'''
+
+
+###### PUMP 3 VF ######
 # print()
+# print("Pumps  {}".format(data["pumps"][1]))
+print()
+print("Name  {}".format(data["pumps"][3]["name"]))
+print()
+print("Address  {}".format(data["pumps"][3]["address"]))
+print()
+print("Type  {}".format(data["pumps"][3]["type"]['desc']))
+print()
+print("Status  {}".format(data["pumps"][3]["circuits"][0]['circuit']['isOn']))
+print()
+
+# Watts for all pumps ADD 1 - 96!
+print("Watts  {}".format(data["pumps"][0]["watts"]))
+print()
+print("RPM  {}".format(data["pumps"][3]["circuits"]))  # ['units']['val']))
+print()
+# GPM from address 1 - 96
+print("GPM  {}".format(data["pumps"][0]["flow"]))
+print()
+# print("GPM Setpoint  {}".format(data["pumps"][3]["circuits"][0]["flow"]))
+# print()
+print("Min Speed {}".format(data["pumps"][3]['minSpeed']))
+print()
+print("Max Speed {}".format(data["pumps"][3]['maxSpeed']))
+print()
+print("Min Flow  {}".format(data["pumps"][3]["minFlow"]))
+print()
+print("Max Flow  {}".format(data["pumps"][3]["maxFlow"]))
+print()
+# print("Circuit  {}".format(data["pumps"][1]["circuits"][0]))
+# print()
+
+# start relay for vs super
+# {method: 'put', url: '/config/pump', data: '{"id":51,"circuits":[{"relay":3,"units":{"val":null},"id":1,"circuit":6}]}'}data: "{\"id\":51,\"circuits\":[{\"relay\":3,\"units\":{\"val\":null},\"id\":1,\"circuit\":6}]}"method: "put"url: "/config/pump"[[Prototype]]: Object
+# data:"{\"id\":50,\"circuits\":[{\"relay\":3,\"units\":{\"val\":null},\"id\":1,\"circuit\":6}]}"
 
 
 '''for i in data["pumps"]:

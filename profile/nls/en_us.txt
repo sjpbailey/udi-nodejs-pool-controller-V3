@@ -48,11 +48,6 @@ ST-pumppool-GV4-NAME = Pump GPM
 CMD-pumppool-QUERY-NAME = Query
 CMD-pumppool-SET_SPEED-NAME = Pump RPM
 
-RUNIN-0 = Stopped
-RUNIN-1 = Running
-
-ONLINE-0 = Failed
-ONLINE-1 = Online
 
 # Pump Node Intelliflo VS
 ND-pumpIvs-NAME = Pump VS
@@ -79,3 +74,30 @@ ST-pumpIvfP-GV3-NAME = Pump RPM
 ST-pumpIvfP-GV4-NAME = Pump GPM
 CMD-pumpIvfP-QUERY-NAME = Query
 CMD-pumpIvfP-SET_SPEED-NAME = Pump GPM
+
+# Pump Node Intelliflo SuperFlow VS
+ND-pumpIsvs-NAME = Pump VF
+ND-pumpIsvs-ICON = Irrigation	
+ST-pumpIsvsP-ST-NAME = Node Status
+ST-pumpIsvsP-GV0-NAME = Pool Running
+ST-pumpIsvsP-GV30-NAME = -
+ST-pumpIsvsP-GV1-NAME = Pump Status
+ST-pumpIsvsP-GV2-NAME = Pump Watts
+ST-pumpIsvsP-GV3-NAME = Pump RPM
+ST-pumpIsvsP-GV4-NAME = Pump GPM
+CMD-pumpIsvsP-QUERY-NAME = Query
+CMD-pumpIsvsP-SET_SPEED-NAME = Pump Relays
+
+
+
+
+RUNIN-0 = Stopped
+RUNIN-1 = Running
+
+ONLINE-0 = Failed
+ONLINE-1 = Online
+
+RELAY-0 = RELAY 1
+RELAY-1 = RELAY 2
+RELAY-2 = RELAY 3
+RELAY-3 = RELAY 4
