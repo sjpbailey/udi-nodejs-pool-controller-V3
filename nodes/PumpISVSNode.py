@@ -111,7 +111,7 @@ class PumpISVSNode(udi_interface.Node):
         {'driver': 'ST', 'value': 0, 'uom': 25, 'name': "Online"},
     ]
 
-    id = 'pumpIvf'
+    id = 'pumpIsvs'
 
     commands = {
         'DON': cmd_on,
