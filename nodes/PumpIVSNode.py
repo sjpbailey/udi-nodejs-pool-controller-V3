@@ -1,4 +1,4 @@
-''' Intelliflo VSF Pump '''
+''' Intelliflo VS Pump '''
 import udi_interface
 import sys
 import time
@@ -8,11 +8,11 @@ import urllib3
 LOGGER = udi_interface.LOGGER
 
 
-class PumpNode(udi_interface.Node):
+class PumpIVSNode(udi_interface.Node):
 
     def __init__(self, polyglot, primary, address, name, allData, apiBaseUrl, api_url):
 
-        super(PumpNode, self).__init__(polyglot, primary, address, name)
+        super(PumpIVSNode, self).__init__(polyglot, primary, address, name)
         self.poly = polyglot
         self.lpfx = '%s:%s' % (address, name)
 
@@ -60,7 +60,8 @@ class PumpNode(udi_interface.Node):
 
         LOGGER.info("Pump RPM  {}".format(
             self.allDataJson["pumps"][0]["rpm"]))
-        self.setDriver('GV3', self.allDataJson["pumps"][0]["rpm"])
+        self.setDriver(
+            'GV3', self.allDataJson["pumps"][0]["circuits"][0]['units']['val'])
 
         LOGGER.info("Pump GPM  {}".format(
             self.allDataJson["pumps"][0]["flow"]))
@@ -87,7 +88,7 @@ class PumpNode(udi_interface.Node):
         json_data = {"id": 6, "state": False}  # True-Start False-Stop
 
         response = requests.put(
-            self.api_url + '/state/circuit/setState', json=json_data).
+            self.api_url + '/state/circuit/setState', json=json_data)
 
     def query(self, command=None):
         self.reportDrivers()
@@ -110,7 +111,7 @@ class PumpNode(udi_interface.Node):
         {'driver': 'ST', 'value': 0, 'uom': 25, 'name': "Online"},
     ]
 
-    id = 'pumpnode'
+    id = 'pumpIvs'
 
     commands = {
         'DON': cmd_on,

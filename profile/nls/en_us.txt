@@ -35,7 +35,7 @@ ST-switch0-GV1-NAME = Device Command
 CMD-switch0-QUERY-NAME = Query
 
 
-# Pump Node
+# Pump Node Intelliflo VSF
 ND-pumpnode-NAME = Pump
 ND-pumpnode-ICON = Irrigation	
 ST-pumppool-ST-NAME = Node Status
@@ -54,3 +54,15 @@ RUNIN-1 = Running
 ONLINE-0 = Failed
 ONLINE-1 = Online
 
+# Pump Node Intelliflo VS
+ND-pumpIvs-NAME = Pump
+ND-pumpIvs-ICON = Irrigation	
+ST-pumpIvsP-ST-NAME = Node Status
+ST-pumpIvsP-GV0-NAME = Pool Running
+ST-pumpIvsP-GV30-NAME = -
+ST-pumpIvsP-GV1-NAME = Pump Status
+ST-pumpIvsP-GV2-NAME = Pump Watts
+ST-pumpIvsP-GV3-NAME = Pump RPM
+ST-pumpIvsP-GV4-NAME = Pump GPM
+CMD-pumpIvsP-QUERY-NAME = Query
+CMD-pumpIvsP-SET_SPEED-NAME = Pump RPM

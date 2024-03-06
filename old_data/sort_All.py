@@ -69,10 +69,10 @@ response = requests.put(
     'http://192.168.1.53:4200/state/circuit/setState/', json=json_data)'''
 
 
-# x = requests.get('http://192.168.1.53:4200/config/circuits/')
-# print(json.dumps(x.json(), indent=4, sort_keys=True))
-
-# "http://192.168.1.53:4200/state/all/"
+'''x = requests.get("http://192.168.1.53:4200/state/all/")
+print(json.dumps(x.json(), indent=4, sort_keys=True))
+# 'http://192.168.1.53:4200/config/circuits/'
+# "http://192.168.1.53:4200/state/all/"'''
 
 
 # "http://192.168.1.53:4200/state/temps/"
@@ -144,6 +144,7 @@ p = (json.dumps(p.json(), indent=4, sort_keys=True))
     # print(i['name'])'''
 
 data = {
+    "alias": "BackYard",
     "appVersion": "8.0.1",
     "appVersionState": {
         "equipmentType": "appVersion",
@@ -151,7 +152,7 @@ data = {
         "gitLocalCommit": "a2e1e75549b1246b3757d7deb7f1ddabeb702d92",
         "githubRelease": "8.0.2",
         "installed": "8.0.1",
-        "nextCheckTime": "2024-02-27T20:22:55.054-0800",
+        "nextCheckTime": "2024-03-05T16:44:00.244-0800",
         "status": {
             "desc": "New version available",
             "name": "behind",
@@ -170,7 +171,7 @@ data = {
                 "name": "ready",
                 "val": 0
             },
-            "endTime": "2024-02-26T03:49:49.559-0800",
+            "endTime": "2024-03-05T19:35:21.770-0800",
             "equipmentType": "circuit",
             "freezeProtect": False,
             "id": 6,
@@ -179,7 +180,7 @@ data = {
             "manualPriorityActive": False,
             "name": "Pool",
             "priority": "manual",
-            "showInFeatures": False,
+            "showInFeatures": True,
             "startDelay": False,
             "stopDelay": False,
             "type": {
@@ -196,7 +197,7 @@ data = {
                 "name": "ready",
                 "val": 0
             },
-            "endTime": "2024-02-26T00:20:20.334-0800",
+            "endTime": "2024-03-05T01:49:54.007-0800",
             "equipmentType": "circuit",
             "freezeProtect": False,
             "id": 2,
@@ -220,11 +221,10 @@ data = {
                 "name": "ready",
                 "val": 0
             },
-            "endTime": "2024-02-25T23:59:07.420-0800",
+            "endTime": "2024-03-04T15:34:55.333-0800",
             "equipmentType": "circuit",
             "freezeProtect": False,
             "id": 3,
-            "isActive": True,
             "isOn": False,
             "manualPriorityActive": False,
             "name": "Skim",
@@ -243,11 +243,10 @@ data = {
                 "name": "ready",
                 "val": 0
             },
-            "endTime": "2024-02-25T22:24:12.361-0800",
+            "endTime": "2024-03-04T15:31:41.570-0800",
             "equipmentType": "circuit",
             "freezeProtect": False,
             "id": 4,
-            "isActive": True,
             "isOn": False,
             "manualPriorityActive": False,
             "name": "Sweep",
@@ -302,37 +301,37 @@ data = {
                 "name": "pool",
                 "val": 0
             },
-            "cleanPercentage": 0,
+            "cleanPercentage": 100,
             "equipmentType": "filter",
             "filterType": {
                 "desc": "Cartridge",
-                "hasBackwash":  False,
+                "hasBackwash": False,
                 "name": "cartridge",
                 "val": 1
             },
             "id": 1,
-            "isOn": True,
+            "isOn": False,
             "name": "Filter 1",
-            "pressure": 15.65,
+            "pressure": 0,
             "pressureUnits": {
                 "desc": "Pounds per Sqare Inch",
                 "name": "psi",
                 "val": 0
             },
-            "refPressure": 15.65
+            "refPressure": 0
         }
     ],
     "freeze": False,
     "heaters": [
         {
             "bodyId": 0,
-            "endTime": "2024-02-25T23:22:40.992-0800",
+            "endTime": "2024-03-05T15:35:06.278-0800",
             "equipmentType": "heater",
             "id": 256,
             "isOn": False,
-            "name": "Heater 1",
+            "name": "Gas Heater 1",
             "shutdownDelay": False,
-            "startTime": "2024-02-25T23:20:58.179-0800",
+            "startTime": "2024-03-05T14:20:54.956-0800",
             "startupDelay": False,
             "type": {
                 "desc": "Gas Heater",
@@ -349,8 +348,8 @@ data = {
         "val": 0
     },
     "model": "Nixie Single Body",
-    "nextSunrise": "",
-    "nextSunset": "",
+    "nextSunrise": "2024-03-06T14:18:55.000-0800",
+    "nextSunset": "2024-03-06T01:53:56.000-0800",
     "pumps": [
         {
             "address": 96,
@@ -362,7 +361,7 @@ data = {
                             "name": "ready",
                             "val": 0
                         },
-                        "endTime": "2024-02-26T03:49:49.559-0800",
+                        "endTime": "2024-03-05T19:35:21.770-0800",
                         "equipmentType": "circuit",
                         "freezeProtect": False,
                         "id": 6,
@@ -371,7 +370,7 @@ data = {
                         "manualPriorityActive": False,
                         "name": "Pool",
                         "priority": "manual",
-                        "showInFeatures": False,
+                        "showInFeatures": True,
                         "startDelay": False,
                         "stopDelay": False,
                         "type": {
@@ -384,7 +383,7 @@ data = {
                     },
                     "id": 1,
                     "master": 1,
-                    "speed": 2200,
+                    "speed": 2250,
                     "units": {
                         "desc": "RPM",
                         "name": "rpm",
@@ -412,7 +411,7 @@ data = {
                 "name": "ok",
                 "val": 0
             },
-            "time": 61,
+            "time": 944,
             "type": {
                 "desc": "Intelliflo VSF",
                 "hasAddress": True,
@@ -425,6 +424,138 @@ data = {
                 "val": 4
             },
             "watts": 0
+        },
+
+
+        {
+            "address": 97,
+            "circuits": [
+                {
+                    "circuit": {
+                        "action": {
+                            "desc": "Ready",
+                            "name": "ready",
+                            "val": 0
+                        },
+                        "endTime": "2024-03-05T19:35:21.770-0800",
+                        "equipmentType": "circuit",
+                        "freezeProtect": False,
+                        "id": 6,
+                        "isActive": True,
+                        "isOn": False,
+                        "manualPriorityActive": False,
+                        "name": "Pool",
+                        "priority": "manual",
+                        "showInFeatures": True,
+                        "startDelay": False,
+                        "stopDelay": False,
+                        "type": {
+                            "body": 1,
+                            "desc": "Pool",
+                            "hasHeatSource": True,
+                            "name": "pool",
+                            "val": 12
+                        }
+                    },
+                    "id": 1,
+                    "master": 1,
+                    "speed": 3400,
+                    "units": {
+                        "desc": "RPM",
+                        "name": "rpm",
+                        "val": 0
+                    }
+                }
+            ],
+            "equipmentType": "pump",
+            "id": 51,
+            "maxFlow": 130,
+            "maxSpeed": 3450,
+            "minFlow": 0,
+            "minSpeed": 450,
+            "name": "Pump 2",
+            "pumpOnDelay": False,
+            "status": {
+                "desc": "Ok",
+                "name": "ok",
+                "val": 0
+            },
+            "type": {
+                "desc": "Intelliflo VS",
+                "hasAddress": True,
+                "maxCircuits": 8,
+                "maxPrimingTime": 6,
+                "maxSpeed": 3450,
+                "minSpeed": 450,
+                "name": "vs",
+                "val": 3
+            }
+        },
+
+
+
+        {
+            "address": 98,
+            "circuits": [
+                {
+                    "circuit": {
+                        "action": {
+                            "desc": "Ready",
+                            "name": "ready",
+                            "val": 0
+                        },
+                        "endTime": "2024-03-05T19:35:21.770-0800",
+                        "equipmentType": "circuit",
+                        "freezeProtect": False,
+                        "id": 6,
+                        "isActive": True,
+                        "isOn": False,
+                        "manualPriorityActive": False,
+                        "name": "Pool",
+                        "priority": "manual",
+                        "showInFeatures": True,
+                        "startDelay": False,
+                        "stopDelay": False,
+                        "type": {
+                            "body": 1,
+                            "desc": "Pool",
+                            "hasHeatSource": True,
+                            "name": "pool",
+                            "val": 12
+                        }
+                    },
+                    "flow": 124,
+                    "id": 1,
+                    "master": 1,
+                    "units": {
+                        "desc": "GPM",
+                        "name": "gpm",
+                        "val": 1
+                    }
+                }
+            ],
+            "equipmentType": "pump",
+            "id": 52,
+            "maxFlow": 130,
+            "maxSpeed": 3450,
+            "minFlow": 15,
+            "minSpeed": 450,
+            "name": "Pump 3",
+            "pumpOnDelay": False,
+            "status": {
+                "desc": "Ok",
+                "name": "ok",
+                "val": 0
+            },
+            "type": {
+                "desc": "Intelliflo VF",
+                "hasAddress": True,
+                "maxCircuits": 8,
+                "maxFlow": 130,
+                "minFlow": 15,
+                "name": "vf",
+                "val": 5
+            }
         }
     ],
     "schedules": [
@@ -435,7 +566,7 @@ data = {
                     "name": "ready",
                     "val": 0
                 },
-                "endTime": "2024-02-26T03:49:49.559-0800",
+                "endTime": "2024-03-05T19:35:21.770-0800",
                 "equipmentType": "circuit",
                 "freezeProtect": False,
                 "id": 6,
@@ -444,7 +575,7 @@ data = {
                 "manualPriorityActive": False,
                 "name": "Pool",
                 "priority": "manual",
-                "showInFeatures": False,
+                "showInFeatures": True,
                 "startDelay": False,
                 "stopDelay": False,
                 "type": {
@@ -465,7 +596,7 @@ data = {
                 "name": "always",
                 "val": 0
             },
-            "endTime": 710,
+            "endTime": 840,
             "endTimeType": {
                 "desc": "Manual",
                 "name": "manual",
@@ -474,9 +605,9 @@ data = {
             "equipmentType": "schedule",
             "heatSetpoint": 78,
             "heatSource": {
-                "desc": "No Change",
-                "name": "nochange",
-                "val": 32
+                "desc": "Heater",
+                "name": "heater",
+                "val": 2
             },
             "id": 1,
             "isOn": False,
@@ -530,10 +661,10 @@ data = {
             },
             "scheduleTime": {
                 "calculated": True,
-                "calculatedDate": "2024-02-26T00:00:00.000-0800",
-                "endTime": "2024-02-26T11:50:59.999-0800",
+                "calculatedDate": "2024-03-05T00:00:00.000-0800",
+                "endTime": "2024-03-05T14:00:59.999-0800",
                 "shouldBeOn": False,
-                "startTime": "2024-02-26T10:00:00.000-0800"
+                "startTime": "2024-03-05T10:00:00.000-0800"
             },
             "scheduleType": {
                 "days": "multi",
@@ -556,22 +687,22 @@ data = {
             "triggered": False
         }
     ],
-    "startTime": "2024-02-25T23:19:23.454-0800",
+    "startTime": "2024-03-03T10:15:59.429-0800",
     "status": {
         "desc": "Ready",
         "name": "ready",
         "percent": 100,
         "val": 1
     },
-    "sunrise": "",
-    "sunset": "",
+    "sunrise": "2024-03-05T14:20:21.000-0800",
+    "sunset": "2024-03-05T01:52:58.000-0800",
     "systemUnits": {
         "desc": "English",
         "name": "english",
         "val": 0
     },
     "temps": {
-        "air": 49.15,
+        "air": 53.43,
         "bodies": [
             {
                 "circuit": 6,
@@ -600,11 +731,11 @@ data = {
                 "isCovered": False,
                 "isOn": False,
                 "name": "Pool",
-                "setPoint": 40,
+                "setPoint": 78,
                 "showInDashboard": True,
                 "startDelay": False,
                 "stopDelay": False,
-                "temp": 65.91,
+                "temp": 55.62,
                 "type": {
                     "desc": "Pool",
                     "name": "pool",
@@ -618,10 +749,11 @@ data = {
             "name": "F",
             "val": 0
         },
-        "waterSensor1": 62.85,
-        "waterSensor2": 63.45
+        "waterSensor1": 55.62,
+        "waterSensor2": 54.73,
+        "waterSensor3": 11.33
     },
-    "time": "2024-02-26T01:00:01.908-0800",
+    "time": "2024-03-05T15:43:00.600-0800",
     "valve": 0,
     "valveMode": {},
     "valves": [
@@ -659,6 +791,18 @@ data = {
     "virtualCircuits": [
         {
             "equipmentType": "virtualCircuit",
+            "id": 244,
+            "isActive": True,
+            "isOn": False,
+            "name": "Pool Heater",
+            "type": {
+                "desc": "Pool Heater",
+                "name": "poolHeater",
+                "val": 244
+            }
+        },
+        {
+            "equipmentType": "virtualCircuit",
             "id": 246,
             "isActive": True,
             "isOn": False,
@@ -683,18 +827,6 @@ data = {
         },
         {
             "equipmentType": "virtualCircuit",
-            "id": 244,
-            "isActive": True,
-            "isOn": False,
-            "name": "Pool Heater",
-            "type": {
-                "desc": "Pool Heater",
-                "name": "poolHeater",
-                "val": 244
-            }
-        },
-        {
-            "equipmentType": "virtualCircuit",
             "id": 258,
             "isActive": True,
             "isOn": False,
@@ -708,7 +840,134 @@ data = {
     ]
 }
 
-###### Virtual Circuits ######
+
+############### PUMPS ##################
+# Pump  addressing if more than one pump
+# 96 = 1 = 0
+# 97 = 2 = 1
+# 98 = 3 = 2
+# 99 = 4 = 3
+
+# PLUS circuit "id": 50 for Pump 1 / "id": 51 for Pump 2
+
+
+'''###### PUMP 1 VSF ######
+# print()
+# print("Pumps  {}".format(data["pumps"][0]))
+print()
+print("Name  {}".format(data["pumps"][0]["name"]))
+print()
+print("Address  {}".format(data["pumps"][0]["address"]))
+print()
+print("Type  {}".format(data["pumps"][0]["type"]['desc']))
+print()
+print("Status  {}".format(data["pumps"][0]["circuits"][0]['circuit']['isOn']))
+print()
+# Watts for all pumps ADD 1 - 96!
+print("Watts  {}".format(data["pumps"][0]["watts"]))
+print()
+print("RPM  {}".format(data["pumps"][0]["rpm"]))
+print()
+# GPM FOR ALL PUMPS AT ADD 1 - 96!
+print("GPM  {}".format(data["pumps"][0]["flow"]))
+print()
+print("RPM Setpoint  {}".format(data["pumps"][0]["circuits"][0]["speed"]))
+print()
+print("Min Speed  {}".format(data["pumps"][0]["type"]['minSpeed']))
+print()
+print("Max Speed  {}".format(data["pumps"][0]["type"]['maxSpeed']))
+print()
+print("Min GPM  {}".format(data["pumps"][0]["type"]['minFlow']))
+print()
+print("Max GPM  {}".format(data["pumps"][0]["type"]['maxFlow']))
+print()
+# print("RPM  {}".format(data["pumps"][0]["circuits"][0]["units"]['val']))
+# print()
+# print("Circuit  {}".format(data["pumps"][0]["circuits"][0]))
+# print()
+
+
+###### PUMP 2 VS ######
+print()
+# print("Pumps  {}".format(data["pumps"][1]))
+# print()
+print("Name  {}".format(data["pumps"][1]["name"]))
+print()
+print("Address  {}".format(data["pumps"][1]["address"]))
+print()
+print("Type  {}".format(data["pumps"][1]["type"]['desc']))
+print()
+print("Status  {}".format(data["pumps"][1]["circuits"][0]['circuit']['isOn']))
+print()
+# Watts for all pumps ADD 1 - 96!
+print("Watts  {}".format(data["pumps"][0]["watts"]))
+print()
+print("RPM  {}".format(data["pumps"][1]["circuits"][0]['units']['val']))
+print()
+# GPM from address 1 - 96
+print("GPM  {}".format(data["pumps"][0]["flow"]))
+print()
+print("RPM Setpoint  {}".format(data["pumps"][1]["circuits"][0]["speed"]))
+print()
+print("Min Speed  {}".format(data["pumps"][1]["type"]['minSpeed']))
+print()
+print("Max Speed  {}".format(data["pumps"][1]["type"]['maxSpeed']))
+print()
+print("Min GPM  {}".format(data["pumps"][1]['minFlow']))
+print()
+print("Max GPM  {}".format(data["pumps"][1]['maxFlow']))
+print()
+# print("Circuit  {}".format(data["pumps"][1]["circuits"][0]))
+# print()
+#'''
+
+###### PUMP 3 VF ######
+# print()
+# print("Pumps  {}".format(data["pumps"][1]))
+print()
+print("Name  {}".format(data["pumps"][2]["name"]))
+print()
+print("Address  {}".format(data["pumps"][2]["address"]))
+print()
+print("Type  {}".format(data["pumps"][2]["type"]['desc']))
+print()
+# Watts for all pumps ADD 1 - 96!
+print("Watts  {}".format(data["pumps"][0]["watts"]))
+print()
+print("RPM  {}".format(data["pumps"][2]["circuits"][0]['units']['val']))
+print()
+# GPM from address 1 - 96
+print("GPM  {}".format(data["pumps"][0]["flow"]))
+print()
+print("GPM Setpoint  {}".format(data["pumps"][2]["circuits"][0]["flow"]))
+print()
+print("Min Speed {}".format(data["pumps"][2]['minSpeed']))
+print()
+print("Max Speed {}".format(data["pumps"][2]['maxSpeed']))
+print()
+print("Min Flow  {}".format(data["pumps"][2]["minFlow"]))
+print()
+print("Max Flow  {}".format(data["pumps"][2]["maxFlow"]))
+print()
+# print("Circuit  {}".format(data["pumps"][1]["circuits"][0]))
+# print()
+
+
+'''for i in data["pumps"]:
+    # ["name"], i["id"], i['isOn'])
+    print(i["name"])
+    print(i["address"])  # , i["rpm"], i["circuits"][0], i["name"])
+    # print(i["type"]['desc'])
+    # print(i["circuits"][0])
+    # print(i["rpm"])
+    if i["type"]['desc'] == "Intelliflo VSF":
+        print("Intelliflo VSF")
+
+    if i["type"]['desc'] == "Intelliflo VS":
+        print("Intelliflo VS")'''
+
+
+'''###### Virtual Circuits ######
 print()
 # ["bodies"][0]["temp"]))
 print("Pool Temp  {}".format(data["virtualCircuits"]))
@@ -731,41 +990,8 @@ for i in data["heaters"]:
     print(i['id'])
     print(i['type']['desc'])
     print(i['isOn'])
-    # print(i['name'])
+    # print(i['name'])'''
 
-'''
-###### PUMPS ######
-print()
-print("Pumps  {}".format(data["pumps"][0]))
-print()
-print("Type  {}".format(data["pumps"][0]["type"]['desc']))
-print()
-print("Speed Setpoint  {}".format(data["pumps"][0]["circuits"][0]["speed"]))
-print()
-print("Minimum Speed  {}".format(data["pumps"][0]["type"]['minSpeed']))
-print()
-print("Maximum Speed  {}".format(data["pumps"][0]["type"]['maxSpeed']))
-print()
-print("Maximum GPM  {}".format(data["pumps"][0]["type"]['maxFlow']))
-print()
-print("Address  {}".format(data["pumps"][0]["address"]))
-print()
-
-print("Circuit  {}".format(data["pumps"][0]["circuits"][0]))
-print()
-
-print("RPM  {}".format(data["pumps"][0]["circuits"][0]["units"]['val']))
-print()
-
-for i in data["pumps"]:
-    # ["name"], i["id"], i['isOn'])
-    print(i["name"])
-    print(i["address"])  # , i["rpm"], i["circuits"][0], i["name"])
-    print(i["type"]['desc'])
-    # print(i["circuits"][0])
-    # print(i["rpm"])
-if i["type"]['desc'] == "Intelliflo VSF":
-    print("Intelliflo")'''
 
 """
 print()
@@ -834,13 +1060,13 @@ print()'''
 # print()
 # ["name"]))
 # [0]["circuits"]["circuit"]["name"]))
-print("Circuit On {}".format(data["circuits"][3]['isOn']))
+'''print("Circuit On {}".format(data["circuits"][3]['isOn']))
 ################ CIRCUITS ######################################
 for i in data["circuits"]:
     print(i["name"])
     print(i["id"])
     print(i['isOn'])
-print("Circuit On {}".format(data["circuits"][0]['isOn']))
+print("Circuit On {}".format(data["circuits"][0]['isOn']))'''
 #      [0]["name"]))
 """print()
 print("Air Temp {}".format(data["air"]))

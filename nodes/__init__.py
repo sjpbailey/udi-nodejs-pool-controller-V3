@@ -4,5 +4,6 @@
 from .SwitchNode import SwitchNode
 from .PoolNode import PoolNode
 from .PumpNode import PumpNode
+from .PumpIVSNode import PumpIVSNode
 from .TemplateNode import TemplateNode
 from .PoolController import PoolController

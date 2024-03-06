@@ -9,6 +9,7 @@ from nodes import TemplateNode
 from nodes import PoolNode
 from nodes import SwitchNode
 from nodes import PumpNode
+from nodes import PumpIVSNode
 
 
 LOGGER = udi_interface.LOGGER
@@ -124,8 +125,13 @@ class PoolController(udi_interface.Node):
                 LOGGER.info("Install Intelliflo VSF")
                 self.poly.addNode(PumpNode(
                     self.poly, self.address, address, name, allData, self.apiBaseUrl, self.api_url))
-        else:
-            LOGGER.info("Pump Not Found")
+            elif i["type"]['desc'] == "Intelliflo VS":
+                LOGGER.info("Install Intelliflo VS")
+                self.poly.addNode(PumpIVSNode(
+                    self.poly, self.address, address, name, allData, self.apiBaseUrl, self.api_url))
+
+            else:
+                LOGGER.info("Pump Not Found")
 
         for i in self.allDataJson["heaters"]:
             LOGGER.info(i['name'])
