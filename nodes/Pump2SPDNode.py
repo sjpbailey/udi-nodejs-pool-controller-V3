@@ -38,9 +38,9 @@ class Pump2SPDNode(udi_interface.Node):
         # LOGGER.info(self.allDataJson)
 
         LOGGER.info("Pool Running  {}".format(
-            self.allDataJson["temps"]["bodies"][2]["isOn"]))
+            self.allDataJson["temps"]["bodies"][0]["isOn"]))
 
-        isON = self.allDataJson["temps"]["bodies"][2]["isOn"]
+        isON = self.allDataJson["temps"]["bodies"][0]["isOn"]
         LOGGER.info(isON)
         if isON == True:
             self.setDriver('GV0', 1)
@@ -48,8 +48,8 @@ class Pump2SPDNode(udi_interface.Node):
             self.setDriver('GV0', 0)
 
         LOGGER.info("Pump Status  {}".format(
-            self.allDataJson["pumps"][2]["circuits"][2]["circuit"]["isOn"]))
-        pisOn = self.allDataJson["pumps"][2]["circuits"][2]["circuit"]["isOn"]
+            self.allDataJson["pumps"][0]["circuits"][0]["circuit"]["isOn"]))
+        pisOn = self.allDataJson["pumps"][0]["circuits"][0]["circuit"]["isOn"]
         if pisOn == True:
             self.setDriver('GV1', 1)
         if pisOn == False:
@@ -57,20 +57,20 @@ class Pump2SPDNode(udi_interface.Node):
 
         try:
             LOGGER.info("Pump Watts  {}".format(
-                self.allDataJson["pumps"][2]["watts"]))
-            self.setDriver('GV2', self.allDataJson["pumps"][2]["watts"])
+                self.allDataJson["pumps"][0]["watts"]))
+            self.setDriver('GV2', self.allDataJson["pumps"][0]["watts"])
         except KeyError:
             pass
 
         LOGGER.info("Pump RPM  {}".format(
-            self.allDataJson["pumps"][2]["rpm"]))
+            self.allDataJson["pumps"][0]["rpm"]))
         self.setDriver(
-            'GV3', self.allDataJson["pumps"][2]["circuits"][2]['units']['val'])
+            'GV3', self.allDataJson["pumps"][0]["circuits"][0]['units']['val'])
 
         try:
             LOGGER.info("Pump GPM  {}".format(
-                self.allDataJson["pumps"][2]["flow"]))
-            self.setDriver('GV4', self.allDataJson["pumps"][2]["flow"])
+                self.allDataJson["pumps"][0]["flow"]))
+            self.setDriver('GV4', self.allDataJson["pumps"][0]["flow"])
         except KeyError:
             pass
         self.http = urllib3.PoolManager()
