@@ -87,7 +87,7 @@ class PumpNode(udi_interface.Node):
         json_data = {"id": 6, "state": False}  # True-Start False-Stop
 
         response = requests.put(
-            self.api_url + '/state/circuit/setState', json=json_data).
+            self.api_url + '/state/circuit/setState', json=json_data)
 
     def query(self, command=None):
         self.reportDrivers()
