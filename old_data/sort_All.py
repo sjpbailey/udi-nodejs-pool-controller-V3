@@ -561,8 +561,298 @@ data = {
         },
 
 
+
         {
-            "address": 97,
+            "address": 99,
+            "circuits": [
+                {
+                    "circuit": {
+                        "action": {
+                            "desc": "Ready",
+                            "name": "ready",
+                            "val": 0
+                        },
+                        "endTime": "2024-03-06T01:51:22.706-0800",
+                        "equipmentType": "circuit",
+                        "freezeProtect": False,
+                        "id": 6,
+                        "isActive": True,
+                        "isOn": False,
+                        "manualPriorityActive": False,
+                        "name": "Pool",
+                        "priority": "manual",
+                        "showInFeatures": True,
+                        "startDelay": False,
+                        "stopDelay": False,
+                        "type": {
+                            "body": 1,
+                            "desc": "Pool",
+                            "hasHeatSource": True,
+                            "name": "pool",
+                            "val": 12
+                        }
+                    },
+                    "id": 1,
+                    "master": 1,
+                    "relay": 1,
+                    "units": "undefined"
+                }
+            ],
+            "equipmentType": "pump",
+            "id": 53,
+            "maxFlow": 130,
+            "maxSpeed": 3450,
+            "minFlow": 0,
+            "minSpeed": 0,
+            "name": "Pump 4",
+            "pumpOnDelay": False,
+            "relay": 0,
+            "status": {
+                "desc": "Ok",
+                "name": "ok",
+                "val": 0
+            },
+            "type": {
+                "desc": "Single Speed",
+                "hasAddress": False,
+                "hasBody": False,
+                "maxCircuits": 8,
+                "maxRelays": 1,
+                "name": "ss",
+                "relays": [
+                    {
+                        "id": 1,
+                        "name": "Pump On/Off"
+                    }
+                ],
+                "val": 1
+            }
+        },
+
+
+        {
+            "address": 100,
+            "circuits": [
+                {
+                    "circuit": {
+                        "action": {
+                            "desc": "Ready",
+                            "name": "ready",
+                            "val": 0
+                        },
+                        "endTime": "2024-03-06T01:51:22.706-0800",
+                        "equipmentType": "circuit",
+                        "freezeProtect": False,
+                        "id": 6,
+                        "isActive": True,
+                        "isOn": False,
+                        "manualPriorityActive": False,
+                        "name": "Pool",
+                        "priority": "manual",
+                        "showInFeatures": True,
+                        "startDelay": False,
+                        "stopDelay": False,
+                        "type": {
+                            "body": 1,
+                            "desc": "Pool",
+                            "hasHeatSource": True,
+                            "name": "pool",
+                            "val": 12
+                        }
+                    },
+                    "id": 1,
+                    "master": 1,
+                    "relay": 1,
+                    "units": "undefined"
+                }
+            ],
+            "equipmentType": "pump",
+            "id": 54,
+            "maxFlow": 130,
+            "maxSpeed": 3450,
+            "minFlow": 0,
+            "minSpeed": 0,
+            "name": "Pump 5",
+            "pumpOnDelay": False,
+            "relay": 0,
+            "status": {
+                "desc": "Ok",
+                "name": "ok",
+                "val": 0
+            },
+            "type": {
+                "desc": "Two Speed",
+                "hasAddress": False,
+                "hasBody": False,
+                "maxCircuits": 8,
+                "maxRelays": 2,
+                "name": "ds",
+                "relays": [
+                    {
+                        "id": 1,
+                        "name": "Low Speed"
+                    },
+                    {
+                        "id": 2,
+                        "name": "High Speed"
+                    }
+                ],
+                "val": 2
+            }
+        },
+
+
+        {
+            "address": 101,
+            "circuits": [
+                {
+                    "circuit": {
+                        "action": {
+                            "desc": "Ready",
+                            "name": "ready",
+                            "val": 0
+                        },
+                        "endTime": "2024-03-06T01:51:22.706-0800",
+                        "equipmentType": "circuit",
+                        "freezeProtect": False,
+                        "id": 6,
+                        "isActive": True,
+                        "isOn": False,
+                        "manualPriorityActive": False,
+                        "name": "Pool",
+                        "priority": "manual",
+                        "showInFeatures": True,
+                        "startDelay": False,
+                        "stopDelay": False,
+                        "type": {
+                            "body": 1,
+                            "desc": "Pool",
+                            "hasHeatSource": True,
+                            "name": "pool",
+                            "val": 12
+                        }
+                    },
+                    "id": 1,
+                    "master": 1,
+                    "speed": 3450,
+                    "units": {
+                        "desc": "RPM",
+                        "name": "rpm",
+                        "val": 0
+                    }
+                }
+            ],
+            "command": 0,
+            "equipmentType": "pump",
+            "id": 55,
+            "maxFlow": 130,
+            "maxSpeed": 3450,
+            "minFlow": 0,
+            "minSpeed": 450,
+            "name": "Pump 6",
+            "pumpOnDelay": False,
+            "rpm": 0,
+            "status": {
+                "desc": "Ok",
+                "name": "ok",
+                "val": 0
+            },
+            "type": {
+                "desc": "Hayward Eco/TriStar VS",
+                "hasAddress": True,
+                "maxCircuits": 8,
+                "maxSpeed": 3450,
+                "minSpeed": 450,
+                "name": "hwvs",
+                "val": 6
+            },
+            "watts": 0
+        },
+
+
+        {
+            "address": 100,
+            "circuits": [
+                {
+                    "circuit": {
+                        "action": {
+                            "desc": "Ready",
+                            "name": "ready",
+                            "val": 0
+                        },
+                        "endTime": "2024-03-06T01:51:22.706-0800",
+                        "equipmentType": "circuit",
+                        "freezeProtect": False,
+                        "id": 6,
+                        "isActive": True,
+                        "isOn": False,
+                        "manualPriorityActive": False,
+                        "name": "Pool",
+                        "priority": "manual",
+                        "showInFeatures": True,
+                        "startDelay": False,
+                        "stopDelay": False,
+                        "type": {
+                            "body": 1,
+                            "desc": "Pool",
+                            "hasHeatSource": True,
+                            "name": "pool",
+                            "val": 12
+                        }
+                    },
+                    "id": 1,
+                    "master": 1,
+                    "relay": 1,
+                    "units": "undefined"
+                }
+            ],
+            "command": 0,
+            "driveState": 0,
+            "equipmentType": "pump",
+            "id": 56,
+            "maxFlow": 130,
+            "maxSpeed": 3450,
+            "minFlow": 0,
+            "minSpeed": 0,
+            "name": "Pump 7",
+            "pumpOnDelay": False,
+            "relay": 0,
+            "status": {
+                "desc": "Ok",
+                "name": "ok",
+                "val": 0
+            },
+            "type": {
+                "desc": "Hayward Relay VS",
+                "hasAddress": False,
+                "maxCircuits": 8,
+                "maxRelays": 4,
+                "maxSpeeds": 8,
+                "name": "hwrly",
+                "relays": [
+                    {
+                        "id": 1,
+                        "name": "Step #1"
+                    },
+                    {
+                        "id": 2,
+                        "name": "Step #2"
+                    },
+                    {
+                        "id": 3,
+                        "name": "Step #3"
+                    },
+                    {
+                        "id": 4,
+                        "name": "Pump On"
+                    }
+                ],
+                "val": 7
+            }
+        },
+
+        {
+            "address": 102,
             "circuits": [
                 {
                     "circuit": {
@@ -598,12 +888,12 @@ data = {
                 }
             ],
             "equipmentType": "pump",
-            "id": 51,
+            "id": 57,
             "maxFlow": 130,
             "maxSpeed": 3450,
             "minFlow": 0,
             "minSpeed": 0,
-            "name": "Pump 2",
+            "name": "Pump 8",
             "pumpOnDelay": False,
             "relay": 0,
             "status": {
@@ -1044,7 +1334,7 @@ print()
 # print()'''
 
 
-###### PUMP 3 VF ######
+'''###### PUMP 3 VF ######
 # print()
 # print("Pumps  {}".format(data["pumps"][1]))
 print()
@@ -1076,28 +1366,75 @@ print()
 print("Max Flow  {}".format(data["pumps"][3]["maxFlow"]))
 print()
 # print("Circuit  {}".format(data["pumps"][1]["circuits"][0]))
-# print()
+# print()'''
+
 
 # start relay for vs super
 # {method: 'put', url: '/config/pump', data: '{"id":51,"circuits":[{"relay":3,"units":{"val":null},"id":1,"circuit":6}]}'}data: "{\"id\":51,\"circuits\":[{\"relay\":3,\"units\":{\"val\":null},\"id\":1,\"circuit\":6}]}"method: "put"url: "/config/pump"[[Prototype]]: Object
 # data:"{\"id\":50,\"circuits\":[{\"relay\":3,\"units\":{\"val\":null},\"id\":1,\"circuit\":6}]}"
+print()
+for i in data["pumps"]:
 
+    print("Name:  {}".format(i["name"]))
+    # , i["rpm"], i["circuits"][0], i["name"])
+    print("Address:  {}".format(i["address"]))
+    print("ID:  {}".format(i["id"]))
+    print("Type:  {}".format(i["type"]['desc']))
+    print("Status:  {}".format(i["circuits"][0]['circuit']['isOn']))
+    # print("RPM!  {}".format(i[0]["circuits"][0]['units']['val']))
+    # print(i['watts'])
+    # print(i["flow"])
+    # print(i["minSpeed"])
+    # print(i["maxSpeed"])
+    # print(i["minFlow"])
+    # print(i["minFlow"])
+    try:
+        print("Watts:!  {}".format(i['watts']))
+    except KeyError:
+        pass
+        print('NO Watts')
+    try:
+        print("RPM:!  {}".format(data["pumps"][0]["rpm"]))
+    except KeyError:
+        pass
+        print('NO RPM')
+    try:
+        print("GPM:!  {}".format(i['flow']))
+        print()
+        print()
+    except KeyError:
+        pass
+        print('NO GPM')
+        print()
+        print()
 
-'''for i in data["pumps"]:
-    # ["name"], i["id"], i['isOn'])
-    print(i["name"])
-    print(i["address"])  # , i["rpm"], i["circuits"][0], i["name"])
-    # print(i["type"]['desc'])
+    '''try:
+        print("RPM!  {}".format(i[0]["circuits"][0]['units']['val']))
+    except KeyError:
+        pass
+        print('NO RPM')'''
+
     # print(i["circuits"][0])
     # print(i["rpm"])
-    if i["type"]['desc'] == "Intelliflo VSF":
+    '''if i["type"]['desc'] == "Intelliflo VSF":
         print("Intelliflo VSF")
-
     if i["type"]['desc'] == "Intelliflo VS":
-        print("Intelliflo VS")'''
+        print("Intelliflo VS")
+    if i["type"]['desc'] == "Intelliflo VF":
+        print("Intelliflo VF")
+    if i["type"]['desc'] == "Single Speed":
+        print("Single Speed")
+    if i["type"]['desc'] == "Two Speed":
+        print("Two Speed")
+    if i["type"]['desc'] == "Hayward Eco/TriStar VS":
+        print("Hayward Eco/TriStar VS")
+    if i["type"]['desc'] == "Hayward Relay VS":
+        print("Hayward Relay VS")
+    if i["type"]['desc'] == "SuperFlo VS":
+        print("SuperFlo VS")'''
 
 
-'''###### Virtual Circuits ######
+'''  # Virtual Circuits ######
 print()
 # ["bodies"][0]["temp"]))
 print("Pool Temp  {}".format(data["virtualCircuits"]))
