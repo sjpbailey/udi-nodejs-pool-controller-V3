@@ -7,5 +7,4 @@ from .PumpNode import PumpNode
 from .PumpIVSNode import PumpIVSNode
 from .PumpIVFNode import PumpIVFNode
 from .PumpISVSNode import PumpISVSNode
-from .TemplateNode import TemplateNode
 from .PoolController import PoolController
