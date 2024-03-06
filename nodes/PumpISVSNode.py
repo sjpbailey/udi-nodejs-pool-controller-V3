@@ -94,9 +94,10 @@ class PumpISVSNode(udi_interface.Node):
         self.reportDrivers()
 
     def cmd_set_sped(self, command):
+        null = None
         value = int(command.get('value'))
         json_data = {"id": 50, "circuits": [
-            {"relay": value, "units": {"val": 1}, "id": 1, "circuit": 6}]}
+            {"relay": value, "units": {"val": null}, "id": 1, "circuit": 6}]}
 
         response = requests.put(
             self.api_url + '/config/pump', json=json_data)
