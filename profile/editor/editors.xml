@@ -48,4 +48,9 @@
     <range uom="89" min="0" max="4000" step="1" prec="0" />
   </editor>
 
+  <editor id="CTL_GPM">
+    <range uom="69" min="0" max="300" step="1" prec="0" />
+  </editor>
+
+
 </editors>

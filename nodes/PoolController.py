@@ -10,6 +10,7 @@ from nodes import PoolNode
 from nodes import SwitchNode
 from nodes import PumpNode
 from nodes import PumpIVSNode
+from nodes import PumpIVFNode
 
 
 LOGGER = udi_interface.LOGGER

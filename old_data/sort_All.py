@@ -931,6 +931,9 @@ print("Address  {}".format(data["pumps"][2]["address"]))
 print()
 print("Type  {}".format(data["pumps"][2]["type"]['desc']))
 print()
+print("Status  {}".format(data["pumps"][2]["circuits"][0]['circuit']['isOn']))
+print()
+
 # Watts for all pumps ADD 1 - 96!
 print("Watts  {}".format(data["pumps"][0]["watts"]))
 print()
