@@ -101,6 +101,19 @@ ST-pump2spdP-GV4-NAME = Pump GPM
 CMD-pump2spdP-QUERY-NAME = Query
 CMD-pump2spdP-SET_SPEED-NAME = Pump Relays
 
+# Pump Node Single Speed Pump
+ND-pump1spd-NAME = Pump VF
+ND-pump1spd-ICON = Irrigation	
+ST-pump1spdP-ST-NAME = Node Status
+ST-pump1spdP-GV0-NAME = Pool Running
+ST-pump1spdP-GV30-NAME = -
+ST-pump1spdP-GV1-NAME = Pump Status
+ST-pump1spdP-GV2-NAME = Pump Watts
+ST-pump1spdP-GV3-NAME = Pump RPM
+ST-pump1spdP-GV4-NAME = Pump GPM
+CMD-pump1spdP-QUERY-NAME = Query
+#CMD-pump1spdP-SET_SPEED-NAME = Pump Relays
+
 
 
 RUNIN-0 = Stopped

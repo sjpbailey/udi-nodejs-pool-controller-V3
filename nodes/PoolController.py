@@ -12,6 +12,7 @@ from nodes import PumpIVSNode
 from nodes import PumpIVFNode
 from nodes import PumpISVSNode
 from nodes import Pump2SPDNode
+from nodes import Pump1SPDNode
 
 
 LOGGER = udi_interface.LOGGER
@@ -144,6 +145,10 @@ class PoolController(udi_interface.Node):
             elif i["type"]['desc'] == "Two Speed":
                 LOGGER.info("Install Two Speed")
                 self.poly.addNode(Pump2SPDNode(
+                    self.poly, self.address, address, name, allData, self.apiBaseUrl, self.api_url, pid))
+            elif i["type"]['desc'] == "Single Speed":
+                LOGGER.info("Install Single Speed")
+                self.poly.addNode(Pump1SPDNode(
                     self.poly, self.address, address, name, allData, self.apiBaseUrl, self.api_url, pid))
 
             else:
