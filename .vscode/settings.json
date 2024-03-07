@@ -20,6 +20,8 @@
     "poolnode",
     "pumpnode",
     "pumppool",
+    "pumptri",
+    "pumptristar",
     "pumpvs",
     "RUNIN",
     "SERVERDATA",

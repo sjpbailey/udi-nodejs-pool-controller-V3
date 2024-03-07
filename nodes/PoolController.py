@@ -13,6 +13,7 @@ from nodes import PumpIVFNode
 from nodes import PumpISVSNode
 from nodes import Pump2SPDNode
 from nodes import Pump1SPDNode
+from nodes import PumpTriStarNode
 
 
 LOGGER = udi_interface.LOGGER

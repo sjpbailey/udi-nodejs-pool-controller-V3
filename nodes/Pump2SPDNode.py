@@ -1,4 +1,4 @@
-''' Intelliflo SuperFlow VS Pump 
+''' Two Speed Pump 
     copyright© 2024 SJBailey© '''
 import udi_interface
 import sys

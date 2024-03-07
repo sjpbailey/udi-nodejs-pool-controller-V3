@@ -9,4 +9,5 @@ from .PumpIVFNode import PumpIVFNode
 from .PumpISVSNode import PumpISVSNode
 from .Pump2SPDNode import Pump2SPDNode
 from .Pump1SPDNode import Pump1SPDNode
+from .PumpTriStarNode import PumpTriStarNode
 from .PoolController import PoolController
