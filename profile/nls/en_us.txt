@@ -140,6 +140,21 @@ CMD-pump1spdP-DOF-NAME = OFF
 CMD-pump1spdP-QUERY-NAME = Query
 #CMD-pump1spdP-SET_SPEED-NAME = Pump Relays
 
+# Pump Node Hayward Relay VS
+ND-pumpHsvs-NAME = Pump VF
+ND-pumpHsvs-ICON = Irrigation	
+ST-pumpHsvsP-ST-NAME = Node Status
+ST-pumpHsvsP-GV0-NAME = Pool Running
+ST-pumpHsvsP-GV30-NAME = -
+ST-pumpHsvsP-GV1-NAME = Pump Status
+ST-pumpHsvsP-GV2-NAME = Pump Watts
+ST-pumpHsvsP-GV3-NAME = Pump RPM
+ST-pumpHsvsP-GV4-NAME = Pump GPM
+CMD-pumpHsvsP-DON-NAME = ON
+CMD-pumpHsvsP-DOF-NAME = OFF
+CMD-pumpHsvsP-QUERY-NAME = Query
+CMD-pumpHsvsP-SET_SPEED-NAME = Pump Relays
+
 RUNIN-0 = Stopped
 RUNIN-1 = Running
 

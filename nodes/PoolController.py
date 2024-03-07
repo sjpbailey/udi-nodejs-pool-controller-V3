@@ -14,6 +14,7 @@ from nodes import PumpISVSNode
 from nodes import Pump2SPDNode
 from nodes import Pump1SPDNode
 from nodes import PumpTriStarNode
+from nodes import PumpHSVSNode
 
 
 LOGGER = udi_interface.LOGGER
@@ -155,7 +156,10 @@ class PoolController(udi_interface.Node):
                 LOGGER.info("Install Hayward Eco/TriStar VS")
                 self.poly.addNode(PumpTriStarNode(
                     self.poly, self.address, address, name, allData, self.apiBaseUrl, self.api_url, pid))
-
+            elif i["type"]['desc'] == "Hayward Relay VS":
+                LOGGER.info("Install Hayward Relay VS")
+                self.poly.addNode(PumpHSVSNode(
+                    self.poly, self.address, address, name, allData, self.apiBaseUrl, self.api_url, pid))
             else:
                 LOGGER.info("Pump Not Found")
 
