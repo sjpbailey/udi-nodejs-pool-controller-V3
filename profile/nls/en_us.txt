@@ -49,8 +49,8 @@ CMD-pumppool-QUERY-NAME = Query
 CMD-pumppool-SET_SPEED-NAME = Pump RPM
 
 # Pump Node Hayward ECO/TriStar
-ND-pumptri-NAME = Pump VSF
-ND-pumptri-ICON = Irrigation	
+ND-pumptriS-NAME = Pump VSF
+ND-pumptriS-ICON = Irrigation	
 ST-pumptriP-ST-NAME = Node Status
 ST-pumptriP-GV0-NAME = Pool Running
 ST-pumptriP-GV30-NAME = -
