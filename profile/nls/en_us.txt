@@ -49,17 +49,17 @@ CMD-pumppool-QUERY-NAME = Query
 CMD-pumppool-SET_SPEED-NAME = Pump RPM
 
 # Pump Node Hayward ECO/TriStar
-ND-pumptriS-NAME = Pump VSF
-ND-pumptriS-ICON = Irrigation	
-ST-pumptriP-ST-NAME = Node Status
-ST-pumptriP-GV0-NAME = Pool Running
-ST-pumptriP-GV30-NAME = -
-ST-pumptriP-GV1-NAME = Pump Status
-ST-pumptriP-GV2-NAME = Pump Watts
-ST-pumptriP-GV3-NAME = Pump RPM
-ST-pumptriP-GV4-NAME = Pump GPM
-CMD-pumptriP-QUERY-NAME = Query
-CMD-pumptriP-SET_SPEED-NAME = Pump RPM
+ND-pumptris-NAME = Pump VSF
+ND-pumptris-ICON = Irrigation	
+ST-pumptrip-ST-NAME = Node Status
+ST-pumptrip-GV0-NAME = Pool Running
+ST-pumptrip-GV30-NAME = -
+ST-pumptrip-GV1-NAME = Pump Status
+ST-pumptrip-GV2-NAME = Pump Watts
+ST-pumptrip-GV3-NAME = Pump RPM
+ST-pumptrip-GV4-NAME = Pump GPM
+CMD-pumptrip-QUERY-NAME = Query
+CMD-pumptrip-SET_SPEED-NAME = Pump RPM
 
 # Pump Node Intelliflo VS
 ND-pumpIvs-NAME = Pump VS

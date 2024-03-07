@@ -95,7 +95,7 @@
     </nodeDef>
 
     <!-- Hayward TriStar Pump -->
-    <nodeDef id="pumptriS" nls="pumptriP">
+    <nodeDef id="pumptris" nls="pumptrip">
         <editors />
         <sts>
             <st id="GV0" editor="RUNIN" />

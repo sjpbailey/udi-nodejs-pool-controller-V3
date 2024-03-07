@@ -111,7 +111,7 @@ class PumpTriStarNode(udi_interface.Node):
         {'driver': 'ST', 'value': 0, 'uom': 25, 'name': "Online"},
     ]
 
-    id = 'pumptriS'
+    id = 'pumptris'
 
     commands = {
         'DON': cmd_on,
