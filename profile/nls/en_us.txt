@@ -45,6 +45,8 @@ ST-pumppool-GV1-NAME = Pump Status
 ST-pumppool-GV2-NAME = Pump Watts
 ST-pumppool-GV3-NAME = Pump RPM
 ST-pumppool-GV4-NAME = Pump GPM
+CMD-pumppool-DON-NAME = ON
+CMD-pumppool-DOF-NAME = OFF
 CMD-pumppool-QUERY-NAME = Query
 CMD-pumppool-SET_SPEED-NAME = Pump RPM
 
@@ -58,6 +60,8 @@ ST-pumptrip-GV1-NAME = Pump Status
 ST-pumptrip-GV2-NAME = Pump Watts
 ST-pumptrip-GV3-NAME = Pump RPM
 ST-pumptrip-GV4-NAME = Pump GPM
+CMD-pumptrip-DON-NAME = ON
+CMD-pumptrip-DOF-NAME = OFF
 CMD-pumptrip-QUERY-NAME = Query
 CMD-pumptrip-SET_SPEED-NAME = Pump RPM
 
@@ -71,6 +75,8 @@ ST-pumpIvsP-GV1-NAME = Pump Status
 ST-pumpIvsP-GV2-NAME = Pump Watts
 ST-pumpIvsP-GV3-NAME = Pump RPM
 ST-pumpIvsP-GV4-NAME = Pump GPM
+CMD-pumpIvsP-DON-NAME = ON
+CMD-pumpIvsP-DOF-NAME = OFF
 CMD-pumpIvsP-QUERY-NAME = Query
 CMD-pumpIvsP-SET_SPEED-NAME = Pump RPM
 
@@ -84,6 +90,8 @@ ST-pumpIvfP-GV1-NAME = Pump Status
 ST-pumpIvfP-GV2-NAME = Pump Watts
 ST-pumpIvfP-GV3-NAME = Pump RPM
 ST-pumpIvfP-GV4-NAME = Pump GPM
+CMD-pumpIvfP-DON-NAME = ON
+CMD-pumpIvfP-DOF-NAME = OFF
 CMD-pumpIvfP-QUERY-NAME = Query
 CMD-pumpIvfP-SET_SPEED-NAME = Pump GPM
 
@@ -97,6 +105,8 @@ ST-pumpIsvsP-GV1-NAME = Pump Status
 ST-pumpIsvsP-GV2-NAME = Pump Watts
 ST-pumpIsvsP-GV3-NAME = Pump RPM
 ST-pumpIsvsP-GV4-NAME = Pump GPM
+CMD-pumpIsvsP-DON-NAME = ON
+CMD-pumpIsvsP-DOF-NAME = OFF
 CMD-pumpIsvsP-QUERY-NAME = Query
 CMD-pumpIsvsP-SET_SPEED-NAME = Pump Relays
 
@@ -110,6 +120,8 @@ ST-pump2spdP-GV1-NAME = Pump Status
 ST-pump2spdP-GV2-NAME = Pump Watts
 ST-pump2spdP-GV3-NAME = Pump RPM
 ST-pump2spdP-GV4-NAME = Pump GPM
+CMD-pump2spdP-DON-NAME = ON
+CMD-pump2spdP-DOF-NAME = OFF
 CMD-pump2spdP-QUERY-NAME = Query
 CMD-pump2spdP-SET_SPEED-NAME = Pump Relays
 
@@ -123,6 +135,8 @@ ST-pump1spdP-GV1-NAME = Pump Status
 ST-pump1spdP-GV2-NAME = Pump Watts
 ST-pump1spdP-GV3-NAME = Pump RPM
 ST-pump1spdP-GV4-NAME = Pump GPM
+CMD-pump1spdP-DON-NAME = ON
+CMD-pump1spdP-DOF-NAME = OFF
 CMD-pump1spdP-QUERY-NAME = Query
 #CMD-pump1spdP-SET_SPEED-NAME = Pump Relays
 
