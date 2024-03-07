@@ -69,8 +69,8 @@ response = requests.put(
     'http://192.168.1.53:4200/state/circuit/setState/', json=json_data)'''
 
 
-# x = requests.get("http://192.168.1.53:4200/state/all/")
-# print(json.dumps(x.json(), indent=4, sort_keys=True))
+x = requests.get("http://192.168.1.53:4200/state/all/")
+print(json.dumps(x.json(), indent=4, sort_keys=True))
 # 'http://192.168.1.53:4200/config/circuits/'
 # "http://192.168.1.53:4200/state/all/"'''
 
