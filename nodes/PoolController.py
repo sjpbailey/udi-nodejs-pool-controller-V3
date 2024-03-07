@@ -151,6 +151,10 @@ class PoolController(udi_interface.Node):
                 LOGGER.info("Install Single Speed")
                 self.poly.addNode(Pump1SPDNode(
                     self.poly, self.address, address, name, allData, self.apiBaseUrl, self.api_url, pid))
+            elif i["type"]['desc'] == "Hayward Eco/TriStar VS":
+                LOGGER.info("Install Hayward Eco/TriStar VS")
+                self.poly.addNode(PumpTriStarNode(
+                    self.poly, self.address, address, name, allData, self.apiBaseUrl, self.api_url, pid))
 
             else:
                 LOGGER.info("Pump Not Found")
