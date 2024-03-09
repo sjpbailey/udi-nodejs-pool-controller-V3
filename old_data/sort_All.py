@@ -69,19 +69,20 @@ response = requests.put(
     'http://192.168.1.53:4200/state/circuit/setState/', json=json_data)'''
 
 
-x = requests.get("http://192.168.1.53:4200/state/all/")
-print(json.dumps(x.json(), indent=4, sort_keys=True))
+x = requests.get("http://192.168.1.55:4200/state/all/")
+response = json.dumps(x.json(), indent=4, sort_keys=True)
 # 'http://192.168.1.53:4200/config/circuits/'
 # "http://192.168.1.53:4200/state/all/"'''
-
-
+print(response)
 # "http://192.168.1.53:4200/state/temps/"
 # y = requests.get("http://192.168.1.53:4200/state/body/")
 # print(y.text)
 # response = (json.dumps(y.json(), indent=4, sort_keys=True))
 
 # print(response)
+for i in response:
 
+    print("Name:  {}".format(i))
 
 ################ CIRCUITS ######################################
 """for i in y:
@@ -1372,7 +1373,7 @@ print()
 # start relay for vs super
 # {method: 'put', url: '/config/pump', data: '{"id":51,"circuits":[{"relay":3,"units":{"val":null},"id":1,"circuit":6}]}'}data: "{\"id\":51,\"circuits\":[{\"relay\":3,\"units\":{\"val\":null},\"id\":1,\"circuit\":6}]}"method: "put"url: "/config/pump"[[Prototype]]: Object
 # data:"{\"id\":50,\"circuits\":[{\"relay\":3,\"units\":{\"val\":null},\"id\":1,\"circuit\":6}]}"
-print()
+'''print()
 for i in data["pumps"]:
 
     print("Name:  {}".format(i["name"]))
@@ -1406,17 +1407,18 @@ for i in data["pumps"]:
         pass
         print('NO GPM')
         print()
-        print()
+        print()'''
 
-    '''try:
+'''
+    try:
         print("RPM!  {}".format(i[0]["circuits"][0]['units']['val']))
     except KeyError:
         pass
-        print('NO RPM')'''
+        print('NO RPM')
 
     # print(i["circuits"][0])
     # print(i["rpm"])
-    '''if i["type"]['desc'] == "Intelliflo VSF":
+    if i["type"]['desc'] == "Intelliflo VSF":
         print("Intelliflo VSF")
     if i["type"]['desc'] == "Intelliflo VS":
         print("Intelliflo VS")
@@ -1431,10 +1433,10 @@ for i in data["pumps"]:
     if i["type"]['desc'] == "Hayward Relay VS":
         print("Hayward Relay VS")
     if i["type"]['desc'] == "SuperFlo VS":
-        print("SuperFlo VS")'''
-
-
-'''  # Virtual Circuits ######
+        print("SuperFlo VS")
+'''
+'''
+# Virtual Circuits ######
 print()
 # ["bodies"][0]["temp"]))
 print("Pool Temp  {}".format(data["virtualCircuits"]))
@@ -1457,10 +1459,11 @@ for i in data["heaters"]:
     print(i['id'])
     print(i['type']['desc'])
     print(i['isOn'])
-    # print(i['name'])'''
+    # print(i['name'])
+'''
 
 
-"""
+'''
 print()
 # print("Filter PSI {}".format(data["filters"][0]["pressure"]))
 print()
@@ -1471,10 +1474,10 @@ print()
 print("Setpoint {}".format(data["temps"]["bodies"][0]))
 print("App Version {}".format(data["appVersion"]))
 print()
-print("Setpoint {}".format(data["temps"]["bodies"][0]))"""
+print("Setpoint {}".format(data["temps"]["bodies"][0]))
 
 
-'''print()
+print()
 print()
 # print("Schedule {}".format(data["schedules"][0]))
 # print("Bodies {}".format(data["config"]["options"]))  # [0]["setPoint"]))
@@ -1504,11 +1507,11 @@ print()
 #      [0]["name"]))
 # print("Circuits {}".format(data["circuits"][1]["name"]))
 # print("Circuits {}".format(data["circuits"][2]["name"]))
-# print("Circuits {}".format(data["circuits"][3]["name"]))'''
+# print("Circuits {}".format(data["circuits"][3]["name"]))
 # print("Circuits {}".format(data["circuits"][0]["id"]))
 print()
-"""print("Air Temp  {}".format(data["temps"]["air"]))"""
-'''print()
+print("Air Temp  {}".format(data["temps"]["air"]))"""
+print()
 print("Setpoint Temp  {}".format(data["temps"]["bodies"][0]["setPoint"]))
 print()
 print("Pool Temp  {}".format(data["temps"]["bodies"][0]["temp"]))
@@ -1522,20 +1525,21 @@ print()
 # print("Virtual Circuits  {}".format(data["virtualCircuits"]))
 print()
 print("Heater {}".format(data["heaters"]))
-print()'''
+print()
 # print("Schedule {}".format(data["schedules"][0]))
 # print()
 # ["name"]))
 # [0]["circuits"]["circuit"]["name"]))
-'''print("Circuit On {}".format(data["circuits"][3]['isOn']))
+print("Circuit On {}".format(data["circuits"][3]['isOn']))
 ################ CIRCUITS ######################################
 for i in data["circuits"]:
     print(i["name"])
     print(i["id"])
     print(i['isOn'])
-print("Circuit On {}".format(data["circuits"][0]['isOn']))'''
+print("Circuit On {}".format(data["circuits"][0]['isOn']))
 #      [0]["name"]))
-"""print()
+
+print()
 print("Air Temp {}".format(data["air"]))
 print()
 print("Water Temp {}".format(data["waterSensor1"]))
@@ -1579,4 +1583,6 @@ print()
 
 
 # Closing file
-# f.close()"""
+# f.close()
+
+'''
