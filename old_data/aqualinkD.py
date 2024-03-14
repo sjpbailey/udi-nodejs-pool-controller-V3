@@ -1,6 +1,43 @@
 import json
 import requests
 
+
+'''# Opening JSON file
+f = open('temps.json')
+
+# returns JSON object as
+# a dictionary
+data = json.load(f)'''
+
+
+with open("aqua_statuses.json", "r") as file:
+    jsonData = json.load(file)
+
+print("Type of JSON Object: ", type(jsonData))
+
+for i in jsonData:
+    print(i)
+    # print(i["type"])
+    # print(i["id"])
+    # print(i["name"])
+    # print(i["state"])
+    # print(i["sp_value"])
+    # print(i["int_status"])
+
+
+'''# Traversing the json file
+for name in jsonData:
+    print("Name: ", name)
+    print("Phone Number: ", jsonData[name]["number"])
+    print("Age: ", jsonData[name]["age"])
+
+    print("Address:")
+    for line in jsonData[name]["address"]:
+        print(line)
+    print()'''
+
+
+'''
 data = {
     "type": "switch",
     "id": "Aux_5",
@@ -130,3 +167,9 @@ data = {
 
 for i in data:
     print(i)
+
+
+
+
+
+'''

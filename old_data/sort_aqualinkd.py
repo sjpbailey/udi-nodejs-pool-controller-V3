@@ -29,5 +29,5 @@ data = {
 response3 = requests.put(
     'http://192.168.1.100:80/api/Filter_Pump/RPM/set', data=data)
 print(response3.text)
-print(json.dumps(response3.json(), indent=4, sort_keys=True))
+# print(json.dumps(response3.json(), indent=4, sort_keys=True))
 print()

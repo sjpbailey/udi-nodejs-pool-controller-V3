@@ -1,3 +1,4 @@
+
 {
 "type":"status",
 "status":"CHECK AquaPure LOW SALT HIGH SALT",
@@ -46,6 +47,4 @@
 "timers":{
 },
 "timer_durations":{
-}
-}
-
+},
